@@ -6,6 +6,7 @@
 <title>AC Taller | Taller mecánico en Azul</title>
 <meta name="description" content="Taller mecánico en Azul, Buenos Aires. Turnos por WhatsApp y cursos presenciales de mecánica.">
 <meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -36,6 +37,10 @@
   .hero::before{content:"";position:absolute;inset:0;opacity:.22;pointer-events:none;
     background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='146' viewBox='0 0 84 146'%3E%3Cg fill='none' stroke='%236f5900' stroke-width='3'%3E%3Cpath d='M42 2l38 22v44L42 90 4 68V24z'/%3E%3Cpath d='M0 75l0 0M84 75l0 0'/%3E%3Cpath d='M42 90v22l38 22M42 112L4 134'/%3E%3C/g%3E%3C/svg%3E") 0 0/84px 146px}
   .hero .wrap{position:relative}
+  /* Portada con la foto del Falcon al atardecer */
+  .hero{background:linear-gradient(90deg,rgba(10,10,10,.94) 0%,rgba(10,10,10,.78) 46%,rgba(10,10,10,.22) 100%),url(img/falcon-pista.jpg) center 45%/cover no-repeat}
+  .hero::before{opacity:.12}
+  @media(max-width:759px){.hero{background:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.9) 72%),url(img/hero-m.jpg) 62% center/cover no-repeat}}
   .nav .btn{padding:9px 14px;font-size:.85rem;white-space:nowrap}
   .nav nav{display:none;gap:20px;font-size:.9rem}
   .nav nav a{text-decoration:none;color:var(--suave)}
@@ -102,7 +107,6 @@
   @media(prefers-reduced-motion:reduce){#chispas{display:none}}
   @media(min-width:760px){
     .nav nav{display:flex}
-    .hero .wrap{grid-template-columns:1.3fr .7fr}
     .grid.tres{grid-template-columns:repeat(3,1fr)}
     .grid.dos{grid-template-columns:repeat(2,1fr)}
     .franja .wrap{flex-direction:row;align-items:center;justify-content:space-between}
@@ -141,7 +145,6 @@
       </div>
       <p class="dato"><b>5,0 en Google</b> · 3 reseñas · Azul, Buenos Aires</p>
       </div>
-      <img class="hero-logo" src="logo.png" alt="Logo AC Motors" width="300" height="300">
     </div>
   </div>
 
@@ -181,7 +184,6 @@
         <figure class="ph"><img src="img/trabajo.jpg" alt="Mecánico trabajando en el motor de un Ford Falcon" loading="lazy" width="1080" height="1440" style="aspect-ratio:4/5"><figcaption>Trabajo en el motor</figcaption></figure>
       </div>
       <figure class="ph ancha"><img src="img/equipo.jpg" alt="El equipo de AC Taller junto al Falcon" loading="lazy" width="1080" height="750"><figcaption>El equipo de AC Taller</figcaption></figure>
-      <figure class="ph ancha"><img src="img/falcon-pista.jpg" alt="El Falcon en la pista al atardecer" loading="lazy" width="1080" height="710"><figcaption>El Falcon, en la pista</figcaption></figure>
     </div>
   </section>
 
