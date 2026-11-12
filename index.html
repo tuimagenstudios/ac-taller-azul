@@ -68,6 +68,16 @@
     background:linear-gradient(transparent,rgba(0,0,0,.85));color:var(--amarillo)}
   .ph.ancha{margin-top:14px}
   .grid.dos .ph{margin:0}
+  /* Sección de YouTube: el video se carga solo al hacer clic (más rápido y más privado) */
+  .yt{display:grid;gap:22px;align-items:center}
+  .yt-video{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;border:1px solid #2a2a2a;background:#111 center/cover no-repeat;cursor:pointer;box-shadow:0 0 0 2px var(--dorado),0 18px 50px rgba(0,0,0,.55)}
+  .yt-video::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.75))}
+  .yt-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2}
+  .yt-play{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:var(--amarillo);z-index:1;box-shadow:0 6px 26px rgba(0,0,0,.6);transition:transform .15s}
+  .yt-play::before{content:"";position:absolute;left:30px;top:22px;border-left:26px solid #000;border-top:16px solid transparent;border-bottom:16px solid transparent}
+  .yt-video:hover .yt-play,.yt-video:focus-visible .yt-play{transform:scale(1.1)}
+  .yt-info h3{font-size:1.5rem;color:var(--amarillo);margin-bottom:8px}
+  .yt-info p{color:var(--suave);margin-bottom:18px}
   .franja{background:var(--amarillo);color:#000}
   .franja .wrap{display:flex;flex-direction:column;gap:14px;padding-top:34px;padding-bottom:34px}
   .franja h2{font-size:clamp(1.8rem,6vw,2.6rem);margin:0}
@@ -111,6 +121,7 @@
     .nav nav{display:flex}
     .grid.tres{grid-template-columns:repeat(3,1fr)}
     .grid.dos{grid-template-columns:repeat(2,1fr)}
+    .yt{grid-template-columns:1.7fr 1fr}
     .franja .wrap{flex-direction:row;align-items:center;justify-content:space-between}
     .hero{padding:96px 0 40px}
     section{padding:80px 0}
@@ -127,6 +138,7 @@
     <nav>
       <a href="#servicios">Servicios</a>
       <a href="#cursos">Cursos</a>
+      <a href="#videos">Videos</a>
       <a href="#taller">Trabajos</a>
       <a href="#preguntas">Preguntas</a>
       <a href="#contacto">Contacto</a>
@@ -173,6 +185,21 @@
       <div class="grid dos">
         <div class="card"><h3>Videos gratis</h3><p>Reels de mecánica paso a paso en Instagram: cómo probar un alternador y más.</p><a class="btn sec" style="margin-top:14px" href="https://www.instagram.com/ac_taller_azul/" target="_blank" rel="noopener">Ver Instagram</a></div>
         <div class="card"><h3>Cursos presenciales</h3><p>Fechas, temario y precio: <span class="pend">a confirmar</span></p><a class="btn sec" style="margin-top:14px" data-wa href="#">Consultar cursos</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <div class="wrap">
+      <h2>Mira nuestro <em>canal</em></h2>
+      <p class="sub">Mecánica paso a paso y el proyecto Falcon, en el canal de YouTube de AC Taller.</p>
+      <div class="yt">
+        <div class="yt-video" id="ytVideo" role="button" tabindex="0" aria-label="Reproducir el video: ¿Llegamos a las picadas? La primera tirada del Falcon y todo lo que salió mal" style="background-image:url(https://i.ytimg.com/vi/rO3lAQTkklE/maxresdefault.jpg)"><span class="yt-play" aria-hidden="true"></span></div>
+        <div class="yt-info">
+          <h3>¿Llegamos a las picadas?</h3>
+          <p>La primera tirada del Falcon y todo lo que salió mal. Mira el video y suscríbete al canal.</p>
+          <a class="btn" href="https://www.youtube.com/@actaller3727" target="_blank" rel="noopener">Ver el canal en YouTube</a>
+        </div>
       </div>
     </div>
   </section>
@@ -306,6 +333,20 @@
     addEventListener("touchmove",function(e){var t=e.touches[0];if(t)mover(t.clientX,t.clientY)},{passive:true});
     addEventListener("click",function(e){for(var i=0;i<16;i++)chispa(e.clientX,e.clientY,2.6)});
     addEventListener("touchstart",function(e){var t=e.touches[0];if(t)for(var i=0;i<10;i++)chispa(t.clientX,t.clientY,2)},{passive:true});
+  })();
+
+  /* ===== YouTube: carga el video al hacer clic ===== */
+  (function(){
+    var v=document.getElementById("ytVideo"); if(!v) return;
+    function reproducir(){
+      var f=document.createElement("iframe");
+      f.src="https://www.youtube-nocookie.com/embed/rO3lAQTkklE?autoplay=1&rel=0";
+      f.title="¿Llegamos a las picadas? La primera tirada del Falcon y todo lo que salió mal";
+      f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen=true;
+      v.innerHTML=""; v.appendChild(f); v.removeAttribute("role"); v.style.cursor="default";
+    }
+    v.addEventListener("click",reproducir);
+    v.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();reproducir()}});
   })();
 
   document.querySelectorAll("[data-wa]").forEach(a=>{a.href=CONFIG.whatsapp;a.target="_blank";a.rel="noopener"});
