@@ -125,7 +125,7 @@
       <h2>Qué <em>hacemos</em></h2>
       <p class="sub">Servicios de mecánica para tu vehículo. Cada trabajo empieza con un diagnóstico y te explicamos qué tiene antes de arreglarlo.</p>
       <div class="grid tres" id="lista-servicios"></div>
-      <p class="sub" style="margin-top:18px;font-size:.85rem">Servicios y precios finales: a confirmar con AC Taller.</p>
+      <p class="sub" style="margin-top:18px;font-size:.85rem">Precios: consultá por WhatsApp. <span class="pend">a confirmar con AC Taller</span></p>
     </div>
   </section>
 
@@ -165,7 +165,7 @@
       <p class="sub" style="margin-bottom:18px">Respuestas provisorias: las confirma AC Taller antes de publicar.</p>
       <details><summary>¿Cómo saco un turno?</summary><p>Por WhatsApp, con el botón de esta página. Se recomienda concertar cita.</p></details>
       <details><summary>¿Qué medios de pago aceptan?</summary><p>Tarjetas de débito. Otros medios: a confirmar.</p></details>
-      <details><summary>¿Cuáles son los horarios?</summary><p>A confirmar con AC Taller.</p></details>
+      <details><summary>¿Cuáles son los horarios?</summary><p>Atendemos de lunes a viernes, de 8 a 16 hs.</p></details>
       <details><summary>¿Dónde están?</summary><p>A. Prat Nte. 0486, Azul, Provincia de Buenos Aires.</p></details>
     </div>
   </section>
@@ -179,7 +179,7 @@
           <h3>Dirección</h3><p>A. Prat Nte. 0486<br>B7300 Azul, Buenos Aires</p><br>
           <h3>WhatsApp</h3><p><a data-wa href="#">Escribir ahora</a></p><br>
           <h3>Teléfono</h3><p>+54 2281 46-1982 <span class="pend">confirmar</span></p><br>
-          <h3>Horario</h3><p><span class="pend">a confirmar</span></p>
+          <h3>Horario</h3><p>Lunes a viernes, de 8 a 16 hs <span class="pend">confirmar</span></p>
         </div>
         <iframe class="mapa" title="Mapa AC Taller" loading="lazy" src="https://www.google.com/maps?q=-36.763280,-59.876079&z=16&output=embed"></iframe>
       </div>
@@ -201,18 +201,18 @@
   const CONFIG = {
     whatsapp: "https://wa.me/message/QWBEMLBG76PQJ1",   // enlace público de la bio de Instagram
     mensajeWhatsapp: "",                                  // el enlace de mensaje no admite texto predefinido
-    servicios: [                                          // EJEMPLOS: confirmar con AC Taller
-      {t:"Diagnóstico de fallas", d:"Revisamos el vehículo y te decimos qué tiene antes de reparar."},
-      {t:"Motor", d:"Reparación y puesta a punto de motor."},
-      {t:"Electricidad del auto", d:"Alternador, batería, arranque y sensores."},
-      {t:"Frenos y suspensión", d:"Revisión y cambio de piezas de desgaste."},
-      {t:"Transmisión", d:"Caja de velocidades y embrague."},
-      {t:"Service y mantenimiento", d:"Aceite, filtros y control general."}
+    servicios: [                                          // lista real: respuesta automática del WhatsApp del taller
+      {t:"Service", d:"Mantenimiento de tu vehículo."},
+      {t:"Distribución", d:"Revisión y cambio de distribución."},
+      {t:"Reparación", d:"Reparación mecánica de tu auto."},
+      {t:"Repuestos", d:"Consultá por los repuestos que necesitás."},
+      {t:"Diagnóstico por scanner", d:"Lectura de fallas con scanner."},
+      {t:"Inyectores", d:"Limpieza y reparación de inyectores."}
     ]
   };
   document.querySelectorAll("[data-wa]").forEach(a=>{a.href=CONFIG.whatsapp;a.target="_blank";a.rel="noopener"});
   document.getElementById("lista-servicios").innerHTML = CONFIG.servicios.map(s =>
-    `<div class="card"><h3>${s.t}</h3><p>${s.d}</p><span class="pend">a confirmar</span></div>`).join("");
+    `<div class="card"><h3>${s.t}</h3><p>${s.d}</p></div>`).join("");
 </script>
 </body>
 </html>
