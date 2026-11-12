@@ -152,6 +152,14 @@
     html,body,a,button,summary,.btn{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 64 64'%3E%3Cg transform='translate(64 0) scale(-1 1)'%3E%3Cpath d='M44 8a12 12 0 0 0-11 16L10 47a5 5 0 0 0 7 7l23-23a12 12 0 0 0 16-11l-8 5-7-2-2-7z' fill='%23f5e61b' stroke='%23000' stroke-width='3' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E") 10 10, auto}
   }
   @media(prefers-reduced-motion:reduce){#chispas{display:none}}
+  /* Celular: las tres fotos de "Nuestro trabajo" con el mismo tamaño (cuadradas) */
+  @media(max-width:759px){
+    #taller .ph img{aspect-ratio:1/1 !important;object-fit:cover}
+    #taller .ph.ancha img{object-position:32% 50%}
+    #taller .ph img[src$="taller.jpg"]{object-position:50% 62%}
+    #taller .ph img[src$="trabajo.jpg"]{object-position:42% 28%}
+    #taller .grid.dos{gap:14px}
+  }
   @media(min-width:760px){
     .nav nav{display:flex}
     .grid.tres{grid-template-columns:repeat(3,1fr)}
