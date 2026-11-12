@@ -61,6 +61,12 @@
   .card p{color:var(--suave);font-size:.95rem}
   .pend{display:inline-block;font-size:.72rem;font-weight:700;background:#2a2a00;color:var(--amarillo);border:1px dashed var(--amarillo);padding:2px 8px;border-radius:20px;margin-top:10px}
   .foto{aspect-ratio:4/3;background:repeating-linear-gradient(45deg,#161616,#161616 12px,#1c1c1c 12px,#1c1c1c 24px);border:1px dashed #444;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--suave);font-size:.85rem;padding:16px}
+  .ph{position:relative;margin:0;border-radius:8px;overflow:hidden;border:1px solid #2a2a2a;background:#111}
+  .ph img{display:block;width:100%;height:auto;object-fit:cover}
+  .ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;font-weight:700;font-size:.9rem;
+    background:linear-gradient(transparent,rgba(0,0,0,.85));color:var(--amarillo)}
+  .ph.ancha{margin-top:14px}
+  .grid.dos .ph{margin:0}
   .franja{background:var(--amarillo);color:#000}
   .franja .wrap{display:flex;flex-direction:column;gap:14px;padding-top:34px;padding-bottom:34px}
   .franja h2{font-size:clamp(1.8rem,6vw,2.6rem);margin:0}
@@ -115,7 +121,7 @@
     <nav>
       <a href="#servicios">Servicios</a>
       <a href="#cursos">Cursos</a>
-      <a href="#taller">El taller</a>
+      <a href="#taller">Trabajos</a>
       <a href="#preguntas">Preguntas</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -168,13 +174,14 @@
 
   <section id="taller">
     <div class="wrap">
-      <h2>El <em>taller</em></h2>
-      <p class="sub">Taller mecánico en Azul, atendido por su dueño. Fotos reales del taller y del equipo: a confirmar.</p>
-      <div class="grid tres">
-        <div class="foto">FOTO PENDIENTE<br>El taller</div>
-        <div class="foto">FOTO PENDIENTE<br>Trabajo en curso</div>
-        <div class="foto">FOTO PENDIENTE<br>Equipo</div>
+      <h2>Nuestro <em>trabajo</em></h2>
+      <p class="sub">Mecánica, motores y un proyecto propio: el Falcon. Pronto, fotos del taller nuevo.</p>
+      <div class="grid dos">
+        <figure class="ph"><img src="img/taller.jpg" alt="Motor con carburador y el Falcon en el garaje" loading="lazy" width="1080" height="1440" style="aspect-ratio:4/5"><figcaption>Motor y Falcon en el garaje</figcaption></figure>
+        <figure class="ph"><img src="img/trabajo.jpg" alt="Mecánico trabajando en el motor de un Ford Falcon" loading="lazy" width="1080" height="1440" style="aspect-ratio:4/5"><figcaption>Trabajo en el motor</figcaption></figure>
       </div>
+      <figure class="ph ancha"><img src="img/equipo.jpg" alt="El equipo de AC Taller junto al Falcon" loading="lazy" width="1080" height="750"><figcaption>El equipo de AC Taller</figcaption></figure>
+      <figure class="ph ancha"><img src="img/falcon-pista.jpg" alt="El Falcon en la pista al atardecer" loading="lazy" width="1080" height="710"><figcaption>El Falcon, en la pista</figcaption></figure>
     </div>
   </section>
 
