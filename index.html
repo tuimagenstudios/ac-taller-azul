@@ -75,6 +75,19 @@
   footer{border-top:1px solid #222;padding:26px 0 90px;color:var(--suave);font-size:.85rem}
   footer a{color:var(--amarillo)}
   .flotante{position:fixed;right:14px;bottom:14px;z-index:20;background:var(--amarillo);color:#000;font-weight:700;text-decoration:none;padding:14px 20px;border-radius:40px;box-shadow:0 4px 18px rgba(0,0,0,.5)}
+  /* ===== Fondo animado de piezas mecánicas (todas las secciones menos la portada) ===== */
+  section,.franja{position:relative;overflow:hidden}
+  section>.wrap,.franja>.wrap{position:relative;z-index:1}
+  .fondo-mec{position:absolute;inset:0;pointer-events:none;z-index:0}
+  .pieza{position:absolute;color:#9a7d00;opacity:.32;animation:deriva var(--d,14s) ease-in-out infinite alternate;animation-delay:var(--r,0s)}
+  .franja .pieza{color:#000;opacity:.14}
+  .pieza svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;animation:var(--giro,giro) var(--g,40s) linear infinite}
+  .pieza svg.vaiven{animation:vaiven var(--g,8s) ease-in-out infinite alternate}
+  @keyframes deriva{from{transform:translate(0,0)}to{transform:translate(var(--dx,24px),var(--dy,-36px))}}
+  @keyframes giro{to{transform:rotate(360deg)}}
+  @keyframes giroinv{to{transform:rotate(-360deg)}}
+  @keyframes vaiven{from{transform:rotate(-28deg)}to{transform:rotate(28deg)}}
+  @media(prefers-reduced-motion:reduce){.pieza,.pieza svg{animation:none}}
   @media(min-width:760px){
     .nav nav{display:flex}
     .hero .wrap{grid-template-columns:1.3fr .7fr}
@@ -210,6 +223,44 @@
       {t:"Inyectores", d:"Limpieza y reparación de inyectores."}
     ]
   };
+  /* ===== Fondo animado: piezas mecánicas ===== */
+  (function(){
+    function engranaje(dientes){            // dibuja un engranaje con N dientes
+      var p="",R=26,r=20,a=Math.PI*2/dientes;
+      for(var i=0;i<dientes;i++){
+        var t=i*a,pts=[[r,t-a*.30],[R,t-a*.18],[R,t+a*.18],[r,t+a*.30]];
+        pts.forEach(function(q,j){p+=(i===0&&j===0?"M":"L")+(32+q[0]*Math.cos(q[1])).toFixed(1)+" "+(32+q[0]*Math.sin(q[1])).toFixed(1)+" "});
+      }
+      return '<path d="'+p+'Z"/><circle cx="32" cy="32" r="8"/>';
+    }
+    var ICONOS=[
+      {c:"giro",   s:engranaje(10)},
+      {c:"giroinv",s:engranaje(8)},
+      {c:"giro",   s:'<path d="M32 6l22 13v26L32 58 10 45V19z"/><circle cx="32" cy="32" r="9"/>'},               // tuerca
+      {c:"vaiven", s:'<path d="M44 8a12 12 0 0 0-11 16L10 47a5 5 0 0 0 7 7l23-23a12 12 0 0 0 16-11l-8 5-7-2-2-7z"/>'}, // llave
+      {c:"vaiven", s:'<path d="M20 8h24l4 10H16z"/><path d="M24 18v38h16V18M24 26h16M24 34h16M24 42h16M24 50h16"/>'},   // tornillo
+      {c:"giro",   s:'<circle cx="32" cy="32" r="24"/><circle cx="32" cy="32" r="7"/><path d="M32 8v17M32 39v17M8 32h17M39 32h17M15 15l10 10M39 39l10 10M49 15L39 25M25 39L15 49"/>'}, // rueda
+      {c:"vaiven", s:'<rect x="18" y="8" width="28" height="34" rx="4"/><path d="M18 16h28M18 22h28M18 28h28"/><circle cx="32" cy="36" r="4"/><path d="M28 42l-6 14h20l-6-14"/>'}, // pistón
+      {c:"vaiven", s:'<path d="M22 6h20v8H22zM26 14h12v14H26zM24 28h16l-3 8H27z"/><path d="M32 36v16M28 52h8"/>'}  // bujía
+    ];
+    var cant = window.innerWidth<760 ? 4 : 7;
+    document.querySelectorAll("section,.franja").forEach(function(sec,n){
+      var capa=document.createElement("div");capa.className="fondo-mec";capa.setAttribute("aria-hidden","true");
+      for(var i=0;i<cant;i++){
+        var ic=ICONOS[(i*3+n*2)%ICONOS.length];
+        var tam=38+Math.round(Math.random()*46);
+        var d=document.createElement("div");d.className="pieza";
+        d.style.cssText="left:"+(Math.random()*92).toFixed(1)+"%;top:"+(Math.random()*88).toFixed(1)+"%;width:"+tam+"px;height:"+tam+"px;"+
+          "--d:"+(12+Math.random()*14).toFixed(1)+"s;--r:-"+(Math.random()*10).toFixed(1)+"s;"+
+          "--dx:"+(Math.round(Math.random()*60)-30)+"px;--dy:"+(-20-Math.round(Math.random()*40))+"px;"+
+          "--g:"+(ic.c==="vaiven"?(6+Math.random()*6):(30+Math.random()*40)).toFixed(1)+"s";
+        d.innerHTML='<svg viewBox="0 0 64 64" class="'+ic.c+'" style="'+(ic.c==="giroinv"?"--giro:giroinv":"")+'">'+ic.s+'</svg>';
+        capa.appendChild(d);
+      }
+      sec.insertBefore(capa,sec.firstChild);
+    });
+  })();
+
   document.querySelectorAll("[data-wa]").forEach(a=>{a.href=CONFIG.whatsapp;a.target="_blank";a.rel="noopener"});
   document.getElementById("lista-servicios").innerHTML = CONFIG.servicios.map(s =>
     `<div class="card"><h3>${s.t}</h3><p>${s.d}</p></div>`).join("");
