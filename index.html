@@ -45,7 +45,7 @@
   .btn:hover{background:transparent;color:var(--amarillo)}
   .btn.sec{background:transparent;color:var(--amarillo)}
   .btn.sec:hover{background:var(--amarillo);color:#000}
-  .hero{padding:64px 0 56px;background:radial-gradient(circle at 1px 1px,#2a2a2a 1px,transparent 0) 0 0/14px 14px}
+  .hero{padding:64px 0 30px;background:radial-gradient(circle at 1px 1px,#2a2a2a 1px,transparent 0) 0 0/14px 14px}
   .hero h1{font-size:clamp(2.6rem,10vw,5.4rem);max-width:12ch}
   .hero h1 span{color:var(--amarillo)}
   .hero p{color:var(--suave);max-width:46ch;margin:18px 0 26px;font-size:1.05rem}
@@ -83,11 +83,11 @@
   footer a{color:var(--amarillo)}
   .flotante{position:fixed;right:14px;bottom:14px;z-index:20;background:var(--amarillo);color:#000;font-weight:700;text-decoration:none;padding:14px 20px;border-radius:40px;box-shadow:0 4px 18px rgba(0,0,0,.5)}
   /* Portada con la foto del Falcon al atardecer (va después de la regla base .hero) */
-  .hero{background:linear-gradient(0deg,#0a0a0a 0%,rgba(10,10,10,.88) 10%,rgba(10,10,10,.45) 18%,rgba(10,10,10,0) 26%),linear-gradient(90deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.28) 42%,rgba(10,10,10,0) 70%),url(img/falcon-pista.jpg) center 45%/cover no-repeat}
+  .hero{background:linear-gradient(0deg,#0a0a0a 0%,rgba(10,10,10,.94) 5%,rgba(10,10,10,.8) 11%,rgba(10,10,10,.58) 17%,rgba(10,10,10,.36) 23%,rgba(10,10,10,.16) 29%,rgba(10,10,10,.05) 34%,rgba(10,10,10,0) 40%),linear-gradient(90deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.28) 42%,rgba(10,10,10,0) 70%),url(img/falcon-pista.jpg) center 45%/cover no-repeat}
   .hero::before{opacity:0}
   .hero h1,.hero p{text-shadow:0 2px 16px rgba(0,0,0,.9),0 0 3px rgba(0,0,0,.7)}
   .hero p{color:#dcdcdc}
-  @media(max-width:759px){.hero{background:linear-gradient(0deg,#0a0a0a 0%,rgba(10,10,10,.88) 10%,rgba(10,10,10,0) 30%),linear-gradient(180deg,rgba(10,10,10,.1) 0%,rgba(10,10,10,.25) 45%,rgba(10,10,10,.6) 100%),url(img/hero-m.jpg) 62% center/cover no-repeat}}
+  @media(max-width:759px){.hero{background:linear-gradient(0deg,#0a0a0a 0%,rgba(10,10,10,.92) 6%,rgba(10,10,10,.7) 14%,rgba(10,10,10,.4) 22%,rgba(10,10,10,.15) 30%,rgba(10,10,10,0) 38%),linear-gradient(180deg,rgba(10,10,10,.1) 0%,rgba(10,10,10,.25) 45%,rgba(10,10,10,.6) 100%),url(img/hero-m.jpg) 62% center/cover no-repeat}}
   /* ===== Fondo animado de piezas mecánicas (todas las secciones menos la portada) ===== */
   section,.franja{position:relative;overflow:hidden}
   section>.wrap,.franja>.wrap{position:relative;z-index:1}
@@ -112,7 +112,7 @@
     .grid.tres{grid-template-columns:repeat(3,1fr)}
     .grid.dos{grid-template-columns:repeat(2,1fr)}
     .franja .wrap{flex-direction:row;align-items:center;justify-content:space-between}
-    .hero{padding:96px 0 84px}
+    .hero{padding:96px 0 40px}
     section{padding:80px 0}
   }
 </style>
