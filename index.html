@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AC Taller | Taller mecánico en Azul</title>
+<meta name="description" content="Taller mecánico en Azul, Buenos Aires. Turnos por WhatsApp y cursos presenciales de mecánica.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== CONFIGURACIÓN EDITABLE: colores ===== */
+  :root{
+    --fondo:#0a0a0a;        /* negro de fondo */
+    --fondo2:#141414;       /* tarjetas */
+    --amarillo:#f5e61b;     /* AMARILLO DE MARCA: aproximado, confirmar con AC Taller */
+    --texto:#f2f2f2;
+    --suave:#a8a8a8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--fondo);color:var(--texto);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+  h1,h2,h3{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  .borrador{background:var(--amarillo);color:#000;text-align:center;font-weight:700;font-size:.8rem;padding:6px 12px}
+  header.nav{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.92);backdrop-filter:blur(6px);border-bottom:1px solid #222}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+  .logo{font-family:Anton,Impact,sans-serif;font-size:1.4rem;color:var(--amarillo);text-decoration:none;letter-spacing:.04em}
+  .logo{white-space:nowrap}
+  .nav .btn{padding:9px 14px;font-size:.85rem;white-space:nowrap}
+  .nav nav{display:none;gap:20px;font-size:.9rem}
+  .nav nav a{text-decoration:none;color:var(--suave)}
+  .nav nav a:hover{color:var(--amarillo)}
+  .btn{display:inline-block;background:var(--amarillo);color:#000;font-weight:700;text-decoration:none;padding:13px 22px;border-radius:6px;border:2px solid var(--amarillo)}
+  .btn:hover{background:transparent;color:var(--amarillo)}
+  .btn.sec{background:transparent;color:var(--amarillo)}
+  .btn.sec:hover{background:var(--amarillo);color:#000}
+  .hero{padding:64px 0 56px;background:radial-gradient(circle at 1px 1px,#2a2a2a 1px,transparent 0) 0 0/14px 14px}
+  .hero h1{font-size:clamp(2.6rem,10vw,5.4rem);max-width:12ch}
+  .hero h1 span{color:var(--amarillo)}
+  .hero p{color:var(--suave);max-width:46ch;margin:18px 0 26px;font-size:1.05rem}
+  .hero .acciones{display:flex;flex-wrap:wrap;gap:12px}
+  .dato{margin-top:26px;color:var(--suave);font-size:.9rem}
+  .dato b{color:var(--amarillo)}
+  section{padding:56px 0}
+  section h2{font-size:clamp(1.9rem,6vw,2.8rem);margin-bottom:8px}
+  section h2 em{font-style:normal;color:var(--amarillo)}
+  .sub{color:var(--suave);max-width:56ch;margin-bottom:28px}
+  .grid{display:grid;gap:14px}
+  .card{background:var(--fondo2);border:1px solid #242424;border-left:4px solid var(--amarillo);padding:20px;border-radius:6px}
+  .card h3{font-size:1.25rem;margin-bottom:6px;color:var(--amarillo)}
+  .card p{color:var(--suave);font-size:.95rem}
+  .pend{display:inline-block;font-size:.72rem;font-weight:700;background:#2a2a00;color:var(--amarillo);border:1px dashed var(--amarillo);padding:2px 8px;border-radius:20px;margin-top:10px}
+  .foto{aspect-ratio:4/3;background:repeating-linear-gradient(45deg,#161616,#161616 12px,#1c1c1c 12px,#1c1c1c 24px);border:1px dashed #444;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--suave);font-size:.85rem;padding:16px}
+  .franja{background:var(--amarillo);color:#000}
+  .franja .wrap{display:flex;flex-direction:column;gap:14px;padding-top:34px;padding-bottom:34px}
+  .franja h2{font-size:clamp(1.8rem,6vw,2.6rem);margin:0}
+  .franja .btn{background:#000;color:var(--amarillo);border-color:#000;align-self:flex-start}
+  .franja .btn:hover{background:transparent;color:#000}
+  details{background:var(--fondo2);border:1px solid #242424;border-radius:6px;padding:14px 18px;margin-bottom:10px}
+  summary{cursor:pointer;font-weight:600}
+  details p{color:var(--suave);margin-top:8px;font-size:.95rem}
+  .contacto .grid > div{background:var(--fondo2);border:1px solid #242424;border-radius:6px;padding:20px}
+  .contacto h3{font-size:1.1rem;color:var(--amarillo);margin-bottom:6px}
+  .mapa{aspect-ratio:16/10;border:0;width:100%;border-radius:6px;filter:grayscale(1) invert(.92) contrast(.9)}
+  footer{border-top:1px solid #222;padding:26px 0 90px;color:var(--suave);font-size:.85rem}
+  footer a{color:var(--amarillo)}
+  .flotante{position:fixed;right:14px;bottom:14px;z-index:20;background:var(--amarillo);color:#000;font-weight:700;text-decoration:none;padding:14px 20px;border-radius:40px;box-shadow:0 4px 18px rgba(0,0,0,.5)}
+  @media(min-width:760px){
+    .nav nav{display:flex}
+    .grid.tres{grid-template-columns:repeat(3,1fr)}
+    .grid.dos{grid-template-columns:repeat(2,1fr)}
+    .franja .wrap{flex-direction:row;align-items:center;justify-content:space-between}
+    .hero{padding:96px 0 84px}
+    section{padding:80px 0}
+  }
+</style>
+</head>
+<body>
+
+<div class="borrador">MODELO PARA REVISAR: no publicado. Lo marcado «a confirmar» se completa con datos del taller.</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#inicio">AC TALLER</a>
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#taller">El taller</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn" data-wa href="#">Pedir turno</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="wrap">
+      <h1 data-t="hero_titulo">Taller mecánico en <span>Azul</span></h1>
+      <p data-t="hero_sub">Mecánica con más de 11 años de experiencia, con foco en vehículos nuevos. Escríbenos por WhatsApp y pide tu turno.</p>
+      <div class="acciones">
+        <a class="btn" data-wa href="#">Pedir turno por WhatsApp</a>
+        <a class="btn sec" href="#servicios">Ver servicios</a>
+      </div>
+      <p class="dato"><b>5,0 en Google</b> · 3 reseñas · Azul, Buenos Aires</p>
+    </div>
+  </div>
+
+  <section id="servicios">
+    <div class="wrap">
+      <h2>Qué <em>hacemos</em></h2>
+      <p class="sub">Servicios de mecánica para tu vehículo. Cada trabajo empieza con un diagnóstico y te explicamos qué tiene antes de arreglarlo.</p>
+      <div class="grid tres" id="lista-servicios"></div>
+      <p class="sub" style="margin-top:18px;font-size:.85rem">Servicios y precios finales: a confirmar con AC Taller.</p>
+    </div>
+  </section>
+
+  <div class="franja">
+    <div class="wrap">
+      <h2>¿Tu auto tiene una falla? Cuéntanos qué le pasa</h2>
+      <a class="btn" data-wa href="#">Escribir por WhatsApp</a>
+    </div>
+  </div>
+
+  <section id="cursos">
+    <div class="wrap">
+      <h2>Aprende <em>mecánica</em></h2>
+      <p class="sub">Además del taller, enseñamos mecánica: gratis en videos y en cursos presenciales.</p>
+      <div class="grid dos">
+        <div class="card"><h3>Videos gratis</h3><p>Reels de mecánica paso a paso en Instagram: cómo probar un alternador y más.</p><a class="btn sec" style="margin-top:14px" href="https://www.instagram.com/ac_taller_azul/" target="_blank" rel="noopener">Ver Instagram</a></div>
+        <div class="card"><h3>Cursos presenciales</h3><p>Fechas, temario y precio: <span class="pend">a confirmar</span></p><a class="btn sec" style="margin-top:14px" data-wa href="#">Consultar cursos</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="taller">
+    <div class="wrap">
+      <h2>El <em>taller</em></h2>
+      <p class="sub">Taller mecánico en Azul, atendido por su dueño. Fotos reales del taller y del equipo: a confirmar.</p>
+      <div class="grid tres">
+        <div class="foto">FOTO PENDIENTE<br>El taller</div>
+        <div class="foto">FOTO PENDIENTE<br>Trabajo en curso</div>
+        <div class="foto">FOTO PENDIENTE<br>Equipo</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="preguntas">
+    <div class="wrap">
+      <h2>Preguntas <em>frecuentes</em></h2>
+      <p class="sub" style="margin-bottom:18px">Respuestas provisorias: las confirma AC Taller antes de publicar.</p>
+      <details><summary>¿Cómo saco un turno?</summary><p>Por WhatsApp, con el botón de esta página. Se recomienda concertar cita.</p></details>
+      <details><summary>¿Qué medios de pago aceptan?</summary><p>Tarjetas de débito. Otros medios: a confirmar.</p></details>
+      <details><summary>¿Cuáles son los horarios?</summary><p>A confirmar con AC Taller.</p></details>
+      <details><summary>¿Dónde están?</summary><p>A. Prat Nte. 0486, Azul, Provincia de Buenos Aires.</p></details>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto">
+    <div class="wrap">
+      <h2>Contacto</h2>
+      <p class="sub">La forma más rápida es WhatsApp.</p>
+      <div class="grid dos">
+        <div>
+          <h3>Dirección</h3><p>A. Prat Nte. 0486<br>B7300 Azul, Buenos Aires</p><br>
+          <h3>WhatsApp</h3><p><a data-wa href="#">Escribir ahora</a></p><br>
+          <h3>Teléfono</h3><p>+54 2281 46-1982 <span class="pend">confirmar</span></p><br>
+          <h3>Horario</h3><p><span class="pend">a confirmar</span></p>
+        </div>
+        <iframe class="mapa" title="Mapa AC Taller" loading="lazy" src="https://www.google.com/maps?q=-36.763280,-59.876079&z=16&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 AC Taller · Azul, Buenos Aires · <a href="https://www.instagram.com/ac_taller_azul/" target="_blank" rel="noopener">@ac_taller_azul</a></p>
+    <p style="margin-top:8px"><a href="#">Aviso legal</a> · <a href="#">Política de privacidad</a> <span class="pend">textos legales pendientes</span></p>
+  </div>
+</footer>
+
+<a class="flotante" data-wa href="#">WhatsApp</a>
+
+<script>
+  /* ===== CONFIGURACIÓN EDITABLE: enlaces y servicios ===== */
+  const CONFIG = {
+    whatsapp: "https://wa.me/message/QWBEMLBG76PQJ1",   // enlace público de la bio de Instagram
+    mensajeWhatsapp: "",                                  // el enlace de mensaje no admite texto predefinido
+    servicios: [                                          // EJEMPLOS: confirmar con AC Taller
+      {t:"Diagnóstico de fallas", d:"Revisamos el vehículo y te decimos qué tiene antes de reparar."},
+      {t:"Motor", d:"Reparación y puesta a punto de motor."},
+      {t:"Electricidad del auto", d:"Alternador, batería, arranque y sensores."},
+      {t:"Frenos y suspensión", d:"Revisión y cambio de piezas de desgaste."},
+      {t:"Transmisión", d:"Caja de velocidades y embrague."},
+      {t:"Service y mantenimiento", d:"Aceite, filtros y control general."}
+    ]
+  };
+  document.querySelectorAll("[data-wa]").forEach(a=>{a.href=CONFIG.whatsapp;a.target="_blank";a.rel="noopener"});
+  document.getElementById("lista-servicios").innerHTML = CONFIG.servicios.map(s =>
+    `<div class="card"><h3>${s.t}</h3><p>${s.d}</p><span class="pend">a confirmar</span></div>`).join("");
+</script>
+</body>
+</html>
