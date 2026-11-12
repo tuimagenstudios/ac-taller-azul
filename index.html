@@ -83,11 +83,11 @@
   footer a{color:var(--amarillo)}
   .flotante{position:fixed;right:14px;bottom:14px;z-index:20;background:var(--amarillo);color:#000;font-weight:700;text-decoration:none;padding:14px 20px;border-radius:40px;box-shadow:0 4px 18px rgba(0,0,0,.5)}
   /* Portada con la foto del Falcon al atardecer (va después de la regla base .hero) */
-  .hero{background:linear-gradient(90deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.28) 42%,rgba(10,10,10,0) 70%),url(img/falcon-pista.jpg) center 45%/cover no-repeat}
+  .hero{background:linear-gradient(0deg,#0a0a0a 0%,rgba(10,10,10,.88) 10%,rgba(10,10,10,.45) 18%,rgba(10,10,10,0) 26%),linear-gradient(90deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.28) 42%,rgba(10,10,10,0) 70%),url(img/falcon-pista.jpg) center 45%/cover no-repeat}
   .hero::before{opacity:0}
   .hero h1,.hero p{text-shadow:0 2px 16px rgba(0,0,0,.9),0 0 3px rgba(0,0,0,.7)}
   .hero p{color:#dcdcdc}
-  @media(max-width:759px){.hero{background:linear-gradient(180deg,rgba(10,10,10,.1) 0%,rgba(10,10,10,.25) 45%,rgba(10,10,10,.7) 100%),url(img/hero-m.jpg) 62% center/cover no-repeat}}
+  @media(max-width:759px){.hero{background:linear-gradient(0deg,#0a0a0a 0%,rgba(10,10,10,.88) 10%,rgba(10,10,10,0) 30%),linear-gradient(180deg,rgba(10,10,10,.1) 0%,rgba(10,10,10,.25) 45%,rgba(10,10,10,.6) 100%),url(img/hero-m.jpg) 62% center/cover no-repeat}}
   /* ===== Fondo animado de piezas mecánicas (todas las secciones menos la portada) ===== */
   section,.franja{position:relative;overflow:hidden}
   section>.wrap,.franja>.wrap{position:relative;z-index:1}
@@ -139,7 +139,7 @@
   <div class="hero">
     <div class="wrap">
       <div>
-      <h1 data-t="hero_titulo">Taller mecánico en <span>Azul</span></h1>
+      <h1 data-t="hero_titulo"><span>AC-Taller</span> Mecánico</h1>
       <p data-t="hero_sub">Mecánica con más de 11 años de experiencia, con foco en vehículos nuevos. Escríbenos por WhatsApp y pide tu turno.</p>
       <div class="acciones">
         <a class="btn" data-wa href="#">Pedir turno por WhatsApp</a>
