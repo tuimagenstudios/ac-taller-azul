@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El motor de 4 tiempos, por dentro | AC-Taller</title>
+<meta name="description" content="Motor de 4 tiempos interactivo: mirá cómo funciona por dentro, tocá cada pieza y provocá fallas. Material gratis de AC-Taller, Azul.">
+<link rel="canonical" href="https://ac-taller.com/motor-4-tiempos.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AC-Taller">
+<meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://ac-taller.com/motor-4-tiempos.html">
+<meta property="og:title" content="El motor de 4 tiempos, por dentro | AC-Taller">
+<meta property="og:description" content="Tocá cada pieza, mirá los 4 tiempos y rompé el motor a propósito. Gratis.">
+<meta property="og:image" content="https://ac-taller.com/img/og-motor.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/anton-latin.woff2) format('woff2')}
+  @font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-latin.woff2) format('woff2')}
+  /* Layout: banco de pruebas (motor en corte) a la izquierda, ficha técnica a la derecha. Negro taller + amarillo AC. */
+  :root{
+    --fondo:#09090a;--panel:#121214;--panel2:#18181b;--borde:#26262b;
+    --amarillo:#f5e61b;--texto:#f2f2f2;--suave:#9d9da6;
+    --adm:#38b6ff;--comp:#a78bfa;--exp:#ff6a1a;--esc:#9ca3af;--agua:#1e6fa8;--aceite:#b8860b;
+    --display:Anton,Impact,sans-serif;--body:Inter,system-ui,sans-serif;--mono:Inter,system-ui,sans-serif;
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--fondo);color:var(--texto);font-family:var(--body);line-height:1.5;
+    background-image:radial-gradient(circle at 1px 1px,#1a1a1d 1px,transparent 0);background-size:18px 18px}
+  .wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .boceto{background:var(--amarillo);color:#000;text-align:center;font-weight:700;font-size:.78rem;letter-spacing:.04em;padding:6px 12px}
+  header{border-bottom:1px solid var(--borde);background:rgba(9,9,10,.9)}
+  .volver{color:var(--amarillo);border:2px solid var(--amarillo);border-radius:6px;padding:7px 12px;font-weight:700;font-size:.85rem;text-decoration:none;white-space:nowrap}
+  .volver:hover{background:var(--amarillo);color:#000}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .logo{font-family:var(--display);font-size:1.35rem;color:var(--amarillo);letter-spacing:.05em}
+  .kicker{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amarillo)}
+  h1,h2,h3{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.02em;line-height:1.02;text-wrap:balance}
+  .intro{padding-block:36px 22px;display:grid;gap:10px}
+  .intro h1{font-size:clamp(2.4rem,7.5vw,4.4rem)}
+  .intro h1 span{color:var(--amarillo)}
+  .intro p{color:var(--suave);max-width:62ch;font-size:1.02rem}
+  .app{display:grid;gap:18px;padding-bottom:56px}
+  @media(min-width:900px){.app{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:start}}
+
+  /* Banco */
+  .banco{background:linear-gradient(180deg,#141416,#0c0c0e);border:1px solid var(--borde);border-radius:16px;overflow:hidden;min-width:0}
+  .barra{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--borde)}
+  .barra .t{font-size:.8rem;color:var(--suave)}
+  .toggle{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--suave);cursor:pointer}
+  .toggle input{accent-color:var(--amarillo);width:16px;height:16px}
+  .escena{position:relative}
+  .escena svg{display:block;width:100%;height:auto}
+  .hud{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;align-items:flex-end;gap:2px;pointer-events:none}
+  .hud .deg{font-family:var(--mono);font-weight:700;font-size:1.3rem;font-variant-numeric:tabular-nums}
+  .hud .rpm{font-family:var(--mono);font-size:.72rem;color:var(--suave)}
+  .badge{position:absolute;left:14px;bottom:10px;display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.55);border:1px solid var(--c);border-radius:30px;padding:5px 12px 5px 8px;font-weight:700;font-size:.85rem;backdrop-filter:blur(4px)}
+  .badge i{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}
+  .lbl{font-family:var(--body);font-size:11px;font-weight:600;fill:#d9d9de}
+  .lblline{stroke:#6b6b75;stroke-width:1}
+  .etiquetas{transition:opacity .25s}
+  .oculto{opacity:0}
+  .pieza{cursor:pointer;outline:none}
+  .pieza:hover .cuerpo,.pieza:focus-visible .cuerpo{filter:brightness(1.3) drop-shadow(0 0 4px rgba(245,230,27,.6))}
+  .pieza.sel .cuerpo{filter:drop-shadow(0 0 6px var(--amarillo)) brightness(1.15)}
+
+  /* Línea de tiempo */
+  .linea{padding:14px 16px 4px}
+  .tl{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+  .tl button{font:inherit;cursor:pointer;background:#1a1a1d;border:0;border-radius:6px;padding:10px 4px 8px;color:var(--suave);font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;position:relative;overflow:hidden}
+  .tl button::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:var(--c);opacity:.35}
+  .tl button.on{color:#fff;background:#222226}
+  .tl button.on::before{opacity:1}
+  .tl button small{display:block;font-family:var(--mono);font-size:.66rem;font-weight:500;color:#77777f;letter-spacing:0;text-transform:none}
+  .cursor{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--amarillo);box-shadow:0 0 8px var(--amarillo);pointer-events:none;border-radius:2px}
+  .controles{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 16px 16px}
+  .btn{font:inherit;cursor:pointer;background:var(--amarillo);color:#000;font-weight:700;border:2px solid var(--amarillo);border-radius:8px;padding:8px 16px;min-width:108px}
+  .seg{display:flex;background:#1a1a1d;border-radius:8px;padding:3px;gap:2px}
+  .seg button{font:inherit;cursor:pointer;background:transparent;color:var(--suave);border:0;border-radius:6px;padding:6px 11px;font-size:.82rem;font-weight:600}
+  .seg button[aria-pressed="true"]{background:#2c2c31;color:#fff}
+  .slider{flex:1 1 220px;display:flex;align-items:center;gap:10px;font-size:.78rem;color:var(--suave)}
+  input[type=range]{flex:1;accent-color:var(--amarillo)}
+  :focus-visible{outline:2px solid var(--amarillo);outline-offset:2px}
+
+  /* Panel */
+  .panel{display:flex;flex-direction:column;gap:14px;min-width:0}
+  .card{background:var(--panel);border:1px solid var(--borde);border-radius:14px;padding:20px 22px}
+  .fase{position:relative;overflow:hidden}
+  .fase::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:var(--c);opacity:.12;filter:blur(10px)}
+  .fase .top{display:flex;align-items:baseline;gap:12px}
+  .fase .n{font-family:var(--display);font-size:3.2rem;line-height:1;color:var(--c)}
+  .fase h2{font-size:2rem}
+  .fase p{color:#d4d4da;margin-top:8px}
+  .estado{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+  .estado div{background:var(--panel2);border-radius:8px;padding:8px 10px}
+  .estado dt{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--suave)}
+  .estado dd{font-weight:700;font-size:.9rem}
+  .on-txt{color:#7ee787}.off-txt{color:#8b8b93}
+  .pinfo h3{font-size:1.5rem;color:var(--amarillo)}
+  .pinfo .sub{font-size:.8rem;color:var(--suave);margin-bottom:12px}
+  .pinfo dl{display:grid;gap:12px}
+  .pinfo dt{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--suave);margin-bottom:2px}
+  .pinfo dd{color:#e4e4e8}
+  .pinfo .falla{background:#2a1408;border:1px solid #5a2a10;border-radius:10px;padding:10px 12px;color:#ffc9a8}
+  .vacio{display:flex;gap:14px;align-items:center;color:var(--suave);font-size:.95rem}
+  .vacio svg{flex:none}
+  .chips{display:grid;gap:8px;margin-top:12px}
+  .chip{font:inherit;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;background:var(--panel2);color:var(--texto);border:1px solid #2e2e34;border-radius:10px;padding:11px 14px;font-weight:600;font-size:.92rem}
+  .chip .sw{flex:none;width:34px;height:20px;border-radius:20px;background:#34343a;position:relative;transition:background .2s}
+  .chip .sw::after{content:"";position:absolute;left:3px;top:3px;width:14px;height:14px;border-radius:50%;background:#bbb;transition:transform .2s}
+  .chip[aria-pressed="true"]{border-color:var(--exp);background:#24120a}
+  .chip[aria-pressed="true"] .sw{background:var(--exp)}
+  .chip[aria-pressed="true"] .sw::after{transform:translateX(14px);background:#fff}
+  .diag{margin-top:12px;display:grid;gap:8px}
+  .diag div{border-left:3px solid var(--exp);padding:4px 0 4px 12px;font-size:.9rem;color:#ffcfb3}
+  .diag b{display:block;color:#fff;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+  .cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:var(--amarillo);color:#000;border-radius:14px;padding:18px 22px}
+  .cta h3{font-size:1.35rem}
+  .cta a{background:#000;color:var(--amarillo);font-weight:700;text-decoration:none;padding:10px 16px;border-radius:8px}
+  footer{border-top:1px solid var(--borde);padding-block:22px;color:var(--suave);font-size:.8rem;text-align:center}
+  @media(max-width:520px){.estado{grid-template-columns:1fr 1fr}.badge{font-size:.75rem}.hud .deg{font-size:1.05rem}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./" style="text-decoration:none;display:flex;align-items:center;gap:10px"><img src="logo.png" alt="Logo AC Motors" width="36" height="36" style="border-radius:6px;display:block">AC-TALLER</a><a class="volver" href="./">← Volver a la web</a></div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <span class="kicker">Mecánica por dentro</span>
+    <h1>El motor de <span>4 tiempos</span></h1>
+    <p>Un cilindro en corte, funcionando. Tocá cualquier pieza para ver qué hace y qué pasa si falla, o rompé el motor a propósito y mirá cómo cambia el ciclo.</p>
+  </section>
+
+  <div class="app">
+    <section class="banco" aria-label="Motor animado">
+      <div class="barra">
+        <span class="t">Cilindro en corte · vista lateral</span>
+        <label class="toggle"><input type="checkbox" id="verNombres" checked> Nombres de piezas</label>
+      </div>
+      <div class="escena">
+        <div class="badge" id="badge"><i></i><span id="badgeTxt">Admisión</span></div>
+        <div class="hud"><span class="deg" id="grados">000°</span><span class="rpm">de 720° · 2 vueltas</span></div>
+        <svg id="motor" viewBox="0 0 460 600" role="img" aria-label="Corte de un cilindro de motor de cuatro tiempos animado">
+          <defs>
+            <linearGradient id="gAcero" x1="0" x2="1"><stop offset="0" stop-color="#7d7d84"/><stop offset=".45" stop-color="#e9e9ee"/><stop offset=".6" stop-color="#c4c4cb"/><stop offset="1" stop-color="#6f6f76"/></linearGradient>
+            <linearGradient id="gAlu" x1="0" x2="1"><stop offset="0" stop-color="#8a8f96"/><stop offset=".5" stop-color="#d7dbe0"/><stop offset="1" stop-color="#7c8188"/></linearGradient>
+            <linearGradient id="gFundicion" x1="0" x2="1"><stop offset="0" stop-color="#3b3b40"/><stop offset=".5" stop-color="#4a4a50"/><stop offset="1" stop-color="#2e2e33"/></linearGradient>
+            <linearGradient id="gCulata" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55555c"/><stop offset="1" stop-color="#3a3a40"/></linearGradient>
+            <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#ffffff" stroke-opacity=".05" stroke-width="2"/></pattern>
+            <radialGradient id="gLlama" cx=".5" cy="0" r="1"><stop offset="0" stop-color="#fff7c2"/><stop offset=".25" stop-color="#ffd23f"/><stop offset=".6" stop-color="#ff6a1a"/><stop offset="1" stop-color="#b3200a" stop-opacity=".2"/></radialGradient>
+            <radialGradient id="gPiso" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#2a2a2e"/><stop offset="1" stop-color="#2a2a2e" stop-opacity="0"/></radialGradient>
+            <clipPath id="camara"><rect x="160" y="190" width="140" height="210"/></clipPath>
+            <clipPath id="portA"><path d="M40 118 H120 Q172 118 180 160 L184 190 H202 L198 150 Q190 100 120 100 H40 Z"/></clipPath>
+          </defs>
+
+          <ellipse cx="230" cy="575" rx="190" ry="18" fill="url(#gPiso)"/>
+
+          <!-- BLOCK con camisa de agua -->
+          <g class="pieza" data-p="cilindro" tabindex="0" role="button" aria-label="Cilindro y block">
+            <g class="cuerpo">
+              <path d="M112 190 H160 V410 H112 Z M300 190 H348 V410 H300 Z" fill="url(#gFundicion)"/>
+              <path d="M122 200 H146 V380 H122 Z M314 200 H338 V380 H314 Z" fill="var(--agua)" opacity=".55"/>
+              <path d="M122 200 H146 V380 H122 Z M314 200 H338 V380 H314 Z" fill="url(#hatch)"/>
+              <rect x="156" y="190" width="6" height="220" fill="#5c5c63"/><rect x="298" y="190" width="6" height="220" fill="#5c5c63"/>
+            </g>
+          </g>
+          <!-- Cárter y aceite -->
+          <path d="M112 410 H348 V470 Q348 560 230 565 Q112 560 112 470 Z" fill="#232327" stroke="#3a3a40"/>
+          <path d="M126 520 Q230 548 334 520 L330 540 Q230 560 130 540 Z" fill="var(--aceite)" opacity=".45"/>
+
+          <!-- Gases en la cámara -->
+          <g clip-path="url(#camara)">
+            <rect id="gas" x="160" y="190" width="140" height="40" fill="var(--adm)" opacity=".25"/>
+            <g id="particulas"></g>
+            <ellipse id="llama" cx="230" cy="190" rx="0" ry="0" fill="url(#gLlama)"/>
+          </g>
+
+          <!-- CULATA con conductos -->
+          <path d="M98 95 H362 V190 H98 Z" fill="url(#gCulata)" stroke="#2a2a2e"/>
+          <path d="M40 118 H120 Q172 118 180 160 L184 190 H202 L198 150 Q190 100 120 100 H40 Z" fill="#141416"/>
+          <path d="M420 118 H340 Q288 118 280 160 L276 190 H258 L262 150 Q270 100 340 100 H420 Z" fill="#141416"/>
+          <g clip-path="url(#portA)"><g id="flujoA"></g></g>
+          <g id="flujoE"></g>
+          <rect x="96" y="186" width="268" height="6" fill="#77777f" opacity=".9"/>
+          <!-- Árboles de levas -->
+          <g class="pieza" data-p="levas" tabindex="0" role="button" aria-label="Árboles de levas">
+            <g class="cuerpo">
+              <rect x="150" y="34" width="160" height="58" rx="10" fill="#202024" stroke="#3a3a40"/>
+              <g id="levaA"><path d="M175 66 a18 18 0 1 0 30 0 L196 40 Q190 36 184 40 Z" fill="url(#gAcero)" stroke="#555"/><circle cx="190" cy="66" r="5" fill="#333"/></g>
+              <g id="levaE"><path d="M255 66 a18 18 0 1 0 30 0 L276 40 Q270 36 264 40 Z" fill="url(#gAcero)" stroke="#555"/><circle cx="270" cy="66" r="5" fill="#333"/></g>
+            </g>
+          </g>
+          <!-- Válvulas -->
+          <g class="pieza" data-p="admision" tabindex="0" role="button" aria-label="Válvula de admisión">
+            <g class="cuerpo" id="vAdm">
+              <path id="resA" d="" fill="none" stroke="#b9b9c0" stroke-width="2.4"/>
+              <rect x="179" y="100" width="22" height="7" rx="2" fill="#9a9aa1"/>
+              <rect x="187" y="86" width="6" height="104" fill="url(#gAcero)"/>
+              <path d="M172 186 H208 L200 194 H180 Z" fill="url(#gAcero)" stroke="#666"/>
+            </g>
+          </g>
+          <g class="pieza" data-p="escape" tabindex="0" role="button" aria-label="Válvula de escape">
+            <g class="cuerpo" id="vEsc">
+              <path id="resE" d="" fill="none" stroke="#b9b9c0" stroke-width="2.4"/>
+              <rect x="259" y="100" width="22" height="7" rx="2" fill="#9a9aa1"/>
+              <rect x="267" y="86" width="6" height="104" fill="url(#gAcero)"/>
+              <path d="M252 186 H288 L280 194 H260 Z" fill="url(#gAcero)" stroke="#666"/>
+            </g>
+          </g>
+          <!-- Bujía -->
+          <g class="pieza" data-p="bujia" tabindex="0" role="button" aria-label="Bujía">
+            <g class="cuerpo">
+              <rect x="224" y="98" width="12" height="10" fill="#c9a227"/>
+              <path d="M222 108 h16 l-2 30 h-12 Z" fill="#f1f1f4" stroke="#aaa"/>
+              <path d="M220 138 h20 v14 h-20 Z" fill="#8f8f96"/><path d="M220 141h20M220 145h20M220 149h20" stroke="#666"/>
+              <rect x="227" y="152" width="6" height="34" fill="#b0b0b8"/><path d="M226 186 h8 v4 h-8z" fill="#ddd"/>
+            </g>
+          </g>
+          <circle id="chispa" cx="230" cy="193" r="0" fill="#fffbe0"/>
+
+          <!-- Biela -->
+          <g class="pieza" data-p="biela" tabindex="0" role="button" aria-label="Biela">
+            <g class="cuerpo"><path id="biela" d="" fill="url(#gAcero)" stroke="#5f5f66"/><circle id="bielaPie" r="0" fill="none"/></g>
+          </g>
+          <!-- Pistón -->
+          <g class="pieza" data-p="piston" tabindex="0" role="button" aria-label="Pistón">
+            <g class="cuerpo" id="piston">
+              <path d="M163 0 H297 V58 Q297 70 285 72 H175 Q163 70 163 58 Z" fill="url(#gAlu)" stroke="#6f747b"/>
+              <rect x="163" y="7" width="134" height="4" fill="#3d3d42"/><rect x="163" y="15" width="134" height="4" fill="#3d3d42"/><rect x="163" y="23" width="134" height="4" fill="#4a4a50"/>
+              <circle cx="230" cy="44" r="11" fill="#8b9097" stroke="#5f646b"/>
+            </g>
+          </g>
+          <!-- Cigüeñal -->
+          <g class="pieza" data-p="cigueñal" tabindex="0" role="button" aria-label="Cigüeñal">
+            <g class="cuerpo">
+              <g id="cig">
+                <path d="M190 470 A44 44 0 1 0 270 470 L250 430 Q230 416 210 430 Z" fill="#55555c" stroke="#77777f" transform="rotate(180 230 470)"/>
+                <rect x="216" y="405" width="28" height="70" rx="12" fill="#6a6a72" stroke="#86868e"/>
+                <circle cx="230" cy="470" r="14" fill="#b7b7bf" stroke="#777"/>
+              </g>
+              <circle id="munon" cx="230" cy="415" r="11" fill="#d5d5db" stroke="#7a7a82"/>
+            </g>
+          </g>
+
+          <!-- Etiquetas -->
+          <g class="etiquetas" id="etiquetas">
+            <line class="lblline" x1="190" y1="50" x2="120" y2="40"/><text class="lbl" x="44" y="44">Árbol de levas</text>
+            <line class="lblline" x1="230" y1="125" x2="230" y2="22"/><text class="lbl" x="214" y="18">Bujía</text>
+            <line class="lblline" x1="120" y1="110" x2="70" y2="150"/><text class="lbl" x="18" y="164">Admisión</text>
+            <line class="lblline" x1="340" y1="110" x2="392" y2="150"/><text class="lbl" x="372" y="164">Escape</text>
+            <line class="lblline" x1="126" y1="262" x2="72" y2="262"/><text class="lbl" x="22" y="258">Camisa</text><text class="lbl" x="22" y="272">de agua</text>
+            <line class="lblline" id="lPis" x1="297" y1="250" x2="392" y2="240"/><text class="lbl" id="tPis" x="396" y="244">Pistón</text>
+            <line class="lblline" x1="160" y1="360" x2="68" y2="360"/><text class="lbl" x="22" y="364">Cilindro</text>
+            <line class="lblline" id="lBie" x1="225" y1="370" x2="68" y2="420"/><text class="lbl" id="tBie" x="30" y="424">Biela</text>
+            <line class="lblline" x1="270" y1="470" x2="392" y2="480"/><text class="lbl" x="396" y="484">Cigüeñal</text>
+            <line class="lblline" x1="300" y1="530" x2="392" y2="540"/><text class="lbl" x="396" y="544">Aceite</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="linea">
+        <div class="tl" id="tl"><span class="cursor" id="cursor"></span></div>
+      </div>
+      <div class="controles">
+        <button class="btn" id="play">❚❚ Pausa</button>
+        <div class="seg" role="group" aria-label="Velocidad">
+          <button data-v="0.2" aria-pressed="false">Muy lenta</button><button data-v="0.55" aria-pressed="true">Lenta</button><button data-v="2.2" aria-pressed="false">Ralentí</button>
+        </div>
+        <label class="slider" for="ang">A mano <input type="range" id="ang" min="0" max="719" value="0"></label>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="card fase" id="ficha"></div>
+      <div class="card pinfo" id="pinfo">
+        <div class="vacio">
+          <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#f5e61b" stroke-width="2" stroke-dasharray="4 4"/><path d="M16 12l12 9-6 1 3 7-3 1-3-7-4 4z" fill="#f5e61b"/></svg>
+          <span>Tocá una pieza del motor para ver <b style="color:#fff">qué es</b>, <b style="color:#fff">qué hace</b> y <b style="color:#fff">qué pasa si falla</b>.</span>
+        </div>
+      </div>
+      <div class="card">
+        <span class="kicker" style="color:var(--exp)">Taller de fallas</span>
+        <h3 style="font-size:1.45rem;margin-top:4px">Rompé el motor a propósito</h3>
+        <div class="chips">
+          <button class="chip" data-f="sinChispa" aria-pressed="false">Bujía sin chispa <span class="sw"></span></button>
+          <button class="chip" data-f="escTrabada" aria-pressed="false">Válvula de escape trabada <span class="sw"></span></button>
+          <button class="chip" data-f="aros" aria-pressed="false">Aros gastados <span class="sw"></span></button>
+        </div>
+        <div class="diag" id="diag" aria-live="polite"></div>
+      </div>
+      <div class="cta"><h3>Aprendé más en nuestros cursos</h3><a href="cursos.html">Ver cursos</a></div>
+    </aside>
+  </div>
+</main>
+<footer><div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · Dibujo simplificado con fines didácticos, no a escala · <a href="./" style="color:var(--amarillo)">Inicio</a> · <a href="cursos.html" style="color:var(--amarillo)">Cursos</a></div></footer>
+
+<script>
+const FASES=[
+  {n:"01",t:"Admisión",c:"var(--adm)",d:"El pistón baja y la válvula de admisión se abre: el cilindro chupa la mezcla de aire y nafta.",adm:1,esc:0,p:"Baja"},
+  {n:"02",t:"Compresión",c:"var(--comp)",d:"Las dos válvulas cerradas y el pistón sube: la mezcla queda apretada en un espacio muy chico, lista para encenderse.",adm:0,esc:0,p:"Sube"},
+  {n:"03",t:"Explosión",c:"var(--exp)",d:"Salta la chispa, la mezcla se quema de golpe y empuja el pistón hacia abajo. Es el único tiempo que da fuerza al motor.",adm:0,esc:0,p:"Baja con fuerza"},
+  {n:"04",t:"Escape",c:"var(--esc)",d:"Se abre la válvula de escape y el pistón sube: barre los gases quemados hacia el caño de escape.",adm:0,esc:1,p:"Sube"}
+];
+const PIEZAS={
+  piston:{t:"Pistón",s:"Aluminio · con 3 aros",q:"Un cilindro de aluminio que sube y baja. Los aros sellan contra la pared y raspan el aceite.",h:"Recibe el empujón de la explosión y lo pasa a la biela.",f:"Aros gastados o pistón rayado: pierde compresión y fuerza, quema aceite y sale humo azulado."},
+  biela:{t:"Biela",s:"Acero forjado",q:"La barra que une el pistón con el cigüeñal.",h:"Convierte el sube y baja del pistón en giro.",f:"Cojinete fundido: golpeteo metálico que aumenta con las vueltas. Si se rompe, puede perforar el block."},
+  "cigueñal":{t:"Cigüeñal",s:"Con contrapeso",q:"El eje con codos y contrapesos en la parte baja del motor.",h:"Da dos vueltas por cada ciclo completo y manda el giro a la caja.",f:"Poca presión de aceite: se marcan los muñones, aparecen ruido y vibración."},
+  admision:{t:"Válvula de admisión",s:"La más grande de las dos",q:"Abre y cierra el paso de la mezcla. La empuja la leva y la cierra el resorte.",h:"Deja entrar aire y nafta y después sella para comprimir.",f:"Si no asienta bien: pierde compresión, marcha irregular y petardeo por la admisión."},
+  escape:{t:"Válvula de escape",s:"Trabaja muy caliente",q:"La válvula por donde salen los gases quemados.",h:"Se abre en el cuarto tiempo para vaciar el cilindro.",f:"Trabada o quemada: los gases no salen, no entra mezcla nueva y el cilindro deja de trabajar."},
+  levas:{t:"Árboles de levas",s:"Giran a media vuelta del cigüeñal",q:"Ejes con lóbulos que empujan las válvulas en el momento justo.",h:"Marcan cuándo abre y cierra cada válvula. Van sincronizados con el cigüeñal por la correa o cadena de distribución.",f:"Si salta o se corta la distribución, las válvulas quedan desfasadas y pueden chocar con el pistón."},
+  bujia:{t:"Bujía",s:"Encendido",q:"Hace saltar una chispa entre sus electrodos dentro del cilindro.",h:"Enciende la mezcla al final de la compresión.",f:"Gastada o sin chispa: el cilindro no explota, el motor tironea, gasta más y cuesta arrancar."},
+  cilindro:{t:"Cilindro y block",s:"Con camisa de agua",q:"El tubo por donde corre el pistón. Alrededor circula el líquido refrigerante.",h:"Guía al pistón y aguanta presión y temperatura. El agua se lleva el calor.",f:"Recalentamiento: se puede deformar, rayar o quemar la junta de tapa de cilindros."}
+};
+const FALLAS={
+  sinChispa:{t:"Falla de encendido",d:"No hay explosión: la mezcla se comprime y sale sin quemar. El cilindro no empuja, el motor tironea y huele a nafta."},
+  escTrabada:{t:"Cilindro muerto",d:"Los gases quemados quedan adentro y no entra mezcla nueva. Ese cilindro deja de trabajar."},
+  aros:{t:"Pérdida de compresión",d:"Se escapa presión hacia el cárter: la explosión empuja menos y entra aceite a la cámara (humo azulado)."}
+};
+const $=s=>document.querySelector(s);
+const R=55,L=160,CX=230,CY=470,DECK=190;
+let ang=0,vel=.55,corre=!matchMedia("(prefers-reduced-motion: reduce)").matches,falla={},faseAct=-1,ult=performance.now();
+
+/* partículas de mezcla */
+const NP=46,parts=[],pg=$("#particulas");
+for(let i=0;i<NP;i++){const c=document.createElementNS("http://www.w3.org/2000/svg","circle");c.setAttribute("r",2.2);pg.appendChild(c);parts.push({el:c,u:Math.random(),v:Math.random(),k:Math.random(),ph:Math.random()*6.28})}
+function flujo(id,n){const g=$(id),arr=[];for(let i=0;i<n;i++){const c=document.createElementNS("http://www.w3.org/2000/svg","circle");c.setAttribute("r",2.4);g.appendChild(c);arr.push({el:c,o:i/n})}return arr}
+const fA=flujo("#flujoA",14),fE=flujo("#flujoE",14);
+// curva de los conductos (bezier aprox)
+function bez(t,p){const m=1-t;return [m*m*m*p[0][0]+3*m*m*t*p[1][0]+3*m*t*t*p[2][0]+t*t*t*p[3][0], m*m*m*p[0][1]+3*m*m*t*p[1][1]+3*m*t*t*p[2][1]+t*t*t*p[3][1]]}
+const curA=[[40,109],[140,109],[188,112],[192,190]], curE=[[268,190],[272,112],[320,109],[420,109]];
+
+/* línea de tiempo */
+const tl=$("#tl");
+FASES.forEach((f,i)=>{const b=document.createElement("button");b.style.setProperty("--c",f.c);b.innerHTML=`${f.t}<small>${i*180}°–${i*180+180}°</small>`;b.onclick=()=>{ang=i*180+30;corre=false;sync()};tl.appendChild(b)});
+
+function resorte(x,y1,y2){let d=`M${x-9} ${y1}`;const n=7,h=(y2-y1)/n;for(let i=1;i<=n;i++)d+=` L${i%2?x+9:x-9} ${y1+h*i}`;return d}
+function lift(x){return Math.sin(Math.PI*Math.min(1,Math.max(0,x)))*15}
+
+function dibujar(){
+  const th=(ang%360)*Math.PI/180, fase=Math.floor(ang/180)%4, den=(ang%180)/180;
+  const px=CX+R*Math.sin(th), py=CY-R*Math.cos(th);
+  const pinY=CY-(R*Math.cos(th)+Math.sqrt(L*L-(R*Math.sin(th))**2));
+  const top=pinY-44;
+  $("#piston").setAttribute("transform",`translate(0 ${top})`);
+  // biela con forma
+  const dx=px-CX,dy=py-pinY,len=Math.hypot(dx,dy),nx=-dy/len,ny=dx/len;
+  const a=7,b=12;
+  $("#biela").setAttribute("d",`M${CX+nx*a} ${pinY+ny*a} L${px+nx*b} ${py+ny*b} A${b} ${b} 0 1 1 ${px-nx*b} ${py-ny*b} L${CX-nx*a} ${pinY-ny*a} A${a} ${a} 0 1 1 ${CX+nx*a} ${pinY+ny*a} Z`);
+  $("#munon").setAttribute("cx",px);$("#munon").setAttribute("cy",py);
+  $("#cig").setAttribute("transform",`rotate(${ang%360} ${CX} ${CY})`);
+  // levas y válvulas
+  const la=fase===0?lift(den):0, le=(fase===3&&!falla.escTrabada)?lift(den):0;
+  $("#levaA").setAttribute("transform",`rotate(${(ang/2+135)%360} 190 66)`);
+  $("#levaE").setAttribute("transform",`rotate(${(ang/2-135+720)%360} 270 66)`);
+  $("#vAdm").setAttribute("transform",`translate(0 ${la})`);$("#vEsc").setAttribute("transform",`translate(0 ${le})`);
+  $("#resA").setAttribute("d",resorte(190,108,150-la));$("#resE").setAttribute("d",resorte(270,108,150-le));
+  // gas
+  const h=Math.max(0,top-DECK);
+  let col="var(--adm)",op=.18,pc="#7fd0ff",vis=1;
+  if(fase===0){vis=falla.escTrabada?.25:den}
+  if(fase===1){col="var(--comp)";op=.18+den*.32;pc="#c4b5fd"}
+  if(fase===2){if(falla.sinChispa){col="var(--comp)";op=.35;pc="#c4b5fd"}else{col="var(--exp)";op=.55-den*.35;pc="#ffb26b"}}
+  if(fase===3){col=falla.sinChispa?"var(--comp)":"var(--esc)";pc=falla.sinChispa?"#c4b5fd":"#bfc3c9";vis=falla.escTrabada?1:1-den;op=falla.escTrabada?.35:.25*(1-den)}
+  if(falla.aros&&fase>=1&&fase<=2)op*=.7;
+  $("#gas").setAttribute("fill",col);$("#gas").setAttribute("opacity",op.toFixed(2));$("#gas").setAttribute("height",h);
+  const t=performance.now()/1000;
+  parts.forEach((p,i)=>{const show=p.k<vis;const x=164+p.u*132+Math.sin(t*3+p.ph)*3, y=DECK+3+p.v*Math.max(2,h-6)+Math.cos(t*2.6+p.ph)*2;
+    p.el.setAttribute("cx",x.toFixed(1));p.el.setAttribute("cy",y.toFixed(1));p.el.setAttribute("fill",pc);p.el.setAttribute("opacity",show?.85:0)});
+  // flujo en conductos
+  const sA=fase===0&&!falla.escTrabada, sE=fase===3&&!falla.escTrabada;
+  fA.forEach(f=>{const q=(f.o+t*.8)%1,[x,y]=bez(q,curA);f.el.setAttribute("cx",x);f.el.setAttribute("cy",y);f.el.setAttribute("fill","#7fd0ff");f.el.setAttribute("opacity",sA?.9*Math.sin(Math.PI*den):0)});
+  fE.forEach(f=>{const q=(f.o+t*.8)%1,[x,y]=bez(q,curE);f.el.setAttribute("cx",x);f.el.setAttribute("cy",y);f.el.setAttribute("fill",falla.sinChispa?"#c4b5fd":"#bfc3c9");f.el.setAttribute("opacity",sE?.9*Math.sin(Math.PI*den):0)});
+  // llama y chispa
+  const bang=fase===2&&!falla.sinChispa, k=bang?Math.max(0,1-den*1.6):0;
+  $("#llama").setAttribute("rx",(k?40+den*140:0).toFixed(1));$("#llama").setAttribute("ry",(k?Math.min(h,20+den*160):0).toFixed(1));$("#llama").setAttribute("opacity",(k*(falla.aros?.6:1)).toFixed(2));
+  $("#chispa").setAttribute("r",(fase===2&&den<.06&&!falla.sinChispa)?(12*(1-den/.06)).toFixed(1):0);
+  // etiquetas móviles
+  $("#lPis").setAttribute("y1",top+30);$("#lPis").setAttribute("y2",top+24);$("#tPis").setAttribute("y",top+28);
+  $("#lBie").setAttribute("x1",(CX+px)/2);$("#lBie").setAttribute("y1",(pinY+py)/2);
+  // HUD
+  $("#grados").textContent=String(Math.floor(ang)).padStart(3,"0")+"°";
+  $("#ang").value=Math.floor(ang);
+  $("#cursor").style.left=`calc(${(ang/720*100).toFixed(2)}% - 1px)`;
+  if(fase!==faseAct){faseAct=fase;ficha(fase)}
+}
+function ficha(i){
+  const f=FASES[i],el=$("#ficha");el.style.setProperty("--c",f.c);
+  const esc=f.esc&&!falla.escTrabada;
+  el.innerHTML=`<div class="top"><span class="n">${f.n}</span><h2>${f.t}</h2></div><p>${f.d}</p>
+  <dl class="estado"><div><dt>Admisión</dt><dd class="${f.adm?'on-txt':'off-txt'}">${f.adm?'Abierta':'Cerrada'}</dd></div><div><dt>Escape</dt><dd class="${esc?'on-txt':'off-txt'}">${esc?'Abierta':'Cerrada'}</dd></div><div><dt>Pistón</dt><dd>${f.p}</dd></div></dl>`;
+  const b=$("#badge");b.style.setProperty("--c",f.c);$("#badgeTxt").textContent=f.n+" · "+f.t;
+  tl.querySelectorAll("button").forEach((x,k)=>x.classList.toggle("on",k===i));
+}
+function loop(now){const dt=Math.min(64,now-ult);ult=now;if(corre)ang=(ang+dt*.36*vel)%720;dibujar();requestAnimationFrame(loop)}
+function sync(){$("#play").textContent=corre?"❚❚ Pausa":"▶ Seguir"}
+$("#play").onclick=()=>{corre=!corre;sync()};
+$("#ang").oninput=e=>{ang=+e.target.value;corre=false;sync()};
+document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{vel=+b.dataset.v;document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x===b));corre=true;sync()});
+$("#verNombres").onchange=e=>$("#etiquetas").classList.toggle("oculto",!e.target.checked);
+function elegir(g){
+  document.querySelectorAll(".pieza").forEach(x=>x.classList.toggle("sel",x===g));
+  const p=PIEZAS[g.dataset.p];
+  $("#pinfo").innerHTML=`<h3>${p.t}</h3><p class="sub">${p.s}</p><dl><div><dt>Qué es</dt><dd>${p.q}</dd></div><div><dt>Qué hace</dt><dd>${p.h}</dd></div><div><dt>Si falla</dt><dd class="falla">${p.f}</dd></div></dl>`;
+}
+document.querySelectorAll(".pieza").forEach(g=>{g.addEventListener("click",()=>elegir(g));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();elegir(g)}})});
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{
+  const k=c.dataset.f;falla[k]=!falla[k];c.setAttribute("aria-pressed",!!falla[k]);
+  $("#diag").innerHTML=Object.keys(falla).filter(x=>falla[x]).map(x=>`<div><b>${FALLAS[x].t}</b>${FALLAS[x].d}</div>`).join("");
+  faseAct=-1;
+});
+sync();requestAnimationFrame(loop);
+</script>
+</body>
+</html>
