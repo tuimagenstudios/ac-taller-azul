@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Caja de cambios y embrague | AC-Taller</title>
+<meta name="description" content="Simulador gratis de caja de cambios manual: embrague, ejes, engranajes y sincronizados. Pasá los cambios, acelerá y provocá fallas como embrague que patina o sincronizado gastado. AC-Taller, Azul.">
+<link rel="canonical" href="https://ac-taller.com/caja-de-cambios.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AC-Taller"><meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://ac-taller.com/caja-de-cambios.html">
+<meta property="og:title" content="¿Por qué rasca el cambio? Caja y embrague | AC-Taller">
+<meta property="og:description" content="Pisá el embrague, pasá los cambios y mirá cómo trabaja la caja por dentro. Gratis.">
+<meta property="og:image" content="https://ac-taller.com/img/og-caja.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/simulador.css">
+<style>
+  .hud{position:absolute;top:10px;left:14px;display:flex;gap:18px;pointer-events:none;font-variant-numeric:tabular-nums}
+  .hud div b{display:block;font-family:var(--display);font-weight:400;font-size:2.1rem;line-height:1}
+  .hud div span{font-size:.72rem;color:var(--suave)}
+  .aviso{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);background:var(--mal);color:#fff;font-family:var(--display);font-size:clamp(1.4rem,4.5vw,2.2rem);text-transform:uppercase;padding:8px 20px;border-radius:12px;box-shadow:0 0 36px rgba(255,90,60,.6);pointer-events:none;text-align:center;line-height:1.05}
+  .aviso small{display:block;font-family:var(--body);font-size:.85rem;text-transform:none;font-weight:600}
+  .emb{font:inherit;cursor:pointer;background:#1a1a1d;color:var(--texto);border:2px solid #3a3a42;border-radius:10px;padding:10px 14px;font-weight:700}
+  .emb[aria-pressed="true"]{background:var(--amarillo);color:#000;border-color:var(--amarillo)}
+  .seg.marchas button{min-width:42px;font-family:var(--display);font-size:1.1rem;font-weight:400}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./"><img src="logo.png" alt="Logo AC Motors" width="36" height="36">AC-TALLER</a><a class="volver" href="./">← Volver a la web</a></div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <span class="kicker">Simulador gratis · Transmisión</span>
+    <h1>¿Por qué <span>rasca el cambio?</span></h1>
+    <p>El embrague conecta y desconecta el motor de la caja. Adentro, cada marcha es un par de engranajes de distinto tamaño, y el sincronizado iguala las velocidades para que el cambio entre suave. Pisá el embrague, pasá los cambios y acelerá.</p>
+  </section>
+
+  <div class="app">
+    <section class="banco" aria-label="Caja de cambios animada">
+      <div class="barra"><span>Caja manual de 5 marchas · corte simplificado</span><span id="estadoTxt">Punto muerto</span></div>
+      <div class="escena">
+        <div class="hud"><div><b id="hRpm">800</b><span>rpm motor</span></div><div><b id="hVel">0</b><span>km/h</span></div></div>
+        <div class="aviso" id="aviso" hidden>¡Rasca!<small id="avisoTxt">Pisá el embrague antes de cambiar</small></div>
+        <svg viewBox="0 0 520 430" role="img" aria-label="Motor, embrague, eje primario y secundario con cinco pares de engranajes y la palanca de cambios">
+          <defs>
+            <linearGradient id="gMetV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9d9df"/><stop offset=".5" stop-color="#9a9aa2"/><stop offset="1" stop-color="#5c5c64"/></linearGradient>
+            <linearGradient id="gMet" x1="0" x2="1"><stop offset="0" stop-color="#6c6c74"/><stop offset=".5" stop-color="#e6e6ec"/><stop offset="1" stop-color="#5f5f67"/></linearGradient>
+            <linearGradient id="gCarcasa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3a40"/><stop offset="1" stop-color="#232327"/></linearGradient>
+            <linearGradient id="gEje" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6e6ec"/><stop offset="1" stop-color="#6c6c74"/></linearGradient>
+            <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#fff" stroke-opacity=".05" stroke-width="2"/></pattern>
+            <radialGradient id="gPiso" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#26262b"/><stop offset="1" stop-color="#26262b" stop-opacity="0"/></radialGradient>
+          </defs>
+          <ellipse cx="270" cy="400" rx="230" ry="14" fill="url(#gPiso)"/>
+          <!-- Motor -->
+          <rect x="10" y="150" width="62" height="190" rx="10" fill="#2e2e33" stroke="#4a4a52"/>
+          <text class="lbl" x="18" y="170">Motor</text>
+          <!-- Embrague -->
+          <rect x="72" y="150" width="14" height="190" rx="3" fill="url(#gMet)"/>
+          <g id="disco"><rect x="90" y="160" width="9" height="170" rx="2" fill="#7a5a3a" stroke="#4a3520"/></g>
+          <g id="placa"><rect x="102" y="156" width="14" height="178" rx="3" fill="url(#gMetV)" stroke="#55555d"/><path d="M116 170 l8 4 -8 4 8 4 -8 4M116 300 l8 4 -8 4 8 4 -8 4" fill="none" stroke="#c9c9cf" stroke-width="1.6"/></g>
+          <text class="lbl" x="66" y="146">Embrague</text>
+          <!-- Carcasa -->
+          <path d="M130 112 H490 Q500 112 500 122 V382 Q500 392 490 392 H130 Z" fill="url(#gCarcasa)" stroke="#4a4a52"/>
+          <path d="M130 112 H490 Q500 112 500 122 V382 Q500 392 490 392 H130 Z" fill="url(#hatch)"/>
+          <path id="aceite" d="M131 366 H499 V382 Q499 391 490 391 H131 Z" fill="#b8860b" opacity=".45"/>
+          <!-- Ejes -->
+          <rect x="86" y="194" width="380" height="12" rx="6" fill="url(#gEje)"/>
+          <rect x="150" y="294" width="368" height="12" rx="6" fill="url(#gEje)"/>
+          <text class="lblsub" x="140" y="128">EJE PRIMARIO (del motor)</text>
+          <text class="lblsub" x="140" y="412">EJE SECUNDARIO (a las ruedas) →</text>
+          <!-- Engranajes (se dibujan con código) -->
+          <g id="engranajes"></g>
+          <!-- Palanca -->
+          <rect x="380" y="14" width="126" height="96" rx="12" fill="#141417" stroke="#2c2c32"/>
+          <path d="M404 34 V90 M443 34 V90 M482 34 V90 M404 62 H482" stroke="#3a3a42" stroke-width="6" stroke-linecap="round"/>
+          <g font-family="Anton,Impact,sans-serif" font-size="11" fill="#77777f"><text x="400" y="30">1</text><text x="439" y="30">3</text><text x="478" y="30">5</text><text x="400" y="104">2</text><text x="439" y="104">4</text><text x="477" y="104">R</text></g>
+          <circle id="pomo" cx="443" cy="62" r="10" fill="#f5e61b" stroke="#000" stroke-width="2"/>
+          <text class="lblsub" x="380" y="124">palanca</text>
+          <!-- Chispas -->
+          <g id="chispas"></g>
+        </svg>
+      </div>
+      <div class="controles">
+        <button class="emb" id="emb" aria-pressed="false">Pisar embrague</button>
+        <div class="seg marchas" role="group" aria-label="Marcha">
+          <button data-g="N" aria-pressed="true">N</button><button data-g="1" aria-pressed="false">1</button><button data-g="2" aria-pressed="false">2</button><button data-g="3" aria-pressed="false">3</button><button data-g="4" aria-pressed="false">4</button><button data-g="5" aria-pressed="false">5</button><button data-g="R" aria-pressed="false">R</button>
+        </div>
+        <label class="slider" for="acel">Acelerar <input type="range" id="acel" min="800" max="6000" step="50" value="800"></label>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="card">
+        <span class="kicker" id="kick">Punto muerto</span>
+        <h2 style="margin-top:4px" id="titulo">Ningún engranaje enganchado</h2>
+        <p style="margin-top:8px" id="texto">El motor gira, pero ningún par de engranajes está conectado al eje de las ruedas: el auto no se mueve.</p>
+        <dl class="datos">
+          <div><dt>Relación</dt><dd id="dRel">—</dd></div>
+          <div><dt>Embrague</dt><dd id="dEmb">Suelto</dd></div>
+          <div><dt>Aceite de caja</dt><dd id="dAce">Bien</dd></div>
+        </dl>
+      </div>
+      <div class="card">
+        <span class="kicker" style="color:var(--naranja)">Taller de fallas</span>
+        <h3 style="margin-top:4px">Rompé la caja</h3>
+        <div class="chips">
+          <button class="chip" data-f="patina" aria-pressed="false">Embrague que patina <span class="sw"></span></button>
+          <button class="chip" data-f="sincro" aria-pressed="false">Sincronizado gastado <span class="sw"></span></button>
+          <button class="chip" data-f="aceite" aria-pressed="false">Falta de aceite <span class="sw"></span></button>
+        </div>
+        <div class="diag" id="diag" aria-live="polite"></div>
+      </div>
+      <div class="card">
+        <h3>Señales de aviso</h3>
+        <ul style="margin:10px 0 0 18px;color:#d4d4da;display:grid;gap:4px">
+          <li>Acelerás, sube el cuentavueltas y el auto no responde</li>
+          <li>Rasca al pasar un cambio, aunque pises el embrague</li>
+          <li>Zumbido o silbido que cambia con la velocidad</li>
+          <li>Olor a quemado después de una subida</li>
+        </ul>
+        <p class="nota">Relaciones de ejemplo de una caja de 5 marchas. Cada auto tiene las suyas.</p>
+      </div>
+      <div class="cta"><h3>¿Te rasca o patina?</h3><a href="./#contacto">Pedir turno</a></div>
+    </aside>
+  </div>
+
+  <section class="otros">
+    <h2>Más simuladores gratis</h2>
+    <div class="lista" id="otros"></div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · Simulación simplificada con fines didácticos · <a href="./">Inicio</a> · <a href="cursos.html">Cursos</a></div></footer>
+
+<script>
+const $=s=>document.querySelector(s), NS="http://www.w3.org/2000/svg";
+// x, radio arriba, radio abajo, relación, posición de palanca
+const PARES={"1":[180,25,75,3.6,[404,34]],"2":[236,35,65,2.1,[404,90]],"3":[292,43,57,1.4,[443,34]],"4":[348,50,50,1.0,[443,90]],"5":[404,55,45,.8,[482,34]],"R":[456,27,52,3.5,[482,90]]};
+const SINC={"1":[208,1],"2":[208,-1],"3":[320,1],"4":[320,-1],"5":[430,1],"R":[430,-1]}; // manguito y hacia dónde se corre
+const TXT={
+  N:["Punto muerto","Ningún engranaje enganchado","El motor gira, pero ningún par está conectado al eje de las ruedas: el auto no se mueve."],
+  "1":["Primera","Mucha fuerza, poca velocidad","Engranaje chico arriba y grande abajo: el eje de las ruedas gira 3,6 veces más lento que el motor. Sirve para arrancar."],
+  "2":["Segunda","Fuerza para salir","Todavía multiplica la fuerza: ideal para subidas y para ganar velocidad."],
+  "3":["Tercera","Ciudad","El par de engranajes es casi parejo: buen equilibrio entre fuerza y velocidad."],
+  "4":["Cuarta","Directa","Relación 1 a 1: el eje de las ruedas gira igual que el motor."],
+  "5":["Quinta","Ruta y ahorro","El engranaje de abajo es más chico: las ruedas giran más rápido que el motor. Menos vueltas, menos consumo."],
+  R:["Reversa","Marcha atrás","Un engranaje intermedio invierte el giro. Se pone con el auto detenido."]
+};
+const FALLAS={patina:"<b>Embrague que patina</b>El disco está gastado y resbala: el motor sube de vueltas, pero el auto no acompaña. Huele a quemado en las subidas.",
+  sincro:"<b>Sincronizado gastado</b>No llega a igualar las velocidades: el cambio rasca aunque pises el embrague, sobre todo si lo pasás rápido.",
+  aceite:"<b>Falta de aceite</b>Los engranajes trabajan en seco: zumban, se calientan y se gastan rápido."};
+const G=$("#engranajes"),ENG={};
+function rect(x,y,w,h,attrs){const r=document.createElementNS(NS,"rect");r.setAttribute("x",x);r.setAttribute("y",y);r.setAttribute("width",w);r.setAttribute("height",h);for(const k in attrs)r.setAttribute(k,attrs[k]);G.appendChild(r);return r}
+function linea(x,y1,y2,attrs){const l=document.createElementNS(NS,"line");l.setAttribute("x1",x);l.setAttribute("x2",x);l.setAttribute("y1",y1);l.setAttribute("y2",y2);for(const k in attrs)l.setAttribute(k,attrs[k]);G.appendChild(l);return l}
+for(const g in PARES){const [x,rt,rb]=PARES[g];
+  const top=rect(x-11,200-rt,22,rt*2,{rx:4,fill:"url(#gMetV)",stroke:"#55555d"});
+  const bot=rect(x-11,300-rb,22,rb*2,{rx:4,fill:"url(#gMetV)",stroke:"#55555d"});
+  const dt=linea(x+11,200-rt,200+rt,{stroke:"#3a3a42","stroke-width":4,"stroke-dasharray":"3 3"});
+  const db=linea(x+11,300-rb,300+rb,{stroke:"#3a3a42","stroke-width":4,"stroke-dasharray":"3 3"});
+  const t=document.createElementNS(NS,"text");t.setAttribute("x",x-5);t.setAttribute("y",400);t.setAttribute("class","lbl");t.textContent=g;G.appendChild(t);
+  ENG[g]={top,bot,dt,db,rt,rb};}
+const MANG={};for(const k of [208,320,430]){MANG[k]=rect(k-8,282,16,36,{rx:3,fill:"#f5e61b",stroke:"#8a7f0a"})}
+let marcha="N",embrague=false,rpm=800,acel=800,falla={},vel=0,fase=0,rasca=0,ult=performance.now();
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function kmh(){if(marcha==="N")return 0;const r=PARES[marcha][3];let v=rpm/(r*4.1)*1.9*60/1000;if(falla.patina&&rpm>2200)v*=.72;return marcha==="R"?-v:v}
+function cambiar(g){
+  if(g===marcha)return;
+  if(g!=="N"&&!embrague){rasca=1.1;$("#avisoTxt").textContent="Pisá el embrague antes de cambiar";return}
+  if(g!=="N"&&falla.sincro){rasca=.9;$("#avisoTxt").textContent="El sincronizado no iguala las velocidades"}
+  marcha=g;document.querySelectorAll(".marchas button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.g===g));panel();
+}
+function panel(){const t=TXT[marcha];$("#kick").textContent=t[0];$("#titulo").textContent=t[1];$("#texto").textContent=t[2];
+  $("#dRel").textContent=marcha==="N"?"—":PARES[marcha][3].toString().replace(".",",")+" : 1";
+  $("#dEmb").textContent=embrague?"Pisado":"Suelto";$("#dAce").textContent=falla.aceite?"Bajo":"Bien";$("#dAce").style.color=falla.aceite?"var(--mal)":""}
+function loop(now){
+  const dt=Math.min(64,now-ult)/1000;ult=now;
+  const libre=embrague||marcha==="N";
+  const obj=libre?acel:Math.max(800,acel*(falla.patina?1:.98));
+  rpm+=(obj-rpm)*Math.min(1,dt*3);
+  vel=libre?vel*(1-dt*.25):kmh();
+  if(!reduce)fase+=dt*rpm/60;
+  $("#hRpm").textContent=Math.round(rpm/50)*50;$("#hVel").textContent=Math.abs(Math.round(vel));
+  $("#estadoTxt").textContent=marcha==="N"?"Punto muerto":embrague?"Embrague pisado: motor desconectado":"En "+TXT[marcha][0].toLowerCase();
+  // embrague
+  $("#disco").setAttribute("transform",`translate(${embrague?8:0} 0)`);$("#placa").setAttribute("transform",`translate(${embrague?10:0} 0)`);
+  // engranajes
+  const eje2=marcha==="N"?0:fase/(PARES[marcha][3]);
+  for(const g in ENG){const e=ENG[g],act=g===marcha;
+    const giroArriba=embrague?fase*.15:fase, giroAbajo=libre?(vel/100)*fase*.3:eje2;
+    e.dt.setAttribute("stroke-dashoffset",(-giroArriba*40).toFixed(1));
+    e.db.setAttribute("stroke-dashoffset",(-(act||!libre?giroArriba*e.rt/e.rb:0)*40).toFixed(1));
+    const col=act?(falla.aceite?"#ff6a1a":"#f5e61b"):"#55555d";
+    e.top.setAttribute("stroke",col);e.bot.setAttribute("stroke",col);e.top.setAttribute("stroke-width",act?3:1);e.bot.setAttribute("stroke-width",act?3:1);
+    e.top.style.filter=act?"drop-shadow(0 0 6px "+col+")":"";e.bot.style.filter=act?"drop-shadow(0 0 6px "+col+")":"";}
+  for(const k in MANG){let dx=0;for(const g in SINC)if(SINC[g][0]==k&&g===marcha)dx=SINC[g][1]*-14;MANG[k].setAttribute("transform",`translate(${dx} 0)`)}
+  const [px,py]=marcha==="N"?[443,62]:PARES[marcha][4];$("#pomo").setAttribute("cx",px);$("#pomo").setAttribute("cy",py);
+  $("#aceite").setAttribute("opacity",falla.aceite?.12:.45);
+  // rascado
+  if(rasca>0){rasca-=dt;const x=marcha==="N"?208:(SINC[marcha]||[208])[0];let h="";for(let i=0;i<10;i++){const a=(now/30+i*37)%360*Math.PI/180,r=8+((now/17+i*11)%22);h+=`<circle cx="${(x+Math.cos(a)*r).toFixed(1)}" cy="${(300+Math.sin(a)*r).toFixed(1)}" r="${1.4+(i%3)*.6}" fill="${i%2?'#ffd23f':'#fff'}"/>`}$("#chispas").innerHTML=h;$("#aviso").hidden=false;
+    $(".escena svg").style.transform=`translate(${(Math.sin(now/18)*3).toFixed(1)}px,0)`}
+  else{$("#chispas").innerHTML="";$("#aviso").hidden=true;$(".escena svg").style.transform=""}
+  requestAnimationFrame(loop);
+}
+$("#emb").onclick=()=>{embrague=!embrague;$("#emb").setAttribute("aria-pressed",embrague);$("#emb").textContent=embrague?"Soltar embrague":"Pisar embrague";panel()};
+document.querySelectorAll(".marchas button").forEach(b=>b.onclick=()=>cambiar(b.dataset.g));
+$("#acel").oninput=e=>{acel=+e.target.value};
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{const k=c.dataset.f;falla[k]=!falla[k];c.setAttribute("aria-pressed",!!falla[k]);
+  $("#diag").innerHTML=Object.keys(falla).filter(x=>falla[x]).map(x=>`<div>${FALLAS[x]}</div>`).join("");panel()});
+panel();requestAnimationFrame(loop);
+</script>
+<script src="js/simuladores.js"></script>
+</body>
+</html>

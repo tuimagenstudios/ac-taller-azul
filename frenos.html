@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Frenos: cómo frena tu auto | AC-Taller</title>
+<meta name="description" content="Simulador gratis de frenos: pedal, bomba, líquido, pinza, pastillas y disco. Provocá pastillas gastadas, aire en el circuito o disco alabeado y mirá cuánto más tarda en frenar. AC-Taller, Azul.">
+<link rel="canonical" href="https://ac-taller.com/frenos.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AC-Taller"><meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://ac-taller.com/frenos.html">
+<meta property="og:title" content="¿Cuántos metros necesitás para frenar? | AC-Taller">
+<meta property="og:description" content="Frená a 100 km/h con pastillas nuevas, gastadas o con aire en el circuito. Gratis.">
+<meta property="og:image" content="https://ac-taller.com/img/og-frenos.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/simulador.css">
+<style>
+  .hud{position:absolute;top:10px;right:14px;text-align:right;pointer-events:none;font-variant-numeric:tabular-nums}
+  .hud b{display:block;font-family:var(--display);font-weight:400;font-size:2.6rem;line-height:1}
+  .hud span{font-size:.75rem;color:var(--suave)}
+  .frenar{flex:1 1 220px;font:inherit;cursor:pointer;background:var(--mal);color:#fff;font-weight:700;font-size:1rem;border:0;border-radius:10px;padding:14px 18px;user-select:none;-webkit-user-select:none;touch-action:none;box-shadow:0 6px 0 #8e1f12}
+  .frenar:active,.frenar.on{transform:translateY(4px);box-shadow:0 2px 0 #8e1f12}
+  .barra-dist{height:14px;border-radius:7px;background:#26262b;overflow:hidden;margin-top:6px;position:relative}
+  .barra-dist i{display:block;height:100%;width:0;border-radius:7px;background:var(--ok);transition:width .3s}
+  .marcas{display:flex;justify-content:space-between;font-size:.7rem;color:var(--suave);margin-top:4px;font-variant-numeric:tabular-nums}
+  .resultado{margin-top:12px;border-radius:10px;padding:12px 14px;background:var(--panel2);font-size:.92rem}
+  .resultado b{font-family:var(--display);font-weight:400;font-size:1.8rem;color:var(--amarillo);display:block;line-height:1.05}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./"><img src="logo.png" alt="Logo AC Motors" width="36" height="36">AC-TALLER</a><a class="volver" href="./">← Volver a la web</a></div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <span class="kicker">Simulador gratis · Frenos</span>
+    <h1>¿Cuántos metros <span>para frenar?</span></h1>
+    <p>Cuando pisás el pedal, la bomba empuja el líquido de frenos, el líquido empuja el pistón de la pinza y las pastillas aprietan el disco. Frená a 100 km/h y mirá cómo cambia la distancia con pastillas gastadas, aire en el circuito o un disco alabeado.</p>
+  </section>
+
+  <div class="app">
+    <section class="banco" aria-label="Sistema de frenos animado">
+      <div class="barra"><span>Circuito de freno de una rueda · esquema</span><span id="estadoTxt">Andando a 100 km/h</span></div>
+      <div class="escena">
+        <div class="hud"><b id="vel">100</b><span>km/h</span></div>
+        <svg viewBox="0 0 520 430" role="img" aria-label="Pedal, bomba de freno, cañería, pinza, pastillas y disco">
+          <defs>
+            <linearGradient id="gMet" x1="0" x2="1"><stop offset="0" stop-color="#6c6c74"/><stop offset=".45" stop-color="#e6e6ec"/><stop offset=".6" stop-color="#c0c0c7"/><stop offset="1" stop-color="#5f5f67"/></linearGradient>
+            <linearGradient id="gMetV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9d9df"/><stop offset=".5" stop-color="#9a9aa2"/><stop offset="1" stop-color="#5c5c64"/></linearGradient>
+            <radialGradient id="gDisco" cx=".45" cy=".4" r=".7"><stop offset="0" stop-color="#d6d6dc"/><stop offset=".55" stop-color="#9c9ca4"/><stop offset="1" stop-color="#5a5a62"/></radialGradient>
+            <radialGradient id="gCalor" cx=".5" cy=".5" r=".5"><stop offset=".55" stop-color="#ff6a1a" stop-opacity="0"/><stop offset=".8" stop-color="#ff6a1a" stop-opacity=".55"/><stop offset="1" stop-color="#ff3b2f" stop-opacity="0"/></radialGradient>
+            <linearGradient id="gPinza" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e53935"/><stop offset="1" stop-color="#8e1f12"/></linearGradient>
+            <radialGradient id="gPiso" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#26262b"/><stop offset="1" stop-color="#26262b" stop-opacity="0"/></radialGradient>
+          </defs>
+          <ellipse cx="380" cy="362" rx="140" ry="12" fill="url(#gPiso)"/>
+          <!-- Pedal -->
+          <rect x="22" y="40" width="60" height="16" rx="4" fill="#2c2c31" stroke="#45454d"/>
+          <g id="pedal"><rect x="44" y="48" width="12" height="150" rx="5" fill="url(#gMet)"/><rect x="26" y="190" width="48" height="22" rx="5" fill="#2a2a2f" stroke="#77777f"/><path d="M30 196h40M30 202h40M30 208h40" stroke="#55555d"/></g>
+          <circle cx="50" cy="48" r="7" fill="#999" stroke="#555"/>
+          <line id="varilla" x1="56" y1="120" x2="120" y2="120" stroke="#b0b0b8" stroke-width="5" stroke-linecap="round"/>
+          <!-- Servofreno y bomba -->
+          <circle cx="132" cy="120" r="40" fill="#2f2f35" stroke="#55555d" stroke-width="2"/><circle cx="132" cy="120" r="30" fill="none" stroke="#3e3e45"/>
+          <rect x="166" y="104" width="78" height="32" rx="6" fill="url(#gMetV)" stroke="#55555d"/>
+          <rect id="piston1" x="172" y="110" width="14" height="20" rx="2" fill="#4a4a52"/>
+          <rect x="184" y="74" width="46" height="30" rx="6" fill="#e9e5c8" opacity=".85" stroke="#a9a587"/>
+          <rect id="nivel" x="187" y="86" width="40" height="15" rx="3" fill="#c9a227" opacity=".85"/>
+          <text x="190" y="70" font-size="9" fill="#9d9da6" font-weight="700">DOT 4</text>
+          <!-- Cañería -->
+          <path id="linea" d="M244 120 H300 Q312 120 312 132 V150" fill="none" stroke="#5a2a10" stroke-width="8" stroke-linecap="round"/>
+          <path id="lineaPres" d="M244 120 H300 Q312 120 312 132 V150" fill="none" stroke="#ffb020" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="4 8" opacity=".2"/>
+          <g id="burbujas" opacity="0"><circle cx="262" cy="120" r="3" fill="#fff" opacity=".9"/><circle cx="284" cy="120" r="2.4" fill="#fff" opacity=".9"/><circle cx="312" cy="138" r="2.6" fill="#fff" opacity=".9"/></g>
+          <!-- Rueda / disco -->
+          <circle cx="380" cy="250" r="112" fill="#141416" stroke="#2c2c32" stroke-width="10"/>
+          <circle id="calor" cx="380" cy="250" r="100" fill="url(#gCalor)" opacity="0"/>
+          <g id="disco">
+            <circle cx="380" cy="250" r="92" fill="url(#gDisco)" stroke="#4d4d55" stroke-width="2"/>
+            <g id="perfo" fill="#3a3a41"></g>
+            <circle cx="380" cy="250" r="44" fill="#55555c" stroke="#77777f" stroke-width="2"/>
+            <g fill="#2a2a2f"><circle cx="380" cy="226" r="6"/><circle cx="403" cy="243" r="6"/><circle cx="394" cy="270" r="6"/><circle cx="366" cy="270" r="6"/><circle cx="357" cy="243" r="6"/></g>
+            <circle cx="380" cy="250" r="10" fill="#cfcfd5"/>
+            <rect x="374" y="160" width="12" height="6" rx="2" fill="#f5e61b"/>
+          </g>
+          <!-- Pinza -->
+          <g id="pinza"><path d="M318 152 Q330 138 352 136 L408 136 Q430 138 440 152 L432 178 H326 Z" fill="url(#gPinza)" stroke="#5a1410"/><text x="356" y="164" font-family="Anton,Impact,sans-serif" font-size="13" fill="#fff" letter-spacing="1">AC</text></g>
+          <g id="chispas"></g>
+          <!-- Corte de la pinza -->
+          <rect x="22" y="250" width="196" height="150" rx="12" fill="#101012" stroke="#2c2c32"/>
+          <text class="lblsub" x="34" y="268">CORTE DE LA PINZA</text>
+          <rect x="114" y="282" width="12" height="104" rx="2" fill="url(#gMet)"/>
+          <text class="lblsub" x="106" y="396">disco</text>
+          <rect x="64" y="284" width="10" height="100" fill="#555" />
+          <g id="pastillaI"><rect id="pI" x="94" y="290" width="18" height="88" rx="2" fill="#5e4a32"/><rect x="88" y="290" width="6" height="88" fill="#8a8a92"/></g>
+          <g id="pastillaD"><rect id="pD" x="128" y="290" width="18" height="88" rx="2" fill="#5e4a32"/><rect x="146" y="290" width="6" height="88" fill="#8a8a92"/></g>
+          <g id="pistonP"><rect x="152" y="300" width="40" height="68" rx="4" fill="url(#gMetV)" stroke="#55555d"/></g>
+          <path d="M192 300 H208 V368 H192" fill="none" stroke="#e53935" stroke-width="4"/>
+          <rect id="aceiteP" x="194" y="304" width="12" height="60" fill="#c9a227" opacity=".6"/>
+          <text class="lblsub" x="80" y="280">pastillas</text><text class="lblsub" x="160" y="294">pistón</text>
+          <!-- Etiquetas -->
+          <text class="lbl" x="14" y="232">Pedal</text>
+          <text class="lbl" x="96" y="176">Servofreno</text>
+          <text class="lbl" x="180" y="156">Bomba</text>
+          <text class="lbl" x="250" y="110">Líquido</text>
+          <text class="lbl" x="448" y="150">Pinza</text>
+          <text class="lbl" x="448" y="250">Disco</text>
+        </svg>
+      </div>
+      <div class="controles">
+        <button class="frenar" id="frenar" aria-label="Mantener apretado para frenar">Mantené apretado para FRENAR</button>
+        <button class="btn sec" id="acelerar">Volver a 100 km/h</button>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="card">
+        <span class="kicker">Distancia de frenado desde 100 km/h</span>
+        <div class="barra-dist" aria-hidden="true"><i id="bd"></i></div>
+        <div class="marcas"><span>0 m</span><span>50 m</span><span>100 m</span></div>
+        <div class="resultado" id="res"><b id="resM">—</b><span id="resTxt">Apretá «Frenar» y mantenelo hasta frenar del todo.</span></div>
+        <dl class="datos">
+          <div><dt>Pedal</dt><dd id="dPedal">Suelto</dd></div>
+          <div><dt>Presión</dt><dd id="dPres">0 %</dd></div>
+          <div><dt>Pastillas</dt><dd id="dPast">10 mm</dd></div>
+        </dl>
+      </div>
+      <div class="card">
+        <span class="kicker" style="color:var(--naranja)">Taller de fallas</span>
+        <h3 style="margin-top:4px">Rompé los frenos</h3>
+        <div class="chips">
+          <button class="chip" data-f="gastadas" aria-pressed="false">Pastillas gastadas <span class="sw"></span></button>
+          <button class="chip" data-f="aire" aria-pressed="false">Aire en el circuito <span class="sw"></span></button>
+          <button class="chip" data-f="alabeado" aria-pressed="false">Disco alabeado <span class="sw"></span></button>
+        </div>
+        <div class="diag" id="diag" aria-live="polite"></div>
+      </div>
+      <div class="card">
+        <h3>Revisalos a tiempo</h3>
+        <ul style="margin:10px 0 0 18px;color:#d4d4da;display:grid;gap:4px">
+          <li>Chirrido metálico al frenar: pastillas al límite</li>
+          <li>Pedal blando o que se va al fondo: aire o falta de líquido</li>
+          <li>Vibración en el volante al frenar: disco alabeado</li>
+          <li>El auto se tira para un lado: pinza trabada</li>
+        </ul>
+        <p class="nota">Distancias orientativas para comparar, en asfalto seco. El líquido de frenos se cambia según el manual del auto; en general, cada 2 años.</p>
+      </div>
+      <div class="cta"><h3>¿Te chillan o vibran los frenos?</h3><a href="./#contacto">Pedir turno</a></div>
+    </aside>
+  </div>
+
+  <section class="otros">
+    <h2>Más simuladores gratis</h2>
+    <div class="lista" id="otros"></div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · Simulación simplificada con fines didácticos · <a href="./">Inicio</a> · <a href="cursos.html">Cursos</a></div></footer>
+
+<script>
+const $=s=>document.querySelector(s);
+// perforaciones del disco
+(()=>{let h="";for(let r of [58,72,84])for(let i=0;i<10;i++){const a=i/10*Math.PI*2+r;h+=`<circle cx="${(380+Math.sin(a)*r).toFixed(1)}" cy="${(250-Math.cos(a)*r).toFixed(1)}" r="2.6"/>`}$("#perfo").innerHTML=h})();
+const FALLAS={
+  gastadas:"<b>Pastillas gastadas</b>Queda poco material y aprieta metal contra disco: frena menos, chilla y raya el disco.",
+  aire:"<b>Aire en el circuito</b>El aire se comprime y el líquido no: el pedal se siente blando, se va al fondo y la presión no alcanza.",
+  alabeado:"<b>Disco alabeado</b>El disco está torcido por recalentamiento: el pedal y el volante vibran al frenar y frena desparejo."
+};
+let v=100,ang=0,pedal=0,frena=false,demo=true,falla={},dist=0,midiendo=false,v0=100,quieto=0,ult=performance.now(),shake=0;
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function decel(pres){let a=8.5*pres;if(falla.gastadas)a*=.6;if(falla.alabeado)a*=.85;return a} // m/s²
+function loop(now){
+  const dt=Math.min(64,now-ult)/1000;ult=now;
+  if(demo){ if(v>=100&&!frena){frena=true} if(v<=0){quieto+=dt;frena=false;if(quieto>1.4){quieto=0;v=1}} if(v>0&&v<100&&!frena){v=Math.min(100,v+45*dt)} }
+  // pedal y presión
+  const objetivo=frena?1:0;pedal+=(objetivo-pedal)*Math.min(1,dt*(frena?6:9));
+  let pres=falla.aire?Math.max(0,pedal-.45)/.55*.45:pedal;
+  if(falla.alabeado&&pres>.05)pres*=.85+.15*Math.sin(ang*Math.PI/90);
+  // física
+  const vms=v/3.6;
+  if(frena&&v>0){
+    if(!midiendo){midiendo=true;dist=0;v0=v}
+    const a=decel(pres), nv=Math.max(0,vms-a*dt);dist+=(vms+nv)/2*dt;v=nv*3.6;
+    if(v<=0){v=0;midiendo=false;fin()}
+  }
+  if(!reduce)ang+=v*dt*14;
+  // dibujar
+  $("#pedal").setAttribute("transform",`rotate(${pedal*(falla.aire?26:16)} 50 48)`);
+  const px=56+Math.sin((pedal*(falla.aire?26:16))*Math.PI/180)*72;
+  $("#varilla").setAttribute("x1",px);$("#piston1").setAttribute("x",172+pedal*(falla.aire?40:22));
+  $("#lineaPres").setAttribute("opacity",(.2+pres*.8).toFixed(2));$("#lineaPres").setAttribute("stroke-dashoffset",-now/40*pres);
+  $("#burbujas").setAttribute("opacity",falla.aire?1:0);
+  $("#disco").setAttribute("transform",`rotate(${ang%360} 380 250)`+(falla.alabeado&&v>0?` translate(${(Math.sin(ang*Math.PI/90)*2).toFixed(1)} 0)`:""));
+  const esp=falla.gastadas?5:18, cierre=pres*(falla.gastadas?8:4);
+  $("#pI").setAttribute("width",esp);$("#pI").setAttribute("x",112-esp);
+  $("#pD").setAttribute("width",esp);$("#pD").setAttribute("x",128);
+  $("#pastillaD").setAttribute("transform",`translate(${(1-pres)*8} 0)`);$("#pistonP").setAttribute("transform",`translate(${(1-pres)*8} 0)`);
+  $("#pastillaI").setAttribute("transform",`translate(${-(1-pres)*6} 0)`);
+  $("#calor").setAttribute("opacity",(frena&&v>0?Math.min(.9,pres*(falla.gastadas?1:.6)):Math.max(0,+$("#calor").getAttribute("opacity")-dt*.4)).toFixed(2));
+  // chispas con pastillas gastadas
+  const ch=$("#chispas");ch.innerHTML="";
+  if(falla.gastadas&&frena&&v>2&&!reduce){let h="";for(let i=0;i<8;i++){const a=-.6+((now/37+i*13)%10)/10*1.2,r=6+((now/23+i*7)%14);h+=`<circle cx="${(380+Math.sin(a+3.4)*(-60)+r).toFixed(1)}" cy="${(150+Math.cos(a)*r*.6).toFixed(1)}" r="${1.4+(i%3)*.5}" fill="${i%2?'#ffd23f':'#fff'}"/>`}ch.innerHTML=h}
+  shake=falla.alabeado&&frena&&v>0?Math.sin(ang*Math.PI/45)*2.2:0;
+  $(".escena svg").style.transform=shake?`translate(${shake.toFixed(1)}px,0)`:"";
+  $("#vel").textContent=Math.round(v);
+  $("#dPedal").textContent=pedal>.6?(falla.aire?"Al fondo, blando":"Firme, a fondo"):pedal>.05?"Bajando":"Suelto";
+  $("#dPres").textContent=Math.round(pres*100)+" %";
+  $("#dPast").textContent=falla.gastadas?"2 mm":"10 mm";$("#dPast").style.color=falla.gastadas?"var(--mal)":"";
+  $("#estadoTxt").textContent=v<=0?"Detenido":frena?"Frenando…":v>=100?"Andando a 100 km/h":"Acelerando…";
+  if(midiendo){$("#bd").style.width=Math.min(100,dist)+"%";$("#resM").textContent=Math.round(dist)+" m";}
+  requestAnimationFrame(loop);
+}
+function fin(){
+  const m=Math.round(dist),ref=52,ok=m<=ref+5;
+  $("#bd").style.width=Math.min(100,m)+"%";$("#bd").style.background=ok?"var(--ok)":m<70?"var(--aviso)":"var(--mal)";
+  $("#resM").textContent=m+" m";
+  $("#resTxt").textContent=v0<99?"Frenaste desde "+Math.round(v0)+" km/h. Volvé a 100 km/h para comparar.":ok?"Frenos en buen estado: unos "+ref+" m desde 100 km/h.":"Necesitó "+(m-ref)+" m más que con frenos sanos. A 100 km/h eso puede ser un choque.";
+}
+const btn=$("#frenar");
+const on=e=>{e.preventDefault();demo=false;frena=true;btn.classList.add("on")}, off=()=>{frena=false;btn.classList.remove("on")};
+btn.addEventListener("pointerdown",on);btn.addEventListener("pointerup",off);btn.addEventListener("pointerleave",off);btn.addEventListener("pointercancel",off);
+btn.addEventListener("keydown",e=>{if((e.key===" "||e.key==="Enter")&&!e.repeat)on(e)});btn.addEventListener("keyup",e=>{if(e.key===" "||e.key==="Enter")off()});
+$("#acelerar").onclick=()=>{demo=false;v=100;dist=0;midiendo=false;$("#bd").style.width="0";$("#resM").textContent="—";$("#resTxt").textContent="Apretá «Frenar» y mantenelo hasta frenar del todo."};
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{const k=c.dataset.f;falla[k]=!falla[k];c.setAttribute("aria-pressed",!!falla[k]);
+  $("#diag").innerHTML=Object.keys(falla).filter(x=>falla[x]).map(x=>`<div>${FALLAS[x]}</div>`).join("")});
+requestAnimationFrame(loop);
+</script>
+<script src="js/simuladores.js"></script>
+</body>
+</html>
