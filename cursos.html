@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursos de mecánica | AC-Taller Azul</title>
+<meta name="description" content="Cursos de mecánica de AC-Taller: Electricidad del automóvil, clases grabadas en instituto y explicadas de forma sencilla.">
+<link rel="canonical" href="https://ac-taller.com/cursos.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cursos de mecánica | AC-Taller">
+<meta property="og:description" content="Curso de Electricidad del automóvil: aprende a usar el tester y más, explicado de forma sencilla.">
+<meta property="og:image" content="https://ac-taller.com/img/curso-electricidad.jpg">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; frame-src https://www.youtube-nocookie.com; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/anton-latin.woff2) format('woff2')}
+  @font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-latin.woff2) format('woff2')}
+  :root{--fondo:#0a0a0a;--fondo2:#141414;--amarillo:#f5e61b;--dorado:#6f5900;--texto:#f2f2f2;--suave:#a8a8a8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--fondo);color:var(--texto);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+  h1,h2,h3{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  header.nav{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.92);backdrop-filter:blur(6px);border-bottom:1px solid #222}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+  .logo{font-family:Anton,Impact,sans-serif;font-size:1.4rem;color:var(--amarillo);text-decoration:none;letter-spacing:.04em;white-space:nowrap;display:flex;align-items:center;gap:10px}
+  .logo img{width:38px;height:38px;border-radius:6px;display:block}
+  .btn{display:inline-block;background:var(--amarillo);color:#000;font-weight:700;text-decoration:none;padding:13px 22px;border-radius:6px;border:2px solid var(--amarillo);text-align:center}
+  .btn:hover{background:transparent;color:var(--amarillo)}
+  .btn.sec{background:transparent;color:var(--amarillo)}
+  .btn.sec:hover{background:var(--amarillo);color:#000}
+  .nav .btn{padding:9px 14px;font-size:.85rem;white-space:nowrap}
+  .cabecera{padding:56px 0 20px;background:radial-gradient(circle at 1px 1px,#2a2a2a 1px,transparent 0) 0 0/14px 14px}
+  .cabecera h1{font-size:clamp(2.4rem,9vw,4.4rem)}
+  .cabecera h1 span{color:var(--amarillo)}
+  .cabecera p{color:var(--suave);max-width:56ch;margin-top:14px;font-size:1.05rem}
+  .volver{display:inline-block;margin-bottom:18px;color:var(--suave);text-decoration:none;font-size:.9rem}
+  .volver:hover{color:var(--amarillo)}
+  section{padding:40px 0 70px}
+  .curso{display:grid;gap:26px;background:var(--fondo2);border:1px solid #242424;border-left:4px solid var(--amarillo);border-radius:8px;padding:20px}
+  .etiqueta{display:inline-block;font-size:.75rem;font-weight:700;background:var(--amarillo);color:#000;padding:3px 10px;border-radius:20px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.04em}
+  .curso h2{font-size:clamp(1.8rem,6vw,2.6rem);color:var(--amarillo);margin-bottom:10px}
+  .curso p{color:var(--suave)}
+  .datos{display:flex;flex-wrap:wrap;gap:8px 18px;margin:16px 0;font-size:.9rem}
+  .datos b{color:var(--texto)}
+  .curso ul{list-style:none;margin:6px 0 20px}
+  .curso li{padding:8px 0 8px 28px;border-bottom:1px solid #222;position:relative;color:var(--texto)}
+  .curso li::before{content:"";position:absolute;left:4px;top:15px;width:10px;height:10px;background:var(--amarillo);transform:rotate(45deg)}
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+  .como{font-size:.85rem;margin-top:14px}
+  .precio{font-family:Anton,Impact,sans-serif;font-size:1.6rem;color:var(--texto);margin:4px 0 14px}
+  .yt-video{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;border:1px solid #2a2a2a;background:#111 center/cover no-repeat;cursor:pointer;box-shadow:0 0 0 2px var(--dorado),0 18px 50px rgba(0,0,0,.55)}
+  .yt-video::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.8))}
+  .yt-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2}
+  .yt-play{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:var(--amarillo);z-index:1;box-shadow:0 6px 26px rgba(0,0,0,.6);transition:transform .15s}
+  .yt-play::before{content:"";position:absolute;left:30px;top:22px;border-left:26px solid #000;border-top:16px solid transparent;border-bottom:16px solid transparent}
+  .yt-video:hover .yt-play,.yt-video:focus-visible .yt-play{transform:scale(1.1)}
+  .yt-cap{position:absolute;left:14px;bottom:10px;z-index:1;font-weight:700;color:var(--amarillo);font-size:.9rem}
+  .proximos{margin-top:22px;border:1px dashed #444;border-radius:8px;padding:20px;text-align:center;color:var(--suave)}
+  footer{border-top:1px solid #222;padding:26px 0 90px;color:var(--suave);font-size:.85rem;text-align:center}
+  footer a{color:var(--amarillo)}
+  .flotante{position:fixed;right:14px;bottom:14px;z-index:20;background:var(--amarillo);color:#000;font-weight:700;text-decoration:none;padding:14px 20px;border-radius:40px;box-shadow:0 4px 18px rgba(0,0,0,.5)}
+  @media(min-width:760px){.curso{grid-template-columns:1.2fr 1fr;padding:28px;align-items:start}.cabecera{padding:80px 0 24px}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="./"><img src="logo.png" alt="Logo AC Motors" width="38" height="38">AC-TALLER</a>
+    <a class="btn" data-wa href="#">Inscribirme</a>
+  </div>
+</header>
+
+<main>
+  <div class="cabecera">
+    <div class="wrap">
+      <a class="volver" href="./#cursos">← Volver a la web</a>
+      <h1>Cursos <span>disponibles</span></h1>
+      <p>Clases reales grabadas en instituto, explicadas de forma sencilla y clara. Aprende a tu ritmo con AC-Taller.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <article class="curso" id="electricidad">
+        <div>
+          <span class="etiqueta">Curso disponible</span>
+          <h2>Electricidad del automóvil</h2>
+          <p>Aprende todo sobre la electricidad del automóvil en Argentina, explicado de manera sencilla y clara. Clases grabadas en instituto.</p>
+          <div class="datos"><span><b>4</b> clases en video</span><span>Online · YouTube</span><span>Nivel inicial</span></div>
+          <ul>
+            <li>Cómo usar un tester (clase de muestra gratis)</li>
+            <li>Electricidad del automóvil explicada paso a paso</li>
+            <li>Clases reales grabadas en instituto</li>
+            <li>Míralo cuando quieras, desde el celular o la compu</li>
+          </ul>
+          <!-- PRECIO: cambiar el texto cuando Christian lo confirme -->
+          <p class="precio" data-precio>Consulta el precio</p>
+          <div class="acciones">
+            <a class="btn" id="comprarAR" href="#" target="_blank" rel="noopener">Comprar desde Argentina</a>
+            <a class="btn sec" id="comprarExt" href="#" target="_blank" rel="noopener">¿Estás en otro país? Escríbenos</a>
+          </div>
+          <p class="como">Pagas con Mercado Pago (tarjeta, débito o transferencia) y recibes el acceso al curso por WhatsApp. Desde otro país te explicamos cómo pagar.</p>
+        </div>
+        <div>
+          <div class="yt-video" id="ytVideo" role="button" tabindex="0" aria-label="Reproducir la clase de muestra: cómo usar un tester" style="background-image:url(img/curso-electricidad.jpg)"><span class="yt-play" aria-hidden="true"></span><span class="yt-cap">Clase de muestra gratis</span></div>
+        </div>
+      </article>
+
+      <div class="proximos">Próximamente más cursos. ¿Quieres un curso presencial? <a href="#" data-wa style="color:var(--amarillo)">Escríbenos</a>.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · <a href="./">Inicio</a> · <a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Política de privacidad</a></div>
+</footer>
+
+<a class="flotante" data-wa href="#">WhatsApp</a>
+
+<script>
+  /* ===== CONFIGURACIÓN EDITABLE ===== */
+  const CURSO = {
+    whatsapp: "https://wa.me/message/QWBEMLBG76PQJ1",
+    playlist: "https://www.youtube.com/playlist?list=PLMq0iYVIrpNKNzIvG6v-BBSFw6z0HJIJR",
+    listaId: "PLMq0iYVIrpNKNzIvG6v-BBSFw6z0HJIJR",
+    videoMuestra: "SDYQcjtz9nI",
+    precio: "",           // ej: "$25.000 ARS" (vacío = "Consulta el precio")
+    mercadoPago: "",      // PEGAR AQUÍ el link de pago de Mercado Pago (vacío = va a WhatsApp)
+    proximamente: true    // true = muestra "Próximamente" y oculta la compra; false = curso a la venta
+  };
+  if(CURSO.proximamente){
+    document.querySelector(".etiqueta").textContent = "Próximamente";
+    document.querySelector("[data-precio]").textContent = "Muy pronto a la venta";
+    var ar=document.getElementById("comprarAR"); ar.textContent="Avísame cuando salga"; ar.removeAttribute("id"); ar.setAttribute("data-wa","");
+    document.getElementById("comprarExt").remove();
+    document.querySelector(".como").textContent = "Escríbenos por WhatsApp y te avisamos apenas el curso esté a la venta. Mientras tanto, mira la clase de muestra gratis.";
+    document.querySelector(".cabecera p").textContent = "Estamos preparando nuestros cursos online. Clases reales grabadas en instituto, explicadas de forma sencilla y clara.";
+  }
+  if(CURSO.precio) document.querySelector("[data-precio]").textContent = CURSO.precio;
+  if(!CURSO.proximamente){
+    document.getElementById("comprarAR").href = CURSO.mercadoPago || CURSO.whatsapp;
+    document.getElementById("comprarExt").href = CURSO.whatsapp;
+  }
+  document.querySelectorAll("[data-wa]").forEach(a=>{a.href=CURSO.whatsapp;a.target="_blank";a.rel="noopener"});
+  (function(){
+    var v=document.getElementById("ytVideo");
+    function reproducir(){
+      var f=document.createElement("iframe");
+      f.src="https://www.youtube-nocookie.com/embed/"+CURSO.videoMuestra+"?list="+CURSO.listaId+"&autoplay=1&rel=0";
+      f.title="Clase de muestra: cómo usar un tester";
+      f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen=true;
+      v.innerHTML=""; v.appendChild(f); v.removeAttribute("role"); v.style.cursor="default";
+    }
+    v.addEventListener("click",reproducir);
+    v.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();reproducir()}});
+  })();
+</script>
+</body>
+</html>

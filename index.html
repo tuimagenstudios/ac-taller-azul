@@ -93,6 +93,8 @@
     background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='146' viewBox='0 0 84 146'%3E%3Cg fill='none' stroke='%236f5900' stroke-width='3'%3E%3Cpath d='M42 2l38 22v44L42 90 4 68V24z'/%3E%3Cpath d='M0 75l0 0M84 75l0 0'/%3E%3Cpath d='M42 90v22l38 22M42 112L4 134'/%3E%3C/g%3E%3C/svg%3E") 0 0/84px 146px}
   .hero .wrap{position:relative}
   .nav .btn{padding:9px 14px;font-size:.85rem;white-space:nowrap}
+  .nav-btns{display:flex;gap:8px}
+  @media(max-width:479px){.nav .logo{font-size:0}.nav .btn{padding:8px 10px;font-size:.78rem}}
   .nav nav{display:none;gap:20px;font-size:.9rem}
   .nav nav a{text-decoration:none;color:var(--suave)}
   .nav nav a:hover{color:var(--amarillo)}
@@ -217,7 +219,10 @@
       <a href="#preguntas">Preguntas</a>
       <a href="#contacto">Contacto</a>
     </nav>
-    <a class="btn" data-wa href="#">Pedir turno</a>
+    <div class="nav-btns">
+      <a class="btn sec" href="cursos.html">Cursos disponibles</a>
+      <a class="btn" data-wa href="#">Pedir turno</a>
+    </div>
   </div>
 </header>
 
@@ -287,7 +292,8 @@
   <section id="cursos">
     <div class="wrap">
       <h2>Aprende <em>mecánica</em></h2>
-      <p class="sub">Además del taller, enseñamos mecánica: gratis en videos y en cursos presenciales.</p>
+      <p class="sub">Además del taller, enseñamos mecánica: gratis en videos, en cursos online y presenciales.</p>
+      <div class="card" style="margin-bottom:14px"><h3>Próximamente: Electricidad del automóvil</h3><p>Curso online con clases grabadas en instituto. Mira la clase de muestra gratis.</p><a class="btn" style="margin-top:14px" href="cursos.html">Ver cursos disponibles</a></div>
       <div class="grid dos">
         <div class="card"><h3>Videos gratis</h3><p>Reels de mecánica paso a paso en Instagram: cómo probar un alternador y más.</p><a class="btn sec" style="margin-top:14px" href="https://www.instagram.com/ac_taller_azul/" target="_blank" rel="noopener">Ver Instagram</a></div>
         <div class="card"><h3>Cursos presenciales</h3><p>Consulta fechas, temario y precio.</p><a class="btn sec" style="margin-top:14px" data-wa href="#">Consultar cursos</a></div>
