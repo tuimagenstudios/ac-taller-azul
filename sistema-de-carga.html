@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sistema de carga y arranque, con tester | AC-Taller</title>
+<meta name="description" content="Simulador gratis: batería, alternador y burro de arranque. Medí con un tester virtual y descubrí por qué un auto no arranca. AC-Taller, Azul.">
+<link rel="canonical" href="https://ac-taller.com/sistema-de-carga.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AC-Taller"><meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://ac-taller.com/sistema-de-carga.html">
+<meta property="og:title" content="¿Por qué no arranca? Sistema de carga con tester | AC-Taller">
+<meta property="og:description" content="Medí la batería, el burro y el alternador con un tester virtual. Gratis.">
+<meta property="og:image" content="https://ac-taller.com/img/og-carga.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/simulador.css">
+<style>
+  .tester{background:#1b1b10;border:2px solid #3a3820;border-radius:18px;padding:18px;display:grid;gap:14px}
+  .lcd{background:#9fb38a;color:#1b2414;border-radius:10px;padding:14px 18px;display:flex;align-items:baseline;justify-content:flex-end;gap:8px;box-shadow:inset 0 3px 10px rgba(0,0,0,.35);font-variant-numeric:tabular-nums}
+  .lcd b{font-family:var(--display);font-weight:400;font-size:3.6rem;line-height:1;letter-spacing:.04em}
+  .lcd span{font-weight:700;font-size:1.2rem}
+  .lcd small{margin-right:auto;font-weight:700;font-size:.75rem;letter-spacing:.08em}
+  .puntas{display:grid;gap:6px}
+  .puntas button{font:inherit;cursor:pointer;text-align:left;background:#232318;border:1px solid #3a3a2a;color:var(--texto);border-radius:8px;padding:9px 12px;font-size:.88rem;font-weight:600}
+  .puntas button[aria-pressed="true"]{border-color:var(--amarillo);background:#2e2c12}
+  .puntas button small{display:block;font-weight:400;color:var(--suave);font-size:.75rem}
+  .veredicto{border-radius:10px;padding:12px 14px;font-size:.92rem;border:1px solid}
+  .v-ok{background:#0f2414;border-color:#2b6b37;color:#b9f2c4}
+  .v-aviso{background:#2a2108;border-color:#6b5512;color:#ffe09a}
+  .v-mal{background:#2a0f0a;border-color:#7a2a1a;color:#ffc2b3}
+  .veredicto b{display:block;color:#fff}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./"><img src="logo.png" alt="Logo AC Motors" width="36" height="36">AC-TALLER</a><a class="volver" href="./">← Volver a la web</a></div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <span class="kicker">Simulador gratis · Electricidad</span>
+    <h1>¿Por qué <span>no arranca?</span></h1>
+    <p>Batería, burro de arranque y alternador trabajando juntos. Elegí si el motor está apagado, arrancando o en marcha, medí con el tester en distintos puntos y provocá fallas para ver cómo cambian las lecturas.</p>
+  </section>
+
+  <div class="app">
+    <section class="banco" aria-label="Sistema de carga y arranque">
+      <div class="barra"><span>Circuito de carga y arranque · esquema simplificado</span><span id="estadoTxt">Motor apagado</span></div>
+      <div class="escena">
+        <svg viewBox="0 0 520 400" role="img" aria-label="Esquema con batería, burro de arranque, alternador y motor">
+          <defs>
+            <linearGradient id="gBat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d2d33"/><stop offset="1" stop-color="#1b1b1f"/></linearGradient>
+            <linearGradient id="gMet" x1="0" x2="1"><stop offset="0" stop-color="#77777f"/><stop offset=".5" stop-color="#d9d9df"/><stop offset="1" stop-color="#6c6c74"/></linearGradient>
+            <linearGradient id="gBlk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d3d43"/><stop offset="1" stop-color="#2a2a2f"/></linearGradient>
+          </defs>
+          <!-- Tablero -->
+          <rect x="24" y="24" width="150" height="86" rx="12" fill="#151518" stroke="#2c2c32"/>
+          <text class="lblsub" x="36" y="44">TABLERO</text>
+          <g id="lampara"><rect x="36" y="54" width="44" height="30" rx="5" fill="#2a1410" stroke="#4a2018"/><rect x="44" y="61" width="28" height="16" rx="2" fill="none" stroke="#5a2a20" stroke-width="2" id="lampIcon"/><path d="M50 61v-3M66 61v-3" stroke="#5a2a20" stroke-width="2" id="lampPins"/></g>
+          <text class="lblsub" x="36" y="100" id="lampTxt">Testigo apagado</text>
+          <g id="llave"><circle cx="138" cy="68" r="22" fill="#1e1e22" stroke="#3a3a42"/><g id="llaveRot"><rect x="134" y="50" width="8" height="36" rx="3" fill="url(#gMet)"/></g></g>
+          <!-- Motor (block) -->
+          <rect x="210" y="120" width="190" height="150" rx="14" fill="url(#gBlk)" stroke="#47474f"/>
+          <path d="M226 140h158M226 160h158" stroke="#4a4a52"/>
+          <text class="lbl" x="300" y="150">MOTOR</text>
+          <!-- Correa -->
+          <path id="correa" d="" fill="none" stroke="#111" stroke-width="7" stroke-linejoin="round"/>
+          <path id="correaMarca" d="" fill="none" stroke="#3a3a40" stroke-width="7" stroke-dasharray="3 9"/>
+          <g id="poleaCig"><circle cx="260" cy="240" r="26" fill="#55555c" stroke="#86868e" stroke-width="2"/><path d="M260 216v48M236 240h48" stroke="#2c2c31" stroke-width="5"/><circle cx="260" cy="240" r="6" fill="#bbb"/></g>
+          <!-- Alternador -->
+          <g id="alternador">
+            <circle cx="440" cy="110" r="44" fill="url(#gMet)" stroke="#5a5a62" stroke-width="2"/>
+            <circle cx="440" cy="110" r="34" fill="none" stroke="#6f6f77" stroke-dasharray="4 4"/>
+            <g id="poleaAlt"><circle cx="440" cy="110" r="15" fill="#3a3a41" stroke="#999"/><path d="M440 96v28M426 110h28" stroke="#222" stroke-width="4"/></g>
+            <circle cx="474" cy="146" r="6" fill="#c33" stroke="#fff" stroke-width="1"/>
+          </g>
+          <text class="lbl" x="400" y="40">Alternador</text><text class="lblsub" x="400" y="52">carga la batería</text>
+          <!-- Burro de arranque -->
+          <g id="burro">
+            <rect x="300" y="292" width="110" height="46" rx="20" fill="url(#gMet)" stroke="#5a5a62"/>
+            <rect x="320" y="280" width="64" height="20" rx="8" fill="#9a9aa2" stroke="#5a5a62"/>
+            <circle cx="404" cy="300" r="5" fill="#c33" stroke="#fff"/>
+            <g id="pinon"><circle cx="292" cy="315" r="12" fill="#6c6c74" stroke="#aaa"/><path d="M292 303v24M280 315h24M284 307l16 16M300 307l-16 16" stroke="#3a3a40" stroke-width="2"/></g>
+          </g>
+          <text class="lbl" x="304" y="360">Burro de arranque</text>
+          <text class="lblsub" x="304" y="372" id="burroTxt">en reposo</text>
+          <!-- Batería -->
+          <g id="bateria">
+            <rect x="34" y="226" width="140" height="100" rx="10" fill="url(#gBat)" stroke="#45454d"/>
+            <rect x="34" y="226" width="140" height="18" rx="8" fill="#26262b"/>
+            <rect x="52" y="212" width="22" height="16" rx="3" fill="#c33"/><text x="58" y="224" font-size="13" font-weight="700" fill="#fff">+</text>
+            <rect x="134" y="212" width="22" height="16" rx="3" fill="#333" stroke="#777"/><text x="141" y="224" font-size="14" font-weight="700" fill="#fff">−</text>
+            <g id="sulfato" opacity="0"><circle cx="58" cy="212" r="7" fill="#d8f0e0"/><circle cx="68" cy="210" r="6" fill="#bfe3cc"/><circle cx="63" cy="205" r="5" fill="#e9fbf0"/></g>
+            <rect x="52" y="262" width="104" height="14" rx="7" fill="#101012"/>
+            <rect id="carga" x="54" y="264" width="100" height="10" rx="5" fill="var(--ok)"/>
+            <text class="lblsub" x="52" y="296">Batería 12 V</text>
+            <text class="lblsub" x="52" y="310" id="cargaTxt">carga plena</text>
+          </g>
+          <!-- Cables -->
+          <path id="cPos" d="M63 212 V180 H190 V300 H300" fill="none" stroke="#b3261e" stroke-width="7" stroke-linejoin="round"/>
+          <path id="cAlt" d="M190 180 V96 H330 V60 H474 V146" fill="none" stroke="#b3261e" stroke-width="4" stroke-linejoin="round"/>
+          <path id="cNeg" d="M145 212 V196 H200 V258 H210" fill="none" stroke="#2a2a2a" stroke-width="7" stroke-linejoin="round"/>
+          <path id="fPos" d="M63 212 V180 H190 V300 H300" fill="none" stroke="#ffe25a" stroke-width="3" stroke-dasharray="6 14" opacity="0"/>
+          <path id="fAlt" d="M474 146 V60 H330 V96 H190 V180 H63 V212" fill="none" stroke="#7ee787" stroke-width="3" stroke-dasharray="6 14" opacity="0"/>
+          <!-- Puntas del tester -->
+          <g id="puntas">
+            <circle id="pRoja" r="7" fill="#e53935" stroke="#fff" stroke-width="2"/>
+            <circle id="pNegra" r="7" fill="#111" stroke="#fff" stroke-width="2"/>
+          </g>
+          <text id="chispazo" x="246" y="314" font-size="15" font-weight="700" fill="#ffb020" opacity="0">¡clic!</text>
+        </svg>
+      </div>
+      <div class="controles">
+        <div class="seg" role="group" aria-label="Estado del motor">
+          <button data-m="apagado" aria-pressed="true">Apagado</button><button data-m="arranque" aria-pressed="false">Arrancando</button><button data-m="marcha" aria-pressed="false">En marcha</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="tester" aria-label="Tester virtual">
+        <span class="kicker">Tester · Voltios de continua</span>
+        <div class="lcd"><small id="lcdModo">V DC</small><b id="lcd">12.6</b><span>V</span></div>
+        <div class="puntas" role="group" aria-label="Dónde medir">
+          <button data-p="bat" aria-pressed="true">Bornes de la batería<small>Roja en +, negra en −</small></button>
+          <button data-p="burro" aria-pressed="false">Borne del burro<small>Roja en el burro, negra a masa del motor</small></button>
+          <button data-p="masa" aria-pressed="false">Caída en la masa<small>Roja en el block, negra en el − de la batería</small></button>
+        </div>
+        <div class="veredicto v-ok" id="veredicto" aria-live="polite"></div>
+      </div>
+      <div class="card">
+        <span class="kicker" style="color:var(--naranja)">Taller de fallas</span>
+        <h3 style="margin-top:4px">Rompé el sistema</h3>
+        <div class="chips">
+          <button class="chip" data-f="bateria" aria-pressed="false">Batería agotada <span class="sw"></span></button>
+          <button class="chip" data-f="alternador" aria-pressed="false">Alternador que no carga <span class="sw"></span></button>
+          <button class="chip" data-f="borne" aria-pressed="false">Borne sulfatado o masa floja <span class="sw"></span></button>
+        </div>
+        <div class="diag" id="diag" aria-live="polite"></div>
+      </div>
+      <div class="card">
+        <h3>Valores de referencia</h3>
+        <table class="tabla">
+          <tr><td>Batería cargada, motor apagado</td><td>12,6 V</td></tr>
+          <tr><td>Batería a media carga</td><td>≈ 12,2 V</td></tr>
+          <tr><td>Batería descargada</td><td>menos de 12 V</td></tr>
+          <tr><td>Durante el arranque</td><td>no menos de 9,6 V</td></tr>
+          <tr><td>En marcha (cargando)</td><td>13,8 a 14,4 V</td></tr>
+          <tr><td>Caída en la masa al arrancar</td><td>menos de 0,5 V</td></tr>
+        </table>
+        <p class="nota">Valores orientativos para autos con sistema de 12 V. Cada fabricante puede indicar valores propios.</p>
+      </div>
+      <div class="cta"><h3>Aprendé electricidad del auto</h3><a href="cursos.html">Ver el curso</a></div>
+    </aside>
+  </div>
+
+  <section class="otros">
+    <h2>Más simuladores gratis</h2>
+    <div class="lista">
+      <a href="motor-4-tiempos.html">Motor de 4 tiempos<span>Cómo trabaja por dentro</span></a>
+      <a href="sistema-de-carga.html" aria-current="page">Sistema de carga<span>Batería, burro y alternador</span></a>
+      <a href="distribucion.html">Distribución<span>Qué pasa si se corta la correa</span></a>
+      <a href="inyector.html">Inyector<span>Limpio contra sucio</span></a>
+      <a href="codigos-scanner.html">Códigos del scanner<span>Qué significa cada falla</span></a>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · Esquema simplificado con fines didácticos · <a href="./">Inicio</a> · <a href="cursos.html">Cursos</a></div></footer>
+
+<script>
+const $=s=>document.querySelector(s);
+let modo="apagado",punto="bat",falla={},rotC=0,rotA=0,flujo=0,ult=performance.now();
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const PUNTOS={bat:[[63,212],[145,212]],burro:[[404,300],[226,262]],masa:[[226,262],[145,212]]};
+
+function lectura(){
+  const b=falla.bateria,a=falla.alternador,s=falla.borne;
+  if(punto==="masa"){
+    if(modo==="arranque") return s?1.6:0.2;
+    return modo==="marcha"?(s?0.4:0.05):0.0;
+  }
+  let v;
+  if(modo==="apagado") v=b?11.9:12.6;
+  else if(modo==="arranque"){ v=b?8.1:10.2; if(s&&!b) v=12.3; }
+  else { v=a?(b?11.7:12.2):(b?13.9:14.1); if(s&&!a) v=13.3; }
+  if(punto==="burro"){
+    if(modo==="arranque") v=b?7.8:(s?7.0:9.9);
+    else v=v-(s?0.3:0.05);
+  }
+  return v;
+}
+function veredicto(v){
+  if(punto==="masa"){
+    if(modo!=="arranque") return ["v-ok","Sin consumo fuerte","La caída en la masa se mide bien durante el arranque, cuando pasa mucha corriente. Probá con «Arrancando»."];
+    return v<0.5?["v-ok","Masa en buen estado","Se pierde muy poca tensión entre el motor y la batería."]:["v-mal","Masa floja o sulfatada","Se pierden "+v.toFixed(1)+" V en el cable de masa. Limpiar y ajustar bornes y la malla de masa al motor."];
+  }
+  if(modo==="apagado") return v>=12.5?["v-ok","Batería cargada","12,6 V con el motor apagado es una batería llena."]:v>=12.2?["v-aviso","Batería a media carga","Conviene cargarla y revisar por qué no se mantiene."]:["v-mal","Batería descargada","Menos de 12 V: puede no tener fuerza para arrancar. Cargarla y hacerle una prueba de carga."];
+  if(modo==="arranque"){
+    if(punto==="burro"&&falla.borne&&!falla.bateria) return ["v-mal","No llega tensión al burro","La batería marca bien, pero al burro llegan "+v.toFixed(1)+" V: se pierde en un borne sulfatado o una masa floja. Típico «clic» sin arranque."];
+    if(punto==="bat"&&falla.borne&&!falla.bateria) return ["v-aviso","La batería casi no baja","Marca "+v.toFixed(1)+" V porque la corriente no puede pasar: el problema está en los bornes o la masa. Medí en el burro y la caída en la masa."];
+    return v>=9.6?["v-ok","Arranque normal","La tensión baja al arrancar, pero se mantiene por encima de 9,6 V."]:["v-mal","Batería sin fuerza","Cae a "+v.toFixed(1)+" V: el burro gira lento o no gira. Cargar o cambiar la batería."];
+  }
+  return v>=13.8?["v-ok","El alternador carga bien","Entre 13,8 y 14,4 V en marcha: está cargando la batería."]:v>=13?["v-aviso","Carga baja","Revisar bornes, masa y la tensión de la correa."]:["v-mal","El alternador no carga","Con el motor en marcha debería marcar unos 14 V. Revisar alternador, regulador y correa. Se prende el testigo de batería."];
+}
+function correa(){
+  // tangentes aproximadas entre polea del cigüeñal (260,240,r26) y alternador (440,110,r15)
+  return "M248 216 L428 99 A15 15 0 0 1 452 120 L282 254 A26 26 0 1 1 248 216 Z";
+}
+$("#correa").setAttribute("d",correa());$("#correaMarca").setAttribute("d",correa());
+
+function actualizar(){
+  const v=lectura(),[cl,t,d]=veredicto(v);
+  $("#lcd").textContent=v.toFixed(punto==="masa"?2:1);
+  const ve=$("#veredicto");ve.className="veredicto "+cl;ve.innerHTML=`<b>${t}</b>${d}`;
+  const [r,n]=PUNTOS[punto];
+  $("#pRoja").setAttribute("cx",r[0]);$("#pRoja").setAttribute("cy",r[1]);$("#pNegra").setAttribute("cx",n[0]);$("#pNegra").setAttribute("cy",n[1]);
+  // batería visual
+  const nivel=falla.bateria?.22:1;$("#carga").setAttribute("width",100*nivel);$("#carga").setAttribute("fill",falla.bateria?"var(--mal)":"var(--ok)");
+  $("#cargaTxt").textContent=falla.bateria?"descargada":"carga plena";
+  $("#sulfato").setAttribute("opacity",falla.borne?1:0);
+  // testigo
+  const on=(modo==="arranque")||(modo==="marcha"&&falla.alternador);
+  $("#lampara rect").setAttribute("fill",on?"#ff3b2f":"#2a1410");
+  $("#lampIcon").setAttribute("stroke",on?"#fff":"#5a2a20");$("#lampPins").setAttribute("stroke",on?"#fff":"#5a2a20");
+  $("#lampTxt").textContent=on?"Testigo de batería ENCENDIDO":"Testigo apagado";
+  $("#llaveRot").setAttribute("transform",`rotate(${modo==="apagado"?0:modo==="arranque"?90:60} 138 68)`);
+  $("#estadoTxt").textContent={apagado:"Motor apagado",arranque:"Girando la llave: arrancando",marcha:"Motor en marcha"}[modo];
+  const gira=modo==="marcha"||(modo==="arranque"&&!falla.borne);
+  $("#burroTxt").textContent=modo==="arranque"?(falla.borne?"hace clic, no gira":falla.bateria?"gira lento":"gira y mueve el motor"):"en reposo";
+  $("#chispazo").setAttribute("opacity",modo==="arranque"&&falla.borne?1:0);
+  $("#fPos").setAttribute("opacity",modo==="arranque"&&!falla.borne?1:0);
+  $("#fAlt").setAttribute("opacity",modo==="marcha"&&!falla.alternador?1:0);
+  $("#diag").innerHTML=Object.keys(falla).filter(k=>falla[k]).map(k=>({
+    bateria:`<div><b>Batería agotada</b>Marca menos de 12 V apagada y cae mucho al arrancar: el burro gira lento o no gira.</div>`,
+    alternador:`<div><b>Alternador que no carga</b>En marcha marca 12 V o menos, se prende el testigo y la batería se va descargando hasta que el auto se apaga.</div>`,
+    borne:`<div><b>Borne sulfatado o masa floja</b>La batería parece bien, pero la corriente no llega al burro: se escucha un «clic» y no arranca.</div>`
+  })[k]).join("");
+}
+function loop(now){
+  const dt=Math.min(64,now-ult);ult=now;
+  const vel=modo==="marcha"?1:(modo==="arranque"?(falla.borne?0:falla.bateria?.12:.35):0);
+  if(!reduce){rotC+=dt*vel*.6;rotA+=dt*vel*.6*1.73;flujo-=dt*.06*(modo==="apagado"?0:1)}
+  $("#poleaCig").setAttribute("transform",`rotate(${rotC} 260 240)`);
+  $("#poleaAlt").setAttribute("transform",`rotate(${rotA} 440 110)`);
+  $("#pinon").setAttribute("transform",modo==="arranque"&&!falla.borne?`translate(${-6}) rotate(${-rotC*2.2} 292 315)`:"");
+  $("#correaMarca").setAttribute("stroke-dashoffset",-rotC*.45);
+  $("#fPos").setAttribute("stroke-dashoffset",flujo);$("#fAlt").setAttribute("stroke-dashoffset",flujo);
+  requestAnimationFrame(loop);
+}
+document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{modo=b.dataset.m;document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x===b));actualizar()});
+document.querySelectorAll(".puntas button").forEach(b=>b.onclick=()=>{punto=b.dataset.p;document.querySelectorAll(".puntas button").forEach(x=>x.setAttribute("aria-pressed",x===b));$("#lcdModo").textContent=punto==="masa"?"CAÍDA V":"V DC";actualizar()});
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{const k=c.dataset.f;falla[k]=!falla[k];c.setAttribute("aria-pressed",!!falla[k]);actualizar()});
+actualizar();requestAnimationFrame(loop);
+</script>
+</body>
+</html>

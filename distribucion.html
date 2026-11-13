@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Distribución y correa: qué pasa si se corta | AC-Taller</title>
+<meta name="description" content="Simulador gratis de la distribución: cigüeñal, árboles de levas, correa y marcas de puesta a punto. Mirá qué pasa si se corta la correa. AC-Taller, Azul.">
+<link rel="canonical" href="https://ac-taller.com/distribucion.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AC-Taller"><meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://ac-taller.com/distribucion.html">
+<meta property="og:title" content="¿Qué pasa si se corta la correa de distribución? | AC-Taller">
+<meta property="og:description" content="Cortá la correa a propósito y mirá cómo chocan las válvulas con el pistón. Gratis.">
+<meta property="og:image" content="https://ac-taller.com/img/og-distribucion.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/simulador.css">
+<style>
+  .alerta{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);background:var(--mal);color:#fff;font-family:var(--display);font-size:clamp(1.6rem,5vw,2.6rem);text-transform:uppercase;padding:10px 22px;border-radius:12px;box-shadow:0 0 40px rgba(255,90,60,.6);pointer-events:none;text-align:center;line-height:1.05}
+  .alerta small{display:block;font-family:var(--body);font-size:.9rem;text-transform:none;font-weight:600}
+  .marcaok{fill:var(--ok)} .marcamal{fill:var(--mal)}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./"><img src="logo.png" alt="Logo AC Motors" width="36" height="36">AC-TALLER</a><a class="volver" href="./">← Volver a la web</a></div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <span class="kicker">Simulador gratis · Distribución</span>
+    <h1>¿Qué pasa si se <span>corta la correa?</span></h1>
+    <p>La correa de distribución sincroniza el cigüeñal con los árboles de levas: por cada 2 vueltas del cigüeñal, las levas dan 1. Mirá las marcas de puesta a punto, hacé saltar un diente o cortá la correa a propósito.</p>
+  </section>
+
+  <div class="app">
+    <section class="banco" aria-label="Distribución animada">
+      <div class="barra"><span>Distribución por correa · motor interferente</span><span id="estadoTxt">Funcionando</span></div>
+      <div class="escena">
+        <div class="alerta" id="alerta" hidden>¡Choque!<small>Las válvulas golpearon el pistón</small></div>
+        <svg viewBox="0 0 520 470" role="img" aria-label="Correa de distribución con dos árboles de levas, cigüeñal, tensor y un cilindro en corte">
+          <defs>
+            <linearGradient id="gMet" x1="0" x2="1"><stop offset="0" stop-color="#7d7d84"/><stop offset=".5" stop-color="#e2e2e8"/><stop offset="1" stop-color="#6f6f76"/></linearGradient>
+            <linearGradient id="gAlu" x1="0" x2="1"><stop offset="0" stop-color="#8a8f96"/><stop offset=".5" stop-color="#d7dbe0"/><stop offset="1" stop-color="#7c8188"/></linearGradient>
+          </defs>
+          <!-- Block y tapa -->
+          <path d="M120 40 H400 V150 H120 Z" fill="#2c2c31" stroke="#45454d"/>
+          <path d="M150 150 H370 V430 H150 Z" fill="#242428" stroke="#3a3a40"/>
+          <text class="lblsub" x="128" y="56">TAPA DE CILINDROS</text>
+          <!-- Cilindro en corte -->
+          <rect x="215" y="170" width="90" height="140" fill="#101012" stroke="#4a4a52"/>
+          <g id="valA"><rect x="232" y="118" width="5" height="56" fill="url(#gMet)"/><path d="M224 172 H245 L240 178 H229 Z" fill="url(#gMet)"/></g>
+          <g id="valE"><rect x="283" y="118" width="5" height="56" fill="url(#gMet)"/><path d="M275 172 H296 L291 178 H280 Z" fill="url(#gMet)"/></g>
+          <g id="piston"><rect x="218" y="0" width="84" height="44" rx="3" fill="url(#gAlu)" stroke="#6f747b"/><path d="M218 7h84M218 13h84" stroke="#4a4a50" stroke-width="2"/></g>
+          <line id="biela" x1="260" y1="0" x2="260" y2="380" stroke="url(#gMet)" stroke-width="10" stroke-linecap="round"/>
+          <text class="lblsub" x="312" y="188">cilindro 1</text>
+          <!-- Correa -->
+          <path id="correa" d="M140 90 A40 40 0 0 1 180 50 L340 50 A40 40 0 0 1 380 90 L396 262 L280 392 A20 20 0 0 1 240 392 Z" fill="none" stroke="#151515" stroke-width="10" stroke-linejoin="round"/>
+          <path id="dientes" d="M140 90 A40 40 0 0 1 180 50 L340 50 A40 40 0 0 1 380 90 L396 262 L280 392 A20 20 0 0 1 240 392 Z" fill="none" stroke="#3b3b42" stroke-width="10" stroke-dasharray="3 6" stroke-linejoin="round"/>
+          <!-- Engranajes de levas -->
+          <g id="levaI"><circle cx="180" cy="90" r="40" fill="#5a5a62" stroke="#9a9aa2" stroke-width="2"/><circle cx="180" cy="90" r="30" fill="none" stroke="#45454c" stroke-dasharray="3 5"/><path d="M180 58v64M148 90h64" stroke="#3a3a41" stroke-width="6"/><circle cx="180" cy="90" r="8" fill="#bbb"/><path d="M180 52 l-6 -10 h12 z" class="marcaok" id="mI"/></g>
+          <g id="levaE"><circle cx="340" cy="90" r="40" fill="#5a5a62" stroke="#9a9aa2" stroke-width="2"/><circle cx="340" cy="90" r="30" fill="none" stroke="#45454c" stroke-dasharray="3 5"/><path d="M340 58v64M308 90h64" stroke="#3a3a41" stroke-width="6"/><circle cx="340" cy="90" r="8" fill="#bbb"/><path d="M340 52 l-6 -10 h12 z" class="marcaok" id="mE"/></g>
+          <!-- Marcas fijas -->
+          <path d="M174 28 h12 l-6 8 z" fill="var(--amarillo)"/><path d="M334 28 h12 l-6 8 z" fill="var(--amarillo)"/><path d="M254 444 h12 l-6 -8 z" fill="var(--amarillo)"/>
+          <!-- Tensor -->
+          <g><circle cx="404" cy="262" r="15" fill="#6a6a72" stroke="#aaa"/><circle cx="404" cy="262" r="4" fill="#ddd"/></g>
+          <text class="lbl" x="424" y="266">Tensor</text>
+          <!-- Cigüeñal -->
+          <g id="cig"><circle cx="260" cy="392" r="20" fill="#5a5a62" stroke="#9a9aa2" stroke-width="2"/><circle cx="260" cy="392" r="6" fill="#bbb"/><path d="M260 412 l-6 10 h12 z" class="marcaok" id="mC"/></g>
+          <circle id="munon" cx="260" cy="380" r="5" fill="#ddd"/>
+          <!-- Etiquetas -->
+          <text class="lbl" x="128" y="150">Leva admisión</text>
+          <text class="lbl" x="318" y="150">Leva escape</text>
+          <text class="lbl" x="290" y="420">Cigüeñal</text>
+          <text class="lblsub" x="152" y="462" id="marcasTxt">Marcas alineadas cada 2 vueltas del cigüeñal</text>
+        </svg>
+      </div>
+      <div class="controles">
+        <button class="btn" id="play">❚❚ Pausa</button>
+        <button class="btn sec" id="punto">Ver puesta a punto</button>
+        <button class="btn sec" id="reparar">Reparar motor</button>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="card">
+        <span class="kicker">Cómo funciona</span>
+        <h2 style="margin-top:4px">2 vueltas, 1 vuelta</h2>
+        <p style="margin-top:8px">El engranaje del cigüeñal es la mitad de chico que los de las levas. Por eso, cuando el cigüeñal da 2 vueltas, las levas dan 1: justo un ciclo completo de 4 tiempos.</p>
+        <dl class="datos">
+          <div><dt>Cigüeñal</dt><dd id="dC">0°</dd></div>
+          <div><dt>Levas</dt><dd id="dL">0°</dd></div>
+          <div><dt>Puesta a punto</dt><dd id="dP" style="color:var(--ok)">Correcta</dd></div>
+        </dl>
+      </div>
+      <div class="card">
+        <span class="kicker" style="color:var(--naranja)">Taller de fallas</span>
+        <h3 style="margin-top:4px">Rompé la distribución</h3>
+        <div class="chips">
+          <button class="chip" data-f="diente" aria-pressed="false">Saltó un diente <span class="sw"></span></button>
+          <button class="chip" data-f="corte" aria-pressed="false">Cortar la correa <span class="sw"></span></button>
+        </div>
+        <div class="diag" id="diag" aria-live="polite"></div>
+      </div>
+      <div class="card">
+        <h3>¿Cuándo cambiarla?</h3>
+        <p style="margin-top:6px">Cuando lo indique el manual del auto, por kilómetros o por años, lo que llegue primero. Conviene cambiar también el tensor y, si la mueve la correa, la bomba de agua.</p>
+        <p class="nota">Una correa nueva cuesta mucho menos que reparar válvulas dobladas.</p>
+      </div>
+      <div class="cta"><h3>¿Te toca cambiar la distribución?</h3><a href="./#contacto">Pedir turno</a></div>
+    </aside>
+  </div>
+
+  <section class="otros">
+    <h2>Más simuladores gratis</h2>
+    <div class="lista">
+      <a href="motor-4-tiempos.html">Motor de 4 tiempos<span>Cómo trabaja por dentro</span></a>
+      <a href="sistema-de-carga.html">Sistema de carga<span>Batería, burro y alternador</span></a>
+      <a href="distribucion.html" aria-current="page">Distribución<span>Qué pasa si se corta la correa</span></a>
+      <a href="inyector.html">Inyector<span>Limpio contra sucio</span></a>
+      <a href="codigos-scanner.html">Códigos del scanner<span>Qué significa cada falla</span></a>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · Dibujo simplificado con fines didácticos · <a href="./">Inicio</a> · <a href="cursos.html">Cursos</a></div></footer>
+
+<script>
+const $=s=>document.querySelector(s);
+const R=22,L=110,CX=260,CY=392,DECK=172;
+let cig=0,levas=0,corre=!matchMedia("(prefers-reduced-motion: reduce)").matches,falla={},choque=false,inercia=0,ult=performance.now(),puntoAnim=null;
+function lift(x){return Math.sin(Math.PI*Math.min(1,Math.max(0,x)))*24}
+function dibujar(){
+  const th=cig*Math.PI/180;
+  const px=CX+R*Math.sin(th),py=CY-R*Math.cos(th);
+  const pinY=CY-(R*Math.cos(th)+Math.sqrt(L*L-(R*Math.sin(th))**2));
+  // escalar recorrido para el cilindro chico
+  const top=DECK+8+(pinY-(CY-R-L))*1.6;
+  $("#piston").setAttribute("transform",`translate(0 ${top})`);
+  $("#biela").setAttribute("y1",top+22);$("#biela").setAttribute("x2",px);$("#biela").setAttribute("y2",py);
+  $("#munon").setAttribute("cx",px);$("#munon").setAttribute("cy",py);
+  $("#cig").setAttribute("transform",`rotate(${cig%360} ${CX} ${CY})`);
+  const off=falla.diente?16:0, lv=levas+off;
+  $("#levaI").setAttribute("transform",`rotate(${lv%360} 180 90)`);$("#levaE").setAttribute("transform",`rotate(${lv%360} 340 90)`);
+  // ciclo según las levas (0-360 de leva = 0-720 de cigüeñal)
+  const c=((lv*2)%720+720)%720, f=Math.floor(c/180), d=(c%180)/180;
+  let la=f===0?lift(d):0, le=f===3?lift(d):0;
+  if(choque){la=Math.max(la,4);le=Math.max(le,4)}
+  $("#valA").setAttribute("transform",`translate(0 ${la})`+(choque&&la>2?" rotate(8 234 172)":""));
+  $("#valE").setAttribute("transform",`translate(0 ${le})`+(choque&&le>2?" rotate(-8 286 172)":""));
+  // detección de choque: correa cortada, válvula abierta y pistón arriba
+  if(falla.corte&&!choque&&(la>6||le>6)&&top<DECK+8+Math.max(la,le)){choque=true;$("#alerta").hidden=false;corre=false;$("#estadoTxt").textContent="Motor roto";diag();}
+  $("#dientes").setAttribute("stroke-dashoffset",falla.corte?0:-cig*.35);
+  $("#correa").setAttribute("stroke",falla.corte?"#2a1010":"#151515");$("#dientes").setAttribute("opacity",falla.corte?.25:1);
+  $("#dC").textContent=Math.round(((cig%720)+720)%720)+"°";$("#dL").textContent=Math.round(((lv%360)+360)%360)+"°";
+  const mal=falla.diente||falla.corte;
+  $("#dP").textContent=falla.corte?"Perdida":falla.diente?"Fuera de punto":"Correcta";$("#dP").style.color=mal?"var(--mal)":"var(--ok)";
+  ["#mI","#mE"].forEach(m=>$(m).setAttribute("class",mal?"marcamal":"marcaok"));
+}
+function diag(){
+  const t=[];
+  if(falla.diente)t.push(`<div><b>Fuera de punto</b>Las levas quedaron un diente atrasadas: las válvulas abren a destiempo. El motor pierde fuerza, anda irregular o no arranca. Las marcas ya no coinciden.</div>`);
+  if(falla.corte)t.push(choque?`<div><b>Válvulas dobladas</b>Las levas se frenaron con válvulas abiertas y el pistón siguió subiendo por inercia. En un motor interferente, eso dobla válvulas y puede dañar pistones y tapa.</div>`:`<div><b>Correa cortada</b>Las levas se frenan de golpe, pero el cigüeñal sigue girando unos instantes…</div>`);
+  $("#diag").innerHTML=t.join("");
+}
+function loop(now){
+  const dt=Math.min(64,now-ult);ult=now;
+  if(puntoAnim!==null){ // ir a la puesta a punto
+    const objetivo=Math.ceil(cig/720)*720, paso=Math.min(dt*.5,objetivo-cig);
+    cig+=paso;if(!falla.corte)levas=cig/2;if(objetivo-cig<.5){cig=objetivo;if(!falla.corte)levas=cig/2;puntoAnim=null;corre=false;sync();}
+  } else if(corre){
+    let v=dt*.22;
+    if(falla.corte){inercia+=dt;v*=Math.max(0,1-inercia/2600);if(v<=0.001){corre=false;sync();if(!choque){$("#estadoTxt").textContent="Motor detenido";$("#diag").innerHTML=`<div><b>Esta vez se salvó</b>Las levas se frenaron con las válvulas cerradas y el pistón no las tocó. Es pura suerte: tocá «Reparar motor» y probá cortarla en otro momento.</div>`}}}
+    cig+=v;if(!falla.corte)levas=cig/2;
+  }
+  dibujar();requestAnimationFrame(loop);
+}
+function sync(){$("#play").textContent=corre?"❚❚ Pausa":"▶ Seguir";$("#play").disabled=choque}
+$("#play").onclick=()=>{if(choque)return;corre=!corre;puntoAnim=null;sync()};
+$("#punto").onclick=()=>{if(choque)return;puntoAnim=1;};
+$("#reparar").onclick=()=>{falla={};choque=false;inercia=0;levas=cig/2;$("#alerta").hidden=true;document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed","false"));$("#estadoTxt").textContent="Funcionando";$("#diag").innerHTML="";corre=true;sync()};
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{
+  if(choque)return;const k=c.dataset.f;falla[k]=!falla[k];c.setAttribute("aria-pressed",!!falla[k]);
+  if(k==="corte"){if(falla.corte){inercia=0;corre=true;$("#estadoTxt").textContent="¡Se cortó la correa!"}else{levas=cig/2}}
+  diag();sync();
+});
+sync();requestAnimationFrame(loop);
+</script>
+</body>
+</html>

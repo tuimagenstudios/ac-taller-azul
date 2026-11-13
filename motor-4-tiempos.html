@@ -125,6 +125,9 @@
   .cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:var(--amarillo);color:#000;border-radius:14px;padding:18px 22px}
   .cta h3{font-size:1.35rem}
   .cta a{background:#000;color:var(--amarillo);font-weight:700;text-decoration:none;padding:10px 16px;border-radius:8px}
+  .sim{display:block;text-decoration:none;color:var(--texto);background:var(--panel);border:1px solid var(--borde);border-left:4px solid var(--amarillo);border-radius:10px;padding:14px 16px;font-weight:700}
+  .sim span{display:block;font-weight:400;font-size:.85rem;color:var(--suave)}
+  .sim:hover{border-color:var(--amarillo)}
   footer{border-top:1px solid var(--borde);padding-block:22px;color:var(--suave);font-size:.8rem;text-align:center}
   @media(max-width:520px){.estado{grid-template-columns:1fr 1fr}.badge{font-size:.75rem}.hud .deg{font-size:1.05rem}}
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -300,6 +303,15 @@
       <div class="cta"><h3>Aprendé más en nuestros cursos</h3><a href="cursos.html">Ver cursos</a></div>
     </aside>
   </div>
+  <section style="padding-bottom:56px">
+    <h2 style="font-size:1.6rem;margin-bottom:12px">Más simuladores gratis</h2>
+    <div style="display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
+      <a class="sim" href="sistema-de-carga.html">Sistema de carga<span>Batería, burro y alternador</span></a>
+      <a class="sim" href="distribucion.html">Distribución<span>Qué pasa si se corta la correa</span></a>
+      <a class="sim" href="inyector.html">Inyector<span>Limpio contra sucio</span></a>
+      <a class="sim" href="codigos-scanner.html">Códigos del scanner<span>Qué significa cada falla</span></a>
+    </div>
+  </section>
 </main>
 <footer><div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · Dibujo simplificado con fines didácticos, no a escala · <a href="./" style="color:var(--amarillo)">Inicio</a> · <a href="cursos.html" style="color:var(--amarillo)">Cursos</a></div></footer>
 

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inyector limpio contra sucio | AC-Taller</title>
+<meta name="description" content="Simulador gratis: mirá cómo pulveriza un inyector limpio y cómo gotea uno sucio. Por qué conviene la limpieza de inyectores. AC-Taller, Azul.">
+<link rel="canonical" href="https://ac-taller.com/inyector.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AC-Taller"><meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://ac-taller.com/inyector.html">
+<meta property="og:title" content="Inyector limpio contra sucio | AC-Taller">
+<meta property="og:description" content="Mirá la diferencia entre un inyector que pulveriza bien y uno que gotea. Gratis.">
+<meta property="og:image" content="https://ac-taller.com/img/og-inyector.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/simulador.css">
+<style>
+  .lenta{position:absolute;right:12px;top:12px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#000;background:var(--amarillo);border-radius:20px;padding:3px 10px}
+  .medidor{height:12px;border-radius:6px;background:#26262b;overflow:hidden;margin-top:4px}
+  .medidor i{display:block;height:100%;border-radius:6px;transition:width .4s,background .4s}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./"><img src="logo.png" alt="Logo AC Motors" width="36" height="36">AC-TALLER</a><a class="volver" href="./">← Volver a la web</a></div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <span class="kicker">Simulador gratis · Inyección</span>
+    <h1>Inyector <span>limpio</span> contra sucio</h1>
+    <p>El inyector es una válvula eléctrica que abre durante milésimas de segundo y pulveriza la nafta en gotitas muy finas. Con el tiempo se ensucia: deja de pulverizar y empieza a chorrear o gotear. Comparalos en cámara lenta.</p>
+  </section>
+
+  <div class="app">
+    <section class="banco" aria-label="Inyector animado">
+      <div class="barra"><span>Inyector en corte · múltiple de admisión</span><span id="estadoTxt">Inyector limpio</span></div>
+      <div class="escena">
+        <span class="lenta">Cámara lenta</span>
+        <svg viewBox="0 0 520 470" role="img" aria-label="Inyector en corte pulverizando nafta, con la señal eléctrica al costado">
+          <defs>
+            <linearGradient id="gMet" x1="0" x2="1"><stop offset="0" stop-color="#6f6f77"/><stop offset=".5" stop-color="#d6d6dc"/><stop offset="1" stop-color="#65656d"/></linearGradient>
+            <linearGradient id="gCuerpo" x1="0" x2="1"><stop offset="0" stop-color="#2a2a30"/><stop offset=".5" stop-color="#45454d"/><stop offset="1" stop-color="#26262b"/></linearGradient>
+            <radialGradient id="gNiebla" cx=".5" cy="0" r="1"><stop offset="0" stop-color="#ffe9a0" stop-opacity=".55"/><stop offset="1" stop-color="#ffe9a0" stop-opacity="0"/></radialGradient>
+          </defs>
+          <!-- Riel de nafta -->
+          <rect x="60" y="34" width="290" height="34" rx="8" fill="#3a3a42" stroke="#55555d"/>
+          <rect x="66" y="42" width="278" height="18" rx="5" fill="#c9a227" opacity=".35"/>
+          <text class="lblsub" x="70" y="28">RIEL DE NAFTA (con presión)</text>
+          <!-- Cuerpo del inyector -->
+          <rect x="170" y="68" width="60" height="22" fill="#55555d"/>
+          <path d="M160 90 H240 V250 H160 Z" fill="url(#gCuerpo)" stroke="#5a5a62"/>
+          <!-- Conector -->
+          <path d="M240 120 H284 V160 H240 Z" fill="#1d1d21" stroke="#4a4a52"/>
+          <path d="M284 132 H330 M284 148 H330" stroke="#c33" stroke-width="3"/>
+          <!-- Bobina -->
+          <g id="bobina"><rect x="168" y="112" width="64" height="70" rx="4" fill="#7a4a1a" stroke="#a8682a"/><path d="M168 122h64M168 132h64M168 142h64M168 152h64M168 162h64M168 172h64" stroke="#b97a33" stroke-width="2"/></g>
+          <!-- Aguja y resorte -->
+          <g id="aguja"><rect x="196" y="96" width="8" height="186" rx="3" fill="url(#gMet)"/><path d="M196 282 L200 294 L204 282 Z" fill="url(#gMet)"/></g>
+          <path id="resorte" d="" fill="none" stroke="#cfcfd6" stroke-width="2"/>
+          <!-- Tobera -->
+          <path d="M176 250 H224 L214 296 H186 Z" fill="url(#gMet)" stroke="#5a5a62"/>
+          <g id="mugre" opacity="0"><path d="M190 292 q4 6 10 2 q6 4 10 -2 v6 h-20z" fill="#3b2a12"/><circle cx="194" cy="296" r="3" fill="#4a3518"/><circle cx="207" cy="297" r="2.5" fill="#4a3518"/></g>
+          <!-- Múltiple / tapa -->
+          <path d="M40 300 H360 V460 H40 Z" fill="#141416" stroke="#2c2c32"/>
+          <path d="M40 300 H360" stroke="#55555d" stroke-width="3"/>
+          <text class="lblsub" x="48" y="452">CONDUCTO DE ADMISIÓN → hacia el cilindro</text>
+          <clipPath id="bajo"><rect x="40" y="302" width="320" height="158"/></clipPath><ellipse id="niebla" cx="200" cy="300" rx="0" ry="0" fill="url(#gNiebla)" clip-path="url(#bajo)"/>
+          <g id="gotas"></g>
+          <!-- Etiquetas -->
+          <text class="lbl" x="250" y="106">Bobina</text>
+          <text class="lbl" x="250" y="210">Aguja</text>
+          <text class="lbl" x="232" y="290">Tobera</text>
+          <text class="lbl" x="296" y="176">Señal de la</text><text class="lbl" x="296" y="190">computadora</text>
+          <!-- Osciloscopio -->
+          <rect x="380" y="34" width="122" height="120" rx="10" fill="#0d140f" stroke="#2c3a2f"/>
+          <path d="M390 64h102M390 94h102M390 124h102" stroke="#1d2a20"/>
+          <path id="onda" d="" fill="none" stroke="#7ee787" stroke-width="2"/>
+          <text class="lblsub" x="390" y="148">pulso del inyector</text>
+          <text class="lbl" x="380" y="180" id="rpmTxt">800 rpm</text>
+          <text class="lblsub" x="380" y="194">una inyección cada 2 vueltas</text>
+        </svg>
+      </div>
+      <div class="controles">
+        <div class="seg" role="group" aria-label="Estado del inyector">
+          <button data-e="limpio" aria-pressed="true">Limpio</button><button data-e="sucio" aria-pressed="false">Sucio</button><button data-e="tapado" aria-pressed="false">Muy tapado</button>
+        </div>
+        <label class="slider" for="rpm">Acelerar <input type="range" id="rpm" min="800" max="5000" step="100" value="800"></label>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="card">
+        <span class="kicker" id="kick">Estado: limpio</span>
+        <h2 style="margin-top:4px" id="titulo">Pulveriza fino</h2>
+        <p style="margin-top:8px" id="texto"></p>
+        <div style="margin-top:14px;display:grid;gap:10px">
+          <div><span class="sub">Pulverización</span><div class="medidor"><i id="mP"></i></div></div>
+          <div><span class="sub">Combustión</span><div class="medidor"><i id="mC"></i></div></div>
+          <div><span class="sub">Consumo</span><div class="medidor"><i id="mK"></i></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Síntomas de inyectores sucios</h3>
+        <ul style="margin:10px 0 0 18px;color:#d4d4da;display:grid;gap:4px">
+          <li>Ralentí inestable o el motor «tiembla»</li>
+          <li>Tironeos o falta de fuerza al acelerar</li>
+          <li>Más consumo de nafta</li>
+          <li>Cuesta arrancar en frío</li>
+          <li>Olor a nafta o humo negro</li>
+        </ul>
+        <p class="nota">Estos síntomas también pueden venir de otras fallas: conviene un diagnóstico con scanner antes de cambiar piezas.</p>
+      </div>
+      <div class="cta"><h3>Limpieza de inyectores</h3><a href="./#contacto">Pedir turno</a></div>
+    </aside>
+  </div>
+
+  <section class="otros">
+    <h2>Más simuladores gratis</h2>
+    <div class="lista">
+      <a href="motor-4-tiempos.html">Motor de 4 tiempos<span>Cómo trabaja por dentro</span></a>
+      <a href="sistema-de-carga.html">Sistema de carga<span>Batería, burro y alternador</span></a>
+      <a href="distribucion.html">Distribución<span>Qué pasa si se corta la correa</span></a>
+      <a href="inyector.html" aria-current="page">Inyector<span>Limpio contra sucio</span></a>
+      <a href="codigos-scanner.html">Códigos del scanner<span>Qué significa cada falla</span></a>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · Simulación simplificada en cámara lenta · <a href="./">Inicio</a> · <a href="cursos.html">Cursos</a></div></footer>
+
+<script>
+const $=s=>document.querySelector(s);
+const EST={
+  limpio:{t:"Pulveriza fino",k:"Estado: limpio",d:"Abre y cierra justo a tiempo y la nafta sale en una niebla de gotitas muy finas en forma de cono. Se mezcla bien con el aire y se quema completa.",p:95,c:95,cons:40,col:"var(--ok)",tasa:9,r:[1.2,2],ang:22,goteo:0},
+  sucio:{t:"Chorrea y gotea",k:"Estado: sucio",d:"Los depósitos deforman la tobera: sale un chorro torcido con gotas gruesas y sigue goteando después de cerrar. Esas gotas no se queman bien.",p:50,c:58,cons:68,col:"var(--aviso)",tasa:4,r:[2.4,4],ang:9,goteo:.6},
+  tapado:{t:"Casi no inyecta",k:"Estado: muy tapado",d:"Apenas pasa nafta y gotea. El cilindro recibe mezcla pobre: el motor tiembla, falla y pierde mucha fuerza.",p:15,c:25,cons:80,col:"var(--mal)",tasa:1.2,r:[2.8,4.5],ang:5,goteo:1}
+};
+let est="limpio",rpm=800,t=0,abierto=false,ult=performance.now(),gotas=[],hist=[];
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const G=$("#gotas"),NS="http://www.w3.org/2000/svg";
+function nueva(x,y,vx,vy,r,c){const el=document.createElementNS(NS,"circle");el.setAttribute("r",r);el.setAttribute("fill",c);G.appendChild(el);gotas.push({el,x,y,vx,vy,v:1})}
+function resorte(top){let d=`M200 ${top}`;for(let i=1;i<=8;i++)d+=` L${i%2?210:190} ${top-i*3.2}`;return d}
+function panel(){
+  const e=EST[est];$("#kick").textContent=e.k;$("#titulo").textContent=e.t;$("#texto").textContent=e.d;$("#estadoTxt").textContent="Inyector "+est.replace("tapado","muy tapado");
+  [["#mP",e.p,e.col],["#mC",e.c,e.col],["#mK",e.cons,e.cons>60?"var(--mal)":"var(--ok)"]].forEach(([s,w,c])=>{$(s).style.width=w+"%";$(s).style.background=c});
+  $("#mugre").setAttribute("opacity",est==="limpio"?0:est==="sucio"?.8:1);
+}
+function loop(now){
+  const dt=Math.min(64,now-ult);ult=now;if(!reduce)t+=dt;
+  const e=EST[est], periodo=120000/rpm*18, duty=.22+rpm/5000*.18, fase=(t%periodo)/periodo;
+  const ab=fase<duty;abierto=ab;
+  $("#aguja").setAttribute("transform",`translate(0 ${ab?-7:0})`);
+  $("#resorte").setAttribute("d",resorte(ab?100:107));
+  $("#bobina rect").setAttribute("fill",ab?"#b46a20":"#7a4a1a");
+  if(ab&&!reduce){const n=Math.random()<(e.tasa*dt/16%1)?Math.ceil(e.tasa*dt/16):Math.floor(e.tasa*dt/16);
+    for(let i=0;i<n;i++){const a=(Math.random()*2-1)*e.ang*Math.PI/180+(est!=="limpio"?.12:0),sp=3+Math.random()*2.5;
+      nueva(200,298,Math.sin(a)*sp,Math.cos(a)*sp,e.r[0]+Math.random()*(e.r[1]-e.r[0]),est==="limpio"?"#ffe9a0":"#f0c050")}}
+  if(!ab&&e.goteo&&!reduce&&Math.random()<e.goteo*dt/120)nueva(201,298,0,.6,3.5,"#f0c050");
+  // niebla
+  $("#niebla").setAttribute("rx",ab&&est==="limpio"?70:ab?18:0);$("#niebla").setAttribute("ry",ab&&est==="limpio"?120:ab?60:0);$("#niebla").setAttribute("cy",298);
+  gotas=gotas.filter(g=>{g.x+=g.vx*dt/16;g.y+=g.vy*dt/16;g.vy+=.03*dt/16;g.v-=dt/1400;
+    if(g.y>456||g.v<=0){g.el.remove();return false}g.el.setAttribute("cx",g.x.toFixed(1));g.el.setAttribute("cy",g.y.toFixed(1));g.el.setAttribute("opacity",Math.max(0,g.v).toFixed(2));return true});
+  // osciloscopio: últimos 2 períodos
+  let d="";const W=102;for(let i=0;i<=W;i++){const ft=((t-(W-i)/W*periodo*2)%periodo+periodo)%periodo/periodo;const y=ft<duty?66:124;d+=(i?"L":"M")+(390+i)+" "+y}
+  $("#onda").setAttribute("d",d);
+  requestAnimationFrame(loop);
+}
+document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{est=b.dataset.e;document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x===b));panel()});
+$("#rpm").oninput=e=>{rpm=+e.target.value;$("#rpmTxt").textContent=rpm+" rpm"};
+panel();requestAnimationFrame(loop);
+</script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Códigos del scanner: qué significa cada falla | AC-Taller</title>
+<meta name="description" content="Escribí el código de falla del scanner (P0300, P0171, P0420…) y entendé qué significa, qué revisar y si podés seguir andando. Gratis, de AC-Taller, Azul.">
+<link rel="canonical" href="https://ac-taller.com/codigos-scanner.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AC-Taller"><meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://ac-taller.com/codigos-scanner.html">
+<meta property="og:title" content="¿Qué significa el código del scanner? | AC-Taller">
+<meta property="og:description" content="P0300, P0171, P0420 y más, explicados en criollo. Gratis.">
+<meta property="og:image" content="https://ac-taller.com/img/og-scanner.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/simulador.css">
+<style>
+  .scanner{background:linear-gradient(180deg,#2b2b10,#1a1a0a);border:2px solid #4a4718;border-radius:26px;padding:22px;display:grid;gap:16px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .scanner .marca{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:.78rem;letter-spacing:.14em;color:var(--amarillo)}
+  .led{width:10px;height:10px;border-radius:50%;background:#333;display:inline-block;margin-left:8px;vertical-align:middle}
+  .led.on{background:var(--ok);box-shadow:0 0 10px var(--ok)}
+  .pantalla{background:#0b1a12;border:3px solid #050a07;border-radius:12px;min-height:230px;padding:16px 18px;color:#9ff2b3;font-family:ui-monospace,Consolas,monospace;font-size:.92rem;line-height:1.55;box-shadow:inset 0 0 30px rgba(0,0,0,.6);overflow-wrap:anywhere}
+  .pantalla .big{font-size:2.4rem;font-weight:700;letter-spacing:.06em;color:#d6ffe0}
+  .pantalla .dim{color:#5c9d6d}
+  .entrada{display:flex;gap:8px}
+  .entrada input{flex:1;min-width:0;font:700 1.2rem ui-monospace,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;background:#0f0f10;color:var(--texto);border:2px solid #4a4718;border-radius:10px;padding:10px 12px}
+  .rapidos{display:flex;flex-wrap:wrap;gap:6px}
+  .rapidos button{font:600 .82rem ui-monospace,Consolas,monospace;cursor:pointer;background:#232318;color:#e8e6b0;border:1px solid #4a4718;border-radius:20px;padding:6px 11px}
+  .rapidos button:hover{border-color:var(--amarillo)}
+  .grav{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-radius:20px;padding:4px 12px;font-size:.85rem}
+  .g1{background:#0f2414;color:#b9f2c4}.g2{background:#2a2108;color:#ffe09a}.g3{background:#2a0f0a;color:#ffc2b3}
+  .res h2{font-family:ui-monospace,Consolas,monospace;font-size:2.2rem;letter-spacing:.06em;color:var(--amarillo);text-transform:none}
+  .res h3{font-size:1.25rem;margin:4px 0 10px;text-transform:none;font-family:var(--body);font-weight:700;letter-spacing:0}
+  .res dl{display:grid;gap:12px;margin-top:12px}
+  .res dt{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--suave);margin-bottom:2px}
+  .res ul{margin-left:18px;color:#e4e4e8}
+  .anatomia{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px;text-align:center}
+  .anatomia div{background:var(--panel2);border-radius:8px;padding:8px 4px}
+  .anatomia b{display:block;font:700 1.5rem ui-monospace,Consolas,monospace;color:var(--amarillo)}
+  .anatomia span{font-size:.68rem;color:var(--suave);line-height:1.2;display:block}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./"><img src="logo.png" alt="Logo AC Motors" width="36" height="36">AC-TALLER</a><a class="volver" href="./">← Volver a la web</a></div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <span class="kicker">Herramienta gratis · Diagnóstico</span>
+    <h1>¿Qué significa el <span>código del scanner?</span></h1>
+    <p>Cuando se prende el «check engine», la computadora del auto guarda un código de falla. Escribilo acá y te explicamos en criollo qué significa, qué conviene revisar y si podés seguir andando.</p>
+  </section>
+
+  <div class="app">
+    <section class="scanner" aria-label="Scanner virtual">
+      <div class="marca"><span>AC-TALLER · SCANNER OBD2</span><span>ECU<i class="led" id="led"></i></span></div>
+      <div class="pantalla" id="pantalla" aria-live="polite">
+        <div class="dim">&gt; Esperando código…</div>
+        <div>Escribí un código abajo o elegí uno de los más comunes.</div>
+      </div>
+      <form class="entrada" id="form" autocomplete="off">
+        <label for="codigo" class="sr" style="position:absolute;left:-9999px">Código de falla</label>
+        <input id="codigo" maxlength="5" placeholder="P0300" aria-label="Código de falla">
+        <button class="btn" type="submit">Leer</button>
+      </form>
+      <div class="rapidos" id="rapidos"></div>
+    </section>
+
+    <aside class="panel">
+      <div class="card res" id="res">
+        <span class="kicker">Cómo se lee un código</span>
+        <div class="anatomia">
+          <div><b>P</b><span>Sistema<br>(P = motor y caja)</span></div>
+          <div><b>0</b><span>0 = genérico<br>1 = de la marca</span></div>
+          <div><b>3</b><span>Subsistema<br>(3 = encendido)</span></div>
+          <div><b>0</b><span>Falla</span></div>
+          <div><b>0</b><span>específica</span></div>
+        </div>
+        <p class="nota">P = motor y caja · C = chasis · B = carrocería · U = comunicación entre módulos.</p>
+      </div>
+      <div class="card">
+        <h3>Antes de borrar el código</h3>
+        <p style="margin-top:6px">Borrar el código apaga la luz, pero no arregla la falla: vuelve a aparecer. Lo mejor es anotarlo, revisar la causa y recién después borrarlo.</p>
+        <p class="nota">Explicaciones generales para códigos genéricos OBD2. Cada marca puede usar códigos propios o variantes: el diagnóstico real se hace con el auto en el taller.</p>
+      </div>
+      <div class="cta"><h3>Diagnóstico por scanner</h3><a href="./#contacto">Pedir turno</a></div>
+    </aside>
+  </div>
+
+  <section class="otros">
+    <h2>Más simuladores gratis</h2>
+    <div class="lista">
+      <a href="motor-4-tiempos.html">Motor de 4 tiempos<span>Cómo trabaja por dentro</span></a>
+      <a href="sistema-de-carga.html">Sistema de carga<span>Batería, burro y alternador</span></a>
+      <a href="distribucion.html">Distribución<span>Qué pasa si se corta la correa</span></a>
+      <a href="inyector.html">Inyector<span>Limpio contra sucio</span></a>
+      <a href="codigos-scanner.html" aria-current="page">Códigos del scanner<span>Qué significa cada falla</span></a>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · Información general, no reemplaza el diagnóstico en el taller · <a href="./">Inicio</a> · <a href="cursos.html">Cursos</a></div></footer>
+
+<script>
+// g: 1 leve, 2 revisar pronto, 3 no seguir andando / revisar ya
+const C={
+ P0101:["Sensor de flujo de aire (MAF): lectura fuera de rango","Aire y combustible",2,["Sensor MAF sucio","Pérdida de vacío o manguera floja después del sensor","Filtro de aire muy tapado"],"Revisar mangueras de admisión, filtro de aire y limpiar o medir el sensor MAF.","Se puede andar, pero el motor puede tironear y gastar más."],
+ P0106:["Sensor de presión del múltiple (MAP): lectura fuera de rango","Aire y combustible",2,["Manguera de vacío del MAP rota o tapada","Sensor MAP defectuoso","Pérdida de vacío en el múltiple"],"Revisar la manguera y la ficha del MAP y medir su señal.","Se puede andar con cuidado; puede gastar más o andar irregular."],
+ P0113:["Sensor de temperatura del aire de admisión: señal alta","Aire y combustible",1,["Ficha desconectada o cable cortado","Sensor IAT defectuoso"],"Revisar la ficha y el cableado del sensor de temperatura de aire.","Se puede andar; puede costar arrancar en frío."],
+ P0117:["Sensor de temperatura del motor: señal baja","Refrigeración",2,["Cable en corto a masa","Sensor de temperatura defectuoso"],"Revisar el sensor de temperatura de refrigerante y su cableado.","Ojo: el ventilador o la mezcla pueden funcionar mal. Vigilar la temperatura."],
+ P0118:["Sensor de temperatura del motor: señal alta","Refrigeración",2,["Ficha desconectada o cable cortado","Sensor defectuoso"],"Revisar ficha, cableado y sensor de temperatura de refrigerante.","Vigilar la temperatura: el ventilador puede quedar siempre prendido o no prender."],
+ P0121:["Sensor de posición del acelerador (TPS): fuera de rango","Aire y combustible",2,["Sensor TPS gastado","Cuerpo de aceleración sucio","Falso contacto en la ficha"],"Medir el recorrido del TPS y limpiar el cuerpo de aceleración.","Puede entrar en modo de emergencia con poca aceleración."],
+ P0128:["El motor no llega a temperatura (termostato)","Refrigeración",1,["Termostato trabado abierto","Sensor de temperatura defectuoso"],"Revisar el termostato y el sensor de temperatura.","Se puede andar, pero gasta más y la calefacción calienta poco."],
+ P0130:["Sensor de oxígeno (sonda lambda) delantero: falla de circuito","Emisiones",2,["Sonda lambda gastada","Cable o ficha dañados","Calefactor de la sonda quemado"],"Revisar cableado y señal de la sonda lambda antes del catalizador.","Se puede andar, pero puede gastar más y contaminar."],
+ P0133:["Sonda lambda delantera: respuesta lenta","Emisiones",1,["Sonda lambda vieja o contaminada","Pérdida en el escape antes de la sonda"],"Medir la señal de la sonda y revisar pérdidas de escape.","Se puede andar; a la larga sube el consumo."],
+ P0171:["Mezcla pobre (banco 1): entra más aire o menos nafta de lo esperado","Aire y combustible",2,["Pérdida de vacío (mangueras, junta del múltiple)","Inyectores sucios","Presión de nafta baja (bomba o filtro)","Sensor MAF sucio"],"Buscar entradas de aire falso, medir presión de nafta y revisar inyectores.","Se puede andar poco: puede tironear y recalentar la combustión. Revisar pronto."],
+ P0172:["Mezcla rica (banco 1): sobra nafta","Aire y combustible",2,["Inyector que gotea","Presión de nafta alta","Filtro de aire tapado","Sensor MAF o de temperatura con lectura errónea"],"Revisar inyectores, regulador de presión y sensores.","Gasta mucho más y puede dañar el catalizador. Revisar pronto."],
+ P0300:["Falla de encendido en varios cilindros (aleatoria)","Encendido",3,["Bujías gastadas","Bobina o cables de bujía","Mezcla pobre o pérdida de vacío","Baja compresión"],"Revisar bujías, bobinas y cables; medir compresión si sigue.","No conviene seguir: si la luz de check titila, la nafta sin quemar puede romper el catalizador."],
+ P0325:["Sensor de detonación: falla de circuito","Encendido",2,["Sensor flojo o defectuoso","Cableado dañado"],"Revisar ajuste, ficha y cableado del sensor de detonación.","Se puede andar con cuidado; la computadora atrasa el encendido y el motor pierde fuerza."],
+ P0335:["Sensor de posición del cigüeñal: falla de circuito","Encendido",3,["Sensor del cigüeñal defectuoso","Cable cortado o ficha floja","Rueda fónica dañada"],"Medir el sensor y revisar cableado y rueda fónica.","Puede apagarse andando o no arrancar. Revisar ya."],
+ P0340:["Sensor de posición del árbol de levas: falla de circuito","Encendido",2,["Sensor de levas defectuoso","Cableado dañado","Distribución fuera de punto"],"Revisar sensor y cableado; si persiste, controlar la puesta a punto de la distribución.","Puede costar arrancar. Revisar pronto."],
+ P0351:["Bobina de encendido A: falla de circuito","Encendido",3,["Bobina quemada","Ficha o cable de la bobina dañado"],"Medir la bobina del cilindro 1 y su alimentación.","Ese cilindro puede dejar de explotar: no conviene seguir andando."],
+ P0401:["Válvula EGR: flujo insuficiente","Emisiones",1,["Válvula EGR o conductos tapados con carbón","Válvula EGR trabada"],"Limpiar la válvula EGR y sus conductos.","Se puede andar; puede haber cascabeleo o fallar la verificación de emisiones."],
+ P0420:["Catalizador con eficiencia baja (banco 1)","Emisiones",1,["Catalizador gastado","Sonda lambda trasera defectuosa","Pérdida en el escape"],"Revisar sondas lambda y escape antes de cambiar el catalizador.","Se puede andar, pero conviene buscar la causa: un motor que falla gasta el catalizador."],
+ P0442:["Pérdida chica en el sistema de vapores de nafta (EVAP)","Emisiones",1,["Tapa del tanque mal cerrada o gastada","Manguera de vapores fisurada"],"Primero revisar la tapa del tanque; después, mangueras del canister.","Se puede andar sin problema."],
+ P0455:["Pérdida grande en el sistema de vapores de nafta (EVAP)","Emisiones",1,["Tapa del tanque floja o falta","Manguera suelta del canister"],"Revisar la tapa del tanque y las mangueras del canister.","Se puede andar; puede haber olor a nafta."],
+ P0500:["Sensor de velocidad del vehículo: falla","Velocidad y ralentí",2,["Sensor de velocidad defectuoso","Cableado dañado"],"Revisar sensor de velocidad y su ficha.","El velocímetro puede no andar y la caja automática cambiar mal."],
+ P0505:["Control de ralentí: falla","Velocidad y ralentí",2,["Motor paso a paso o válvula IAC sucios","Cuerpo de aceleración sucio","Pérdida de vacío"],"Limpiar cuerpo de aceleración y válvula de ralentí.","Se puede andar, pero puede apagarse en los semáforos."],
+ P0562:["Tensión del sistema baja","Computadora y electricidad",2,["Alternador que no carga bien","Batería gastada","Bornes sulfatados o masa floja"],"Medir la batería apagado y en marcha (ver el simulador de sistema de carga).","Puede quedarse sin batería en cualquier momento."],
+ P0563:["Tensión del sistema alta","Computadora y electricidad",3,["Regulador de voltaje del alternador defectuoso"],"Medir la tensión en marcha: no debería pasar de unos 14,5 V.","Revisar ya: la sobretensión puede dañar la batería y módulos electrónicos."],
+ P0700:["La caja automática informa una falla","Transmisión",2,["Falla registrada en el módulo de la caja"],"Leer los códigos del módulo de la caja para ver el detalle.","Puede entrar en modo de emergencia (queda en un solo cambio). Revisar pronto."],
+ U0100:["Se perdió la comunicación con la computadora del motor","Comunicación",3,["Ficha de la computadora floja o sulfatada","Cableado de la red CAN dañado","Alimentación o masa de la computadora"],"Revisar alimentación, masas y fichas de la computadora.","Puede no arrancar o apagarse. Revisar ya."]
+};
+const SUB={P:{0:"Aire, combustible y emisiones auxiliares",1:"Aire y combustible",2:"Aire y combustible (inyectores)",3:"Encendido y fallas de encendido",4:"Emisiones",5:"Velocidad, ralentí y entradas",6:"Computadora y salidas",7:"Transmisión",8:"Transmisión",9:"Transmisión"}};
+const SIS={P:"Motor y caja",C:"Chasis (frenos, ABS, dirección)",B:"Carrocería (airbag, confort)",U:"Comunicación entre módulos"};
+const $=s=>document.querySelector(s);
+const rap=["P0300","P0171","P0420","P0335","P0562","P0128","P0455","U0100"];
+rap.forEach(c=>{const b=document.createElement("button");b.type="button";b.textContent=c;b.onclick=()=>leer(c);$("#rapidos").appendChild(b)});
+function g(n){return n===3?`<span class="grav g3">● No seguir andando: revisar ya</span>`:n===2?`<span class="grav g2">● Revisar pronto</span>`:`<span class="grav g1">● Leve: se puede andar</span>`}
+let timer=null;
+function leer(raw){
+  const c=(raw||"").trim().toUpperCase();$("#codigo").value=c;
+  const p=$("#pantalla"),led=$("#led");
+  if(!/^[PCBU][0-3][0-9A-F]{3}$/.test(c)){p.innerHTML=`<div class="dim">&gt; Código no válido</div><div>Tiene que ser una letra (P, C, B o U) y 4 números. Ejemplo: P0300.</div>`;return}
+  clearTimeout(timer);led.classList.remove("on");
+  p.innerHTML=`<div class="dim">&gt; Conectando con la ECU…</div>`;
+  timer=setTimeout(()=>{p.innerHTML+=`<div class="dim">&gt; Leyendo memoria de fallas…</div>`;led.classList.add("on");
+    timer=setTimeout(()=>mostrar(c),450)},450);
+}
+function mostrar(c){
+  let k=c, cil=null;
+  const m=c.match(/^P030([1-8])$/);if(m){k="P0300";cil=m[1]}
+  const d=C[k], p=$("#pantalla");
+  if(d){
+    const titulo=cil?`Falla de encendido en el cilindro ${cil}`:d[0];
+    p.innerHTML=`<div class="big">${c}</div><div>${titulo}</div><div class="dim">&gt; Sistema: ${d[1]}</div>`;
+    $("#res").innerHTML=`<span class="kicker">${d[1]}</span><h2>${c}</h2><h3>${titulo}</h3>${g(d[2])}
+      <dl><div><dt>Causas más comunes</dt><dd><ul>${(cil?["Bujía del cilindro "+cil,"Bobina o cable del cilindro "+cil,"Inyector del cilindro "+cil,"Baja compresión en ese cilindro"]:d[3]).map(x=>`<li>${x}</li>`).join("")}</ul></dd></div>
+      <div><dt>Qué conviene revisar</dt><dd>${cil?"Intercambiar bujía o bobina con otro cilindro: si la falla se muda, encontraste la pieza.":d[4]}</dd></div>
+      <div><dt>¿Puedo seguir andando?</dt><dd>${d[5]}</dd></div></dl>`;
+  } else {
+    const s=SIS[c[0]], gen=c[1]==="0"?"genérico (igual en todas las marcas)":"propio de la marca", sub=c[0]==="P"?(SUB.P[c[2]]||"—"):"—";
+    p.innerHTML=`<div class="big">${c}</div><div>Código ${gen}</div><div class="dim">&gt; No está en nuestra lista todavía</div>`;
+    $("#res").innerHTML=`<span class="kicker">Cómo se lee</span><h2>${c}</h2><h3>No tenemos la explicación de este código</h3>
+      <div class="anatomia"><div><b>${c[0]}</b><span>${s}</span></div><div><b>${c[1]}</b><span>${gen}</span></div><div><b>${c[2]}</b><span>${sub}</span></div><div><b>${c[3]}</b><span>Falla</span></div><div><b>${c[4]}</b><span>específica</span></div></div>
+      <p style="margin-top:12px">Para saber exactamente qué significa y qué revisar, traé el auto y lo diagnosticamos con el scanner.</p>`;
+  }
+}
+$("#form").addEventListener("submit",e=>{e.preventDefault();leer($("#codigo").value)});
+</script>
+</body>
+</html>

@@ -63,7 +63,11 @@
   .gratis{display:block;margin-top:22px;text-decoration:none;color:inherit;background:var(--fondo2);border:1px solid #242424;border-left:4px solid var(--amarillo);border-radius:8px;padding:24px}
   .gratis h2{font-size:clamp(1.5rem,5vw,2.1rem);color:var(--amarillo);margin-bottom:8px}
   .gratis p{color:var(--suave);margin-bottom:16px;max-width:60ch}
-  .gratis:hover .btn{background:transparent;color:var(--amarillo)}
+  .sims{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  .sims a{display:block;text-decoration:none;color:var(--texto);background:#1b1b1b;border:1px solid #2c2c2c;border-radius:8px;padding:14px 16px}
+  .sims a:hover{border-color:var(--amarillo)}
+  .sims b{display:block;color:var(--amarillo)}
+  .sims span{font-size:.85rem;color:var(--suave)}
   .proximos{margin-top:22px;border:1px dashed #444;border-radius:8px;padding:20px;text-align:center;color:var(--suave)}
   footer{border-top:1px solid #222;padding:26px 0 90px;color:var(--suave);font-size:.85rem;text-align:center}
   footer a{color:var(--amarillo)}
@@ -115,12 +119,18 @@
         </div>
       </article>
 
-      <a class="gratis" href="motor-4-tiempos.html">
+      <section class="gratis" id="gratis">
         <span class="etiqueta">Material gratis</span>
-        <h2>El motor de 4 tiempos, por dentro</h2>
-        <p>Un cilindro en corte, funcionando. Toca cada pieza, mira los 4 tiempos y rompe el motor a propósito para ver qué falla.</p>
-        <span class="btn">Probar el motor →</span>
-      </a>
+        <h2>Simuladores de mecánica</h2>
+        <p>Aprende tocando: piezas que se mueven, fallas que puedes provocar y un tester virtual. Gratis, desde el celular o la compu.</p>
+        <div class="sims">
+          <a href="motor-4-tiempos.html"><b>Motor de 4 tiempos</b><span>Cómo trabaja por dentro</span></a>
+          <a href="sistema-de-carga.html"><b>¿Por qué no arranca?</b><span>Batería, burro, alternador y tester</span></a>
+          <a href="distribucion.html"><b>Distribución</b><span>Qué pasa si se corta la correa</span></a>
+          <a href="inyector.html"><b>Inyector</b><span>Limpio contra sucio</span></a>
+          <a href="codigos-scanner.html"><b>Códigos del scanner</b><span>Qué significa cada falla</span></a>
+        </div>
+      </section>
 
       <div class="proximos">Próximamente más cursos. ¿Quieres un curso presencial? <a href="#" data-wa style="color:var(--amarillo)">Escríbenos</a>.</div>
     </div>
