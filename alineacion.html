@@ -450,7 +450,7 @@ function certificado(cv,nombre){const W=2000,H=1414,c=cv.getContext("2d");cv.wid
   c.fillStyle="#9d9da6";c.font="30px Inter, sans-serif";c.fillText("Rótula · Extremo de dirección · Amortiguador y espiral · Bujes y parrilla · Alineación y balanceo",W/2,1010);
   const f=new Date(),fecha=f.toLocaleDateString("es-AR",{day:"numeric",month:"long",year:"numeric"});
   c.textAlign="left";c.fillStyle="#d4d4da";c.font="32px Inter, sans-serif";c.fillText("Fecha: "+fecha,170,1200);
-  c.textAlign="right";c.fillStyle="#d4d4da";c.fillRect(W-700,1160,520,2);c.fillText("AC-Taller · Azul",W-180,1200);
+  c.textAlign="right";c.fillStyle="#d4d4da";c.textAlign="center";c.fillStyle="#f2f2f2";c.font="italic 44px Georgia, serif";c.fillText("Christian Ayestaran",W-440,1130);c.fillStyle="#d4d4da";c.fillRect(W-700,1160,520,2);c.font="28px Inter, sans-serif";c.fillText("Christian Ayestaran · AC-Taller",W-440,1200);
   c.textAlign="center";c.fillStyle="#6b6b75";c.font="24px Inter, sans-serif";c.fillText("Curso con fines educativos. No habilita para ejercer la mecánica profesionalmente.",W/2,1300);}
 function previa(){certificado($("#certPrev"),$("#nombre").value)}
 $("#nombre").addEventListener("input",previa);
