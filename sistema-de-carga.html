@@ -48,67 +48,99 @@
     <section class="banco" aria-label="Sistema de carga y arranque">
       <div class="barra"><span>Circuito de carga y arranque · esquema simplificado</span><span id="estadoTxt">Motor apagado</span></div>
       <div class="escena">
-        <svg viewBox="0 0 520 400" role="img" aria-label="Esquema con batería, burro de arranque, alternador y motor">
+        <svg viewBox="0 0 520 400" role="img" aria-label="Batería, burro de arranque, alternador y motor conectados">
           <defs>
-            <linearGradient id="gBat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d2d33"/><stop offset="1" stop-color="#1b1b1f"/></linearGradient>
-            <linearGradient id="gMet" x1="0" x2="1"><stop offset="0" stop-color="#77777f"/><stop offset=".5" stop-color="#d9d9df"/><stop offset="1" stop-color="#6c6c74"/></linearGradient>
-            <linearGradient id="gBlk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d3d43"/><stop offset="1" stop-color="#2a2a2f"/></linearGradient>
+            <linearGradient id="gBat" x1="0" x2="1"><stop offset="0" stop-color="#1c1c21"/><stop offset=".55" stop-color="#34343c"/><stop offset="1" stop-color="#18181c"/></linearGradient>
+            <linearGradient id="gBatTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3c3c44"/><stop offset="1" stop-color="#26262c"/></linearGradient>
+            <linearGradient id="gMet" x1="0" x2="1"><stop offset="0" stop-color="#6c6c74"/><stop offset=".45" stop-color="#e3e3e9"/><stop offset=".6" stop-color="#bdbdc4"/><stop offset="1" stop-color="#5f5f67"/></linearGradient>
+            <linearGradient id="gMetV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9d9df"/><stop offset=".5" stop-color="#9a9aa2"/><stop offset="1" stop-color="#5c5c64"/></linearGradient>
+            <linearGradient id="gBlk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a51"/><stop offset="1" stop-color="#2b2b30"/></linearGradient>
+            <linearGradient id="gTapa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8d84a"/><stop offset="1" stop-color="#9c8c12"/></linearGradient>
+            <radialGradient id="gAlt" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#e9e9ee"/><stop offset=".6" stop-color="#a5a5ad"/><stop offset="1" stop-color="#5d5d65"/></radialGradient>
+            <radialGradient id="gPiso" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#26262b"/><stop offset="1" stop-color="#26262b" stop-opacity="0"/></radialGradient>
+            <filter id="brillo" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           </defs>
+          <ellipse cx="310" cy="372" rx="200" ry="16" fill="url(#gPiso)"/>
+          <ellipse cx="102" cy="332" rx="86" ry="10" fill="url(#gPiso)"/>
+
           <!-- Tablero -->
-          <rect x="24" y="24" width="150" height="86" rx="12" fill="#151518" stroke="#2c2c32"/>
-          <text class="lblsub" x="36" y="44">TABLERO</text>
-          <g id="lampara"><rect x="36" y="54" width="44" height="30" rx="5" fill="#2a1410" stroke="#4a2018"/><rect x="44" y="61" width="28" height="16" rx="2" fill="none" stroke="#5a2a20" stroke-width="2" id="lampIcon"/><path d="M50 61v-3M66 61v-3" stroke="#5a2a20" stroke-width="2" id="lampPins"/></g>
-          <text class="lblsub" x="36" y="100" id="lampTxt">Testigo apagado</text>
-          <g id="llave"><circle cx="138" cy="68" r="22" fill="#1e1e22" stroke="#3a3a42"/><g id="llaveRot"><rect x="134" y="50" width="8" height="36" rx="3" fill="url(#gMet)"/></g></g>
-          <!-- Motor (block) -->
-          <rect x="210" y="120" width="190" height="150" rx="14" fill="url(#gBlk)" stroke="#47474f"/>
-          <path d="M226 140h158M226 160h158" stroke="#4a4a52"/>
-          <text class="lbl" x="300" y="150">MOTOR</text>
+          <rect x="24" y="24" width="152" height="90" rx="14" fill="#141417" stroke="#2c2c32"/>
+          <text class="lblsub" x="38" y="44">TABLERO</text>
+          <g id="lampara"><rect x="36" y="54" width="46" height="32" rx="6" fill="#2a1410" stroke="#4a2018"/><rect x="45" y="62" width="28" height="16" rx="2" fill="none" stroke="#5a2a20" stroke-width="2" id="lampIcon"/><path d="M51 62v-3M67 62v-3M50 70h6M64 67v6M61 70h6" stroke="#5a2a20" stroke-width="2" id="lampPins"/></g>
+          <text class="lblsub" x="36" y="104" id="lampTxt">Testigo apagado</text>
+          <g id="llave"><circle cx="138" cy="70" r="24" fill="#1c1c20" stroke="#3a3a42" stroke-width="2"/><circle cx="138" cy="70" r="17" fill="#26262b"/>
+            <text x="112" y="52" font-size="7" fill="#777">OFF</text><text x="156" y="54" font-size="7" fill="#777">ON</text><text x="160" y="84" font-size="7" fill="#777">ST</text>
+            <g id="llaveRot"><rect x="134" y="52" width="8" height="36" rx="3" fill="url(#gMet)"/><circle cx="138" cy="70" r="4" fill="#444"/></g></g>
+
+          <!-- Motor -->
+          <rect x="222" y="96" width="176" height="30" rx="10" fill="url(#gTapa)" stroke="#6b600c"/>
+          <text x="282" y="116" font-family="Anton,Impact,sans-serif" font-size="14" fill="#2a2604" letter-spacing="2">AC MOTORS</text>
+          <rect x="214" y="126" width="192" height="30" rx="4" fill="#3e3e45" stroke="#55555d"/>
+          <path d="M210 156 H410 V284 H210 Z" fill="url(#gBlk)" stroke="#55555d"/>
+          <path d="M300 170v100M340 170v100M380 170v100" stroke="#3a3a40" stroke-width="3"/>
+          <path d="M222 284 H398 L392 304 H228 Z" fill="#26262b" stroke="#45454d"/>
           <!-- Correa -->
-          <path id="correa" d="" fill="none" stroke="#111" stroke-width="7" stroke-linejoin="round"/>
-          <path id="correaMarca" d="" fill="none" stroke="#3a3a40" stroke-width="7" stroke-dasharray="3 9"/>
-          <g id="poleaCig"><circle cx="260" cy="240" r="26" fill="#55555c" stroke="#86868e" stroke-width="2"/><path d="M260 216v48M236 240h48" stroke="#2c2c31" stroke-width="5"/><circle cx="260" cy="240" r="6" fill="#bbb"/></g>
+          <path id="correa" d="" fill="none" stroke="#0f0f11" stroke-width="8" stroke-linejoin="round"/>
+          <path id="correaMarca" d="" fill="none" stroke="#3a3a42" stroke-width="8" stroke-dasharray="2 6"/>
+          <!-- Polea del cigüeñal -->
+          <g id="poleaCig"><circle cx="260" cy="240" r="27" fill="#4a4a52" stroke="#8a8a92" stroke-width="2"/><circle cx="260" cy="240" r="21" fill="none" stroke="#2c2c31" stroke-width="2"/><circle cx="260" cy="240" r="15" fill="#5c5c64"/>
+            <path d="M260 226v28M246 240h28" stroke="#2c2c31" stroke-width="4"/><circle cx="260" cy="240" r="5" fill="#cfcfd5"/><circle cx="260" cy="216" r="2.5" fill="#f5e61b"/></g>
           <!-- Alternador -->
           <g id="alternador">
-            <circle cx="440" cy="110" r="44" fill="url(#gMet)" stroke="#5a5a62" stroke-width="2"/>
-            <circle cx="440" cy="110" r="34" fill="none" stroke="#6f6f77" stroke-dasharray="4 4"/>
-            <g id="poleaAlt"><circle cx="440" cy="110" r="15" fill="#3a3a41" stroke="#999"/><path d="M440 96v28M426 110h28" stroke="#222" stroke-width="4"/></g>
-            <circle cx="474" cy="146" r="6" fill="#c33" stroke="#fff" stroke-width="1"/>
+            <circle cx="440" cy="110" r="45" fill="url(#gAlt)" stroke="#4d4d55" stroke-width="2"/>
+            <g stroke="#55555d" stroke-width="3" stroke-linecap="round"><path d="M440 70v8M440 142v8M400 110h8M472 110h8M412 82l6 6M462 132l6 6M468 82l-6 6M418 132l-6 6"/></g>
+            <circle cx="440" cy="110" r="27" fill="#2b2b30" stroke="#6a6a72"/>
+            <g id="poleaAlt"><circle cx="440" cy="110" r="16" fill="#46464e" stroke="#9a9aa2" stroke-width="2"/><circle cx="440" cy="110" r="11" fill="none" stroke="#2a2a2f" stroke-width="2"/><path d="M440 98v24M428 110h24" stroke="#25252a" stroke-width="3"/><circle cx="440" cy="110" r="3" fill="#ddd"/></g>
+            <rect x="466" y="140" width="16" height="12" rx="3" fill="#b3261e"/>
           </g>
-          <text class="lbl" x="400" y="40">Alternador</text><text class="lblsub" x="400" y="52">carga la batería</text>
           <!-- Burro de arranque -->
           <g id="burro">
-            <rect x="300" y="292" width="110" height="46" rx="20" fill="url(#gMet)" stroke="#5a5a62"/>
-            <rect x="320" y="280" width="64" height="20" rx="8" fill="#9a9aa2" stroke="#5a5a62"/>
-            <circle cx="404" cy="300" r="5" fill="#c33" stroke="#fff"/>
-            <g id="pinon"><circle cx="292" cy="315" r="12" fill="#6c6c74" stroke="#aaa"/><path d="M292 303v24M280 315h24M284 307l16 16M300 307l-16 16" stroke="#3a3a40" stroke-width="2"/></g>
+            <path d="M300 300 Q300 292 308 292 H404 Q412 292 412 300 V330 Q412 338 404 338 H308 Q300 338 300 330 Z" fill="url(#gMetV)" stroke="#55555d"/>
+            <path d="M318 292v46M338 292v46M358 292v46" stroke="#7a7a82" opacity=".6"/>
+            <rect x="322" y="272" width="72" height="22" rx="10" fill="url(#gMet)" stroke="#55555d"/>
+            <rect x="398" y="292" width="12" height="16" rx="3" fill="#b3261e"/>
+            <path d="M280 306 h20 v18 h-20 z" fill="#6a6a72"/>
+            <g id="pinon"><circle cx="292" cy="315" r="12" fill="#77777f" stroke="#b0b0b8"/><path d="M292 301v-3M292 329v3M278 315h-3M306 315h3M282 305l-2-2M302 325l2 2M302 305l2-2M282 325l-2 2" stroke="#b0b0b8" stroke-width="3"/><circle cx="292" cy="315" r="4" fill="#ddd"/></g>
           </g>
-          <text class="lbl" x="304" y="360">Burro de arranque</text>
-          <text class="lblsub" x="304" y="372" id="burroTxt">en reposo</text>
           <!-- Batería -->
           <g id="bateria">
-            <rect x="34" y="226" width="140" height="100" rx="10" fill="url(#gBat)" stroke="#45454d"/>
-            <rect x="34" y="226" width="140" height="18" rx="8" fill="#26262b"/>
-            <rect x="52" y="212" width="22" height="16" rx="3" fill="#c33"/><text x="58" y="224" font-size="13" font-weight="700" fill="#fff">+</text>
-            <rect x="134" y="212" width="22" height="16" rx="3" fill="#333" stroke="#777"/><text x="141" y="224" font-size="14" font-weight="700" fill="#fff">−</text>
-            <g id="sulfato" opacity="0"><circle cx="58" cy="212" r="7" fill="#d8f0e0"/><circle cx="68" cy="210" r="6" fill="#bfe3cc"/><circle cx="63" cy="205" r="5" fill="#e9fbf0"/></g>
-            <rect x="52" y="262" width="104" height="14" rx="7" fill="#101012"/>
-            <rect id="carga" x="54" y="264" width="100" height="10" rx="5" fill="var(--ok)"/>
-            <text class="lblsub" x="52" y="296">Batería 12 V</text>
-            <text class="lblsub" x="52" y="310" id="cargaTxt">carga plena</text>
+            <rect x="32" y="232" width="144" height="94" rx="8" fill="url(#gBat)" stroke="#45454d"/>
+            <rect x="28" y="222" width="152" height="18" rx="6" fill="url(#gBatTop)" stroke="#4a4a52"/>
+            <g fill="#1f1f24" stroke="#4a4a52"><rect x="82" y="226" width="10" height="8" rx="2"/><rect x="98" y="226" width="10" height="8" rx="2"/><rect x="114" y="226" width="10" height="8" rx="2"/></g>
+            <rect x="54" y="208" width="18" height="16" rx="3" fill="url(#gMetV)"/><circle cx="63" cy="210" r="9" fill="none" stroke="#c62828" stroke-width="3"/>
+            <rect x="136" y="208" width="18" height="16" rx="3" fill="url(#gMetV)"/>
+            <text x="58" y="254" font-size="13" font-weight="700" fill="#e04a3c">+</text><text x="140" y="254" font-size="15" font-weight="700" fill="#bbb">−</text>
+            <g id="sulfato" opacity="0"><circle cx="58" cy="210" r="7" fill="#d8f0e0"/><circle cx="69" cy="207" r="6" fill="#bfe3cc"/><circle cx="62" cy="202" r="5" fill="#e9fbf0"/><circle cx="72" cy="214" r="4" fill="#cfeedc"/></g>
+            <rect x="46" y="262" width="116" height="34" rx="5" fill="#f5e61b"/>
+            <text x="54" y="278" font-family="Anton,Impact,sans-serif" font-size="13" fill="#111">12 V · 65 Ah</text>
+            <text x="54" y="291" font-size="8" font-weight="700" fill="#333">BATERÍA DE ARRANQUE</text>
+            <rect x="46" y="302" width="116" height="10" rx="5" fill="#101012"/>
+            <rect id="carga" x="48" y="304" width="112" height="6" rx="3" fill="#7ee787"/>
+            <text class="lblsub" x="46" y="344" id="cargaTxt">carga plena</text>
           </g>
-          <!-- Cables -->
-          <path id="cPos" d="M63 212 V180 H190 V300 H300" fill="none" stroke="#b3261e" stroke-width="7" stroke-linejoin="round"/>
-          <path id="cAlt" d="M190 180 V96 H330 V60 H474 V146" fill="none" stroke="#b3261e" stroke-width="4" stroke-linejoin="round"/>
-          <path id="cNeg" d="M145 212 V196 H200 V258 H210" fill="none" stroke="#2a2a2a" stroke-width="7" stroke-linejoin="round"/>
-          <path id="fPos" d="M63 212 V180 H190 V300 H300" fill="none" stroke="#ffe25a" stroke-width="3" stroke-dasharray="6 14" opacity="0"/>
-          <path id="fAlt" d="M474 146 V60 H330 V96 H190 V180 H63 V212" fill="none" stroke="#7ee787" stroke-width="3" stroke-dasharray="6 14" opacity="0"/>
+          <!-- Cables (base + brillo) -->
+          <g fill="none" stroke-linejoin="round" stroke-linecap="round">
+            <path id="cPos" d="M63 210 V188 Q63 180 71 180 H182 Q190 180 190 188 V292 Q190 300 198 300 H398" stroke="#7d1a14" stroke-width="8"/>
+            <path d="M63 210 V188 Q63 180 71 180 H182 Q190 180 190 188 V292 Q190 300 198 300 H398" stroke="#d2382c" stroke-width="3"/>
+            <path id="cAlt" d="M190 180 V82 Q190 74 198 74 H496 Q504 74 504 82 V138 Q504 146 496 146 H482" stroke="#7d1a14" stroke-width="5"/>
+            <path d="M190 180 V82 Q190 74 198 74 H496 Q504 74 504 82 V138 Q504 146 496 146 H482" stroke="#d2382c" stroke-width="1.6"/>
+            <path id="cNeg" d="M145 210 V196 Q145 190 151 190 H170 Q176 190 176 196 L204 262 H222" stroke="#111" stroke-width="8"/>
+            <path d="M145 210 V196 Q145 190 151 190 H170 Q176 190 176 196 L204 262 H222" stroke="#4a4a52" stroke-width="2.4"/>
+            <circle cx="226" cy="262" r="5" fill="#8a8a92" stroke="#222"/>
+            <path id="fPos" d="M63 210 V188 Q63 180 71 180 H182 Q190 180 190 188 V292 Q190 300 198 300 H398" stroke="#ffe25a" stroke-width="3" stroke-dasharray="6 14" opacity="0" filter="url(#brillo)"/>
+            <path id="fAlt" d="M482 146 H496 Q504 146 504 138 V82 Q504 74 496 74 H198 Q190 74 190 82 V180 H71 Q63 180 63 188 V210" stroke="#7ee787" stroke-width="3" stroke-dasharray="6 14" opacity="0" filter="url(#brillo)"/>
+          </g>
+          <!-- Etiquetas -->
+          <text class="lbl" x="372" y="30">Alternador</text><text class="lblsub" x="372" y="44">carga la batería en marcha</text>
+          <text class="lbl" x="196" y="362">Polea del cigüeñal</text><line x1="252" y1="268" x2="240" y2="350" stroke="#6b6b75"/>
+          <text class="lbl" x="318" y="360">Burro de arranque</text><text class="lblsub" x="318" y="374" id="burroTxt">en reposo</text>
+          <text class="lblsub" x="194" y="250">masa</text>
           <!-- Puntas del tester -->
-          <g id="puntas">
+          <g id="puntas" filter="url(#brillo)">
             <circle id="pRoja" r="7" fill="#e53935" stroke="#fff" stroke-width="2"/>
             <circle id="pNegra" r="7" fill="#111" stroke="#fff" stroke-width="2"/>
           </g>
-          <text id="chispazo" x="246" y="314" font-size="15" font-weight="700" fill="#ffb020" opacity="0">¡clic!</text>
+          <text id="chispazo" x="232" y="334" font-family="Anton,Impact,sans-serif" font-size="18" fill="#ffb020" opacity="0">¡CLIC!</text>
         </svg>
       </div>
       <div class="controles">
@@ -172,7 +204,7 @@
 const $=s=>document.querySelector(s);
 let modo="apagado",punto="bat",falla={},rotC=0,rotA=0,flujo=0,ult=performance.now();
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-const PUNTOS={bat:[[63,212],[145,212]],burro:[[404,300],[226,262]],masa:[[226,262],[145,212]]};
+const PUNTOS={bat:[[63,210],[145,210]],burro:[[404,300],[226,262]],masa:[[226,262],[145,210]]};
 
 function lectura(){
   const b=falla.bateria,a=falla.alternador,s=falla.borne;
@@ -205,7 +237,7 @@ function veredicto(v){
 }
 function correa(){
   // tangentes aproximadas entre polea del cigüeñal (260,240,r26) y alternador (440,110,r15)
-  return "M248 216 L428 99 A15 15 0 0 1 452 120 L282 254 A26 26 0 1 1 248 216 Z";
+  return "M247 216 L429 97 A17 17 0 0 1 455 120 L284 255 A28 28 0 1 1 247 216 Z";
 }
 $("#correa").setAttribute("d",correa());$("#correaMarca").setAttribute("d",correa());
 
@@ -216,7 +248,7 @@ function actualizar(){
   const [r,n]=PUNTOS[punto];
   $("#pRoja").setAttribute("cx",r[0]);$("#pRoja").setAttribute("cy",r[1]);$("#pNegra").setAttribute("cx",n[0]);$("#pNegra").setAttribute("cy",n[1]);
   // batería visual
-  const nivel=falla.bateria?.22:1;$("#carga").setAttribute("width",100*nivel);$("#carga").setAttribute("fill",falla.bateria?"var(--mal)":"var(--ok)");
+  const nivel=falla.bateria?.22:1;$("#carga").setAttribute("width",112*nivel);$("#carga").setAttribute("fill",falla.bateria?"var(--mal)":"var(--ok)");
   $("#cargaTxt").textContent=falla.bateria?"descargada":"carga plena";
   $("#sulfato").setAttribute("opacity",falla.borne?1:0);
   // testigo
@@ -224,7 +256,7 @@ function actualizar(){
   $("#lampara rect").setAttribute("fill",on?"#ff3b2f":"#2a1410");
   $("#lampIcon").setAttribute("stroke",on?"#fff":"#5a2a20");$("#lampPins").setAttribute("stroke",on?"#fff":"#5a2a20");
   $("#lampTxt").textContent=on?"Testigo de batería ENCENDIDO":"Testigo apagado";
-  $("#llaveRot").setAttribute("transform",`rotate(${modo==="apagado"?0:modo==="arranque"?90:60} 138 68)`);
+  $("#llaveRot").setAttribute("transform",`rotate(${modo==="apagado"?-35:modo==="arranque"?70:35} 138 70)`);
   $("#estadoTxt").textContent={apagado:"Motor apagado",arranque:"Girando la llave: arrancando",marcha:"Motor en marcha"}[modo];
   const gira=modo==="marcha"||(modo==="arranque"&&!falla.borne);
   $("#burroTxt").textContent=modo==="arranque"?(falla.borne?"hace clic, no gira":falla.bateria?"gira lento":"gira y mueve el motor"):"en reposo";

@@ -21,6 +21,9 @@
   .alerta{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);background:var(--mal);color:#fff;font-family:var(--display);font-size:clamp(1.6rem,5vw,2.6rem);text-transform:uppercase;padding:10px 22px;border-radius:12px;box-shadow:0 0 40px rgba(255,90,60,.6);pointer-events:none;text-align:center;line-height:1.05}
   .alerta small{display:block;font-family:var(--body);font-size:.9rem;text-transform:none;font-weight:600}
   .marcaok{fill:var(--ok)} .marcamal{fill:var(--mal)}
+  .hud{position:absolute;top:10px;right:12px;display:flex;flex-direction:column;align-items:flex-end;pointer-events:none;font-variant-numeric:tabular-nums}
+  .hud .deg{font-weight:700;font-size:1.25rem}
+  .hud .rpm{font-size:.72rem;color:var(--suave)}
 </style>
 </head>
 <body>
@@ -37,42 +40,58 @@
     <section class="banco" aria-label="Distribución animada">
       <div class="barra"><span>Distribución por correa · motor interferente</span><span id="estadoTxt">Funcionando</span></div>
       <div class="escena">
+        <div class="hud"><span class="deg" id="hudG">000°</span><span class="rpm">cigüeñal · levas <b id="hudL">000°</b></span></div>
         <div class="alerta" id="alerta" hidden>¡Choque!<small>Las válvulas golpearon el pistón</small></div>
         <svg viewBox="0 0 520 470" role="img" aria-label="Correa de distribución con dos árboles de levas, cigüeñal, tensor y un cilindro en corte">
           <defs>
-            <linearGradient id="gMet" x1="0" x2="1"><stop offset="0" stop-color="#7d7d84"/><stop offset=".5" stop-color="#e2e2e8"/><stop offset="1" stop-color="#6f6f76"/></linearGradient>
-            <linearGradient id="gAlu" x1="0" x2="1"><stop offset="0" stop-color="#8a8f96"/><stop offset=".5" stop-color="#d7dbe0"/><stop offset="1" stop-color="#7c8188"/></linearGradient>
+            <linearGradient id="gMet" x1="0" x2="1"><stop offset="0" stop-color="#6c6c74"/><stop offset=".45" stop-color="#e6e6ec"/><stop offset=".6" stop-color="#c0c0c7"/><stop offset="1" stop-color="#606068"/></linearGradient>
+            <linearGradient id="gAlu" x1="0" x2="1"><stop offset="0" stop-color="#8a8f96"/><stop offset=".5" stop-color="#dfe3e8"/><stop offset="1" stop-color="#7c8188"/></linearGradient>
+            <linearGradient id="gTapa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4c4c54"/><stop offset="1" stop-color="#34343a"/></linearGradient>
+            <linearGradient id="gBlk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#36363c"/><stop offset="1" stop-color="#232327"/></linearGradient>
+            <radialGradient id="gEng" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#9a9aa2"/><stop offset=".7" stop-color="#5a5a62"/><stop offset="1" stop-color="#3e3e45"/></radialGradient>
+            <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#ffffff" stroke-opacity=".05" stroke-width="2"/></pattern>
+            <radialGradient id="gPiso" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#26262b"/><stop offset="1" stop-color="#26262b" stop-opacity="0"/></radialGradient>
           </defs>
-          <!-- Block y tapa -->
-          <path d="M120 40 H400 V150 H120 Z" fill="#2c2c31" stroke="#45454d"/>
-          <path d="M150 150 H370 V430 H150 Z" fill="#242428" stroke="#3a3a40"/>
-          <text class="lblsub" x="128" y="56">TAPA DE CILINDROS</text>
+          <ellipse cx="260" cy="452" rx="200" ry="14" fill="url(#gPiso)"/>
+          <!-- Tapa de cilindros y block -->
+          <path d="M112 36 Q112 26 122 26 H398 Q408 26 408 36 V150 H112 Z" fill="url(#gTapa)" stroke="#55555d"/>
+          <path d="M112 150 H408" stroke="#77777f" stroke-width="3"/>
+          <path d="M140 150 H380 V420 Q380 438 362 438 H158 Q140 438 140 420 Z" fill="url(#gBlk)" stroke="#45454d"/>
+          <path d="M140 150 H380 V420 Q380 438 362 438 H158 Q140 438 140 420 Z" fill="url(#hatch)"/>
+          <text class="lblsub" x="122" y="44">TAPA DE CILINDROS</text>
+          <text class="lblsub" x="150" y="432">BLOCK</text>
           <!-- Cilindro en corte -->
-          <rect x="215" y="170" width="90" height="140" fill="#101012" stroke="#4a4a52"/>
-          <g id="valA"><rect x="232" y="118" width="5" height="56" fill="url(#gMet)"/><path d="M224 172 H245 L240 178 H229 Z" fill="url(#gMet)"/></g>
-          <g id="valE"><rect x="283" y="118" width="5" height="56" fill="url(#gMet)"/><path d="M275 172 H296 L291 178 H280 Z" fill="url(#gMet)"/></g>
-          <g id="piston"><rect x="218" y="0" width="84" height="44" rx="3" fill="url(#gAlu)" stroke="#6f747b"/><path d="M218 7h84M218 13h84" stroke="#4a4a50" stroke-width="2"/></g>
-          <line id="biela" x1="260" y1="0" x2="260" y2="380" stroke="url(#gMet)" stroke-width="10" stroke-linecap="round"/>
-          <text class="lblsub" x="312" y="188">cilindro 1</text>
-          <!-- Correa -->
-          <path id="correa" d="M140 90 A40 40 0 0 1 180 50 L340 50 A40 40 0 0 1 380 90 L396 262 L280 392 A20 20 0 0 1 240 392 Z" fill="none" stroke="#151515" stroke-width="10" stroke-linejoin="round"/>
-          <path id="dientes" d="M140 90 A40 40 0 0 1 180 50 L340 50 A40 40 0 0 1 380 90 L396 262 L280 392 A20 20 0 0 1 240 392 Z" fill="none" stroke="#3b3b42" stroke-width="10" stroke-dasharray="3 6" stroke-linejoin="round"/>
-          <!-- Engranajes de levas -->
-          <g id="levaI"><circle cx="180" cy="90" r="40" fill="#5a5a62" stroke="#9a9aa2" stroke-width="2"/><circle cx="180" cy="90" r="30" fill="none" stroke="#45454c" stroke-dasharray="3 5"/><path d="M180 58v64M148 90h64" stroke="#3a3a41" stroke-width="6"/><circle cx="180" cy="90" r="8" fill="#bbb"/><path d="M180 52 l-6 -10 h12 z" class="marcaok" id="mI"/></g>
-          <g id="levaE"><circle cx="340" cy="90" r="40" fill="#5a5a62" stroke="#9a9aa2" stroke-width="2"/><circle cx="340" cy="90" r="30" fill="none" stroke="#45454c" stroke-dasharray="3 5"/><path d="M340 58v64M308 90h64" stroke="#3a3a41" stroke-width="6"/><circle cx="340" cy="90" r="8" fill="#bbb"/><path d="M340 52 l-6 -10 h12 z" class="marcaok" id="mE"/></g>
+          <rect x="212" y="166" width="96" height="150" fill="#0c0c0e" stroke="#5c5c64" stroke-width="2"/>
+          <rect x="207" y="166" width="5" height="150" fill="#4a4a52"/><rect x="308" y="166" width="5" height="150" fill="#4a4a52"/>
+          <g id="valA"><path d="M226 104 l-7 0 0 3 7 0" stroke="#bbb"/><path d="M228 112 l8 4 -8 4 8 4 -8 4 8 4 -8 4" fill="none" stroke="#c9c9cf" stroke-width="1.8"/><rect x="232" y="100" width="5" height="74" fill="url(#gMet)"/><path d="M222 172 H247 L241 179 H228 Z" fill="url(#gMet)" stroke="#555"/></g>
+          <g id="valE"><path d="M279 112 l8 4 -8 4 8 4 -8 4 8 4 -8 4" fill="none" stroke="#c9c9cf" stroke-width="1.8"/><rect x="283" y="100" width="5" height="74" fill="url(#gMet)"/><path d="M273 172 H298 L292 179 H279 Z" fill="url(#gMet)" stroke="#555"/></g>
+          <line id="biela" x1="260" y1="0" x2="260" y2="380" stroke="url(#gMet)" stroke-width="12" stroke-linecap="round"/>
+          <g id="piston"><path d="M215 0 H305 V40 Q305 46 299 46 H221 Q215 46 215 40 Z" fill="url(#gAlu)" stroke="#6f747b"/><path d="M215 6h90M215 12h90M215 18h90" stroke="#3d3d42" stroke-width="2.4"/><circle cx="260" cy="30" r="7" fill="#8b9097" stroke="#5f646b"/></g>
+          <text class="lblsub" x="318" y="184">cilindro 1</text>
+          <!-- Correa dentada -->
+          <path id="correa" d="M140 90 A40 40 0 0 1 180 50 L340 50 A40 40 0 0 1 380 90 L398 262 L280 394 A20 20 0 0 1 240 394 Z" fill="none" stroke="#141416" stroke-width="12" stroke-linejoin="round"/>
+          <path id="dientes" d="M140 90 A40 40 0 0 1 180 50 L340 50 A40 40 0 0 1 380 90 L398 262 L280 394 A20 20 0 0 1 240 394 Z" fill="none" stroke="#3d3d45" stroke-width="12" stroke-dasharray="3 5" stroke-linejoin="round"/>
+          <path d="M140 90 A40 40 0 0 1 180 50 L340 50 A40 40 0 0 1 380 90 L398 262 L280 394 A20 20 0 0 1 240 394 Z" fill="none" stroke="#5a5a62" stroke-width="1" stroke-linejoin="round" opacity=".7"/>
+          <!-- Engranajes de levas (los dientes se agregan con código) -->
+          <g id="levaI"><g class="dent" data-r="40" data-n="34"></g><circle cx="180" cy="90" r="34" fill="url(#gEng)" stroke="#2c2c31"/><circle cx="180" cy="90" r="24" fill="none" stroke="#3a3a41" stroke-width="2"/><g fill="#26262b"><circle cx="180" cy="72" r="6"/><circle cx="196" cy="99" r="6"/><circle cx="164" cy="99" r="6"/></g><circle cx="180" cy="90" r="8" fill="#cfcfd5" stroke="#777"/><path d="M180 54 l-6 -10 h12 z" class="marcaok" id="mI"/></g>
+          <g id="levaE"><g class="dent" data-r="40" data-n="34"></g><circle cx="340" cy="90" r="34" fill="url(#gEng)" stroke="#2c2c31"/><circle cx="340" cy="90" r="24" fill="none" stroke="#3a3a41" stroke-width="2"/><g fill="#26262b"><circle cx="340" cy="72" r="6"/><circle cx="356" cy="99" r="6"/><circle cx="324" cy="99" r="6"/></g><circle cx="340" cy="90" r="8" fill="#cfcfd5" stroke="#777"/><path d="M340 54 l-6 -10 h12 z" class="marcaok" id="mE"/></g>
           <!-- Marcas fijas -->
-          <path d="M174 28 h12 l-6 8 z" fill="var(--amarillo)"/><path d="M334 28 h12 l-6 8 z" fill="var(--amarillo)"/><path d="M254 444 h12 l-6 -8 z" fill="var(--amarillo)"/>
+          <path d="M174 18 h12 l-6 8 z" fill="#f5e61b"/><path d="M334 18 h12 l-6 8 z" fill="#f5e61b"/><path d="M254 448 h12 l-6 -8 z" fill="#f5e61b"/>
           <!-- Tensor -->
-          <g><circle cx="404" cy="262" r="15" fill="#6a6a72" stroke="#aaa"/><circle cx="404" cy="262" r="4" fill="#ddd"/></g>
-          <text class="lbl" x="424" y="266">Tensor</text>
+          <g><circle cx="406" cy="262" r="16" fill="url(#gEng)" stroke="#aaa"/><circle cx="406" cy="262" r="10" fill="none" stroke="#2c2c31" stroke-width="2"/><circle cx="406" cy="262" r="4" fill="#ddd"/><path d="M406 278 L440 320" stroke="#5a5a62" stroke-width="6" stroke-linecap="round"/><circle cx="440" cy="320" r="5" fill="#888"/></g>
           <!-- Cigüeñal -->
-          <g id="cig"><circle cx="260" cy="392" r="20" fill="#5a5a62" stroke="#9a9aa2" stroke-width="2"/><circle cx="260" cy="392" r="6" fill="#bbb"/><path d="M260 412 l-6 10 h12 z" class="marcaok" id="mC"/></g>
-          <circle id="munon" cx="260" cy="380" r="5" fill="#ddd"/>
+          <g id="cig"><g class="dent" data-r="20" data-n="17"></g><circle cx="260" cy="394" r="16" fill="url(#gEng)" stroke="#2c2c31"/><circle cx="260" cy="394" r="6" fill="#cfcfd5"/><path d="M260 414 l-6 10 h12 z" class="marcaok" id="mC"/></g>
+          <circle id="munon" cx="260" cy="380" r="6" fill="#e0e0e6" stroke="#777"/>
           <!-- Etiquetas -->
-          <text class="lbl" x="128" y="150">Leva admisión</text>
-          <text class="lbl" x="318" y="150">Leva escape</text>
-          <text class="lbl" x="290" y="420">Cigüeñal</text>
-          <text class="lblsub" x="152" y="462" id="marcasTxt">Marcas alineadas cada 2 vueltas del cigüeñal</text>
+          <g>
+            <line x1="152" y1="122" x2="70" y2="150" stroke="#6b6b75"/><text class="lbl" x="14" y="164">Leva de</text><text class="lbl" x="14" y="178">admisión</text>
+            <line x1="372" y1="122" x2="440" y2="150" stroke="#6b6b75"/><text class="lbl" x="444" y="164">Leva de</text><text class="lbl" x="444" y="178">escape</text>
+            <line x1="398" y1="200" x2="444" y2="214" stroke="#6b6b75"/><text class="lbl" x="448" y="218">Correa</text>
+            <text class="lbl" x="448" y="300">Tensor</text>
+            <line x1="240" y1="394" x2="70" y2="394" stroke="#6b6b75"/><text class="lbl" x="14" y="398">Cigüeñal</text>
+            <line x1="212" y1="260" x2="70" y2="270" stroke="#6b6b75"/><text class="lbl" x="14" y="274">Pistón</text>
+          </g>
+          <text class="lblsub" x="140" y="466" id="marcasTxt">Las 3 marcas amarillas coinciden cada 2 vueltas del cigüeñal</text>
         </svg>
       </div>
       <div class="controles">
@@ -126,8 +145,9 @@
 
 <script>
 const $=s=>document.querySelector(s);
-const R=22,L=110,CX=260,CY=392,DECK=172;
+const R=22,L=110,CX=260,CY=394,DECK=172;
 let cig=0,levas=0,corre=!matchMedia("(prefers-reduced-motion: reduce)").matches,falla={},choque=false,inercia=0,ult=performance.now(),puntoAnim=null;
+document.querySelectorAll(".dent").forEach(g=>{const grp=g.parentNode,c=grp.querySelector("circle"),cx=+c.getAttribute("cx"),cy=+c.getAttribute("cy"),r=+g.dataset.r,n=+g.dataset.n,a=Math.PI*2/n;let d="";for(let i=0;i<n;i++){const t=i*a,pts=[[r-5,t-a*.32],[r,t-a*.18],[r,t+a*.18],[r-5,t+a*.32]];pts.forEach((q,j)=>{d+=(i===0&&j===0?"M":"L")+(cx+q[0]*Math.sin(q[1])).toFixed(1)+" "+(cy-q[0]*Math.cos(q[1])).toFixed(1)+" "})}const el=document.createElementNS("http://www.w3.org/2000/svg","path");el.setAttribute("d",d+"Z");el.setAttribute("fill","#6a6a72");el.setAttribute("stroke","#9a9aa2");g.appendChild(el)});
 function lift(x){return Math.sin(Math.PI*Math.min(1,Math.max(0,x)))*24}
 function dibujar(){
   const th=cig*Math.PI/180;
@@ -136,7 +156,7 @@ function dibujar(){
   // escalar recorrido para el cilindro chico
   const top=DECK+8+(pinY-(CY-R-L))*1.6;
   $("#piston").setAttribute("transform",`translate(0 ${top})`);
-  $("#biela").setAttribute("y1",top+22);$("#biela").setAttribute("x2",px);$("#biela").setAttribute("y2",py);
+  $("#biela").setAttribute("y1",top+30);$("#biela").setAttribute("x2",px);$("#biela").setAttribute("y2",py);
   $("#munon").setAttribute("cx",px);$("#munon").setAttribute("cy",py);
   $("#cig").setAttribute("transform",`rotate(${cig%360} ${CX} ${CY})`);
   const off=falla.diente?16:0, lv=levas+off;
@@ -151,6 +171,7 @@ function dibujar(){
   if(falla.corte&&!choque&&(la>6||le>6)&&top<DECK+8+Math.max(la,le)){choque=true;$("#alerta").hidden=false;corre=false;$("#estadoTxt").textContent="Motor roto";diag();}
   $("#dientes").setAttribute("stroke-dashoffset",falla.corte?0:-cig*.35);
   $("#correa").setAttribute("stroke",falla.corte?"#2a1010":"#151515");$("#dientes").setAttribute("opacity",falla.corte?.25:1);
+  $("#hudG").textContent=String(Math.round(((cig%720)+720)%720)).padStart(3,"0")+"°";$("#hudL").textContent=String(Math.round(((lv%360)+360)%360)).padStart(3,"0")+"°";
   $("#dC").textContent=Math.round(((cig%720)+720)%720)+"°";$("#dL").textContent=Math.round(((lv%360)+360)%360)+"°";
   const mal=falla.diente||falla.corte;
   $("#dP").textContent=falla.corte?"Perdida":falla.diente?"Fuera de punto":"Correcta";$("#dP").style.color=mal?"var(--mal)":"var(--ok)";
