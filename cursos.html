@@ -72,14 +72,13 @@
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="./"><img src="logo.png" alt="Logo AC Motors" width="38" height="38">AC-TALLER</a>
-    <a class="btn" data-wa href="#">Inscribirme</a>
+    <a class="btn sec" href="./">← Volver a la web</a>
   </div>
 </header>
 
 <main>
   <div class="cabecera">
     <div class="wrap">
-      <a class="volver" href="./#cursos">← Volver a la web</a>
       <h1>Cursos <span>disponibles</span></h1>
       <p>Clases reales grabadas en instituto, explicadas de forma sencilla y clara. Aprende a tu ritmo con AC-Taller.</p>
     </div>
@@ -121,7 +120,6 @@
   <div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · <a href="./">Inicio</a> · <a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Política de privacidad</a></div>
 </footer>
 
-<a class="flotante" data-wa href="#">WhatsApp</a>
 
 <script>
   /* ===== CONFIGURACIÓN EDITABLE ===== */
@@ -139,7 +137,6 @@
     document.querySelector("[data-precio]").textContent = "Muy pronto a la venta";
     var ar=document.getElementById("comprarAR"); ar.textContent="Avísame cuando salga"; ar.removeAttribute("id"); ar.setAttribute("data-wa","");
     document.getElementById("comprarExt").remove();
-    document.querySelector(".nav .btn").textContent = "Avísame";
     document.querySelector(".como").textContent = "Escríbenos por WhatsApp y te avisamos apenas el curso esté a la venta. Mientras tanto, mira la clase de muestra gratis.";
     document.querySelector(".cabecera p").textContent = "Estamos preparando nuestros cursos online. Clases reales grabadas en instituto, explicadas de forma sencilla y clara.";
   }
