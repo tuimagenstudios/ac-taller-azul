@@ -1,5 +1,6 @@
 // Efectos comunes de los simuladores de AC-Taller: cursor de llave amarilla y sonidos de taller.
 // Los sonidos se generan en el navegador (sin archivos) y se pueden silenciar con el botón «Sonido».
+if(/[?&]lamina/.test(location.search))document.documentElement.classList.add("solo-lamina");
 (function(){
   // ---- Cursor de llave (solo con mouse) ----
   var CUR="url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 64 64'%3E%3Cg transform='translate(64 0) scale(-1 1)'%3E%3Cpath d='M44 8a12 12 0 0 0-11 16L10 47a5 5 0 0 0 7 7l23-23a12 12 0 0 0 16-11l-8 5-7-2-2-7z' fill='%23f5e61b' stroke='%23000' stroke-width='3' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E\") 10 10, auto";
@@ -34,6 +35,7 @@
 
   // ---- Qué suena con cada clic ----
   document.addEventListener("click",function(e){if(!on)return;var t=e.target.closest("button,.pieza,.pz,[role=button]");if(!t||t.classList.contains("sonido-fx"))return;
+    if(t.dataset.fx){if(t.dataset.fx!=="none"&&SON[t.dataset.fx])SON[t.dataset.fx](8);return}
     if(t.closest(".pieza,.pz"))return SON.pieza();
     if(t.closest(".chip"))return SON.falla();
     if(t.closest(".puntas")||t.closest(".rapidos"))return SON.pieza();

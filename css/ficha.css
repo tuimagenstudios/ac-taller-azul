@@ -1,0 +1,65 @@
+/* Estilos comunes de las fichas de taller (curso Tren delantero) */
+  /* Ficha de curso: mesa de dibujo técnico a la izquierda, lección a la derecha */
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .meta span{font-size:.8rem;font-weight:600;border:1px solid #33333a;border-radius:20px;padding:4px 12px;color:#d4d4da;background:var(--panel)}
+  .meta span b{color:var(--amarillo)}
+  .aprender{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin:6px 0 22px}
+  .aprender div{display:flex;gap:10px;align-items:flex-start;background:var(--panel);border:1px solid var(--borde);border-radius:10px;padding:12px 14px;font-size:.9rem;color:#d4d4da}
+  .aprender svg{flex:none;margin-top:2px}
+  .temario{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-bottom:14px}
+  .temario button{font:inherit;cursor:pointer;text-align:left;background:var(--panel);border:1px solid var(--borde);border-radius:10px;padding:10px 12px 12px;color:var(--suave);position:relative;overflow:hidden}
+  .temario button::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:#2c2c32}
+  .temario button b{font-family:var(--display);font-weight:400;font-size:.95rem;letter-spacing:.06em;color:#6b6b75;display:block}
+  .temario button span{font-size:.86rem;font-weight:700;line-height:1.2;display:block;margin-top:2px}
+  .temario button[aria-selected="true"]{background:#17170f;color:var(--texto);border-color:#4a4718}
+  .temario button[aria-selected="true"]::after{background:var(--amarillo)}
+  .temario button[aria-selected="true"] b{color:var(--amarillo)}
+  .temario button.visto b::after{content:" ✓";color:var(--ok)}
+  @media(max-width:700px){.temario button span{font-size:.68rem}.temario button{padding:8px 6px 10px}}
+  .mesa{background:#0d1014;background-image:linear-gradient(#141a21 1px,transparent 1px),linear-gradient(90deg,#141a21 1px,transparent 1px);background-size:24px 24px}
+  .mesa svg{display:block;width:100%;height:auto}
+  .pz{cursor:pointer;outline:none;transition:filter .2s}
+  .pz:hover,.pz:focus-visible{filter:brightness(1.25) drop-shadow(0 0 4px rgba(245,230,27,.5))}
+  .pz.sel{filter:brightness(1.15) drop-shadow(0 0 8px #f5e61b)}
+  .num circle{fill:#0d1014;stroke:#f5e61b;stroke-width:2}
+  .num text{font-family:var(--display);font-size:12px;fill:#f5e61b;text-anchor:middle}
+  .guia{stroke:#f5e61b;stroke-width:1;opacity:.55}
+  .cota{font-family:var(--body);font-size:9px;fill:#7a8a9a;letter-spacing:.08em}
+  [hidden]{display:none!important}
+  .leccion .cab{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .leccion .cab small{color:var(--suave);font-size:.78rem;font-weight:600}
+  .partes-lista{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;margin-top:12px;font-size:.88rem}
+  .partes-lista button{font:inherit;cursor:pointer;display:flex;gap:8px;align-items:center;background:none;border:0;color:#d4d4da;padding:5px 4px;border-radius:6px;text-align:left}
+  .partes-lista button:hover,.partes-lista button.sel{background:#1f1d0a;color:#fff}
+  .partes-lista i{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--amarillo);color:var(--amarillo);font-style:normal;font-family:var(--display);font-size:.8rem;display:grid;place-items:center}
+  .detalle{margin-top:12px;background:var(--panel2);border-radius:10px;padding:12px 14px}
+  .detalle b{display:block;font-size:1rem;color:var(--amarillo)}
+  .pasos{list-style:none;margin-top:12px;display:grid;gap:4px}
+  .pasos li button{font:inherit;cursor:pointer;width:100%;display:flex;gap:10px;align-items:center;background:none;border:0;border-radius:8px;padding:7px 8px;color:var(--suave);text-align:left;font-size:.88rem}
+  .pasos li button i{flex:none;width:24px;height:24px;border-radius:50%;background:#26262b;color:#9d9da6;font-style:normal;font-family:var(--display);display:grid;place-items:center;font-size:.85rem}
+  .pasos li.hecho button i{background:#2b3a12;color:var(--ok)}
+  .pasos li.actual button{background:#1f1d0a;color:#fff}
+  .pasos li.actual button i{background:var(--amarillo);color:#000}
+  .paso-det{margin:4px 0 8px 34px;font-size:.9rem;color:#d4d4da}
+  .herr{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .herr span{display:inline-flex;align-items:center;gap:6px;background:#17171a;border:1px solid #33333a;border-radius:20px;padding:4px 11px 4px 8px;font-size:.8rem;font-weight:600}
+  .aviso{margin-top:10px;border-left:4px solid var(--mal);background:#2a0f0a;color:#ffd0c4;padding:9px 12px;border-radius:0 8px 8px 0;font-size:.86rem}
+  .aviso b,.tip b{color:#fff}
+  .tip{margin-top:10px;border-left:4px solid var(--amarillo);background:#1f1d0a;color:#f1ecb8;padding:9px 12px;border-radius:0 8px 8px 0;font-size:.86rem}
+  .nav-pasos{display:flex;gap:8px;margin-top:12px}
+  .ficha-tabla{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:8px}
+  .ficha-tabla th{text-align:left;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--suave);padding:9px 6px;border-bottom:1px solid var(--borde);width:34%;vertical-align:top}
+  .ficha-tabla td{padding:9px 6px;border-bottom:1px solid var(--borde)}
+  .ficha-tabla ul{margin-left:16px}
+  .examen{display:grid;gap:8px;margin-top:12px}
+  .examen button{font:inherit;cursor:pointer;text-align:left;background:var(--panel2);color:var(--texto);border:1px solid #33333a;border-radius:10px;padding:10px 14px;font-size:.92rem}
+  .examen button.bien{border-color:var(--ok);background:#0f2414}
+  .examen button.mal{border-color:var(--mal);background:#2a0f0a}
+  .sonido{font:inherit;cursor:pointer;background:none;border:1px solid #33333a;border-radius:20px;color:var(--suave);padding:3px 10px;font-size:.75rem;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+  .sonido[aria-pressed="false"]{opacity:.6}
+/* Modo «solo lámina» (?lamina): para sacar capturas de las láminas para la guía en PDF */
+html.solo-lamina body{background:#0d1014}
+html.solo-lamina body>*:not(main),html.solo-lamina main>*:not(.app),html.solo-lamina .app>aside,html.solo-lamina .banco>.barra,html.solo-lamina .banco>.controles{display:none!important}
+html.solo-lamina .wrap{max-width:none;padding:0}
+html.solo-lamina .app{display:block;padding:0}
+html.solo-lamina .banco{border:0;border-radius:0}

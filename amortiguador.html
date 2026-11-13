@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amortiguador y espiral: cómo trabajan y cómo se cambian | AC-Taller</title>
+<meta name="description" content="Módulo 3 del curso Tren delantero: el amortiguador y el espiral. Despiece, para qué sirve con un gráfico de rebote en vivo, fallas y cambio paso a paso. Gratis, de AC-Taller, Azul.">
+<link rel="canonical" href="https://ac-taller.com/amortiguador.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AC-Taller"><meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://ac-taller.com/amortiguador.html">
+<meta property="og:title" content="El amortiguador, pieza por pieza | AC-Taller">
+<meta property="og:description" content="Despiece, rebote en vivo, fallas y cambio paso a paso, interactivo. Gratis.">
+<meta property="og:image" content="https://ac-taller.com/img/og-amortiguador.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/simulador.css">
+<link rel="stylesheet" href="css/ficha.css">
+<style>
+  .modnav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+  .modnav a{font-size:.78rem;font-weight:700;color:var(--suave);text-decoration:none;border:1px solid #33333a;border-radius:20px;padding:3px 11px}
+  .modnav a[aria-current="page"]{color:#000;background:var(--amarillo);border-color:var(--amarillo)}
+  .modnav a:hover{border-color:var(--amarillo)}
+  .siguiente-mod{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:var(--panel);border:1px solid var(--borde);border-left:4px solid var(--amarillo);border-radius:12px;padding:16px 18px;margin-bottom:44px}
+  .siguiente-mod b{font-family:var(--display);font-weight:400;font-size:1.3rem;text-transform:uppercase}
+  .siguiente-mod a{color:var(--amarillo);font-weight:700}
+  .rebote{display:flex;flex-wrap:wrap;gap:10px;align-items:center;width:100%}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./"><img src="logo.png" alt="Logo AC Motors" width="36" height="36">AC-TALLER</a><a class="volver" href="cursos.html">← Cursos</a></div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <nav class="modnav" aria-label="Módulos del curso">
+      <span class="kicker" style="margin-right:4px">Curso Tren delantero</span>
+      <a href="rotula.html">1 · Rótula</a><a href="extremo-de-direccion.html">2 · Extremo de dirección</a><a href="amortiguador.html" aria-current="page">3 · Amortiguador</a><a href="bujes-y-parrilla.html">4 · Bujes y parrilla</a><a href="alineacion.html">5 · Alineación</a>
+    </nav>
+    <h1>El <span>amortiguador</span> y el espiral</h1>
+    <p>El espiral sostiene el peso del auto; el amortiguador frena el rebote del espiral. Trabajan juntos en un solo conjunto (en la mayoría de los autos, del tipo McPherson) y de ellos dependen la estabilidad, el frenado y el agarre de las cubiertas.</p>
+    <div class="meta"><span>Módulo <b>3</b> de 5</span><span>Nivel: <b>intermedio-avanzado</b></span><span>Duración: <b>20 min</b></span><span><b>5</b> temas · <b>13</b> pasos</span><span>Gratis</span></div>
+  </section>
+
+  <div class="aprender" aria-label="Lo que vas a aprender">
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>Las 12 piezas del conjunto, de la copela a la mangueta</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>Por qué el espiral rebota y cómo lo frena el aceite</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>Las 4 fallas típicas y cómo reconocerlas</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>El cambio en 13 pasos, con los compresores de espiral</div>
+  </div>
+
+  <nav class="temario" role="tablist" aria-label="Temas">
+    <button role="tab" data-m="partes" aria-selected="true"><b>TEMA 1</b><span>Despiece</span></button>
+    <button role="tab" data-m="trabaja" aria-selected="false"><b>TEMA 2</b><span>Para qué sirve</span></button>
+    <button role="tab" data-m="fallas" aria-selected="false"><b>TEMA 3</b><span>Cuándo está mal</span></button>
+    <button role="tab" data-m="cambio" aria-selected="false"><b>TEMA 4</b><span>Cambio paso a paso</span></button>
+    <button role="tab" data-m="ficha" aria-selected="false"><b>TEMA 5</b><span>Ficha y repaso</span></button>
+  </nav>
+
+  <div class="app">
+    <section class="banco" aria-label="Lámina técnica">
+      <div class="barra"><span id="barraTxt">Lámina 1 · Conjunto McPherson en corte</span><span id="barraDer">Escala aprox. 1:4</span></div>
+      <div class="escena mesa">
+        <!-- ===================== LÁMINA A: CORTE ===================== -->
+        <svg id="A" viewBox="0 0 520 470" role="img" aria-label="Conjunto de amortiguador y espiral en corte con sus 12 piezas numeradas">
+          <defs>
+            <linearGradient id="cromo" x1="0" x2="1"><stop offset="0" stop-color="#6c6c74"/><stop offset=".4" stop-color="#ffffff"/><stop offset=".55" stop-color="#cfcfd6"/><stop offset="1" stop-color="#5c5c64"/></linearGradient>
+            <linearGradient id="ace" x1="0" x2="1"><stop offset="0" stop-color="#5d5d65"/><stop offset=".45" stop-color="#e6e6ec"/><stop offset="1" stop-color="#55555d"/></linearGradient>
+            <linearGradient id="aceV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6e6ec"/><stop offset=".5" stop-color="#9c9ca4"/><stop offset="1" stop-color="#5c5c64"/></linearGradient>
+            <linearGradient id="goma" x1="0" x2="1"><stop offset="0" stop-color="#0f0f11"/><stop offset=".5" stop-color="#34343a"/><stop offset="1" stop-color="#0d0d0f"/></linearGradient>
+            <linearGradient id="aceite" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9a227" stop-opacity=".55"/><stop offset="1" stop-color="#8a6a10" stop-opacity=".75"/></linearGradient>
+            <linearGradient id="espF" x1="0" x2="1"><stop offset="0" stop-color="#a88a10"/><stop offset=".5" stop-color="#f5e070"/><stop offset="1" stop-color="#a88a10"/></linearGradient>
+            <pattern id="corte" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#3c3c43"/><line x1="0" y1="0" x2="0" y2="7" stroke="#6a6a73" stroke-width="1.6"/></pattern>
+          </defs>
+          <g transform="translate(14 0)">
+          <text class="cota" x="2" y="22">AC-TALLER · MÓDULO 3 · LÁMINA 1 · CONJUNTO McPHERSON · CORTE</text>
+          <!-- Espiral: mitad de atrás -->
+          <g id="g-espiralAtras"><path id="espAtras" d="" fill="none" stroke="#6a5a10" stroke-width="10" stroke-linecap="round"/></g>
+          <!-- Amortiguador: tubo, aceite, pistón, vástago, brida -->
+          <g id="amort">
+            <g class="pz" data-p="tubo" id="g-tubo" tabindex="0" role="button" aria-label="9 Cuerpo del amortiguador">
+              <path d="M196 200 H264 V410 H196 Z M203 206 V404 H257 V206 Z" fill="url(#corte)" fill-rule="evenodd" stroke="#8a8a92"/>
+              <g class="num"><line class="guia" x1="196" y1="330" x2="56" y2="330"/><circle cx="44" cy="330" r="11"/><text x="44" y="334">9</text></g>
+            </g>
+            <g class="pz" data-p="aceite" id="g-aceite" tabindex="0" role="button" aria-label="11 Aceite y gas">
+              <rect id="aceiteR" x="203" y="214" width="54" height="166" fill="url(#aceite)"/>
+              <rect x="203" y="380" width="54" height="24" fill="#38b6ff" opacity=".28"/><text class="cota" x="214" y="396" fill="#9fdcff">GAS</text>
+              <g id="flujo" fill="#f5e070"></g>
+              <g class="num"><line class="guia" x1="203" y1="370" x2="56" y2="380"/><circle cx="44" cy="380" r="11"/><text x="44" y="384">11</text></g>
+            </g>
+            <g class="pz" data-p="piston" id="g-piston" tabindex="0" role="button" aria-label="10 Pistón con válvulas">
+              <g id="piston"><rect x="204" y="246" width="52" height="16" rx="2" fill="url(#aceV)" stroke="#4d4d55"/><g fill="#26262b"><rect x="210" y="248" width="5" height="12"/><rect x="245" y="248" width="5" height="12"/></g></g>
+              <g class="num"><line class="guia" x1="256" y1="254" x2="436" y2="254"/><circle cx="448" cy="254" r="11"/><text x="448" y="258">10</text></g>
+            </g>
+            <g class="pz" data-p="vastago" id="g-vastago" tabindex="0" role="button" aria-label="8 Vástago">
+              <rect id="vastago" x="223" y="36" width="14" height="214" fill="url(#cromo)" stroke="#55555d"/>
+              <g class="num"><line class="guia" x1="223" y1="190" x2="56" y2="190"/><circle cx="44" cy="190" r="11"/><text x="44" y="194">8</text></g>
+            </g>
+            <g class="pz" data-p="brida" id="g-brida" tabindex="0" role="button" aria-label="12 Plato inferior y brida">
+              <path d="M146 300 H314 V310 H146 Z" fill="url(#aceV)" stroke="#55555d"/>
+              <path d="M264 404 H300 Q312 404 312 416 V446 H264 Z" fill="url(#aceV)" stroke="#55555d"/><circle cx="292" cy="416" r="6" fill="#141416" stroke="#888"/><circle cx="292" cy="436" r="6" fill="#141416" stroke="#888"/>
+              <text class="cota" x="318" y="430">A LA MANGUETA</text>
+              <g class="num"><line class="guia" x1="312" y1="305" x2="436" y2="305"/><circle cx="448" cy="305" r="11"/><text x="448" y="309">12</text></g>
+            </g>
+          </g>
+          <!-- Fuelle y tope -->
+          <g class="pz" data-p="fuelle" id="g-fuelle" tabindex="0" role="button" aria-label="6 Fuelle guardapolvo">
+            <path id="fuellePath" d="M206 98 L196 108 L208 118 L196 128 L208 138 L196 148 L208 158 L196 168 L208 178 L196 188 L206 198 H254 L264 188 L252 178 L264 168 L252 158 L264 148 L252 138 L264 128 L252 118 L264 108 L254 98 Z" fill="url(#goma)" stroke="#45454d" opacity=".7"/>
+            <g class="num"><line class="guia" x1="198" y1="160" x2="56" y2="150"/><circle cx="44" cy="150" r="11"/><text x="44" y="154">6</text></g>
+          </g>
+          <g class="pz" data-p="tope" id="g-tope" tabindex="0" role="button" aria-label="5 Tope de goma">
+            <path id="topePath" d="M216 104 H244 V150 Q244 158 236 158 H224 Q216 158 216 150 Z" fill="#2c2c31" stroke="#55555d"/><path d="M216 116 H244 M216 128 H244 M216 140 H244" stroke="#45454d" stroke-width="2"/>
+            <path id="roturaT" d="M238 120 l6 6 -6 4 6 6" fill="none" stroke="#ff6a1a" stroke-width="2" opacity="0"/>
+            <g class="num"><line class="guia" x1="216" y1="118" x2="56" y2="110"/><circle cx="44" cy="110" r="11"/><text x="44" y="114">5</text></g>
+          </g>
+          <!-- Espiral: mitad de adelante -->
+          <g class="pz" data-p="espiral" id="g-espiral" tabindex="0" role="button" aria-label="7 Espiral">
+            <path id="espFrente" d="" fill="none" stroke="url(#espF)" stroke-width="10" stroke-linecap="round"/>
+            <path id="quiebre" d="M290 238 l8 -6 M286 246 l10 -2" stroke="#ff5a3c" stroke-width="3" opacity="0"/>
+            <g class="num"><line class="guia" x1="302" y1="200" x2="436" y2="200"/><circle cx="448" cy="200" r="11"/><text x="448" y="204">7</text></g>
+          </g>
+          <!-- Arriba: plato, rulemán, copela, tuerca -->
+          <g class="pz" data-p="platoS" id="g-platoS" tabindex="0" role="button" aria-label="4 Plato superior del espiral">
+            <path d="M146 86 H314 V96 H146 Z" fill="url(#aceV)" stroke="#55555d"/>
+            <g class="num"><line class="guia" x1="314" y1="91" x2="436" y2="128"/><circle cx="448" cy="130" r="11"/><text x="448" y="134">4</text></g>
+          </g>
+          <g class="pz" data-p="ruleman" id="g-ruleman" tabindex="0" role="button" aria-label="3 Rulemán de la copela">
+            <rect x="176" y="74" width="108" height="12" rx="3" fill="#26262b" stroke="#6a6a72"/><g id="bolitas" fill="url(#cromo)"><circle cx="186" cy="80" r="4"/><circle cx="200" cy="80" r="4"/><circle cx="214" cy="80" r="4"/><circle cx="246" cy="80" r="4"/><circle cx="260" cy="80" r="4"/><circle cx="274" cy="80" r="4"/></g>
+            <g class="num"><line class="guia" x1="284" y1="80" x2="436" y2="94"/><circle cx="448" cy="94" r="11"/><text x="448" y="98">3</text></g>
+          </g>
+          <g class="pz" data-p="copela" id="g-copela" tabindex="0" role="button" aria-label="2 Copela">
+            <path d="M160 42 H300 V50 H160 Z" fill="url(#aceV)" stroke="#55555d"/><path d="M168 50 H292 Q296 74 284 74 H176 Q164 74 168 50 Z" fill="url(#goma)" stroke="#45454d"/>
+            <g fill="url(#ace)" stroke="#55555d"><rect x="176" y="28" width="7" height="14"/><rect x="277" y="28" width="7" height="14"/></g>
+            <text class="cota" x="300" y="40">A LA TORRETA</text>
+            <g class="num"><line class="guia" x1="300" y1="56" x2="436" y2="60"/><circle cx="448" cy="60" r="11"/><text x="448" y="64">2</text></g>
+          </g>
+          <g class="pz" data-p="tuerca" id="g-tuerca" tabindex="0" role="button" aria-label="1 Tuerca del vástago">
+            <rect x="219" y="26" width="22" height="12" rx="2" fill="url(#aceV)" stroke="#4d4d55"/>
+            <g class="num"><line class="guia" x1="219" y1="32" x2="56" y2="42"/><circle cx="44" cy="44" r="11"/><text x="44" y="48">1</text></g>
+          </g>
+          <g id="goteo" opacity="0" fill="#c9a227"><path d="M262 300 q4 8 0 14 q-4 -6 0 -14z"/><path d="M266 340 q4 8 0 14 q-4 -6 0 -14z"/><ellipse cx="252" cy="452" rx="22" ry="4" opacity=".7"/></g>
+          <text id="ruido" x="300" y="70" font-family="Anton,Impact,sans-serif" font-size="20" fill="#ff5a3c" opacity="0">¡CRAC!</text>
+          <text class="cota" x="2" y="462">EN AMARILLO: ESPIRAL Y ACEITE · EN AZUL: CÁMARA DE GAS</text>
+          </g>
+        </svg>
+
+        <!-- ===================== LÁMINA C: REBOTE ===================== -->
+        <svg id="C" viewBox="0 0 520 470" role="img" aria-label="Cuarto de auto pasando un lomo de burro y gráfico del movimiento de la carrocería" hidden>
+          <defs>
+            <linearGradient id="cAce" x1="0" x2="1"><stop offset="0" stop-color="#5d5d65"/><stop offset=".45" stop-color="#ededf2"/><stop offset="1" stop-color="#55555d"/></linearGradient>
+            <linearGradient id="cChapa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a52"/><stop offset="1" stop-color="#222227"/></linearGradient>
+          </defs>
+          <text class="cota" x="16" y="22">LÁMINA 2 · UN CUARTO DE AUTO SOBRE UN LOMO DE BURRO</text>
+          <!-- Calle y lomo -->
+          <path id="calle" d="" fill="#1a1d22" stroke="#3a4048" stroke-width="2"/>
+          <!-- Carrocería -->
+          <g id="caja"><rect x="40" y="0" width="190" height="56" rx="10" fill="url(#cChapa)" stroke="#6a6a72"/><text class="cota" x="52" y="34">CARROCERÍA</text><circle cx="214" cy="12" r="4" fill="#f5e61b"/></g>
+          <path id="resorte" d="" fill="none" stroke="#e0c030" stroke-width="5" stroke-linejoin="round"/>
+          <g id="amortC"><rect id="amCuerpo" x="160" y="0" width="22" height="70" rx="4" fill="#3a3a41" stroke="#8a8a92"/><rect id="amVast" x="167" y="0" width="8" height="60" fill="url(#cAce)"/></g>
+          <g id="ruedaC"><circle cx="135" cy="0" r="44" fill="#141416" stroke="#3a3a42" stroke-width="12"/><circle cx="135" cy="0" r="16" fill="#6a6a72"/></g>
+          <!-- Gráfico -->
+          <rect x="268" y="80" width="236" height="300" rx="10" fill="#0b1014" stroke="#2c3440"/>
+          <text class="cota" x="282" y="100" fill="#9fdcff">MOVIMIENTO DE LA CARROCERÍA</text>
+          <path d="M282 230 H492" stroke="#2c3440" stroke-dasharray="4 4"/><text class="cota" x="282" y="226">REPOSO</text>
+          <path d="M282 150 H492 M282 310 H492" stroke="#182028"/>
+          <path id="traza" d="" fill="none" stroke="#f5e61b" stroke-width="2.5"/>
+          <text class="cota" x="282" y="372">TIEMPO →</text>
+          <text id="rebotes" x="386" y="132" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="18" fill="#f5e61b"></text>
+          <text id="estadoC" x="140" y="110" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="18" fill="#7ee787">AMORTIGUADOR SANO</text>
+        </svg>
+
+        <!-- ===================== LÁMINA B: CAMBIO ===================== -->
+        <svg id="B" viewBox="0 0 520 470" role="img" aria-label="Rueda delantera vista de frente durante el cambio del amortiguador" hidden>
+          <defs>
+            <linearGradient id="bAce" x1="0" x2="1"><stop offset="0" stop-color="#5d5d65"/><stop offset=".45" stop-color="#ededf2"/><stop offset="1" stop-color="#55555d"/></linearGradient>
+            <linearGradient id="bAceV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9d9df"/><stop offset="1" stop-color="#5c5c64"/></linearGradient>
+            <linearGradient id="bForja" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55555d"/><stop offset="1" stop-color="#2f2f35"/></linearGradient>
+            <linearGradient id="bChapa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a52"/><stop offset="1" stop-color="#222227"/></linearGradient>
+            <linearGradient id="bOxido" x1="0" x2="1"><stop offset="0" stop-color="#5a3a20"/><stop offset=".5" stop-color="#a0683a"/><stop offset="1" stop-color="#4a2e18"/></linearGradient>
+            <pattern id="dibujo" width="70" height="14" patternUnits="userSpaceOnUse"><rect width="70" height="14" fill="#1a1a1d"/><path d="M0 7 H14 M22 2 V12 M34 7 H48 M56 2 V12" stroke="#2c2c31" stroke-width="4"/></pattern>
+            <clipPath id="clL"><circle cx="110" cy="190" r="74"/></clipPath>
+          </defs>
+          <text class="cota" x="16" y="22">LÁMINA 3 · TREN DELANTERO IZQUIERDO · VISTA FRONTAL</text>
+          <rect x="0" y="430" width="520" height="40" fill="#121418"/><path d="M0 430 H520" stroke="#3a4048" stroke-width="2"/>
+          <g id="alzar">
+            <path d="M0 40 H470 Q500 40 504 70 L512 122 H372 Q356 82 300 82 H0 Z" fill="url(#bChapa)" stroke="#5a5a62"/><text class="cota" x="16" y="62">CARROCERÍA · TORRETA</text>
+            <rect x="20" y="268" width="104" height="46" rx="6" fill="url(#bForja)" stroke="#6a6a72"/><text class="cota" x="28" y="306">SUBCHASIS</text>
+            <g id="torreB"><circle cx="296" cy="74" r="4" fill="#cfcfd5"/><circle cx="322" cy="74" r="4" fill="#cfcfd5"/><circle cx="309" cy="70" r="5" fill="#9a9aa2"/></g>
+            <g id="strutB">
+              <rect x="300" y="84" width="22" height="20" rx="4" fill="#3a3a41"/>
+              <path d="M310 104 L304 226" stroke="url(#bAce)" stroke-width="7" stroke-linecap="round"/>
+              <path id="espB" d="M282 112 q24 6 36 0 M280 132 q26 6 38 0 M278 152 q26 6 38 0 M276 172 q26 6 38 0 M274 192 q26 6 38 0 M272 212 q26 6 38 0" fill="none" stroke="#d4b020" stroke-width="5" stroke-linecap="round"/>
+              <rect id="tuboB" x="292" y="208" width="24" height="76" rx="5" fill="url(#bOxido)" stroke="#3a2510"/>
+            </g>
+            <path d="M96 286 L306 318 L304 346 L96 306 Z" fill="url(#bForja)" stroke="#6a6a72"/><circle cx="104" cy="296" r="14" fill="#1a1a1d" stroke="#6a6a72" stroke-width="3"/><text class="cota" x="150" y="294">PARRILLA</text>
+            <g id="bieletaB"><path d="M190 230 L268 236" stroke="url(#bAce)" stroke-width="5" stroke-linecap="round"/><circle cx="268" cy="236" r="5" fill="#9a9aa2"/><text class="cota" x="186" y="224">BIELETA</text></g>
+            <g id="mangB"><path d="M294 284 Q290 290 300 296 L318 300 L318 312 Q314 322 304 324 L292 322 Q286 316 290 306 L296 296 Z" fill="url(#bForja)" stroke="#7a7a82"/><rect x="318" y="246" width="20" height="20" fill="url(#bAce)" stroke="#55555d"/></g>
+            <g id="bulB"><circle cx="312" cy="262" r="4" fill="#cfcfd5"/><circle cx="312" cy="276" r="4" fill="#cfcfd5"/></g>
+            <rect id="marcaB" x="286" y="268" width="34" height="3" fill="#fff" opacity="0"/>
+            <rect x="338" y="176" width="10" height="160" rx="3" fill="url(#bAceV)" stroke="#55555d"/><path d="M326 186 h30 v40 h-30z" fill="#b3261e" stroke="#5a1410"/>
+            <g id="ruedaB"><rect x="352" y="132" width="82" height="248" rx="26" fill="url(#dibujo)" stroke="#2c2c31" stroke-width="2"/><rect x="350" y="196" width="18" height="120" rx="4" fill="url(#bAceV)" stroke="#55555d"/></g>
+          </g>
+          <g id="caballete" opacity="0"><path d="M42 430 L62 330 H94 L114 430" fill="none" stroke="#f5e61b" stroke-width="7" stroke-linejoin="round"/><path d="M52 384 H104" stroke="#f5e61b" stroke-width="5"/><rect x="56" y="318" width="44" height="14" rx="3" fill="#f5e61b"/><text class="cota" x="40" y="452" fill="#f5e61b">CABALLETE</text></g>
+          <g id="llaveB" opacity="0"><path d="M392 256 L476 200 M450 170 L502 236" stroke="#d0d0d6" stroke-width="8" stroke-linecap="round"/><text class="cota" x="430" y="160" fill="#e8e8ec">LLAVE DE RUEDAS</text></g>
+          <g id="llaveT" opacity="0"><path d="M309 40 V14 M290 14 H328" stroke="#d0d0d6" stroke-width="6" stroke-linecap="round"/><text class="cota" x="336" y="20" fill="#e8e8ec">DESDE EL CAPÓ</text></g>
+          <g id="torqB" opacity="0"><path d="M312 270 L470 240" stroke="#d0d0d6" stroke-width="7" stroke-linecap="round"/><rect x="430" y="230" width="56" height="18" rx="4" fill="#f5e61b" transform="rotate(-10 458 239)"/><text class="cota" x="404" y="222" fill="#e8e8ec">TORQUÍMETRO</text></g>
+          <g id="alinB" opacity="0"><path d="M393 110 V430" stroke="#38b6ff" stroke-width="2" stroke-dasharray="6 6"/><rect x="380" y="34" width="124" height="56" rx="8" fill="#0b1a24" stroke="#38b6ff"/><text class="cota" x="392" y="58" fill="#9fdcff">ALINEACIÓN</text><text class="cota" x="392" y="74" fill="#9fdcff">CAÍDA · CONVERGENCIA</text></g>
+          <g id="flechaB" opacity="0"><path d="M470 400 V320 M454 338 L470 320 L486 338" stroke="#f5e61b" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+          <!-- Lupa: en el banco -->
+          <g id="lupa" opacity="0">
+            <circle cx="110" cy="190" r="78" fill="#0d1014" stroke="#f5e61b" stroke-width="4"/>
+            <g clip-path="url(#clL)">
+              <rect x="30" y="250" width="160" height="10" fill="#3a3a41"/>
+              <g id="lTop"><rect x="70" y="118" width="80" height="12" rx="3" fill="#2c2c31" stroke="#6a6a72"/><rect x="102" y="108" width="16" height="10" fill="url(#bAceV)"/></g>
+              <rect x="106" y="128" width="8" height="70" fill="url(#bAce)"/>
+              <path id="lEsp" d="M72 138 q38 8 76 0 M72 156 q38 8 76 0 M72 174 q38 8 76 0 M72 192 q38 8 76 0 M72 210 q38 8 76 0" fill="none" stroke="#d4b020" stroke-width="5" stroke-linecap="round"/>
+              <rect id="lTubo" x="96" y="196" width="28" height="54" rx="4" fill="url(#bOxido)" stroke="#3a2510"/>
+              <g id="lComp" opacity="0" stroke="#f5e61b" stroke-width="4" fill="none" stroke-linecap="round"><path d="M64 140 V208 M64 140 h10 M64 208 h10"/><path d="M156 140 V208 M156 140 h-10 M156 208 h-10"/></g>
+            </g>
+            <text id="lTxt" x="110" y="286" text-anchor="middle" class="cota" fill="#f5e61b">EN EL BANCO</text>
+          </g>
+        </svg>
+      </div>
+      <div class="controles" id="ctrlA">
+        <button class="btn sec" id="despiece" data-fx="criquet" aria-pressed="false">Ver despiece</button>
+        <div class="rebote" id="ctrlC" hidden>
+          <button class="btn" id="lomo">Pasar un lomo de burro</button>
+          <div class="seg" role="group" aria-label="Estado del amortiguador" id="segAm">
+            <button data-am="sano" aria-pressed="true">Sano</button><button data-am="gastado" aria-pressed="false">Gastado</button><button data-am="sin" aria-pressed="false">Sin amortiguador</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="card leccion" data-modo="partes">
+        <div class="cab"><span class="kicker">Tema 1 · Despiece</span><small>4 min</small></div>
+        <h2 style="margin-top:6px">Las 12 piezas</h2>
+        <p style="margin-top:8px">El conjunto tiene dos partes que trabajan juntas: el <b>espiral</b>, que sostiene el peso, y el <b>amortiguador</b>, un tubo con aceite y un pistón que frena el movimiento. Arriba, la <b>copela</b> lo atornilla a la carrocería; abajo, la <b>brida</b> lo une a la mangueta.</p>
+        <div class="partes-lista" id="lista"></div>
+        <div class="detalle" id="detalle"><b>Elegí una pieza</b><span style="color:var(--suave);font-size:.9rem">Vas a ver qué es y qué hace.</span></div>
+      </div>
+      <div class="card leccion" data-modo="trabaja" hidden>
+        <div class="cab"><span class="kicker">Tema 2 · Para qué sirve</span><small>4 min</small></div>
+        <h2 style="margin-top:6px">El espiral rebota, el amortiguador lo frena</h2>
+        <p style="margin-top:8px">Un espiral solo es como un resorte de colchón: cuando pasás un pozo se comprime y después <b>rebota varias veces</b>. El amortiguador lo impide: su pistón tiene que empujar el aceite a través de agujeritos (válvulas), y eso <b>frena</b> el movimiento.</p>
+        <div class="tip"><b>Probalo:</b> tocá «Pasar un lomo de burro» con el amortiguador <b>sano</b> y después con <b>gastado</b> y <b>sin amortiguador</b>. Mirá el gráfico: cuantas más ondas, más rebota la carrocería.</div>
+        <p style="margin-top:10px">Con un amortiguador sano, la carrocería sube y vuelve a su lugar casi sin rebotar. Gastado, sigue «flotando»: la cubierta pierde contacto con el piso justo cuando más agarre necesitás.</p>
+        <div class="aviso"><b>Por eso importa:</b> un amortiguador gastado alarga la frenada y hace que el auto se mueva de más en las curvas.</div>
+      </div>
+      <div class="card leccion" data-modo="fallas" hidden>
+        <div class="cab"><span class="kicker" style="color:var(--naranja)">Tema 3 · Cuándo está mal</span><small>4 min</small></div>
+        <h2 style="margin-top:6px">Provocá cada falla</h2>
+        <div class="chips">
+          <button class="chip" data-f="aceite" aria-pressed="false">Pierde aceite <span class="sw"></span></button>
+          <button class="chip" data-f="tope" aria-pressed="false">Tope de goma roto <span class="sw"></span></button>
+          <button class="chip" data-f="espiral" aria-pressed="false">Espiral quebrado <span class="sw"></span></button>
+          <button class="chip" data-f="ruleman" aria-pressed="false">Rulemán de la copela gastado <span class="sw"></span></button>
+        </div>
+        <div class="diag" id="diag" aria-live="polite"></div>
+        <h3 style="margin-top:16px;font-size:1.15rem">Síntomas al manejar</h3>
+        <ul style="margin:8px 0 0 18px;color:#d4d4da;display:grid;gap:4px;font-size:.92rem">
+          <li>El auto sigue rebotando después de un lomo de burro</li>
+          <li>Se «hunde» de trompa al frenar y se inclina mucho en las curvas</li>
+          <li>Golpe seco en pozos o crujido al girar el volante con el auto quieto</li>
+          <li>Cubiertas con desgaste en «manchones»</li>
+        </ul>
+        <div class="tip"><b>Cómo se revisa:</b> mirá si el cuerpo del amortiguador está mojado de aceite. Después empujá con fuerza la trompa hacia abajo sobre esa rueda y soltá: tiene que subir y quedarse. Si rebota más de una vez, el amortiguador está gastado.</div>
+      </div>
+      <div class="card leccion" data-modo="cambio" hidden>
+        <div class="cab"><span class="kicker">Tema 4 · Cambio paso a paso</span><small id="pasoMin">Paso 1 de 13</small></div>
+        <div class="aviso" style="margin-top:8px"><b>Atención:</b> un espiral comprimido guarda muchísima fuerza. Desarmar el conjunto sin compresores adecuados puede causar heridas graves. Si no tenés las herramientas, este trabajo es para el taller.</div>
+        <ol class="pasos" id="pasos"></ol>
+        <div class="nav-pasos"><button class="btn sec" id="ant">← Anterior</button><button class="btn" id="sig">Siguiente paso →</button></div>
+      </div>
+      <div class="card leccion" data-modo="ficha" hidden>
+        <div class="cab"><span class="kicker">Tema 5 · Ficha técnica</span><small>2 min</small></div>
+        <h2 style="margin-top:6px">Cambio de amortiguador</h2>
+        <table class="ficha-tabla">
+          <tr><th>Dificultad</th><td>Alta: necesita compresores de espiral</td></tr>
+          <tr><th>Tiempo aprox.</th><td>1,5 a 2,5 horas por lado, sin la alineación</td></tr>
+          <tr><th>Herramientas</th><td><ul><li>Crique y caballetes</li><li>Llave de ruedas</li><li>Llaves y tubos</li><li>Compresores de espiral</li><li>Llave para la tuerca del vástago</li><li>Torquímetro</li><li>Marcador o pintura</li></ul></td></tr>
+          <tr><th>Repuestos</th><td><ul><li>Amortiguadores nuevos (de a pares, en el mismo eje)</li><li>Tope y fuelle nuevos (recomendado)</li><li>Rulemán y copela, si están gastados</li><li>Tuerca del vástago nueva</li></ul></td></tr>
+          <tr><th>Clave del trabajo</th><td>Compresores bien colocados y marcar la posición de la brida en la mangueta</td></tr>
+          <tr><th>Después</th><td>Controlar la alineación</td></tr>
+        </table>
+        <h3 style="margin-top:16px;font-size:1.15rem">Errores comunes</h3>
+        <ul style="margin:8px 0 0 18px;color:#d4d4da;display:grid;gap:4px;font-size:.92rem">
+          <li>Aflojar la tuerca del vástago sin comprimir el espiral</li>
+          <li>Cambiar un solo amortiguador del eje</li>
+          <li>Reusar el tope y el fuelle rotos</li>
+          <li>No marcar la brida y perder la caída de la rueda</li>
+          <li>Ajustar los bulones con el auto levantado y no con el peso sobre la rueda, cuando el fabricante lo indica</li>
+        </ul>
+      </div>
+      <div class="card leccion" data-modo="ficha" hidden>
+        <span class="kicker">Repaso</span>
+        <h3 style="margin-top:4px;font-size:1.2rem" id="exPreg"></h3>
+        <div class="examen" id="exOps"></div>
+        <p id="exFb" aria-live="polite" style="margin-top:10px;font-size:.92rem"></p>
+      </div>
+      <div class="cta"><h3>¿Preferís que lo hagamos nosotros?</h3><a href="./#contacto">Pedir turno</a></div>
+    </aside>
+  </div>
+  <p class="nota" style="padding-bottom:16px">Ficha con fines educativos. Cada auto tiene su procedimiento y sus torques: consultá siempre el manual de taller del modelo. El desarme del conjunto implica riesgo por la fuerza del espiral: si no tenés experiencia ni herramientas, dejalo en manos de un mecánico.</p>
+  <div class="siguiente-mod"><span><span class="kicker">Módulo anterior</span><br><a href="extremo-de-direccion.html">← 2 · Extremo de dirección</a></span><span style="text-align:right"><span class="kicker">Próximo módulo</span><br><a href="bujes-y-parrilla.html">4 · Bujes y parrilla →</a></span></div>
+</main>
+<footer><div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · <a href="./">Inicio</a> · <a href="cursos.html">Cursos</a></div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const ICON='<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3a6 6 0 0 0-5.6 8L3 17.4 6.6 21l6.4-6.4A6 6 0 0 0 21 9l-3.5 2-3-1-1-3z" fill="#f5e61b"/></svg>';
+const son=k=>window.TallerFX&&TallerFX.sonar(k);
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+// ---- Espiral (se dibuja con código) ----
+function espiral(y0,y1,vueltas,cx,rx){let atras="",frente="";const h=(y1-y0)/vueltas;
+  for(let i=0;i<vueltas;i++){const a=y0+i*h;frente+=`M${cx-rx} ${a+h*.0} Q${cx} ${a+h*.85} ${cx+rx} ${a+h*.5} `;atras+=`M${cx+rx} ${a+h*.5} Q${cx} ${a+h*.15} ${cx-rx} ${a+h} `}return[atras,frente]}
+function dibujarEspiral(y0,y1){const [a,f]=espiral(y0,y1,6,230,74);$("#espAtras").setAttribute("d",a);$("#espFrente").setAttribute("d",f)}
+dibujarEspiral(98,300);
+const PARTES=[
+  ["tuerca","Tuerca del vástago","Ajusta el vástago a la copela y mantiene todo el conjunto armado. Por eso nunca se afloja sin comprimir antes el espiral."],
+  ["copela","Copela (soporte superior)","Se atornilla a la torreta de la carrocería. Tiene goma para absorber vibraciones y que no lleguen al habitáculo."],
+  ["ruleman","Rulemán de la copela","Deja que todo el conjunto gire cuando doblás el volante. Si se gasta, cruje al girar con el auto quieto."],
+  ["platoS","Plato superior","Apoyo de arriba del espiral. Lo centra y le transmite el peso de la carrocería."],
+  ["tope","Tope de goma","Evita que el amortiguador llegue a fondo con un golpe metálico en un pozo grande."],
+  ["fuelle","Fuelle guardapolvo","Protege el vástago cromado de la tierra. Un vástago rayado rompe el retén y el amortiguador pierde aceite."],
+  ["espiral","Espiral","El resorte que sostiene el peso del auto y define la altura. Absorbe los golpes, pero solo, rebotaría sin parar."],
+  ["vastago","Vástago","Barra cromada que une la copela con el pistón. Entra y sale del cuerpo del amortiguador."],
+  ["tubo","Cuerpo del amortiguador","El tubo donde trabajan el pistón y el aceite. Tiene un retén arriba para que el aceite no se escape."],
+  ["piston","Pistón con válvulas","Tiene agujeritos calibrados. Al moverse obliga al aceite a pasar por ellos: esa resistencia es la que frena el rebote."],
+  ["aceite","Aceite y gas","El aceite hace la resistencia; el gas a presión (en los amortiguadores presurizados) evita que se formen burbujas y el aceite pierda efecto."],
+  ["brida","Plato inferior y brida","El plato apoya el espiral abajo. La brida se abulona a la mangueta: su posición define la caída de la rueda."]
+];
+const FALLAS={aceite:"<b>Pierde aceite</b>El retén se gastó o el vástago está rayado: el aceite se escapa, el pistón ya no encuentra resistencia y el auto rebota. El cuerpo se ve mojado y sucio.",
+  tope:"<b>Tope de goma roto</b>En un pozo grande, el amortiguador llega a fondo con un golpe seco y se puede dañar.",
+  espiral:"<b>Espiral quebrado</b>Suele romperse una punta: el auto queda más bajo de ese lado y puede hacer ruido. Se cambian de a pares.",
+  ruleman:"<b>Rulemán de la copela gastado</b>Cruje o hace «crac» al girar el volante con el auto quieto o en maniobras de estacionamiento."};
+const PASOS=[
+  {t:"Aflojar las tuercas de la rueda",d:"Con el auto en el piso, aflojá apenas las tuercas de la rueda.",h:["Llave de ruedas"],s:"Auto en lugar plano, freno de mano y ruedas traseras calzadas."},
+  {t:"Levantar el auto y poner el caballete",d:"Levantá el auto con el crique en el punto que indica el manual y apoyalo sobre un caballete firme, debajo de la carrocería o el subchasis, nunca debajo de la parrilla.",h:["Crique","Caballete"],s:"Nunca trabajes debajo del auto sostenido solo con el crique."},
+  {t:"Sacar la rueda",d:"Retirá la rueda. Ahora se ven el conjunto amortiguador-espiral, la bieleta y la mangueta.",h:["Llave de ruedas"]},
+  {t:"Soltar la bieleta y los soportes",d:"Desconectá la bieleta de la barra estabilizadora y soltá los soportes que van agarrados al amortiguador: cañería de freno, cable del sensor ABS.",h:["Llaves","Llave Allen"],tip:"No dejes colgando la pinza de freno de su manguera: atala con un alambre."},
+  {t:"Aflojar las tuercas de la torreta",d:"Desde el capó, aflojá las tuercas que sujetan la copela a la torreta, pero no las saques del todo. La tuerca central del vástago no se toca.",h:["Llaves","Tubos"],s:"La tuerca central sostiene el espiral comprimido: no se afloja con el conjunto armado."},
+  {t:"Marcar la brida y sacar los bulones de abajo",d:"Hacé una marca con pintura entre la brida y la mangueta. Después sacá los bulones que unen el amortiguador con la mangueta.",h:["Marcador o pintura","Llaves y tubos"],tip:"Uno de los bulones suele ser excéntrico: regula la caída. La marca te deja volver a la misma posición."},
+  {t:"Retirar el conjunto",d:"Sostené el conjunto, sacá las tuercas de la torreta y bajalo con cuidado por debajo del guardabarros.",h:["Mano"],s:"Es pesado: sostenelo antes de sacar la última tuerca."},
+  {t:"Comprimir el espiral",d:"En el banco, colocá dos compresores enfrentados, tomando la misma cantidad de espiras, y apretalos de a poco y parejo hasta que el espiral deje de hacer fuerza contra la copela.",h:["Compresores de espiral"],s:"Compresores en buen estado y bien enganchados. Nunca te pongas en línea con el espiral comprimido."},
+  {t:"Desarmar el conjunto",d:"Con el espiral comprimido, sacá la tuerca del vástago. Retirá copela, rulemán, plato, espiral, tope y fuelle del amortiguador viejo.",h:["Llave para vástago","Llave de impacto (opcional)"]},
+  {t:"Armar con el amortiguador nuevo",d:"Colocá en el amortiguador nuevo el tope y el fuelle (nuevos, si estaban gastados), el espiral con sus puntas en los topes del plato, el plato, el rulemán y la copela. Ajustá la tuerca nueva del vástago y soltá los compresores de a poco y parejo.",h:["Compresores","Llave para vástago","Torquímetro"],tip:"Fijate que las puntas del espiral calcen en sus asientos, arriba y abajo."},
+  {t:"Montar el conjunto",d:"Subí el conjunto, poné las tuercas de la torreta y los bulones de abajo alineando la marca. Volvé a conectar la bieleta y los soportes. Ajustá todo al torque indicado.",h:["Torquímetro","Llaves"]},
+  {t:"Colocar la rueda y bajar el auto",d:"Poné la rueda, sacá el caballete, bajá el auto y dale el ajuste final a las tuercas en cruz.",h:["Llave de ruedas","Torquímetro"]},
+  {t:"Controlar la alineación",d:"Aunque respetes la marca, la caída y la convergencia pueden cambiar. Llevá el auto a alinear.",h:["Alineadora"],tip:"Los amortiguadores se cambian de a pares por eje, para que el auto frene y doble parejo."}
+];
+const EXAMEN=[
+  {p:"¿Qué hace el amortiguador?",o:["Sostiene el peso del auto","Frena el rebote del espiral","Gira las ruedas"],c:1},
+  {p:"¿Cómo frena el rebote?",o:["Con un freno de disco interno","Obligando al aceite a pasar por agujeritos del pistón","Con un imán"],c:1},
+  {p:"¿Qué no se hace nunca con el conjunto armado?",o:["Aflojar la tuerca central del vástago","Lavarlo","Mirar si pierde aceite"],c:0},
+  {p:"¿Cómo se cambian los amortiguadores?",o:["De a uno, el que está peor","De a pares, en el mismo eje","Los cuatro siempre juntos, sin excepción"],c:1}
+];
+const DESP={tuerca:[0,-26],copela:[0,-18],ruleman:[0,-10],platoS:[0,-4],tope:[-46,0],fuelle:[60,0],espiral:[0,0],vastago:[0,40],tubo:[0,40],aceite:[0,40],piston:[0,40],brida:[0,40]};
+const ID={tuerca:"g-tuerca",copela:"g-copela",ruleman:"g-ruleman",platoS:"g-platoS",tope:"g-tope",fuelle:"g-fuelle",espiral:"g-espiral",vastago:"g-vastago",tubo:"g-tubo",aceite:"g-aceite",piston:"g-piston",brida:"g-brida"};
+let modo="partes",falla={},paso=0,exN=0,desp=false,t0=performance.now();
+$("#lista").innerHTML=PARTES.map((p,i)=>`<button data-p="${p[0]}" data-fx="pieza"><i>${i+1}</i>${p[1]}</button>`).join("");
+function elegir(k){const i=PARTES.findIndex(p=>p[0]===k),p=PARTES[i];
+  $$(".pz").forEach(g=>g.classList.toggle("sel",g.dataset.p===k));$$("#lista button").forEach(b=>b.classList.toggle("sel",b.dataset.p===k));
+  $("#detalle").innerHTML=`<b>${i+1} · ${p[1]}</b><span style="font-size:.92rem;color:#d4d4da">${p[2]}</span>`;}
+$$("#lista button").forEach(b=>b.onclick=()=>elegir(b.dataset.p));
+$$(".pz").forEach(g=>{const f=()=>{if(modo!=="partes")irA("partes");elegir(g.dataset.p)};g.addEventListener("click",f);g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();son("pieza");f()}})});
+$("#despiece").onclick=()=>{desp=!desp;$("#despiece").setAttribute("aria-pressed",desp);$("#despiece").textContent=desp?"Armar el conjunto":"Ver despiece";
+  const mover=(el,x,y)=>{el.style.transition=reduce?"":"transform .7s cubic-bezier(.2,.8,.2,1)";el.style.transform=desp?`translate(${x}px,${y}px)`:""};
+  for(const k in DESP){const [x,y]=DESP[k];mover(document.getElementById(ID[k]),x,y)}
+  mover($("#g-espiralAtras"),0,0);
+};
+$$(".temario button").forEach(b=>b.onclick=()=>irA(b.dataset.m));
+function irA(m){modo=m;$$(".temario button").forEach(b=>{const on=b.dataset.m===m;b.setAttribute("aria-selected",on);if(on)b.classList.add("visto")});
+  $$(".leccion").forEach(c=>c.hidden=c.dataset.modo!==m);
+  const B=m==="cambio",C=m==="trabaja";
+  $("#A").toggleAttribute("hidden",B||C);$("#B").toggleAttribute("hidden",!B);$("#C").toggleAttribute("hidden",!C);
+  $("#ctrlA").toggleAttribute("hidden",B);$("#ctrlC").toggleAttribute("hidden",!C);$("#despiece").toggleAttribute("hidden",m!=="partes");
+  if(m!=="partes"&&desp)$("#despiece").click();
+  $("#barraTxt").textContent=B?"Lámina 3 · Tren delantero, vista frontal":C?"Lámina 2 · Rebote sobre un lomo de burro":"Lámina 1 · Conjunto McPherson en corte";
+  $("#barraDer").textContent=B?`Paso ${paso+1} de ${PASOS.length}`:C?"Simulación simplificada":"Escala aprox. 1:4";
+  if(B)pasoUI();if(m==="ficha")examen();}
+// ---- Fallas ----
+$$(".chip").forEach(c=>c.onclick=()=>{const k=c.dataset.f;falla[k]=!falla[k];c.setAttribute("aria-pressed",!!falla[k]);
+  $("#diag").innerHTML=Object.keys(falla).filter(x=>falla[x]).map(x=>`<div>${FALLAS[x]}</div>`).join("");
+  $("#goteo").setAttribute("opacity",falla.aceite?1:0);$("#aceiteR").setAttribute("y",falla.aceite?300:214);$("#aceiteR").setAttribute("height",falla.aceite?80:166);
+  $("#roturaT").setAttribute("opacity",falla.tope?1:0);$("#topePath").setAttribute("fill",falla.tope?"#3a2020":"#2c2c31");
+  $("#quiebre").setAttribute("opacity",falla.espiral?1:0);dibujarEspiral(falla.espiral?112:98,300);
+  $("#bolitas").setAttribute("fill",falla.ruleman?"#8a4a30":"url(#cromo)")});
+// ---- Lámina C: simulación de rebote ----
+const C={k:60,c:{sano:11,gastado:2.5,sin:0}};let am="sano",sim={x:0,v:0,t:9,hist:[],cruces:0,ult:0},lomoT=-9;
+$$("#segAm button").forEach(b=>b.onclick=()=>{am=b.dataset.am;$$("#segAm button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  const e=$("#estadoC");e.textContent=am==="sano"?"AMORTIGUADOR SANO":am==="gastado"?"AMORTIGUADOR GASTADO":"SIN AMORTIGUADOR";e.setAttribute("fill",am==="sano"?"#7ee787":am==="gastado"?"#ffb020":"#ff5a3c")});
+$("#lomo").onclick=()=>{lomoT=sim.t;sim.hist=[];sim.cruces=0;$("#rebotes").textContent=""};
+function calle(t){const d=t-lomoT;return d>=0&&d<.45?Math.sin(Math.PI*d/.45)*34:0}
+function pasoSim(dt){const r=calle(sim.t),rp=(calle(sim.t+.001)-r)/.001;const a=C.k*(r-sim.x)+C.c[am]*(rp-sim.v);sim.v+=a*dt;sim.x+=sim.v*dt;sim.t+=dt;
+  const vPrev=sim.ult;sim.ult=sim.v;if(sim.t-lomoT>.6&&sim.t-lomoT<6&&vPrev*sim.v<0&&Math.abs(sim.x)>4)sim.cruces++;
+  if(sim.t-lomoT<6&&sim.t>=lomoT)sim.hist.push([sim.t-lomoT,sim.x])}
+function dibujarC(){const yR=400,r=calle(sim.t);
+  // calle con el lomo que pasa de derecha a izquierda
+  const d=sim.t-lomoT, px=135+(.225-d)*260;let path=`M0 ${yR}`;for(let x=0;x<=260;x+=6){const u=(x-px)/58;const h=Math.abs(u)<.5?Math.cos(Math.PI*u)*34:0;path+=` L${x} ${yR-h}`}path+=" L260 470 L0 470 Z";$("#calle").setAttribute("d",path);
+  const yW=yR-44-r, yB=yW-150-sim.x;
+  $("#ruedaC").setAttribute("transform",`translate(0 ${yW})`);$("#caja").setAttribute("transform",`translate(0 ${yB})`);
+  let z=`M100 ${yB+56}`;const n=9,seg=(yW-14-(yB+56))/n;for(let i=1;i<=n;i++)z+=` L${i%2?84:116} ${yB+56+seg*i}`;$("#resorte").setAttribute("d",z);
+  $("#amCuerpo").setAttribute("y",yW-84);$("#amCuerpo").setAttribute("height",70);$("#amVast").setAttribute("y",yB+56);$("#amVast").setAttribute("height",Math.max(10,yW-84-(yB+56)+20));
+  const H=sim.hist,W=210;let tr="";for(let i=0;i<H.length;i+=4){const x=282+H[i][0]/6*W,y=230-H[i][1]*1.5;tr+=(i?"L":"M")+x.toFixed(1)+" "+Math.max(84,Math.min(376,y)).toFixed(1)}$("#traza").setAttribute("d",tr);
+  if(sim.t-lomoT>3&&sim.t-lomoT<6.2)$("#rebotes").textContent=sim.cruces===0?"SIN REBOTES":sim.cruces===1?"1 REBOTE":`${sim.cruces} REBOTES`}
+// ---- Pasos ----
+function pasoUI(){
+  $("#pasos").innerHTML=PASOS.map((p,i)=>`<li class="${i<paso?"hecho":i===paso?"actual":""}"><button data-i="${i}"><i>${i<paso?"✓":i+1}</i>${p.t}</button>${i===paso?`<div class="paso-det">${p.d}<div class="herr">${p.h.map(x=>`<span>${ICON}${x}</span>`).join("")}</div>${p.s?`<div class="aviso"><b>Seguridad:</b> ${p.s}</div>`:""}${p.tip?`<div class="tip"><b>Dato de taller:</b> ${p.tip}</div>`:""}</div>`:""}</li>`).join("");
+  $$("#pasos button").forEach(b=>b.onclick=()=>{paso=+b.dataset.i;pasoUI()});
+  $("#pasoMin").textContent=`Paso ${paso+1} de ${PASOS.length}`;$("#barraDer").textContent=`Paso ${paso+1} de ${PASOS.length}`;
+  $("#ant").disabled=paso===0;$("#sig").textContent=paso===PASOS.length-1?"Ir a la ficha técnica →":"Siguiente paso →";
+  const o=(s,v)=>$(s).setAttribute("opacity",v?1:0);
+  const arriba=paso>=1&&paso<=10,sinRueda=paso>=2&&paso<=10,afuera=paso>=6&&paso<=9,nuevo=paso>=9;
+  $("#alzar").setAttribute("transform",`translate(0 ${arriba?-34:0})`);o("#caballete",arriba);o("#flechaB",paso===1);
+  $("#ruedaB").setAttribute("transform",sinRueda?"translate(150 0)":"");$("#ruedaB").setAttribute("opacity",sinRueda?0:1);
+  o("#llaveB",paso===0||paso===2||paso===11);o("#llaveT",paso===4||paso===6);o("#torqB",paso===10||paso===11);o("#alinB",paso===12);
+  $("#bieletaB").setAttribute("transform",paso>=3&&paso<=9?"rotate(-14 190 230)":"");
+  o("#marcaB",paso>=5&&paso<=10);$("#bulB").setAttribute("opacity",paso>=5&&paso<=9?0:1);
+  $("#strutB").setAttribute("transform",afuera?"translate(-30 70)":"");$("#strutB").setAttribute("opacity",afuera?.25:1);
+  $("#tuboB").setAttribute("fill",nuevo?"url(#bAceV)":"url(#bOxido)");$("#tuboB").setAttribute("stroke",nuevo?"#55555d":"#3a2510");
+  // lupa en el banco
+  o("#lupa",paso>=6&&paso<=9);o("#lComp",paso>=7&&paso<=9);
+  $("#lEsp").setAttribute("transform",paso>=7&&paso<=9?"translate(110 174) scale(1 .82) translate(-110 -174)":"");
+  $("#lTop").setAttribute("transform",paso===8?"translate(0 -22)":"");
+  $("#lTubo").setAttribute("fill",paso>=9?"url(#bAceV)":"url(#bOxido)");$("#lTubo").setAttribute("transform",paso===8?"translate(0 14)":"");
+  $("#lTxt").textContent=paso===6?"EN EL BANCO":paso===7?"COMPRESORES PAREJOS":paso===8?"DESARMADO":"AMORTIGUADOR NUEVO";
+}
+$("#sig").onclick=()=>{if(paso<PASOS.length-1){paso++;pasoUI()}else irA("ficha")};
+$("#ant").onclick=()=>{if(paso>0){paso--;pasoUI()}};
+// ---- Repaso ----
+function examen(){if(exN>=EXAMEN.length){$("#exPreg").textContent="¡Terminaste el módulo 3!";$("#exOps").innerHTML="";$("#exFb").innerHTML='<button class="btn sec" id="exOtra">Hacer el repaso de nuevo</button>';$("#exOtra").onclick=()=>{exN=0;examen()};return}
+  const q=EXAMEN[exN];$("#exPreg").textContent=`${exN+1} de ${EXAMEN.length} · ${q.p}`;$("#exFb").textContent="";
+  $("#exOps").innerHTML=q.o.map((o,i)=>`<button data-i="${i}" data-fx="none">${o}</button>`).join("");
+  $$("#exOps button").forEach(b=>b.onclick=()=>{const ok=+b.dataset.i===q.c;b.classList.add(ok?"bien":"mal");son(ok?"bien":"mal");
+    if(ok){$("#exFb").innerHTML='<b style="color:var(--ok)">¡Correcto!</b> <button class="btn sec" id="exSig" style="margin-left:8px">Seguir</button>';$("#exSig").onclick=()=>{exN++;examen()}}
+    else $("#exFb").textContent="No es esa. Probá con otra opción."})}
+// ---- Animación ----
+let ultT=performance.now(),golpe=0;
+function loop(now){const dt=Math.min(.05,(now-ultT)/1000);ultT=now;const t=(now-t0)/1000;
+  if(modo==="trabaja"){const n=reduce?1:8;for(let i=0;i<n;i++)pasoSim(dt/n);dibujarC()}
+  // pistón y aceite en la lámina A
+  if(modo==="partes"||modo==="fallas"){const s=reduce?0:Math.sin(t*1.4)*(falla.aceite?14:6);$("#piston").setAttribute("transform",`translate(0 ${s.toFixed(1)})`);$("#vastago").setAttribute("height",(214+s).toFixed(1));
+    let h="";if(!reduce&&!falla.aceite)for(let i=0;i<6;i++){const k=((t*.8+i/6)%1);h+=`<circle cx="${i%2?212:247}" cy="${(254+(s>0?-1:1)*k*24).toFixed(1)}" r="1.8" opacity="${(1-k).toFixed(2)}"/>`}$("#flujo").innerHTML=h;
+    const cr=modo==="fallas"&&falla.ruleman&&!reduce&&Math.sin(t*5)>.8;$("#ruido").setAttribute("opacity",cr?1:0);if(cr&&!golpe){golpe=1;son("falla")}else if(!cr)golpe=0}
+  requestAnimationFrame(loop)}
+(function(){const h=location.hash.slice(1).split("-");if(["partes","trabaja","fallas","cambio","ficha"].includes(h[0])){if(h[0]==="cambio"&&h[1])paso=Math.min(PASOS.length-1,Math.max(0,+h[1]-1));irA(h[0])}else irA("partes");if(h[0]==="despiece")$("#despiece").click();if(h[0]==="trabaja"&&h[1])lomoT=sim.t+.3})();
+dibujarC();requestAnimationFrame(loop);
+</script>
+<script src="js/taller-fx.js"></script>
+</body>
+</html>

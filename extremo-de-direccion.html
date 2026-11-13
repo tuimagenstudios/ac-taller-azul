@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Extremo de dirección: qué es y cómo se cambia | AC-Taller</title>
+<meta name="description" content="Módulo 2 del curso Tren delantero: el extremo de dirección. Despiece, cómo trabaja con la cremallera, convergencia, fallas y cambio paso a paso. Gratis, de AC-Taller, Azul.">
+<link rel="canonical" href="https://ac-taller.com/extremo-de-direccion.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AC-Taller"><meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://ac-taller.com/extremo-de-direccion.html">
+<meta property="og:title" content="El extremo de dirección, pieza por pieza | AC-Taller">
+<meta property="og:description" content="Despiece, convergencia, fallas y cambio paso a paso, interactivo. Gratis.">
+<meta property="og:image" content="https://ac-taller.com/img/og-extremo.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/simulador.css">
+<link rel="stylesheet" href="css/ficha.css">
+<style>
+  .modnav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+  .modnav a{font-size:.78rem;font-weight:700;color:var(--suave);text-decoration:none;border:1px solid #33333a;border-radius:20px;padding:3px 11px}
+  .modnav a[aria-current="page"]{color:#000;background:var(--amarillo);border-color:var(--amarillo)}
+  .modnav a:hover{border-color:var(--amarillo)}
+  .volante{display:flex;flex-wrap:wrap;gap:10px;align-items:center;width:100%}
+  .conv{display:flex;align-items:center;gap:6px}
+  .conv button{font:inherit;cursor:pointer;background:#1a1a1d;color:var(--texto);border:1px solid #3a3a42;border-radius:8px;padding:7px 11px;font-weight:700}
+  .estadoConv{font-weight:700;font-size:.85rem;border-radius:20px;padding:4px 12px}
+  .siguiente-mod{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:var(--panel);border:1px solid var(--borde);border-left:4px solid var(--amarillo);border-radius:12px;padding:16px 18px;margin-bottom:44px}
+  .siguiente-mod b{font-family:var(--display);font-weight:400;font-size:1.3rem;text-transform:uppercase}
+  .siguiente-mod a{color:var(--amarillo);font-weight:700}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./"><img src="logo.png" alt="Logo AC Motors" width="36" height="36">AC-TALLER</a><a class="volver" href="cursos.html">← Cursos</a></div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <nav class="modnav" aria-label="Módulos del curso">
+      <span class="kicker" style="margin-right:4px">Curso Tren delantero</span>
+      <a href="rotula.html">1 · Rótula</a><a href="extremo-de-direccion.html" aria-current="page">2 · Extremo de dirección</a><a href="amortiguador.html">3 · Amortiguador</a><a href="bujes-y-parrilla.html">4 · Bujes y parrilla</a><a href="alineacion.html">5 · Alineación</a>
+    </nav>
+    <h1>El <span>extremo de dirección</span></h1>
+    <p>El extremo es la última pieza de la dirección: une la barra que sale de la cremallera con la mangueta de la rueda. Por él pasa cada movimiento del volante, y girándolo se regula la convergencia de las ruedas.</p>
+    <div class="meta"><span>Módulo <b>2</b> de 5</span><span>Nivel: <b>intermedio</b></span><span>Duración: <b>15 min</b></span><span><b>5</b> temas · <b>11</b> pasos</span><span>Gratis</span></div>
+  </section>
+
+  <div class="aprender" aria-label="Lo que vas a aprender">
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>Las 12 piezas, de la cremallera a la mangueta</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>Cómo el volante mueve las ruedas y qué es la convergencia</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>Las 4 fallas típicas y sus síntomas</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>El cambio en 11 pasos, con el truco de contar las vueltas</div>
+  </div>
+
+  <nav class="temario" role="tablist" aria-label="Temas">
+    <button role="tab" data-m="partes" aria-selected="true"><b>TEMA 1</b><span>Despiece</span></button>
+    <button role="tab" data-m="trabaja" aria-selected="false"><b>TEMA 2</b><span>Volante y convergencia</span></button>
+    <button role="tab" data-m="fallas" aria-selected="false"><b>TEMA 3</b><span>Cuándo está mal</span></button>
+    <button role="tab" data-m="cambio" aria-selected="false"><b>TEMA 4</b><span>Cambio paso a paso</span></button>
+    <button role="tab" data-m="ficha" aria-selected="false"><b>TEMA 5</b><span>Ficha y repaso</span></button>
+  </nav>
+
+  <div class="app">
+    <section class="banco" aria-label="Lámina técnica">
+      <div class="barra"><span id="barraTxt">Lámina 1 · Extremo y barra en corte</span><span id="barraDer">Escala aprox. 1:2</span></div>
+      <div class="escena mesa">
+        <!-- ===================== LÁMINA A: CORTE ===================== -->
+        <svg id="A" viewBox="0 0 520 470" role="img" aria-label="Extremo de dirección y barra en corte con sus 12 piezas numeradas">
+          <defs>
+            <linearGradient id="ace" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5d5d65"/><stop offset=".3" stop-color="#c8c8d0"/><stop offset=".45" stop-color="#f4f4f8"/><stop offset=".62" stop-color="#b3b3bb"/><stop offset="1" stop-color="#55555d"/></linearGradient>
+            <linearGradient id="aceH" x1="0" x2="1"><stop offset="0" stop-color="#5d5d65"/><stop offset=".45" stop-color="#f4f4f8"/><stop offset="1" stop-color="#55555d"/></linearGradient>
+            <linearGradient id="forja" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55555d"/><stop offset="1" stop-color="#2f2f35"/></linearGradient>
+            <radialGradient id="bola" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#fff"/><stop offset=".25" stop-color="#e2e2e8"/><stop offset=".7" stop-color="#8a8a92"/><stop offset="1" stop-color="#4a4a52"/></radialGradient>
+            <linearGradient id="goma" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f0f11"/><stop offset=".45" stop-color="#34343a"/><stop offset="1" stop-color="#0d0d0f"/></linearGradient>
+            <linearGradient id="gomaV" x1="0" x2="1"><stop offset="0" stop-color="#0f0f11"/><stop offset=".5" stop-color="#34343a"/><stop offset="1" stop-color="#0d0d0f"/></linearGradient>
+            <linearGradient id="nylon" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2efe6"/><stop offset="1" stop-color="#b9b4a6"/></linearGradient>
+            <linearGradient id="oro" x1="0" x2="1"><stop offset="0" stop-color="#8a6a10"/><stop offset=".5" stop-color="#f0cc50"/><stop offset="1" stop-color="#8a6a10"/></linearGradient>
+            <pattern id="corte" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#3c3c43"/><line x1="0" y1="0" x2="0" y2="7" stroke="#6a6a73" stroke-width="1.6"/></pattern>
+            <pattern id="corteB" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="7" height="7" fill="#35353b"/><line x1="0" y1="0" x2="0" y2="7" stroke="#62626b" stroke-width="1.6"/></pattern>
+          </defs>
+          <g transform="translate(12 8) scale(.93)">
+          <text class="cota" x="16" y="22">AC-TALLER · MÓDULO 2 · LÁMINA 1 · BARRA Y EXTREMO · CORTE</text>
+          <!-- 12 Cremallera -->
+          <g class="pz" data-p="cremallera" id="g-cremallera" tabindex="0" role="button" aria-label="12 Cremallera">
+            <rect x="10" y="230" width="98" height="40" rx="6" fill="url(#corte)" stroke="#8a8a92"/>
+            <rect x="10" y="243" width="116" height="14" fill="url(#ace)" stroke="#4d4d55"/>
+            <path d="M14 257 v4 M22 257 v4 M30 257 v4 M38 257 v4 M46 257 v4 M54 257 v4 M62 257 v4 M70 257 v4 M78 257 v4 M86 257 v4 M94 257 v4" stroke="#9a9aa2" stroke-width="3"/>
+            <g class="num"><line class="guia" x1="40" y1="270" x2="40" y2="332"/><circle cx="40" cy="344" r="11"/><text x="40" y="348">12</text></g>
+          </g>
+          <!-- 10 Rótula axial -->
+          <g class="pz" data-p="axial" id="g-axial" tabindex="0" role="button" aria-label="10 Rótula axial">
+            <rect x="118" y="238" width="22" height="24" rx="4" fill="url(#forja)" stroke="#8a8a92"/>
+            <circle cx="146" cy="250" r="11" fill="url(#bola)" stroke="#4d4d55"/>
+            <g class="num"><line class="guia" x1="140" y1="238" x2="140" y2="128"/><circle cx="140" cy="116" r="11"/><text x="140" y="120">10</text></g>
+          </g>
+          <!-- 11 Fuelle de la cremallera -->
+          <g class="pz" data-p="fuelle" id="g-fuelle" tabindex="0" role="button" aria-label="11 Fuelle de la cremallera">
+            <path d="M104 232 L114 224 L124 236 L134 224 L144 236 L154 224 L164 236 L174 226 L186 242 V258 L174 274 L164 264 L154 276 L144 264 L134 276 L124 264 L114 276 L104 268 Z" fill="url(#goma)" stroke="#45454d" opacity=".82"/>
+            <path id="roturaF" d="M140 226 l6 8 -7 2 8 6" fill="none" stroke="#ff6a1a" stroke-width="2" opacity="0"/>
+            <g class="num"><line class="guia" x1="160" y1="276" x2="160" y2="332"/><circle cx="160" cy="344" r="11"/><text x="160" y="348">11</text></g>
+          </g>
+          <g id="tierraF" opacity="0" fill="#8a6a40"><circle cx="128" cy="244" r="2.4"/><circle cx="118" cy="256" r="2"/><circle cx="96" cy="250" r="2.2"/><circle cx="84" cy="244" r="1.8"/></g>
+          <!-- 9 Barra -->
+          <g class="pz" data-p="barra" id="g-barra" tabindex="0" role="button" aria-label="9 Barra de dirección">
+            <path id="barraPath" d="M152 244 H318 V256 H152 Z" fill="url(#ace)" stroke="#4d4d55"/>
+            <g stroke="#6b6b73" stroke-width="1.2"><path d="M282 244 l-3 12 M288 244 l-3 12 M294 244 l-3 12 M300 244 l-3 12 M306 244 l-3 12 M312 244 l-3 12"/></g>
+            <g class="num"><line class="guia" x1="220" y1="244" x2="220" y2="128"/><circle cx="220" cy="116" r="11"/><text x="220" y="120">9</text></g>
+          </g>
+          <!-- 8 Contratuerca -->
+          <g class="pz" data-p="contratuerca" id="g-contra" tabindex="0" role="button" aria-label="8 Contratuerca">
+            <path d="M298 234 H314 V266 H298 Z" fill="url(#aceH)" stroke="#4d4d55"/><path d="M298 244 H314 M298 256 H314" stroke="#4d4d55" opacity=".6"/>
+            <g class="num"><line class="guia" x1="306" y1="266" x2="290" y2="332"/><circle cx="286" cy="344" r="11"/><text x="286" y="348">8</text></g>
+          </g>
+          <!-- Grupo del extremo (se mueve junto) -->
+          <g id="ladoExt">
+            <g class="pz" data-p="cuerpo" id="g-cuerpo" tabindex="0" role="button" aria-label="7 Cuerpo del extremo">
+              <path d="M314 238 H408 Q412 222 430 220 H466 Q488 222 490 244 V262 Q488 284 466 286 H430 Q412 284 408 262 H314 Z" fill="url(#corte)" stroke="#8a8a92" stroke-width="1.5"/>
+              <path d="M314 244 H352 V256 H314 Z" fill="#26262b"/><path d="M318 244 l-3 12 M324 244 l-3 12 M330 244 l-3 12 M336 244 l-3 12 M342 244 l-3 12 M348 244 l-3 12" stroke="#55555d" stroke-width="1.2"/>
+              <text class="cota" x="320" y="232">ROSCA INTERNA</text>
+              <g class="num"><line class="guia" x1="380" y1="262" x2="380" y2="332"/><circle cx="380" cy="344" r="11"/><text x="380" y="348">7</text></g>
+            </g>
+            <g class="pz" data-p="bocha" id="g-bocha" tabindex="0" role="button" aria-label="6 Bocha y asiento">
+              <circle id="casq" cx="450" cy="256" r="21" fill="none" stroke="url(#nylon)" stroke-width="6" stroke-dasharray="100 32" transform="rotate(307 450 256)"/>
+              <circle id="bola1" cx="450" cy="256" r="17" fill="url(#bola)" stroke="#4d4d55"/>
+              <g class="num"><line class="guia" x1="466" y1="270" x2="480" y2="332"/><circle cx="482" cy="344" r="11"/><text x="482" y="348">6</text></g>
+            </g>
+            <g class="pz" data-p="guardapolvo" id="g-guarda" tabindex="0" role="button" aria-label="5 Guardapolvo">
+              <path d="M436 224 Q426 216 434 210 Q426 204 438 198 H462 Q474 204 466 210 Q474 216 464 224 Z" fill="url(#gomaV)" stroke="#45454d"/>
+              <path id="roturaG" d="M462 204 l8 -2 -4 6 7 1" fill="none" stroke="#ff6a1a" stroke-width="2" opacity="0"/>
+              <g class="num"><line class="guia" x1="474" y1="212" x2="496" y2="212"/><circle cx="506" cy="212" r="11"/><text x="506" y="216">5</text></g>
+            </g>
+            <g class="pz" data-p="perno" id="g-perno" tabindex="0" role="button" aria-label="3 Perno cónico">
+              <path d="M443 118 H457 V150 L461 190 L457 196 V240 H443 V196 L439 190 L443 150 Z" fill="url(#aceH)" stroke="#4d4d55"/>
+              <path d="M443 122 L457 119 M443 127 L457 124 M443 132 L457 129 M443 137 L457 134 M443 142 L457 139" stroke="#6b6b73" stroke-width="1.1"/>
+              <g class="num"><line class="guia" x1="461" y1="176" x2="496" y2="176"/><circle cx="506" cy="176" r="11"/><text x="506" y="180">3</text></g>
+            </g>
+            <g class="pz" data-p="brazo" id="g-brazo" tabindex="0" role="button" aria-label="4 Brazo de la mangueta">
+              <path d="M370 150 H443 L439 190 H370 Z" fill="url(#corteB)" stroke="#8a8a92"/><path d="M457 150 H500 V190 H461 Z" fill="url(#corteB)" stroke="#8a8a92"/>
+              <text class="cota" x="372" y="202">BRAZO DE LA MANGUETA</text>
+              <g class="num"><line class="guia" x1="372" y1="170" x2="344" y2="170"/><circle cx="332" cy="170" r="11"/><text x="332" y="174">4</text></g>
+            </g>
+            <g class="pz" data-p="tuerca" id="g-tuerca" tabindex="0" role="button" aria-label="1 Tuerca almenada">
+              <path d="M434 130 H466 V150 H434 Z" fill="url(#ace)" stroke="#4d4d55"/><path d="M436 122 H443 V130 H436 Z M447 122 H453 V130 H447 Z M457 122 H464 V130 H457 Z" fill="url(#ace)" stroke="#4d4d55"/>
+              <g class="num"><line class="guia" x1="434" y1="140" x2="396" y2="104"/><circle cx="386" cy="96" r="11"/><text x="386" y="100">1</text></g>
+            </g>
+            <g class="pz" data-p="chaveta" id="g-chaveta" tabindex="0" role="button" aria-label="2 Chaveta">
+              <path d="M426 126 H474" stroke="url(#oro)" stroke-width="3.5" stroke-linecap="round"/><circle cx="422" cy="126" r="5" fill="none" stroke="url(#oro)" stroke-width="3"/><path d="M474 126 q9 0 9 11 M474 126 q9 0 9 -9" fill="none" stroke="url(#oro)" stroke-width="3" stroke-linecap="round"/>
+              <g class="num"><line class="guia" x1="483" y1="118" x2="496" y2="96"/><circle cx="506" cy="88" r="11"/><text x="506" y="92">2</text></g>
+            </g>
+          </g>
+          <text id="clac" x="380" y="420" font-family="Anton,Impact,sans-serif" font-size="26" fill="#ff5a3c" opacity="0">¡CLAC!</text>
+          <text class="cota" x="16" y="456">VISTA DE COSTADO · LA BARRA SE ENROSCA EN EL EXTREMO Y LA CONTRATUERCA LA FIJA</text>
+                  </g>
+        </svg>
+
+        <!-- ===================== LÁMINA C: VISTA SUPERIOR ===================== -->
+        <svg id="C" viewBox="0 0 520 470" role="img" aria-label="Tren delantero visto desde arriba con volante, cremallera, barras y ruedas" hidden>
+          <defs>
+            <linearGradient id="cAce" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5d5d65"/><stop offset=".45" stop-color="#ededf2"/><stop offset="1" stop-color="#55555d"/></linearGradient>
+            <pattern id="cDib" width="12" height="10" patternUnits="userSpaceOnUse"><rect width="12" height="10" fill="#1a1a1d"/><path d="M0 5 H5 M8 0 V10" stroke="#2e2e33" stroke-width="3"/></pattern>
+          </defs>
+          <text class="cota" x="16" y="22">LÁMINA 2 · TREN DELANTERO VISTO DESDE ARRIBA</text>
+          <path d="M70 460 V150 Q70 70 150 56 Q260 40 370 56 Q450 70 450 150 V460" fill="none" stroke="#2c3440" stroke-width="2" stroke-dasharray="6 6"/>
+          <text class="cota" x="226" y="70">FRENTE DEL AUTO ↑</text>
+          <!-- Volante -->
+          <g id="volante"><circle cx="260" cy="150" r="44" fill="none" stroke="#c8c8d0" stroke-width="9"/><path d="M216 150 H304 M260 150 V194" stroke="#9a9aa2" stroke-width="7" stroke-linecap="round"/><circle cx="260" cy="150" r="13" fill="#3a3a41" stroke="#c8c8d0" stroke-width="2"/><rect x="254" y="104" width="12" height="9" rx="2" fill="#f5e61b"/></g>
+          <path d="M260 194 V286" stroke="url(#cAce)" stroke-width="8"/><text class="cota" x="268" y="240">COLUMNA</text>
+          <!-- Cremallera -->
+          <rect x="150" y="286" width="220" height="26" rx="8" fill="#2f2f35" stroke="#6a6a72"/>
+          <rect id="rackC" x="140" y="293" width="240" height="12" fill="url(#cAce)" stroke="#4d4d55"/>
+          <circle cx="260" cy="299" r="12" fill="#55555d" stroke="#9a9aa2" stroke-width="2"/><text class="cota" x="206" y="330">CREMALLERA</text>
+          <!-- Barras y extremos -->
+          <line id="barraI" x1="140" y1="299" x2="96" y2="330" stroke="url(#cAce)" stroke-width="8" stroke-linecap="round"/>
+          <line id="barraD" x1="380" y1="299" x2="424" y2="330" stroke="url(#cAce)" stroke-width="8" stroke-linecap="round"/>
+          <circle id="extI" cx="96" cy="330" r="8" fill="#f5e61b" stroke="#7a6f00" stroke-width="2"/>
+          <circle id="extD" cx="424" cy="330" r="8" fill="#f5e61b" stroke="#7a6f00" stroke-width="2"/>
+          <!-- Ruedas -->
+          <g id="ruedaI"><line id="dirI" x1="0" y1="0" x2="0" y2="-150" stroke="#38b6ff" stroke-width="1.5" stroke-dasharray="5 5"/><rect x="-20" y="-52" width="40" height="104" rx="12" fill="url(#cDib)" stroke="#3a3a42" stroke-width="2"/><path id="brazoI" d="M0 0 L22 40" stroke="#6a6a72" stroke-width="7" stroke-linecap="round"/></g>
+          <g id="ruedaD"><line id="dirD" x1="0" y1="0" x2="0" y2="-150" stroke="#38b6ff" stroke-width="1.5" stroke-dasharray="5 5"/><rect x="-20" y="-52" width="40" height="104" rx="12" fill="url(#cDib)" stroke="#3a3a42" stroke-width="2"/><path d="M0 0 L-22 40" stroke="#6a6a72" stroke-width="7" stroke-linecap="round"/></g>
+          <text class="cota" x="40" y="430">RUEDA IZQUIERDA</text><text class="cota" x="380" y="430">RUEDA DERECHA</text>
+          <text id="gradosC" x="260" y="92" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="#f5e61b">VOLANTE 0°</text>
+        </svg>
+
+        <!-- ===================== LÁMINA B: CAMBIO, VISTA FRONTAL ===================== -->
+        <svg id="B" viewBox="0 0 520 470" role="img" aria-label="Rueda delantera vista de frente durante el cambio del extremo" hidden>
+          <defs>
+            <linearGradient id="bAce" x1="0" x2="1"><stop offset="0" stop-color="#5d5d65"/><stop offset=".45" stop-color="#ededf2"/><stop offset="1" stop-color="#55555d"/></linearGradient>
+            <linearGradient id="bAceV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9d9df"/><stop offset="1" stop-color="#5c5c64"/></linearGradient>
+            <linearGradient id="bForja" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55555d"/><stop offset="1" stop-color="#2f2f35"/></linearGradient>
+            <linearGradient id="bGoma" x1="0" x2="1"><stop offset="0" stop-color="#121214"/><stop offset=".5" stop-color="#2c2c31"/><stop offset="1" stop-color="#101012"/></linearGradient>
+            <linearGradient id="bChapa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a52"/><stop offset="1" stop-color="#222227"/></linearGradient>
+            <linearGradient id="bOxido" x1="0" x2="1"><stop offset="0" stop-color="#5a3a20"/><stop offset=".5" stop-color="#a0683a"/><stop offset="1" stop-color="#4a2e18"/></linearGradient>
+            <pattern id="dibujo" width="70" height="14" patternUnits="userSpaceOnUse"><rect width="70" height="14" fill="#1a1a1d"/><path d="M0 7 H14 M22 2 V12 M34 7 H48 M56 2 V12" stroke="#2c2c31" stroke-width="4"/></pattern>
+            <clipPath id="clL"><circle cx="110" cy="190" r="74"/></clipPath>
+          </defs>
+          <text class="cota" x="16" y="22">LÁMINA 3 · TREN DELANTERO IZQUIERDO · VISTA FRONTAL</text>
+          <rect x="0" y="430" width="520" height="40" fill="#121418"/><path d="M0 430 H520" stroke="#3a4048" stroke-width="2"/>
+          <g id="alzar">
+            <path d="M0 40 H470 Q500 40 504 70 L512 122 H372 Q356 82 300 82 H0 Z" fill="url(#bChapa)" stroke="#5a5a62"/><text class="cota" x="16" y="62">CARROCERÍA</text>
+            <rect x="20" y="268" width="104" height="46" rx="6" fill="url(#bForja)" stroke="#6a6a72"/><text class="cota" x="28" y="306">SUBCHASIS</text>
+            <g><rect x="300" y="84" width="22" height="36" rx="4" fill="#3a3a41"/><path d="M296 120 L290 230" stroke="url(#bAce)" stroke-width="12" stroke-linecap="round"/>
+              <path d="M284 128 q22 6 34 0 M282 146 q24 6 36 0 M280 164 q24 6 36 0 M278 182 q24 6 36 0 M276 200 q24 6 36 0" fill="none" stroke="#d4b020" stroke-width="5" stroke-linecap="round"/>
+              <rect x="280" y="226" width="24" height="56" rx="5" fill="url(#bAce)" stroke="#55555d"/></g>
+            <path d="M96 286 L306 318 L304 346 L96 306 Z" fill="url(#bForja)" stroke="#6a6a72"/><circle cx="104" cy="296" r="14" fill="#1a1a1d" stroke="#6a6a72" stroke-width="3"/>
+            <text class="cota" x="150" y="294">PARRILLA</text>
+            <!-- Cremallera y barra -->
+            <rect x="96" y="240" width="60" height="22" rx="6" fill="#2f2f35" stroke="#6a6a72"/><text class="cota" x="98" y="234">CREMALLERA</text>
+            <path d="M156 251 L262 256" stroke="url(#bAce)" stroke-width="7" stroke-linecap="round"/>
+            <text class="cota" x="170" y="246">BARRA</text>
+            <g id="mangB"><path d="M296 222 Q290 236 304 246 L318 252 L318 312 Q314 322 304 324 L292 322 Q286 316 290 306 L300 290 Q292 266 296 246 Z" fill="url(#bForja)" stroke="#7a7a82"/>
+              <path d="M288 246 h22 v14 h-22z" fill="url(#bForja)" stroke="#7a7a82"/></g>
+            <rect x="338" y="176" width="10" height="160" rx="3" fill="url(#bAceV)" stroke="#55555d"/><path d="M326 186 h30 v40 h-30z" fill="#b3261e" stroke="#5a1410"/>
+            <!-- Extremo -->
+            <g id="contraB"><rect x="256" y="250" width="8" height="14" fill="url(#bAceV)" stroke="#444"/></g>
+            <g id="extB"><rect id="cuerpoB" x="264" y="252" width="30" height="10" rx="3" fill="url(#bOxido)" stroke="#3a2510"/><circle cx="298" cy="262" r="8" fill="url(#bOxido)" stroke="#3a2510" id="ojoB"/><path d="M294 238 h8 v20 h-8z" fill="#9a9aa2"/></g>
+            <g id="tuercaB"><rect x="291" y="236" width="14" height="9" rx="2" fill="url(#bAceV)" stroke="#444"/></g>
+            <path id="chavetaB" d="M286 239 H310" stroke="#e0b030" stroke-width="2.5" stroke-linecap="round"/>
+            <text class="cota" x="232" y="290">EXTREMO</text>
+            <g id="extrB" opacity="0"><path d="M276 228 H318 V236 H312 V276 H318 V284 H276 V276 H282 V236 H276 Z" fill="#f5e61b" fill-opacity=".25" stroke="#f5e61b" stroke-width="3"/></g>
+            <g id="ruedaB"><rect x="352" y="132" width="82" height="248" rx="26" fill="url(#dibujo)" stroke="#2c2c31" stroke-width="2"/><rect x="350" y="196" width="18" height="120" rx="4" fill="url(#bAceV)" stroke="#55555d"/></g>
+          </g>
+          <g id="caballete" opacity="0"><path d="M42 430 L62 330 H94 L114 430" fill="none" stroke="#f5e61b" stroke-width="7" stroke-linejoin="round"/><path d="M52 384 H104" stroke="#f5e61b" stroke-width="5"/><rect x="56" y="318" width="44" height="14" rx="3" fill="#f5e61b"/><text class="cota" x="40" y="452" fill="#f5e61b">CABALLETE</text></g>
+          <g id="llaveB" opacity="0"><path d="M392 256 L476 200 M450 170 L502 236" stroke="#d0d0d6" stroke-width="8" stroke-linecap="round"/><text class="cota" x="430" y="160" fill="#e8e8ec">LLAVE DE RUEDAS</text></g>
+          <g id="torqB" opacity="0"><path d="M298 240 L470 210" stroke="#d0d0d6" stroke-width="7" stroke-linecap="round"/><rect x="430" y="200" width="56" height="18" rx="4" fill="#f5e61b" transform="rotate(-10 458 209)"/><text class="cota" x="404" y="192" fill="#e8e8ec">TORQUÍMETRO</text></g>
+          <g id="alinB" opacity="0"><path d="M393 110 V430" stroke="#38b6ff" stroke-width="2" stroke-dasharray="6 6"/><rect x="380" y="34" width="124" height="56" rx="8" fill="#0b1a24" stroke="#38b6ff"/><text class="cota" x="392" y="58" fill="#9fdcff">ALINEACIÓN</text><text class="cota" x="392" y="74" fill="#9fdcff">CONVERGENCIA</text></g>
+          <g id="flechaB" opacity="0"><path d="M470 400 V320 M454 338 L470 320 L486 338" stroke="#f5e61b" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+          <!-- Lupa -->
+          <g id="lupa" opacity="0">
+            <line x1="280" y1="256" x2="176" y2="214" stroke="#f5e61b" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <circle cx="110" cy="190" r="78" fill="#0d1014" stroke="#f5e61b" stroke-width="4"/>
+            <g clip-path="url(#clL)">
+              <g id="brazoL"><path d="M118 146 H156 V170 H118 Z M170 146 H210 V170 H172 Z" fill="url(#bForja)" stroke="#7a7a82"/></g>
+              <path d="M24 194 H112 V206 H24 Z" fill="url(#bAce)" stroke="#4d4d55"/>
+              <path d="M84 194 l-3 12 M90 194 l-3 12 M96 194 l-3 12 M102 194 l-3 12 M108 194 l-3 12" stroke="#6b6b73" stroke-width="1.2"/>
+              <g id="contraL"><path d="M100 184 H112 V216 H100 Z" fill="url(#bAceV)" stroke="#444"/></g>
+              <g id="extL"><path d="M112 190 H150 Q156 176 166 176 Q180 178 182 192 V208 Q180 222 166 222 Q156 222 150 210 H112 Z" fill="url(#bOxido)" stroke="#3a2510" id="cuerpoL"/>
+                <path d="M160 130 H170 V176 H160 Z" fill="url(#bAce)" stroke="#4d4d55"/><circle cx="165" cy="200" r="10" fill="#c8c8d0"/>
+                <path id="giroL" d="M120 186 a26 14 0 1 1 0 28" fill="none" stroke="#38b6ff" stroke-width="2.5" opacity="0"/></g>
+              <rect id="marcaL" x="104" y="180" width="4" height="40" fill="#ffffff" opacity="0"/>
+              <g id="tL"><rect x="154" y="124" width="22" height="12" rx="2" fill="url(#bAceV)" stroke="#444"/></g>
+              <path id="chL" d="M148 128 H182" fill="none" stroke="#e0b030" stroke-width="3" stroke-linecap="round"/>
+              <g id="eL" opacity="0"><path d="M140 140 H190 V148 H184 V216 H190 V224 H140 V216 H146 V148 H140 Z" fill="#f5e61b" fill-opacity=".2" stroke="#f5e61b" stroke-width="3"/></g>
+              <text id="cntL" x="112" y="244" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="12" fill="#38b6ff"></text>
+            </g>
+            <text class="cota" x="80" y="286" fill="#f5e61b">DETALLE</text>
+          </g>
+        </svg>
+      </div>
+      <div class="controles" id="ctrlA">
+        <button class="btn sec" id="despiece" data-fx="criquet" aria-pressed="false">Ver despiece</button>
+        <div class="volante" id="ctrlC" hidden>
+          <label class="slider" for="vol" style="flex:1 1 220px">Girá el volante <input type="range" id="vol" min="-90" max="90" value="0"></label>
+          <div class="conv"><span style="font-size:.8rem;color:var(--suave)">Barra izq.:</span><button id="menos" aria-label="Girar la barra media vuelta hacia afuera">− ½ vuelta</button><button id="mas" aria-label="Girar la barra media vuelta hacia adentro">+ ½ vuelta</button></div>
+          <span class="estadoConv" id="estadoConv">Paralelas</span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="card leccion" data-modo="partes">
+        <div class="cab"><span class="kicker">Tema 1 · Despiece</span><small>3 min</small></div>
+        <h2 style="margin-top:6px">Las 12 piezas</h2>
+        <p style="margin-top:8px">El extremo es como una rótula chica en la punta de la barra de dirección. La barra se <b>enrosca</b> en el extremo y una <b>contratuerca</b> la deja fija: por eso, girando la barra, se alarga o se acorta todo el conjunto.</p>
+        <div class="partes-lista" id="lista"></div>
+        <div class="detalle" id="detalle"><b>Elegí una pieza</b><span style="color:var(--suave);font-size:.9rem">Vas a ver qué es y qué hace.</span></div>
+      </div>
+      <div class="card leccion" data-modo="trabaja" hidden>
+        <div class="cab"><span class="kicker">Tema 2 · Volante y convergencia</span><small>4 min</small></div>
+        <h2 style="margin-top:6px">Del volante a la rueda</h2>
+        <p style="margin-top:8px">El volante gira la columna; abajo, un piñón mueve la <b>cremallera</b> hacia los costados. La cremallera empuja las <b>barras</b>, las barras empujan los <b>extremos</b>, y los extremos giran las ruedas a través del brazo de la mangueta.</p>
+        <div class="tip"><b>Probalo:</b> mové «Girá el volante» debajo de la lámina.</div>
+        <h3 style="margin-top:14px;font-size:1.15rem">¿Qué es la convergencia?</h3>
+        <p style="margin-top:6px">Mirando desde arriba, las ruedas no van exactamente paralelas: en la mayoría de los autos van apenas cerradas hacia adelante. Eso es la <b>convergencia</b>. Se regula girando la barra dentro del extremo: cada vuelta alarga o acorta la barra y abre o cierra la rueda.</p>
+        <div class="tip"><b>Probalo:</b> tocá «− ½ vuelta» y «+ ½ vuelta». Las líneas azules muestran hacia dónde apunta cada rueda (en la lámina, el ángulo está exagerado para que se vea).</div>
+        <div class="aviso"><b>Ojo:</b> con la convergencia mal regulada, la cubierta se arrastra de costado y se gasta por un borde en pocos miles de kilómetros.</div>
+      </div>
+      <div class="card leccion" data-modo="fallas" hidden>
+        <div class="cab"><span class="kicker" style="color:var(--naranja)">Tema 3 · Cuándo está mal</span><small>3 min</small></div>
+        <h2 style="margin-top:6px">Provocá cada falla</h2>
+        <div class="chips">
+          <button class="chip" data-f="juego" aria-pressed="false">Extremo con juego <span class="sw"></span></button>
+          <button class="chip" data-f="guarda" aria-pressed="false">Guardapolvo del extremo roto <span class="sw"></span></button>
+          <button class="chip" data-f="fuelle" aria-pressed="false">Fuelle de cremallera roto <span class="sw"></span></button>
+          <button class="chip" data-f="doblada" aria-pressed="false">Barra doblada por un golpe <span class="sw"></span></button>
+        </div>
+        <div class="diag" id="diag" aria-live="polite"></div>
+        <h3 style="margin-top:16px;font-size:1.15rem">Síntomas al manejar</h3>
+        <ul style="margin:8px 0 0 18px;color:#d4d4da;display:grid;gap:4px;font-size:.92rem">
+          <li>Volante con juego: hay que moverlo un poco antes de que la rueda responda</li>
+          <li>Ruido o golpeteo al doblar o en empedrado</li>
+          <li>El auto se va para un lado o el volante queda torcido</li>
+          <li>Cubiertas gastadas por el borde</li>
+        </ul>
+        <div class="tip"><b>Cómo se revisa:</b> con la rueda en el aire, tomala por los costados (a las 3 y a las 9) y movela como si doblaras. Si hay juego, mirá el extremo mientras alguien mueve la rueda: si la bocha se mueve dentro del cuerpo, está gastado.</div>
+      </div>
+      <div class="card leccion" data-modo="cambio" hidden>
+        <div class="cab"><span class="kicker">Tema 4 · Cambio paso a paso</span><small id="pasoMin">Paso 1 de 11</small></div>
+        <ol class="pasos" id="pasos"></ol>
+        <div class="nav-pasos"><button class="btn sec" id="ant">← Anterior</button><button class="btn" id="sig">Siguiente paso →</button></div>
+      </div>
+      <div class="card leccion" data-modo="ficha" hidden>
+        <div class="cab"><span class="kicker">Tema 5 · Ficha técnica</span><small>2 min</small></div>
+        <h2 style="margin-top:6px">Cambio de extremo</h2>
+        <table class="ficha-tabla">
+          <tr><th>Dificultad</th><td>Media</td></tr>
+          <tr><th>Tiempo aprox.</th><td>45 minutos a 1 hora por lado, sin la alineación</td></tr>
+          <tr><th>Herramientas</th><td><ul><li>Crique y caballetes</li><li>Llave de ruedas</li><li>Llaves fijas y tubos</li><li>Extractor de extremos</li><li>Torquímetro</li><li>Pinza</li><li>Marcador o pintura</li></ul></td></tr>
+          <tr><th>Repuestos</th><td><ul><li>Extremo nuevo del lado correcto</li><li>Tuerca y chaveta nuevas</li></ul></td></tr>
+          <tr><th>Clave del trabajo</th><td>Contar las vueltas al sacar el viejo y dar las mismas al poner el nuevo</td></tr>
+          <tr><th>Después</th><td>Alinear siempre: la convergencia cambia</td></tr>
+        </table>
+        <h3 style="margin-top:16px;font-size:1.15rem">Errores comunes</h3>
+        <ul style="margin:8px 0 0 18px;color:#d4d4da;display:grid;gap:4px;font-size:.92rem">
+          <li>No marcar la posición ni contar las vueltas</li>
+          <li>Olvidarse de ajustar la contratuerca</li>
+          <li>Reusar la chaveta o la tuerca autofrenante</li>
+          <li>Confundir el extremo izquierdo con el derecho</li>
+          <li>Salir a la ruta sin alinear</li>
+        </ul>
+      </div>
+      <div class="card leccion" data-modo="ficha" hidden>
+        <span class="kicker">Repaso</span>
+        <h3 style="margin-top:4px;font-size:1.2rem" id="exPreg"></h3>
+        <div class="examen" id="exOps"></div>
+        <p id="exFb" aria-live="polite" style="margin-top:10px;font-size:.92rem"></p>
+      </div>
+      <div class="cta"><h3>¿Preferís que lo hagamos nosotros?</h3><a href="./#contacto">Pedir turno</a></div>
+    </aside>
+  </div>
+  <p class="nota" style="padding-bottom:16px">Ficha con fines educativos. Cada auto tiene su procedimiento y sus torques: consultá siempre el manual de taller del modelo. Si no tenés experiencia ni herramientas, dejalo en manos de un mecánico.</p>
+  <div class="siguiente-mod"><span><span class="kicker">Módulo anterior</span><br><a href="rotula.html">← 1 · La rótula</a></span><span style="text-align:right"><span class="kicker">Próximo módulo</span><br><a href="amortiguador.html">3 · Amortiguador →</a></span></div>
+</main>
+<footer><div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · <a href="./">Inicio</a> · <a href="cursos.html">Cursos</a></div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const ICON='<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3a6 6 0 0 0-5.6 8L3 17.4 6.6 21l6.4-6.4A6 6 0 0 0 21 9l-3.5 2-3-1-1-3z" fill="#f5e61b"/></svg>';
+const PARTES=[
+  ["tuerca","Tuerca almenada","Ajusta el perno del extremo contra el brazo de la mangueta. Sus ranuras dejan pasar la chaveta."],
+  ["chaveta","Chaveta","Traba la tuerca para que no se afloje. Siempre se pone una nueva."],
+  ["perno","Perno cónico","Su parte cónica entra a presión en el brazo de la mangueta: por eso queda trabado y hace falta un extractor para sacarlo."],
+  ["brazo","Brazo de la mangueta","La «palanca» de la mangueta. Cuando el extremo lo empuja o lo tira, la rueda dobla."],
+  ["guardapolvo","Guardapolvo","Funda de goma que guarda la grasa de la bocha y no deja entrar agua ni tierra."],
+  ["bocha","Bocha y asiento","La articulación del extremo: una bocha que gira dentro de un asiento. Cuando se gasta, aparece el juego en la dirección."],
+  ["cuerpo","Cuerpo del extremo","Pieza forjada con rosca interna. La barra se enrosca adentro: más vueltas acortan el conjunto, menos lo alargan."],
+  ["contratuerca","Contratuerca","Aprieta contra el cuerpo del extremo para que la barra no gire sola y la convergencia no se pierda."],
+  ["barra","Barra de dirección (axial)","Transmite el movimiento de la cremallera al extremo. Su punta tiene rosca para regular el largo."],
+  ["axial","Rótula axial","La articulación interna, donde la barra se une a la cremallera. Deja que la barra suba y baje con la suspensión."],
+  ["fuelle","Fuelle de la cremallera","Protege la cremallera y la rótula axial del agua y la tierra. Si se rompe, la cremallera se gasta."],
+  ["cremallera","Cremallera","Una barra dentada que se mueve hacia los costados cuando girás el volante."]
+];
+const FALLAS={juego:"<b>Extremo con juego</b>La bocha se gastó dentro del asiento: el volante tiene «aire», hace ruido al doblar y la convergencia cambia sola.",
+  guarda:"<b>Guardapolvo del extremo roto</b>Se va la grasa y entra tierra: el extremo se gasta en poco tiempo. Hay que cambiar el extremo.",
+  fuelle:"<b>Fuelle de la cremallera roto</b>Entra agua y tierra a la cremallera y a la rótula axial. Si se cambia a tiempo, solo se cambia el fuelle.",
+  doblada:"<b>Barra doblada</b>Pasa por un golpe contra un cordón o un pozo: el volante queda torcido y la rueda pierde la convergencia. Se cambia, no se endereza."};
+const PASOS=[
+  {t:"Aflojar las tuercas de la rueda",d:"Con el auto en el piso, aflojá apenas las tuercas de la rueda.",h:["Llave de ruedas"],s:"Auto en lugar plano, freno de mano puesto y ruedas traseras calzadas."},
+  {t:"Levantar el auto y poner el caballete",d:"Levantá el auto con el crique en el punto que indica el manual y apoyalo sobre un caballete firme.",h:["Crique","Caballete"],s:"Nunca trabajes debajo del auto sostenido solo con el crique."},
+  {t:"Sacar la rueda",d:"Retirá la rueda. Ahora se ven la barra de dirección, el extremo y el brazo de la mangueta.",h:["Llave de ruedas"]},
+  {t:"Marcar la posición y aflojar la contratuerca",d:"Antes de tocar nada, hacé una marca con pintura o marcador en la rosca de la barra, justo al lado de la contratuerca. Después aflojá la contratuerca una o dos vueltas.",h:["Marcador o pintura","Llave fija"],tip:"La marca te dice cuánta rosca quedaba a la vista: es tu referencia para el extremo nuevo."},
+  {t:"Sacar la chaveta y aflojar la tuerca",d:"Sacá la chaveta con una pinza y aflojá la tuerca del perno, dejándola puesta unas vueltas para cuidar la rosca.",h:["Pinza","Llave o tubo"]},
+  {t:"Separar el perno del brazo",d:"Colocá el extractor y apretalo hasta que el cono del perno se suelte del brazo de la mangueta.",h:["Extractor de extremos"],s:"Usá anteojos: el perno puede soltarse de golpe."},
+  {t:"Desenroscar el extremo contando las vueltas",d:"Sacá la tuerca y desenroscá el extremo de la barra contando cada vuelta completa (y si queda media, también). Anotá el número.",h:["Mano o llave fija"],tip:"Ejemplo: si salió en 7 vueltas y media, el nuevo va a entrar 7 vueltas y media."},
+  {t:"Enroscar el extremo nuevo con las mismas vueltas",d:"Enroscá el extremo nuevo en la barra exactamente la misma cantidad de vueltas, hasta la marca. Así la convergencia queda casi igual que antes.",h:["Mano o llave fija"],tip:"Fijate que sea del mismo lado: el izquierdo y el derecho son distintos."},
+  {t:"Colocar el perno, la tuerca y la chaveta",d:"Meté el perno en el brazo, poné una tuerca nueva y ajustala con el torquímetro. Pasá una chaveta nueva y ajustá la contratuerca contra el extremo.",h:["Torquímetro","Pinza","Llave fija"],s:"No te olvides de la contratuerca: si queda floja, la barra gira sola y la convergencia se pierde."},
+  {t:"Colocar la rueda y bajar el auto",d:"Poné la rueda, sacá el caballete, bajá el auto y dale el ajuste final a las tuercas en cruz.",h:["Llave de ruedas","Torquímetro"]},
+  {t:"Alinear",d:"Contar las vueltas deja el auto cerca, pero no exacto. Llevalo a alinear para regular la convergencia con instrumentos.",h:["Alineadora"],s:"Hasta alinear, manejá despacio: la dirección puede quedar levemente torcida."}
+];
+const EXAMEN=[
+  {p:"¿Qué une el extremo de dirección?",o:["La barra de dirección con el brazo de la mangueta","El motor con la caja","El amortiguador con la carrocería"],c:0},
+  {p:"¿Para qué se cuentan las vueltas al sacar el extremo?",o:["Para saber si estaba gastado","Para poner el nuevo en la misma posición y no perder la convergencia","Porque lo pide el fabricante del extremo"],c:1},
+  {p:"¿Qué pasa si queda floja la contratuerca?",o:["Nada","La barra gira sola y la convergencia se pierde","El extremo se engrasa solo"],c:1},
+  {p:"Después de cambiar un extremo, ¿qué hay que hacer siempre?",o:["Balancear las ruedas","Cambiar el aceite","Alinear"],c:2}
+];
+const DESP={cremallera:[-34,0],fuelle:[-18,0],axial:[-8,0],contratuerca:[10,0],cuerpo:[20,0],bocha:[20,10],guardapolvo:[20,-10],perno:[20,-22],brazo:[20,-40],tuerca:[20,-56],chaveta:[20,-72]};
+const ID={cremallera:"g-cremallera",fuelle:"g-fuelle",axial:"g-axial",barra:"g-barra",contratuerca:"g-contra",cuerpo:"g-cuerpo",bocha:"g-bocha",guardapolvo:"g-guarda",perno:"g-perno",brazo:"g-brazo",tuerca:"g-tuerca",chaveta:"g-chaveta"};
+let modo="partes",falla={},paso=0,exN=0,desp=false,vol=0,toe=0,t0=performance.now();
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const son=k=>window.TallerFX&&TallerFX.sonar(k);
+$("#lista").innerHTML=PARTES.map((p,i)=>`<button data-p="${p[0]}" data-fx="pieza"><i>${i+1}</i>${p[1]}</button>`).join("");
+function elegir(k){const i=PARTES.findIndex(p=>p[0]===k),p=PARTES[i];
+  $$(".pz").forEach(g=>g.classList.toggle("sel",g.dataset.p===k));$$("#lista button").forEach(b=>b.classList.toggle("sel",b.dataset.p===k));
+  $("#detalle").innerHTML=`<b>${i+1} · ${p[1]}</b><span style="font-size:.92rem;color:#d4d4da">${p[2]}</span>`;}
+$$("#lista button").forEach(b=>b.onclick=()=>elegir(b.dataset.p));
+$$(".pz").forEach(g=>{const f=()=>{if(modo!=="partes")irA("partes");elegir(g.dataset.p)};g.addEventListener("click",f);g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();son("pieza");f()}})});
+$("#despiece").onclick=()=>{desp=!desp;$("#despiece").setAttribute("aria-pressed",desp);$("#despiece").textContent=desp?"Armar el conjunto":"Ver despiece";
+  for(const k in DESP){const [x,y]=DESP[k];const el=document.getElementById(ID[k]);el.style.transition=reduce?"":"transform .7s cubic-bezier(.2,.8,.2,1)";el.style.transform=desp?`translate(${x}px,${y}px)`:""}};
+$$(".temario button").forEach(b=>b.onclick=()=>irA(b.dataset.m));
+function irA(m){modo=m;$$(".temario button").forEach(b=>{const on=b.dataset.m===m;b.setAttribute("aria-selected",on);if(on)b.classList.add("visto")});
+  $$(".leccion").forEach(c=>c.hidden=c.dataset.modo!==m);
+  const B=m==="cambio",C=m==="trabaja";
+  $("#A").toggleAttribute("hidden",B||C);$("#B").toggleAttribute("hidden",!B);$("#C").toggleAttribute("hidden",!C);
+  $("#ctrlA").toggleAttribute("hidden",B);$("#ctrlC").toggleAttribute("hidden",!C);$("#despiece").toggleAttribute("hidden",m!=="partes");
+  if(m!=="partes"&&desp)$("#despiece").click();
+  $("#barraTxt").textContent=B?"Lámina 3 · Tren delantero, vista frontal":C?"Lámina 2 · Tren delantero visto desde arriba":"Lámina 1 · Extremo y barra en corte";
+  $("#barraDer").textContent=B?`Paso ${paso+1} de ${PASOS.length}`:C?"Ángulos exagerados para verlos":"Escala aprox. 1:2";
+  if(B)pasoUI();if(m==="ficha")examen();}
+// Fallas
+$$(".chip").forEach(c=>c.onclick=()=>{const k=c.dataset.f;falla[k]=!falla[k];c.setAttribute("aria-pressed",!!falla[k]);
+  $("#diag").innerHTML=Object.keys(falla).filter(x=>falla[x]).map(x=>`<div>${FALLAS[x]}</div>`).join("");
+  $("#roturaG").setAttribute("opacity",falla.guarda?1:0);$("#roturaF").setAttribute("opacity",falla.fuelle?1:0);$("#tierraF").setAttribute("opacity",falla.fuelle?1:0);
+  $("#bola1").setAttribute("r",falla.juego?13:17);$("#casq").setAttribute("stroke-width",falla.juego?3:6);
+  $("#barraPath").setAttribute("d",falla.doblada?"M152 244 L232 244 L240 252 L318 252 V264 H240 L232 256 L152 256 Z":"M152 244 H318 V256 H152 Z");
+  $("#barraPath").setAttribute("stroke",falla.doblada?"#ff5a3c":"#4d4d55")});
+// Vista superior
+function vistaC(){const dx=vol/90*34;$("#rackC").setAttribute("x",140+dx);$("#volante").setAttribute("transform",`rotate(${vol*2} 260 150)`);
+  const ang=-vol/90*28, toeI=toe*2.2;
+  const rueda=(id,cx,cy,a)=>{$(id).setAttribute("transform",`translate(${cx} ${cy}) rotate(${a})`)};
+  rueda("#ruedaI",96,250,ang+toeI);rueda("#ruedaD",424,250,ang);
+  const pt=(cx,cy,a,lx,ly)=>{const r=a*Math.PI/180;return[cx+lx*Math.cos(r)-ly*Math.sin(r),cy+lx*Math.sin(r)+ly*Math.cos(r)]};
+  const pI=pt(96,250,ang+toeI,22,40),pD=pt(424,250,ang,-22,40);
+  $("#barraI").setAttribute("x1",140+dx);$("#barraI").setAttribute("x2",pI[0]);$("#barraI").setAttribute("y2",pI[1]);$("#extI").setAttribute("cx",pI[0]);$("#extI").setAttribute("cy",pI[1]);
+  $("#barraD").setAttribute("x1",380+dx);$("#barraD").setAttribute("x2",pD[0]);$("#barraD").setAttribute("y2",pD[1]);$("#extD").setAttribute("cx",pD[0]);$("#extD").setAttribute("cy",pD[1]);
+  $("#gradosC").textContent=`VOLANTE ${vol>0?"+":""}${vol*4}°`;
+  const e=$("#estadoConv");if(toe===0){e.textContent="Rueda izq. derecha";e.style.background="#0f2414";e.style.color="#b9f2c4"}else if(toe>0){e.textContent="Rueda izq. cerrada (convergente)";e.style.background="#2a2108";e.style.color="#ffe09a"}else{e.textContent="Rueda izq. abierta (divergente)";e.style.background="#2a0f0a";e.style.color="#ffc2b3"}}
+$("#vol").oninput=e=>{vol=+e.target.value;vistaC()};
+$("#mas").onclick=()=>{toe=Math.min(4,toe+1);vistaC();son("criquet")};$("#menos").onclick=()=>{toe=Math.max(-4,toe-1);vistaC();son("criquet")};
+$("#mas").dataset.fx="none";$("#menos").dataset.fx="none";
+// Pasos
+function pasoUI(){
+  $("#pasos").innerHTML=PASOS.map((p,i)=>`<li class="${i<paso?"hecho":i===paso?"actual":""}"><button data-i="${i}"><i>${i<paso?"✓":i+1}</i>${p.t}</button>${i===paso?`<div class="paso-det">${p.d}<div class="herr">${p.h.map(x=>`<span>${ICON}${x}</span>`).join("")}</div>${p.s?`<div class="aviso"><b>Seguridad:</b> ${p.s}</div>`:""}${p.tip?`<div class="tip"><b>Dato de taller:</b> ${p.tip}</div>`:""}</div>`:""}</li>`).join("");
+  $$("#pasos button").forEach(b=>b.onclick=()=>{paso=+b.dataset.i;pasoUI()});
+  $("#pasoMin").textContent=`Paso ${paso+1} de ${PASOS.length}`;$("#barraDer").textContent=`Paso ${paso+1} de ${PASOS.length}`;
+  $("#ant").disabled=paso===0;$("#sig").textContent=paso===PASOS.length-1?"Ir a la ficha técnica →":"Siguiente paso →";
+  const o=(s,v)=>$(s).setAttribute("opacity",v?1:0);
+  const arriba=paso>=1&&paso<=8,sinRueda=paso>=2&&paso<=8;
+  $("#alzar").setAttribute("transform",`translate(0 ${arriba?-34:0})`);o("#caballete",arriba);o("#flechaB",paso===1);
+  $("#ruedaB").setAttribute("transform",sinRueda?"translate(150 0)":"");$("#ruedaB").setAttribute("opacity",sinRueda?0:1);
+  o("#llaveB",paso===0||paso===2||paso===9);o("#torqB",paso===8||paso===9);o("#alinB",paso===10);o("#extrB",paso===5);
+  const nuevo=paso>=7;
+  $("#cuerpoB").setAttribute("fill",nuevo?"url(#bAceV)":"url(#bOxido)");$("#ojoB").setAttribute("fill",nuevo?"url(#bAceV)":"url(#bOxido)");
+  $("#extB").setAttribute("transform",paso===5?"translate(0 8)":paso===6?"translate(40 14)":paso===7?"translate(0 10)":"");$("#extB").setAttribute("opacity",paso===6?.4:1);
+  $("#contraB").setAttribute("transform",paso>=3&&paso<=7?"translate(-8 0)":"");
+  $("#tuercaB").setAttribute("transform",`translate(0 ${paso===4?-6:paso===5?-10:0})`);$("#tuercaB").setAttribute("opacity",paso===6||paso===7?0:1);
+  $("#chavetaB").setAttribute("opacity",paso<4||paso>=8?1:0);$("#chavetaB").setAttribute("stroke",paso>=8?"#f5e61b":"#e0b030");
+  // lupa
+  o("#lupa",paso>=3&&paso<=8);
+  o("#marcaL",paso>=3&&paso<=8);$("#contraL").setAttribute("transform",paso>=3&&paso<=7?"translate(-12 0)":"");
+  $("#tL").setAttribute("transform",`translate(0 ${paso===4?-8:paso===5?-12:0})`);$("#tL").setAttribute("opacity",paso===6||paso===7?0:1);
+  $("#chL").setAttribute("opacity",paso<4||paso>=8?1:0);$("#chL").setAttribute("stroke",paso>=8?"#f5e61b":"#e0b030");
+  o("#eL",paso===5);$("#brazoL").setAttribute("transform",paso===5?"translate(0 -10)":"");
+  $("#extL").setAttribute("transform",paso===5?"translate(0 8)":paso===6?"translate(26 12)":paso===7?"translate(6 12)":"");
+  $("#cuerpoL").setAttribute("fill",nuevo?"url(#bAceV)":"url(#bOxido)");
+  o("#giroL",paso===6||paso===7);
+  $("#cntL").textContent=paso===6?"CONTÁ: 7 ½ VUELTAS":paso===7?"MISMAS 7 ½ VUELTAS":"";
+}
+$("#sig").onclick=()=>{if(paso<PASOS.length-1){paso++;pasoUI()}else irA("ficha")};
+$("#ant").onclick=()=>{if(paso>0){paso--;pasoUI()}};
+// Repaso
+function examen(){if(exN>=EXAMEN.length){$("#exPreg").textContent="¡Terminaste el módulo 2!";$("#exOps").innerHTML="";$("#exFb").innerHTML='<button class="btn sec" id="exOtra">Hacer el repaso de nuevo</button>';$("#exOtra").onclick=()=>{exN=0;examen()};return}
+  const q=EXAMEN[exN];$("#exPreg").textContent=`${exN+1} de ${EXAMEN.length} · ${q.p}`;$("#exFb").textContent="";
+  $("#exOps").innerHTML=q.o.map((o,i)=>`<button data-i="${i}" data-fx="none">${o}</button>`).join("");
+  $$("#exOps button").forEach(b=>b.onclick=()=>{const ok=+b.dataset.i===q.c;b.classList.add(ok?"bien":"mal");son(ok?"bien":"mal");
+    if(ok){$("#exFb").innerHTML='<b style="color:var(--ok)">¡Correcto!</b> <button class="btn sec" id="exSig" style="margin-left:8px">Seguir</button>';$("#exSig").onclick=()=>{exN++;examen()}}
+    else $("#exFb").textContent="No es esa. Probá con otra opción."})}
+// Animación de la falla de juego
+let golpe=0;
+function loop(now){const t=(now-t0)/1000;let tr="",clac=0;
+  if(!reduce&&modo==="fallas"&&falla.juego){const k=Math.sin(t*9);if(k>.6){tr="translate(4 0)";clac=1;if(!golpe){golpe=1;son("falla")}}else golpe=0}
+  $("#ladoExt").setAttribute("transform",tr);$("#clac").setAttribute("opacity",clac);
+  requestAnimationFrame(loop)}
+vistaC();
+(function(){const h=location.hash.slice(1).split("-");if(["partes","trabaja","fallas","cambio","ficha"].includes(h[0])){if(h[0]==="cambio"&&h[1])paso=Math.min(PASOS.length-1,Math.max(0,+h[1]-1));irA(h[0])}else irA("partes");if(h[0]==="despiece")$("#despiece").click()})();
+requestAnimationFrame(loop);
+</script>
+<script src="js/taller-fx.js"></script>
+</body>
+</html>

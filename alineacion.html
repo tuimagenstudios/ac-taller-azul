@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alineación y balanceo: qué son y cómo se hacen | AC-Taller</title>
+<meta name="description" content="Módulo 5 del curso Tren delantero: alineación y balanceo. Convergencia, caída y avance en vivo, auto desalineado en la ruta, balanceo, cómo leer el desgaste de las cubiertas y el proceso en la alineadora. Gratis, de AC-Taller, Azul.">
+<link rel="canonical" href="https://ac-taller.com/alineacion.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AC-Taller"><meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://ac-taller.com/alineacion.html">
+<meta property="og:title" content="Alineación y balanceo, explicados | AC-Taller">
+<meta property="og:description" content="Los ángulos de la rueda, el balanceo y cómo leer tus cubiertas, interactivo. Gratis.">
+<meta property="og:image" content="https://ac-taller.com/img/og-alineacion.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/simulador.css">
+<link rel="stylesheet" href="css/ficha.css">
+<style>
+  .modnav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+  .modnav a{font-size:.78rem;font-weight:700;color:var(--suave);text-decoration:none;border:1px solid #33333a;border-radius:20px;padding:3px 11px}
+  .modnav a[aria-current="page"]{color:#000;background:var(--amarillo);border-color:var(--amarillo)}
+  .modnav a:hover{border-color:var(--amarillo)}
+  .temario{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .ctrl{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;width:100%}
+  .ctrl .slider{flex:1 1 150px}
+  .ctrl output{font-weight:700;color:var(--amarillo);min-width:56px;font-variant-numeric:tabular-nums}
+  .angulos{display:grid;gap:6px;margin-top:12px}
+  .angulos button{font:inherit;cursor:pointer;text-align:left;background:var(--panel2);border:1px solid #33333a;border-radius:10px;padding:10px 12px;color:#d4d4da}
+  .angulos button b{display:block;color:#fff}
+  .angulos button[aria-pressed="true"]{border-color:var(--amarillo);background:#1f1d0a}
+  .monitor td,.monitor th{padding:6px 8px;border-bottom:1px solid var(--borde);font-size:.88rem}
+  .final{background:linear-gradient(135deg,#1f1d0a,#121214);border:2px solid var(--amarillo);border-radius:16px;padding:22px;margin-bottom:44px;display:grid;gap:12px}
+  .final h2{font-size:clamp(1.6rem,5vw,2.4rem)}
+  .final .mods{display:flex;flex-wrap:wrap;gap:8px}
+  .final .mods a{color:var(--texto);text-decoration:none;border:1px solid #4a4718;border-radius:20px;padding:5px 12px;font-size:.85rem;font-weight:700}
+  .final .mods a::before{content:"✓ ";color:var(--ok)}
+  .descargas{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .desc-card{display:flex;flex-direction:column;gap:10px;background:#0d0d0f;border:1px solid #33333a;border-radius:12px;padding:16px}
+  .desc-card input{flex:1;min-width:0;font:inherit;background:#17171a;color:var(--texto);border:1px solid #3a3a42;border-radius:8px;padding:10px 12px}
+  .desc-card canvas{width:100%;height:auto;border-radius:8px;border:1px solid #33333a}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./"><img src="logo.png" alt="Logo AC Motors" width="36" height="36">AC-TALLER</a><a class="volver" href="cursos.html">← Cursos</a></div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <nav class="modnav" aria-label="Módulos del curso">
+      <span class="kicker" style="margin-right:4px">Curso Tren delantero</span>
+      <a href="rotula.html">1 · Rótula</a><a href="extremo-de-direccion.html">2 · Extremo de dirección</a><a href="amortiguador.html">3 · Amortiguador</a><a href="bujes-y-parrilla.html">4 · Bujes y parrilla</a><a href="alineacion.html" aria-current="page">5 · Alineación</a>
+    </nav>
+    <h1><span>Alineación</span> y balanceo</h1>
+    <p>Después de cambiar cualquier pieza del tren delantero hay que alinear. Alinear es poner los ángulos de las ruedas en los valores del fabricante; balancear es repartir el peso de cada rueda para que gire sin vibrar. Este módulo cierra el curso: acá se junta todo lo anterior.</p>
+    <div class="meta"><span>Módulo <b>5</b> de 5</span><span>Nivel: <b>intermedio</b></span><span>Duración: <b>20 min</b></span><span><b>6</b> temas · <b>12</b> pasos</span><span>Gratis</span></div>
+  </section>
+
+  <div class="aprender" aria-label="Lo que vas a aprender">
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>Convergencia, caída y avance, y qué hace cada uno</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>Por qué un auto tira para un lado</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>Qué es el balanceo y por qué vibra el volante</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>Leer el desgaste de una cubierta y el proceso en la alineadora</div>
+  </div>
+
+  <nav class="temario" role="tablist" aria-label="Temas">
+    <button role="tab" data-m="angulos" aria-selected="true"><b>TEMA 1</b><span>Los 3 ángulos</span></button>
+    <button role="tab" data-m="ruta" aria-selected="false"><b>TEMA 2</b><span>En la ruta</span></button>
+    <button role="tab" data-m="balanceo" aria-selected="false"><b>TEMA 3</b><span>Balanceo</span></button>
+    <button role="tab" data-m="desgaste" aria-selected="false"><b>TEMA 4</b><span>Leer la cubierta</span></button>
+    <button role="tab" data-m="taller" aria-selected="false"><b>TEMA 5</b><span>En la alineadora</span></button>
+    <button role="tab" data-m="ficha" aria-selected="false"><b>TEMA 6</b><span>Ficha y repaso</span></button>
+  </nav>
+
+  <div class="app">
+    <section class="banco" aria-label="Lámina técnica">
+      <div class="barra"><span id="barraTxt">Lámina 1 · Los 3 ángulos de la rueda</span><span id="barraDer">Ángulos exagerados para verlos</span></div>
+      <div class="escena mesa">
+        <!-- ============ LÁMINA A: ÁNGULOS ============ -->
+        <svg id="A" viewBox="0 0 520 470" role="img" aria-label="Convergencia vista desde arriba, caída vista de frente y avance visto de costado, con el desgaste de la cubierta">
+          <defs><pattern id="tacos" width="14" height="12" patternUnits="userSpaceOnUse"><rect width="14" height="12" fill="#1c1c20"/><path d="M0 6 H6 M9 0 V12" stroke="#2e2e34" stroke-width="3"/></pattern>
+            <linearGradient id="dIn" x1="1" x2="0"><stop offset="0" stop-color="#ff5a3c"/><stop offset="1" stop-color="#ff5a3c" stop-opacity="0"/></linearGradient>
+            <linearGradient id="dOut" x1="0" x2="1"><stop offset="0" stop-color="#ff5a3c"/><stop offset="1" stop-color="#ff5a3c" stop-opacity="0"/></linearGradient></defs>
+          <text class="cota" x="16" y="22">AC-TALLER · MÓDULO 5 · LÁMINA 1 · RUEDAS DELANTERAS</text>
+          <g class="pz" data-a="conv" id="pConv" tabindex="0" role="button" aria-label="Convergencia">
+            <rect x="10" y="36" width="164" height="270" rx="10" fill="#0b1014" stroke="#2c3440"/>
+            <text class="cota" x="22" y="56" fill="#9fdcff">1 · DESDE ARRIBA</text><text class="cota" x="22" y="68">CONVERGENCIA</text>
+            <text class="cota" x="62" y="88">FRENTE ↑</text>
+            <g id="cI"><line x1="0" y1="0" x2="0" y2="-110" stroke="#38b6ff" stroke-dasharray="4 4"/><rect x="-11" y="-34" width="22" height="68" rx="6" fill="url(#tacos)" stroke="#55555d"/></g>
+            <g id="cD"><line x1="0" y1="0" x2="0" y2="-110" stroke="#38b6ff" stroke-dasharray="4 4"/><rect x="-11" y="-34" width="22" height="68" rx="6" fill="url(#tacos)" stroke="#55555d"/></g>
+            <path d="M54 200 H130" stroke="#6a6a72" stroke-width="4"/>
+            <text id="tConv" x="92" y="292" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="15" fill="#f5e61b"></text>
+          </g>
+          <g class="pz" data-a="caida" id="pCaida" tabindex="0" role="button" aria-label="Caída">
+            <rect x="178" y="36" width="164" height="270" rx="10" fill="#0b1014" stroke="#2c3440"/>
+            <text class="cota" x="190" y="56" fill="#9fdcff">2 · DE FRENTE</text><text class="cota" x="190" y="68">CAÍDA</text>
+            <line x1="260" y1="100" x2="260" y2="262" stroke="#38b6ff" stroke-dasharray="4 4"/>
+            <g id="rCaida"><rect x="240" y="120" width="40" height="140" rx="12" fill="url(#tacos)" stroke="#55555d"/><rect x="278" y="168" width="20" height="44" fill="#45454d"/><line x1="260" y1="104" x2="260" y2="262" stroke="#f5e61b" stroke-width="2"/></g>
+            <path d="M188 262 H332" stroke="#3a4048" stroke-width="3"/>
+            <text class="cota" x="190" y="98">← AFUERA · ADENTRO →</text>
+            <text id="tCaida" x="260" y="292" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="15" fill="#f5e61b"></text>
+          </g>
+          <g class="pz" data-a="avance" id="pAvance" tabindex="0" role="button" aria-label="Avance">
+            <rect x="346" y="36" width="164" height="270" rx="10" fill="#0b1014" stroke="#2c3440"/>
+            <text class="cota" x="358" y="56" fill="#9fdcff">3 · DE COSTADO</text><text class="cota" x="358" y="68">AVANCE</text>
+            <text class="cota" x="358" y="88">← FRENTE</text>
+            <circle cx="428" cy="200" r="56" fill="url(#tacos)" stroke="#55555d" stroke-width="2"/><circle cx="428" cy="200" r="18" fill="#45454d"/>
+            <line x1="428" y1="96" x2="428" y2="262" stroke="#38b6ff" stroke-dasharray="4 4"/>
+            <line id="eje" x1="428" y1="96" x2="428" y2="262" stroke="#f5e61b" stroke-width="3"/>
+            <path d="M356 262 H500" stroke="#3a4048" stroke-width="3"/>
+            <path id="distAv" d="" stroke="#ff6a1a" stroke-width="3"/>
+            <text id="tAvance" x="428" y="292" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="15" fill="#f5e61b"></text>
+          </g>
+          <!-- Desgaste de la cubierta -->
+          <text class="cota" x="16" y="330" fill="#9fdcff">4 · DESGASTE DE LA CUBIERTA DELANTERA IZQUIERDA (VISTA DEL PISO)</text>
+          <text class="cota" x="40" y="352">EXTERIOR</text><text class="cota" x="440" y="352">INTERIOR</text>
+          <rect x="40" y="358" width="440" height="70" rx="10" fill="url(#tacos)" stroke="#55555d"/>
+          <path d="M128 358 V428 M216 358 V428 M304 358 V428 M392 358 V428" stroke="#0b0b0d" stroke-width="5"/>
+          <rect id="wOut" x="40" y="358" width="160" height="70" rx="10" fill="url(#dOut)" opacity="0"/>
+          <rect id="wIn" x="320" y="358" width="160" height="70" rx="10" fill="url(#dIn)" opacity="0"/>
+          <text id="tDesg" x="260" y="452" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="#7ee787">DESGASTE PAREJO</text>
+        </svg>
+
+        <!-- ============ LÁMINA C: RUTA ============ -->
+        <svg id="C" viewBox="0 0 520 470" role="img" aria-label="Auto visto desde arriba en la ruta, que tira para un lado si está desalineado" hidden>
+          <text class="cota" x="16" y="22">LÁMINA 2 · EN LA RUTA, VISTO DESDE ARRIBA</text>
+          <rect x="90" y="30" width="300" height="440" fill="#16181c"/>
+          <path d="M90 30 V470 M390 30 V470" stroke="#e8e8ec" stroke-width="4"/>
+          <path id="lineaC" d="M240 30 V470" stroke="#f5e61b" stroke-width="4" stroke-dasharray="26 22"/>
+          <g id="huellas" fill="none" stroke="#2c2c31" stroke-width="5"></g>
+          <g id="autoC"><rect x="-34" y="-62" width="68" height="124" rx="16" fill="#3a3a41" stroke="#8a8a92" stroke-width="2"/><rect x="-26" y="-36" width="52" height="32" rx="6" fill="#1a2430"/><rect x="-26" y="18" width="52" height="22" rx="6" fill="#1a2430"/>
+            <g id="rDI"><rect x="-44" y="-52" width="12" height="28" rx="3" fill="#111"/></g><g id="rDD"><rect x="32" y="-52" width="12" height="28" rx="3" fill="#111"/></g>
+            <rect x="-44" y="24" width="12" height="28" rx="3" fill="#111"/><rect x="32" y="24" width="12" height="28" rx="3" fill="#111"/></g>
+          <g id="volC"><circle cx="460" cy="90" r="38" fill="none" stroke="#c8c8d0" stroke-width="8"/><path d="M422 90 H498 M460 90 V128" stroke="#9a9aa2" stroke-width="6" stroke-linecap="round"/><rect x="454" y="48" width="12" height="9" rx="2" fill="#f5e61b"/></g>
+          <text class="cota" x="424" y="150">VOLANTE</text>
+          <text id="tRuta" x="240" y="460" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="#7ee787">VA DERECHO</text>
+          <text id="tChillido" x="400" y="250" font-family="Anton,Impact,sans-serif" font-size="16" fill="#ff6a1a" opacity="0">LAS CUBIERTAS SE ARRASTRAN</text>
+        </svg>
+
+        <!-- ============ LÁMINA D: BALANCEO ============ -->
+        <svg id="D" viewBox="0 0 520 470" role="img" aria-label="Rueda girando con un punto pesado que la hace vibrar según la velocidad" hidden>
+          <text class="cota" x="16" y="22">LÁMINA 3 · BALANCEO DE LA RUEDA</text>
+          <g id="ruedaD"><circle cx="170" cy="220" r="120" fill="#141416" stroke="#2e2e34" stroke-width="30"/><circle cx="170" cy="220" r="86" fill="#5a5a62" stroke="#9a9aa2" stroke-width="3"/>
+            <g id="giroD"><path d="M170 140 V300 M90 220 H250 M114 164 L226 276 M226 164 L114 276" stroke="#45454d" stroke-width="10"/><circle cx="170" cy="220" r="20" fill="#7a7a82"/>
+              <circle id="pesado" cx="170" cy="146" r="10" fill="#ff5a3c"/><g id="pesa" opacity="0"><rect x="160" y="290" width="20" height="10" rx="2" fill="#f5e61b"/></g></g></g>
+          <text class="cota" x="70" y="370">PUNTO PESADO EN ROJO · PESA DE BALANCEO EN AMARILLO</text>
+          <g id="volD"><circle cx="420" cy="110" r="44" fill="none" stroke="#c8c8d0" stroke-width="9"/><path d="M376 110 H464 M420 110 V154" stroke="#9a9aa2" stroke-width="7" stroke-linecap="round"/></g>
+          <text class="cota" x="388" y="172">VOLANTE</text>
+          <rect x="330" y="200" width="174" height="150" rx="10" fill="#0b1014" stroke="#2c3440"/>
+          <text class="cota" x="342" y="220" fill="#9fdcff">VIBRACIÓN SEGÚN VELOCIDAD</text>
+          <path id="curvaD" d="" fill="none" stroke="#ff5a3c" stroke-width="2.5"/>
+          <circle id="puntoD" r="6" fill="#f5e61b"/>
+          <text class="cota" x="342" y="342">0 → 140 KM/H</text>
+          <text id="tVel" x="417" y="400" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="30" fill="#f5e61b">0 KM/H</text>
+          <text id="tVib" x="417" y="430" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="15" fill="#7ee787">SIN VIBRACIÓN</text>
+        </svg>
+
+        <!-- ============ LÁMINA E: DESGASTE ============ -->
+        <svg id="E" viewBox="0 0 520 470" role="img" aria-label="Banda de rodamiento de una cubierta con un tipo de desgaste" hidden>
+          <defs><pattern id="tacosE" width="14" height="12" patternUnits="userSpaceOnUse"><rect width="14" height="12" fill="#1c1c20"/><path d="M0 6 H6 M9 0 V12" stroke="#2e2e34" stroke-width="3"/></pattern><linearGradient id="gast" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a5a62"/><stop offset="1" stop-color="#3a3a41"/></linearGradient></defs>
+          <text class="cota" x="16" y="22">LÁMINA 4 · BANDA DE RODAMIENTO VISTA DE FRENTE</text>
+          <text class="cota" x="60" y="70">EXTERIOR</text><text class="cota" x="420" y="70">INTERIOR</text>
+          <rect x="60" y="80" width="400" height="300" rx="20" fill="url(#tacosE)" stroke="#55555d" stroke-width="2"/>
+          <path d="M140 80 V380 M220 80 V380 M300 80 V380 M380 80 V380" stroke="#0b0b0d" stroke-width="7"/>
+          <g id="patron" fill="url(#gast)"></g>
+          <text id="tPatron" x="260" y="420" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="20" fill="#f5e61b">ELEGÍ UN TIPO DE DESGASTE</text>
+        </svg>
+
+        <!-- ============ LÁMINA B: ALINEADORA ============ -->
+        <svg id="B" viewBox="0 0 520 470" role="img" aria-label="Auto sobre la alineadora visto desde arriba, con sensores en las ruedas y la pantalla de valores" hidden>
+          <text class="cota" x="16" y="22">LÁMINA 5 · AUTO EN LA ALINEADORA, VISTO DESDE ARRIBA</text>
+          <rect x="60" y="120" width="76" height="330" fill="#1c1f24" stroke="#3a4048"/><rect x="244" y="120" width="76" height="330" fill="#1c1f24" stroke="#3a4048"/>
+          <g id="autoB"><rect x="86" y="140" width="208" height="300" rx="40" fill="#2f2f35" stroke="#8a8a92" stroke-width="2"/><rect x="104" y="196" width="172" height="70" rx="12" fill="#1a2430"/>
+            <g id="wFI"><rect x="74" y="168" width="24" height="56" rx="6" fill="#111" stroke="#55555d"/></g><g id="wFD"><rect x="282" y="168" width="24" height="56" rx="6" fill="#111" stroke="#55555d"/></g>
+            <rect x="74" y="356" width="24" height="56" rx="6" fill="#111" stroke="#55555d"/><rect x="282" y="356" width="24" height="56" rx="6" fill="#111" stroke="#55555d"/>
+            <g id="volB"><circle cx="230" cy="290" r="18" fill="none" stroke="#c8c8d0" stroke-width="4"/><path d="M212 290 H248" stroke="#9a9aa2" stroke-width="3"/></g></g>
+          <g id="sens" opacity="0" fill="#f5e61b" stroke="#7a6f00"><rect x="46" y="184" width="22" height="24" rx="4"/><rect x="312" y="184" width="22" height="24" rx="4"/><rect x="46" y="372" width="22" height="24" rx="4"/><rect x="312" y="372" width="22" height="24" rx="4"/>
+            <path d="M57 208 V372 M323 208 V372" stroke="#ff3b2f" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/></g>
+          <g id="platos" opacity="0" fill="none" stroke="#38b6ff" stroke-width="2"><circle cx="86" cy="196" r="30"/><circle cx="294" cy="196" r="30"/></g>
+          <!-- Monitor -->
+          <rect x="342" y="40" width="166" height="190" rx="10" fill="#0b1014" stroke="#2c3440"/>
+          <text class="cota" x="354" y="60" fill="#9fdcff">ALINEADORA · DELANTERO</text>
+          <g font-family="Inter,sans-serif" font-size="11" fill="#d4d4da"><text x="354" y="88">Conv. izq.</text><text x="354" y="114">Conv. der.</text><text x="354" y="140">Caída izq.</text><text x="354" y="166">Caída der.</text></g>
+          <g font-family="Anton,Impact,sans-serif" font-size="15"><text id="vCI" x="500" y="88" text-anchor="end">—</text><text id="vCD" x="500" y="114" text-anchor="end">—</text><text id="vKI" x="500" y="140" text-anchor="end">—</text><text id="vKD" x="500" y="166" text-anchor="end">—</text></g>
+          <text id="vVol" x="354" y="200" class="cota"></text>
+          <text class="cota" x="354" y="220">VALORES DE EJEMPLO</text>
+          <g id="presB" opacity="0"><rect x="350" y="250" width="150" height="40" rx="8" fill="#0b1014" stroke="#38b6ff"/><text class="cota" x="362" y="274" fill="#9fdcff">PRESIÓN: 4 CUBIERTAS ✓</text></g>
+          <g id="trenB" opacity="0"><rect x="350" y="300" width="150" height="40" rx="8" fill="#0b1014" stroke="#38b6ff"/><text class="cota" x="362" y="324" fill="#9fdcff">TREN DELANTERO SIN JUEGO ✓</text></g>
+          <g id="balB" opacity="0"><rect x="350" y="350" width="150" height="40" rx="8" fill="#0b1014" stroke="#f5e61b"/><text class="cota" x="362" y="374" fill="#f5e61b">BALANCEO 4 RUEDAS ✓</text></g>
+          <g id="pruebaB" opacity="0"><rect x="350" y="400" width="150" height="40" rx="8" fill="#0b1014" stroke="#7ee787"/><text class="cota" x="362" y="424" fill="#7ee787">PRUEBA: VA DERECHO ✓</text></g>
+        </svg>
+      </div>
+      <div class="controles" id="ctrlAng">
+        <div class="ctrl">
+          <label class="slider" for="sToe">Convergencia <input type="range" id="sToe" min="-4" max="6" value="1"></label><output id="oToe"></output>
+          <label class="slider" for="sCam">Caída <input type="range" id="sCam" min="-30" max="30" value="-5"></label><output id="oCam"></output>
+          <label class="slider" for="sCas">Avance <input type="range" id="sCas" min="0" max="80" value="30"></label><output id="oCas"></output>
+        </div>
+      </div>
+      <div class="controles" id="ctrlRuta" hidden>
+        <div class="ctrl">
+          <label class="slider" for="sDif">Diferencia de caída entre lados <input type="range" id="sDif" min="-20" max="20" value="0"></label><output id="oDif"></output>
+          <label class="slider" for="sTot">Convergencia total <input type="range" id="sTot" min="-4" max="8" value="1"></label><output id="oTot"></output>
+          <button class="btn sec" id="sostener" aria-pressed="false">Sostener el volante derecho</button>
+        </div>
+      </div>
+      <div class="controles" id="ctrlBal" hidden>
+        <div class="ctrl">
+          <label class="slider" for="sVel">Velocidad <input type="range" id="sVel" min="0" max="140" value="0"></label>
+          <button class="btn" id="pesaBtn" aria-pressed="false">Poner la pesa de balanceo</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="card leccion" data-modo="angulos">
+        <div class="cab"><span class="kicker">Tema 1 · Los 3 ángulos</span><small>4 min</small></div>
+        <h2 style="margin-top:6px">Cómo se para la rueda</h2>
+        <p style="margin-top:8px">Una rueda no va perfectamente derecha: tiene tres ángulos chiquitos, de fracciones de grado o de milímetros, que el fabricante calcula. Mové los controles debajo de la lámina y mirá cómo cambia el desgaste de la cubierta.</p>
+        <div class="angulos" id="angulos">
+          <button data-a="conv" aria-pressed="false"><b>1 · Convergencia</b>Mirando desde arriba: si las ruedas apuntan un poco hacia adentro adelante (convergencia) o hacia afuera (divergencia). Es el ángulo que más gasta cubiertas.</button>
+          <button data-a="caida" aria-pressed="false"><b>2 · Caída</b>Mirando de frente: cuánto se inclina la rueda. Negativa: arriba hacia adentro. Positiva: arriba hacia afuera. Una caída de más gasta un solo borde.</button>
+          <button data-a="avance" aria-pressed="false"><b>3 · Avance</b>Mirando de costado: cuánto se inclina el eje de giro de la rueda hacia atrás. Hace que el volante vuelva solo al centro y que el auto sea estable a alta velocidad. En muchos autos no se regula.</button>
+        </div>
+      </div>
+      <div class="card leccion" data-modo="ruta" hidden>
+        <div class="cab"><span class="kicker">Tema 2 · En la ruta</span><small>3 min</small></div>
+        <h2 style="margin-top:6px">Por qué un auto «tira»</h2>
+        <p style="margin-top:8px">Si una rueda tiene distinta caída que la otra, el auto se va hacia el lado de la caída más positiva. Si la convergencia está mal, el auto puede ir derecho, pero <b>las cubiertas se arrastran</b> de costado y se gastan rápido.</p>
+        <div class="tip"><b>Probalo:</b> mové «Diferencia de caída entre lados» y mirá cómo se va el auto. Después tocá «Sostener el volante derecho»: el auto va derecho, pero el volante queda torcido. Es el síntoma que más ve un mecánico.</div>
+        <div class="aviso"><b>Ojo:</b> un auto que tira también puede ser por presión distinta en las cubiertas o por un freno trabado. Por eso se revisa todo antes de alinear.</div>
+      </div>
+      <div class="card leccion" data-modo="balanceo" hidden>
+        <div class="cab"><span class="kicker">Tema 3 · Balanceo</span><small>3 min</small></div>
+        <h2 style="margin-top:6px">Un punto pesado que gira</h2>
+        <p style="margin-top:8px">Ninguna cubierta y llanta es perfecta: siempre tienen un lado un poco más pesado. Al girar rápido, ese punto tira hacia afuera en cada vuelta y la rueda vibra. Cuanto más rápido, más fuerte.</p>
+        <div class="tip"><b>Probalo:</b> subí la velocidad: alrededor de los 80 a 120 km/h el volante empieza a temblar. Tocá «Poner la pesa de balanceo»: una pesa del otro lado compensa el punto pesado.</div>
+        <p style="margin-top:10px">La balanceadora hace girar la rueda y te dice dónde y cuántos gramos poner, del lado de adentro y de afuera de la llanta.</p>
+        <div class="aviso"><b>Diferencia clave:</b> el balanceo arregla vibraciones; la alineación arregla que el auto tire y el desgaste de las cubiertas. Son trabajos distintos.</div>
+      </div>
+      <div class="card leccion" data-modo="desgaste" hidden>
+        <div class="cab"><span class="kicker" style="color:var(--naranja)">Tema 4 · Leer la cubierta</span><small>4 min</small></div>
+        <h2 style="margin-top:6px">La cubierta cuenta qué pasa</h2>
+        <p style="margin-top:8px">Pasá la mano por la banda de rodamiento y mirala de frente. El tipo de desgaste dice cuál es el problema. Elegí cada uno:</p>
+        <div class="chips" id="chipsDesg">
+          <button class="chip" data-d="interior" aria-pressed="false">Gastada del lado de adentro <span class="sw"></span></button>
+          <button class="chip" data-d="exterior" aria-pressed="false">Gastada del lado de afuera <span class="sw"></span></button>
+          <button class="chip" data-d="bordes" aria-pressed="false">Gastada en los dos bordes <span class="sw"></span></button>
+          <button class="chip" data-d="centro" aria-pressed="false">Gastada en el centro <span class="sw"></span></button>
+          <button class="chip" data-d="serrucho" aria-pressed="false">Tacos en «serrucho» <span class="sw"></span></button>
+          <button class="chip" data-d="manchones" aria-pressed="false">Manchones gastados <span class="sw"></span></button>
+        </div>
+        <div class="diag" id="diag" aria-live="polite"></div>
+      </div>
+      <div class="card leccion" data-modo="taller" hidden>
+        <div class="cab"><span class="kicker">Tema 5 · En la alineadora</span><small id="pasoMin">Paso 1 de 12</small></div>
+        <ol class="pasos" id="pasos"></ol>
+        <div class="nav-pasos"><button class="btn sec" id="ant">← Anterior</button><button class="btn" id="sig">Siguiente paso →</button></div>
+      </div>
+      <div class="card leccion" data-modo="ficha" hidden>
+        <div class="cab"><span class="kicker">Tema 6 · Ficha técnica</span><small>2 min</small></div>
+        <h2 style="margin-top:6px">Alineación y balanceo</h2>
+        <table class="ficha-tabla">
+          <tr><th>Cuándo alinear</th><td>Después de cambiar piezas del tren delantero, de un golpe fuerte, al poner cubiertas nuevas o si el auto tira. Como control, según el manual (muchos talleres sugieren cada 10.000 km).</td></tr>
+          <tr><th>Cuándo balancear</th><td>Al poner o reparar una cubierta, al cambiar llantas o si vibra el volante.</td></tr>
+          <tr><th>Antes de alinear</th><td>Presión correcta en las 4 cubiertas y tren delantero sin juego (Módulos 1 a 4)</td></tr>
+          <tr><th>Qué se regula</th><td>Siempre la convergencia; la caída y el avance solo si el auto tiene regulación</td></tr>
+          <tr><th>Tiempo aprox.</th><td>30 a 60 minutos la alineación; 10 a 15 minutos por rueda el balanceo</td></tr>
+        </table>
+        <h3 style="margin-top:16px;font-size:1.15rem">Errores comunes</h3>
+        <ul style="margin:8px 0 0 18px;color:#d4d4da;display:grid;gap:4px;font-size:.92rem">
+          <li>Alinear con piezas con juego: a los pocos días está desalineado de nuevo</li>
+          <li>Alinear sin revisar la presión de las cubiertas</li>
+          <li>Dejar el volante torcido aunque los valores den bien</li>
+          <li>Olvidar ajustar las contratuercas de las barras</li>
+          <li>Confundir balanceo con alineación</li>
+        </ul>
+      </div>
+      <div class="card leccion" data-modo="ficha" hidden>
+        <span class="kicker">Repaso final</span>
+        <h3 style="margin-top:4px;font-size:1.2rem" id="exPreg"></h3>
+        <div class="examen" id="exOps"></div>
+        <p id="exFb" aria-live="polite" style="margin-top:10px;font-size:.92rem"></p>
+      </div>
+      <div class="cta"><h3>¿Te tira el auto o te vibra el volante?</h3><a href="./#contacto">Pedir turno</a></div>
+    </aside>
+  </div>
+  <p class="nota" style="padding-bottom:16px">Ficha con fines educativos. Los valores de alineación son propios de cada auto y se cargan en la alineadora; en las láminas los ángulos están exagerados para que se vean.</p>
+  <section class="final" aria-label="Fin del curso">
+    <span class="kicker">Curso Tren delantero · completo</span>
+    <h2>Terminaste los <span style="color:var(--amarillo)">5 módulos</span></h2>
+    <p style="color:#d4d4da">Ya sabés cómo está armado el tren delantero, cómo trabaja cada pieza, cómo darte cuenta de que algo falla y cómo se cambia. Y entendés por qué todo termina en la alineadora.</p>
+    <div class="mods"><a href="rotula.html">1 · Rótula</a><a href="extremo-de-direccion.html">2 · Extremo de dirección</a><a href="amortiguador.html">3 · Amortiguador</a><a href="bujes-y-parrilla.html">4 · Bujes y parrilla</a><a href="alineacion.html">5 · Alineación</a></div>
+    <div class="descargas">
+      <div class="desc-card">
+        <span class="kicker">Tu certificado</span>
+        <label for="nombre" style="font-size:.9rem;color:#d4d4da">Escribí tu nombre y apellido como querés que figure:</label>
+        <div style="display:flex;flex-wrap:wrap;gap:8px"><input id="nombre" maxlength="40" autocomplete="name" placeholder="Nombre y apellido"><button class="btn" id="certBtn" data-fx="none">Descargar certificado</button></div>
+        <canvas id="certPrev" width="1000" height="707" aria-label="Vista previa del certificado"></canvas>
+      </div>
+      <div class="desc-card">
+        <span class="kicker">La guía completa</span>
+        <p style="color:#d4d4da;font-size:.92rem">Todo el curso en un PDF: las láminas, las piezas, las fallas, los pasos y las fichas técnicas de los 5 módulos, para guardar o imprimir.</p>
+        <a class="btn" href="descargas/guia-curso-tren-delantero.pdf" download data-fx="pieza" style="text-decoration:none;align-self:flex-start">Descargar la guía en PDF</a>
+      </div>
+    </div>
+    <p style="color:var(--suave);font-size:.9rem">¿Querés seguir aprendiendo? Mirá los <a href="cursos.html" style="color:var(--amarillo)">cursos de AC-Taller</a>.</p>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · <a href="./">Inicio</a> · <a href="cursos.html">Cursos</a></div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const ICON='<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3a6 6 0 0 0-5.6 8L3 17.4 6.6 21l6.4-6.4A6 6 0 0 0 21 9l-3.5 2-3-1-1-3z" fill="#f5e61b"/></svg>';
+const son=k=>window.TallerFX&&TallerFX.sonar(k);
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fmt=(v,d)=>(v>0?"+":"")+v.toFixed(d).replace(".",",");
+let modo="angulos",paso=0,exN=0,t0=performance.now();
+// ===== Tema 1 =====
+function angulos(){const toe=+$("#sToe").value,cam=+$("#sCam").value/10,cas=+$("#sCas").value/10;
+  $("#oToe").textContent=fmt(toe,0)+" mm";$("#oCam").textContent=fmt(cam,1)+"°";$("#oCas").textContent=fmt(cas,1)+"°";
+  const a=toe*2.5;$("#cI").setAttribute("transform",`translate(58 200) rotate(${a})`);$("#cD").setAttribute("transform",`translate(126 200) rotate(${-a})`);
+  $("#tConv").textContent=toe>0?"CONVERGENTE":toe<0?"DIVERGENTE":"PARALELAS";
+  $("#rCaida").setAttribute("transform",`rotate(${-cam*5} 260 260)`);$("#tCaida").textContent=cam<0?"CAÍDA NEGATIVA":cam>0?"CAÍDA POSITIVA":"CAÍDA CERO";
+  const r=cas*3*Math.PI/180,dx=Math.sin(r)*100,dy=Math.cos(r)*100;$("#eje").setAttribute("x1",428+dx);$("#eje").setAttribute("y1",200-dy);$("#eje").setAttribute("x2",428-dx*.62);$("#eje").setAttribute("y2",200+dy*.62);
+  const xi=428-Math.tan(r)*62;$("#distAv").setAttribute("d",`M${xi} 266 H428`);$("#tAvance").textContent=cas>0?"EJE INCLINADO HACIA ATRÁS":"SIN AVANCE";
+  const wOut=Math.max(0,cam)*.35+Math.max(0,toe-2)*.2,wIn=Math.max(0,-cam-.8)*.35+Math.max(0,-toe)*.25;
+  $("#wOut").setAttribute("opacity",Math.min(1,wOut).toFixed(2));$("#wIn").setAttribute("opacity",Math.min(1,wIn).toFixed(2));
+  const t=$("#tDesg");if(wOut<.15&&wIn<.15){t.textContent="DESGASTE PAREJO";t.setAttribute("fill","#7ee787")}else if(wOut>=wIn){t.textContent="SE GASTA EL BORDE DE AFUERA";t.setAttribute("fill","#ff6a1a")}else{t.textContent="SE GASTA EL BORDE DE ADENTRO";t.setAttribute("fill","#ff6a1a")}}
+["#sToe","#sCam","#sCas"].forEach(s=>$(s).oninput=angulos);
+function elegirAng(k){$$("#angulos button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.a===k));$$("#A .pz").forEach(g=>g.classList.toggle("sel",g.dataset.a===k))}
+$$("#angulos button").forEach(b=>{b.dataset.fx="pieza";b.onclick=()=>elegirAng(b.dataset.a)});
+$$("#A .pz").forEach(g=>g.addEventListener("click",()=>elegirAng(g.dataset.a)));
+// ===== Tema 2 =====
+let ruta={x:240,ang:0,off:0},sost=false,huellas=[];
+$("#sostener").onclick=()=>{sost=!sost;$("#sostener").setAttribute("aria-pressed",sost);$("#sostener").textContent=sost?"Soltar el volante":"Sostener el volante derecho";ruta.x=240;ruta.ang=0};
+["#sDif","#sTot"].forEach(s=>$(s).oninput=()=>{ruta.x=240;ruta.ang=0;huellas=[]});
+function pasoRuta(dt){const dif=+$("#sDif").value/10,tot=+$("#sTot").value;
+  $("#oDif").textContent=fmt(dif,1)+"°";$("#oTot").textContent=fmt(tot,0)+" mm";
+  const tira=dif*14;ruta.off=(ruta.off+dt*220)%48;
+  if(sost){ruta.ang=0;ruta.x+=(240-ruta.x)*dt*3}else{ruta.ang+=(tira*.35-ruta.ang)*dt*2;ruta.x+=Math.sin(ruta.ang*Math.PI/180)*220*dt;if(ruta.x<130||ruta.x>350){ruta.x=240;ruta.ang=0}}
+  $("#lineaC").setAttribute("stroke-dashoffset",-ruta.off);
+  $("#autoC").setAttribute("transform",`translate(${ruta.x.toFixed(1)} 330) rotate(${ruta.ang.toFixed(1)})`);
+  const tt=Math.max(-12,Math.min(12,(tot-1)*2.2));$("#rDI").setAttribute("transform",`rotate(${tt} -38 -38)`);$("#rDD").setAttribute("transform",`rotate(${-tt} 38 -38)`);
+  $("#volC").setAttribute("transform",`rotate(${sost?-dif*40:0} 460 90)`);
+  const arr=Math.abs(tot-1)>=3;$("#tChillido").setAttribute("opacity",arr?1:0);
+  const t=$("#tRuta");if(Math.abs(dif)<.2&&!arr){t.textContent="VA DERECHO";t.setAttribute("fill","#7ee787")}else if(Math.abs(dif)>=.2){t.textContent=sost?"VA DERECHO, PERO CON EL VOLANTE TORCIDO":"TIRA HACIA LA "+(dif>0?"IZQUIERDA":"DERECHA");t.setAttribute("fill","#ff6a1a")}else{t.textContent="VA DERECHO, PERO GASTA CUBIERTAS";t.setAttribute("fill","#ffb020")}
+  if(arr){huellas.push([ruta.x,330]);if(huellas.length>40)huellas.shift();$("#huellas").innerHTML=huellas.map((h,i)=>`<path d="M${h[0]-38} ${330+(huellas.length-i)*5} h4 M${h[0]+34} ${330+(huellas.length-i)*5} h4"/>`).join("")}else $("#huellas").innerHTML=""}
+// ===== Tema 3 =====
+let ang=0,pesa=false;
+$("#pesaBtn").onclick=()=>{pesa=!pesa;$("#pesaBtn").setAttribute("aria-pressed",pesa);$("#pesaBtn").textContent=pesa?"Sacar la pesa":"Poner la pesa de balanceo";$("#pesa").setAttribute("opacity",pesa?1:0);curva();son(pesa?"bien":"clic")};
+$("#pesaBtn").dataset.fx="none";
+function vib(v){return (pesa?.06:1)*Math.min(1,(v/110)**2)}
+function curva(){let d="";for(let v=0;v<=140;v+=5){const x=342+v/140*150,y=330-vib(v)*96;d+=(v?"L":"M")+x.toFixed(1)+" "+y.toFixed(1)}$("#curvaD").setAttribute("d",d)}
+function pasoBal(dt){const v=+$("#sVel").value,a=vib(v);ang+=dt*v*9;
+  $("#giroD").setAttribute("transform",`rotate(${ang%360} 170 220)`);
+  const s=reduce?0:Math.sin(ang*Math.PI/180)*a*10;$("#ruedaD").setAttribute("transform",`translate(${s.toFixed(1)} ${(s*.6).toFixed(1)})`);$("#volD").setAttribute("transform",`rotate(${(s*.8).toFixed(1)} 420 110)`);
+  $("#puntoD").setAttribute("cx",342+v/140*150);$("#puntoD").setAttribute("cy",330-a*96);
+  $("#tVel").textContent=v+" KM/H";const t=$("#tVib");if(a<.15){t.textContent="SIN VIBRACIÓN";t.setAttribute("fill","#7ee787")}else if(a<.5){t.textContent="VIBRA UN POCO";t.setAttribute("fill","#ffb020")}else{t.textContent="TIEMBLA EL VOLANTE";t.setAttribute("fill","#ff5a3c")}}
+// ===== Tema 4 =====
+const DESG={
+  interior:["Gastada del lado de adentro","Caída negativa de más o divergencia. También pasa con rótulas o bujes gastados que dejan abrir la rueda.","Alinear y revisar el tren delantero.",[[300,80,160,300,"in"]]],
+  exterior:["Gastada del lado de afuera","Caída positiva o convergencia de más. También por doblar fuerte y rápido muy seguido.","Alinear.",[[60,80,160,300,"out"]]],
+  bordes:["Gastada en los dos bordes","Presión baja: la cubierta se apoya en los bordes y el centro trabaja poco.","Inflar a la presión del manual y revisar cada 15 días.",[[60,80,90,300,"out"],[370,80,90,300,"in"]]],
+  centro:["Gastada en el centro","Presión alta: la cubierta se abomba y apoya solo el centro.","Bajar a la presión del manual.",[[170,80,180,300,"c"]]],
+  serrucho:["Tacos en «serrucho»","Al pasar la mano de un lado al otro, los tacos raspan en un sentido y no en el otro: convergencia mal regulada.","Alinear (regular la convergencia).",[["s"]]],
+  manchones:["Manchones gastados","Pozos o «escalones» repartidos alrededor de la cubierta: amortiguadores gastados o rueda desbalanceada.","Revisar amortiguadores (Módulo 3) y balancear.",[["m"]]]};
+$$("#chipsDesg .chip").forEach(c=>c.onclick=()=>{const k=c.dataset.d;$$("#chipsDesg .chip").forEach(x=>x.setAttribute("aria-pressed",x===c));const d=DESG[k];
+  $("#diag").innerHTML=`<div><b>${d[0]}</b>Causa: ${d[1]}<br><span style="color:#fff">Solución:</span> ${d[2]}</div>`;$("#tPatron").textContent=d[0].toUpperCase();
+  let h="";for(const z of d[3]){if(z[0]==="s"){for(let y=86;y<380;y+=24)for(let x=64;x<460;x+=40)h+=`<path d="M${x} ${y} l18 0 l-18 14 z" fill="#5a5a62"/>`}
+    else if(z[0]==="m"){for(let i=0;i<6;i++)h+=`<ellipse cx="${110+(i%3)*150}" cy="${130+Math.floor(i/3)*150}" rx="56" ry="34" fill="#5a5a62" opacity=".9"/>`}
+    else h+=`<rect x="${z[0]}" y="${z[1]}" width="${z[2]}" height="${z[3]}" rx="18" fill="#5a5a62" opacity=".92"/>`}
+  $("#patron").innerHTML=h});
+// ===== Tema 5 =====
+const PASOS=[
+  {t:"Revisar la presión de las 4 cubiertas",d:"Inflá todas a la presión del manual. Una cubierta baja cambia la altura y los ángulos.",h:["Manómetro","Compresor"]},
+  {t:"Revisar el tren delantero",d:"Con el auto levantado, buscá juego en rótulas, extremos, bujes y amortiguadores. Si algo tiene juego, se cambia antes de alinear.",h:["Barreta","Linterna"],tip:"Es todo lo que viste en los Módulos 1 a 4."},
+  {t:"Subir el auto a la alineadora",d:"Subí el auto a la rampa con las ruedas delanteras centradas sobre los platos giratorios. Freno de mano puesto.",h:["Rampa","Platos giratorios"]},
+  {t:"Montar los sensores",d:"Colocá los cabezales o los blancos de la alineadora en las cuatro ruedas, bien agarrados a la llanta.",h:["Cabezales"]},
+  {t:"Medir",d:"Seguí los pasos del equipo para compensar los sensores y medir. La pantalla muestra los valores de cada rueda.",h:["Alineadora"]},
+  {t:"Comparar con los valores del fabricante",d:"El equipo marca en rojo lo que está fuera de rango y en verde lo que está bien.",h:["Base de datos del equipo"]},
+  {t:"Centrar y trabar el volante",d:"Poné el volante derecho y trabalo con la herramienta, así al terminar el auto va derecho con el volante centrado.",h:["Traba volante"]},
+  {t:"Regular la caída (si se puede)",d:"Si el auto tiene regulación, se ajusta con el bulón excéntrico de la brida o de la parrilla, y se vuelve a ajustar al torque.",h:["Llaves","Torquímetro"],tip:"Muchos autos no tienen regulación de caída: si da mal, hay una pieza doblada o gastada."},
+  {t:"Regular la convergencia",d:"Aflojá las contratuercas de las barras de dirección y girá las barras hasta llegar al valor. Cada lado se regula por separado.",h:["Llaves fijas"],tip:"Es el mismo giro de la barra que viste en el Módulo 2."},
+  {t:"Ajustar las contratuercas y volver a medir",d:"Ajustá las contratuercas sin mover las barras, destrabá el volante y verificá que todo quede en verde.",h:["Llaves fijas"],s:"Una contratuerca floja desalinea el auto en pocos kilómetros."},
+  {t:"Balancear las ruedas",d:"Sacá cada rueda, limpiá las pesas viejas, ponela en la balanceadora y colocá las pesas que indica, adentro y afuera de la llanta.",h:["Balanceadora","Pesas"]},
+  {t:"Prueba de manejo",d:"Salí a probar: el auto tiene que ir derecho con el volante centrado y sin vibrar.",h:["Ruta"]}
+];
+function pasoUI(){
+  $("#pasos").innerHTML=PASOS.map((p,i)=>`<li class="${i<paso?"hecho":i===paso?"actual":""}"><button data-i="${i}"><i>${i<paso?"✓":i+1}</i>${p.t}</button>${i===paso?`<div class="paso-det">${p.d}<div class="herr">${p.h.map(x=>`<span>${ICON}${x}</span>`).join("")}</div>${p.s?`<div class="aviso"><b>Seguridad:</b> ${p.s}</div>`:""}${p.tip?`<div class="tip"><b>Dato de taller:</b> ${p.tip}</div>`:""}</div>`:""}</li>`).join("");
+  $$("#pasos button").forEach(b=>b.onclick=()=>{paso=+b.dataset.i;pasoUI()});
+  $("#pasoMin").textContent=`Paso ${paso+1} de ${PASOS.length}`;$("#barraDer").textContent=`Paso ${paso+1} de ${PASOS.length}`;
+  $("#ant").disabled=paso===0;$("#sig").textContent=paso===PASOS.length-1?"Ir a la ficha técnica →":"Siguiente paso →";
+  const o=(s,v)=>$(s).setAttribute("opacity",v?1:0);
+  o("#presB",paso>=0);o("#trenB",paso>=1);o("#platos",paso>=2);o("#sens",paso>=3&&paso<=10);o("#balB",paso>=10);o("#pruebaB",paso>=11);
+  const medido=paso>=4,kOk=paso>=7,cOk=paso>=8;
+  const val=(id,txt,ok)=>{$(id).textContent=medido?txt:"—";$(id).setAttribute("fill",!medido?"#6b6b75":ok?"#7ee787":"#ff5a3c")};
+  val("#vCI",cOk?"+1,0 mm":"+4,0 mm",cOk);val("#vCD",cOk?"+1,0 mm":"+0,5 mm",true);val("#vKI",kOk?"−0,6°":"−1,8°",kOk);val("#vKD","−0,6°",true);
+  $("#vVol").textContent=paso>=6&&paso<=9?"VOLANTE TRABADO AL CENTRO":paso>=10?"VOLANTE CENTRADO":"";
+  $("#wFI").setAttribute("transform",cOk?"":"rotate(6 86 196)");$("#volB").setAttribute("transform",paso>=6?"":"rotate(-14 230 290)");
+}
+$("#sig").onclick=()=>{if(paso<PASOS.length-1){paso++;pasoUI()}else irA("ficha")};
+$("#ant").onclick=()=>{if(paso>0){paso--;pasoUI()}};
+// ===== Repaso =====
+const EXAMEN=[
+  {p:"¿Qué ángulo es el que más gasta las cubiertas?",o:["El avance","La convergencia","El balanceo"],c:1},
+  {p:"El volante tiembla a 100 km/h. ¿Qué hace falta, en general?",o:["Balancear las ruedas","Cambiar el aceite","Alinear la caída"],c:0},
+  {p:"Una cubierta gastada en los dos bordes indica…",o:["Presión alta","Presión baja","Convergencia de más"],c:1},
+  {p:"¿Qué se revisa antes de alinear?",o:["Solo el aceite","La presión y que el tren delantero no tenga juego","Nada"],c:1},
+  {p:"¿Dónde se regula la convergencia?",o:["En las barras de dirección, girándolas en los extremos","En el amortiguador","En la cremallera"],c:0}
+];
+function examen(){if(exN>=EXAMEN.length){$("#exPreg").textContent="¡Completaste el curso Tren delantero!";$("#exOps").innerHTML="";$("#exFb").innerHTML='<button class="btn sec" id="exOtra">Hacer el repaso de nuevo</button>';$("#exOtra").onclick=()=>{exN=0;examen()};son("bien");return}
+  const q=EXAMEN[exN];$("#exPreg").textContent=`${exN+1} de ${EXAMEN.length} · ${q.p}`;$("#exFb").textContent="";
+  $("#exOps").innerHTML=q.o.map((o,i)=>`<button data-i="${i}" data-fx="none">${o}</button>`).join("");
+  $$("#exOps button").forEach(b=>b.onclick=()=>{const ok=+b.dataset.i===q.c;b.classList.add(ok?"bien":"mal");son(ok?"bien":"mal");
+    if(ok){$("#exFb").innerHTML='<b style="color:var(--ok)">¡Correcto!</b> <button class="btn sec" id="exSig" style="margin-left:8px">Seguir</button>';$("#exSig").onclick=()=>{exN++;examen()}}
+    else $("#exFb").textContent="No es esa. Probá con otra opción."})}
+// ===== Navegación =====
+const LAM={angulos:["A","ctrlAng","Lámina 1 · Los 3 ángulos de la rueda","Ángulos exagerados para verlos"],ruta:["C","ctrlRuta","Lámina 2 · En la ruta","Simulación simplificada"],balanceo:["D","ctrlBal","Lámina 3 · Balanceo","Simulación simplificada"],desgaste:["E",null,"Lámina 4 · Leer la cubierta","Vista de la banda de rodamiento"],taller:["B",null,"Lámina 5 · En la alineadora",""],ficha:["A","ctrlAng","Lámina 1 · Los 3 ángulos de la rueda","Ángulos exagerados para verlos"]};
+$$(".temario button").forEach(b=>b.onclick=()=>irA(b.dataset.m));
+function irA(m){modo=m;$$(".temario button").forEach(b=>{const on=b.dataset.m===m;b.setAttribute("aria-selected",on);if(on)b.classList.add("visto")});
+  $$(".leccion").forEach(c=>c.hidden=c.dataset.modo!==m);const L=LAM[m];
+  ["A","B","C","D","E"].forEach(id=>$("#"+id).toggleAttribute("hidden",id!==L[0]));["ctrlAng","ctrlRuta","ctrlBal"].forEach(id=>$("#"+id).toggleAttribute("hidden",id!==L[1]));
+  $("#barraTxt").textContent=L[2];$("#barraDer").textContent=L[3];
+  if(m==="taller")pasoUI();if(m==="ficha")examen();if(m==="balanceo")curva();}
+
+// ===== Certificado =====
+const LOGO=new Image();LOGO.src="logo.png";
+function certificado(cv,nombre){const W=2000,H=1414,c=cv.getContext("2d");cv.width=W;cv.height=H;
+  c.fillStyle="#0b0b0c";c.fillRect(0,0,W,H);
+  // marca de agua: logo grande y texto repetido
+  c.save();c.globalAlpha=.06;if(LOGO.complete&&LOGO.naturalWidth)c.drawImage(LOGO,W/2-420,H/2-420,840,840);c.restore();
+  c.save();c.globalAlpha=.035;c.fillStyle="#f5e61b";c.font="64px Anton, Impact, sans-serif";c.translate(W/2,H/2);c.rotate(-Math.PI/7);
+  for(let y=-1100;y<1100;y+=170)for(let x=-1500;x<1500;x+=560)c.fillText("AC-TALLER",x,y);c.restore();
+  // bordes
+  c.strokeStyle="#f5e61b";c.lineWidth=14;c.strokeRect(40,40,W-80,H-80);c.lineWidth=2;c.strokeRect(70,70,W-140,H-140);
+  // encabezado
+  if(LOGO.complete&&LOGO.naturalWidth)c.drawImage(LOGO,130,120,150,150);
+  c.fillStyle="#f5e61b";c.font="64px Anton, Impact, sans-serif";c.textBaseline="middle";c.fillText("AC-TALLER",310,200);
+  c.fillStyle="#9d9da6";c.font="600 30px Inter, sans-serif";c.textAlign="right";c.fillText("Azul, Buenos Aires · ac-taller.com",W-130,200);c.textAlign="center";
+  c.fillStyle="#f5e61b";c.font="700 34px Inter, sans-serif";c.fillText("CERTIFICADO DE FINALIZACIÓN",W/2,400);
+  c.fillStyle="#d4d4da";c.font="38px Inter, sans-serif";c.fillText("AC-Taller certifica que",W/2,500);
+  const n=(nombre||"Tu nombre").trim()||"Tu nombre";let fs=150;c.font=`${fs}px Anton, Impact, sans-serif`;while(c.measureText(n.toUpperCase()).width>W-360&&fs>60){fs-=6;c.font=`${fs}px Anton, Impact, sans-serif`}
+  c.fillStyle="#ffffff";c.fillText(n.toUpperCase(),W/2,640);
+  c.fillStyle="#f5e61b";c.fillRect(W/2-360,730,720,6);
+  c.fillStyle="#d4d4da";c.font="38px Inter, sans-serif";c.fillText("completó el curso gratuito",W/2,820);
+  c.fillStyle="#ffffff";c.font="96px Anton, Impact, sans-serif";c.fillText("TREN DELANTERO",W/2,920);
+  c.fillStyle="#9d9da6";c.font="30px Inter, sans-serif";c.fillText("Rótula · Extremo de dirección · Amortiguador y espiral · Bujes y parrilla · Alineación y balanceo",W/2,1010);
+  const f=new Date(),fecha=f.toLocaleDateString("es-AR",{day:"numeric",month:"long",year:"numeric"});
+  c.textAlign="left";c.fillStyle="#d4d4da";c.font="32px Inter, sans-serif";c.fillText("Fecha: "+fecha,170,1200);
+  c.textAlign="right";c.fillStyle="#d4d4da";c.fillRect(W-700,1160,520,2);c.fillText("AC-Taller · Azul",W-180,1200);
+  c.textAlign="center";c.fillStyle="#6b6b75";c.font="24px Inter, sans-serif";c.fillText("Curso con fines educativos. No habilita para ejercer la mecánica profesionalmente.",W/2,1300);}
+function previa(){certificado($("#certPrev"),$("#nombre").value)}
+$("#nombre").addEventListener("input",previa);
+$("#certBtn").onclick=()=>{const n=$("#nombre").value.trim();if(!n){$("#nombre").focus();$("#nombre").placeholder="Escribí tu nombre primero";return}
+  const cv=document.createElement("canvas");certificado(cv,n);son("bien");
+  cv.toBlob(b=>{const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="certificado-tren-delantero-ac-taller.png";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)},"image/png")};
+LOGO.onload=previa;document.fonts&&document.fonts.ready.then(previa);previa();
+let ult=performance.now();
+function loop(now){const dt=Math.min(.05,(now-ult)/1000);ult=now;if(modo==="ruta")pasoRuta(dt);if(modo==="balanceo")pasoBal(dt);requestAnimationFrame(loop)}
+angulos();
+(function(){const h=location.hash.slice(1).split("-");if(LAM[h[0]]){if(h[0]==="taller"&&h[1])paso=Math.min(PASOS.length-1,Math.max(0,+h[1]-1));irA(h[0]);if(h[0]==="balanceo"&&h[1]){$("#sVel").value=h[1]}if(h[0]==="desgaste"&&h[1]){const c=document.querySelector(`[data-d="${h[1]}"]`);c&&c.click()}}else irA("angulos")})();
+requestAnimationFrame(loop);
+</script>
+<script src="js/taller-fx.js"></script>
+</body>
+</html>

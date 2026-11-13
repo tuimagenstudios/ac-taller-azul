@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bujes y parrilla: cómo trabajan y cómo se cambian | AC-Taller</title>
+<meta name="description" content="Módulo 4 del curso Tren delantero: la parrilla y sus bujes. Despiece, cómo trabaja la goma, por qué se ajustan con el peso del auto, fallas y cambio paso a paso. Gratis, de AC-Taller, Azul.">
+<link rel="canonical" href="https://ac-taller.com/bujes-y-parrilla.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AC-Taller"><meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://ac-taller.com/bujes-y-parrilla.html">
+<meta property="og:title" content="Bujes y parrilla, pieza por pieza | AC-Taller">
+<meta property="og:description" content="Despiece, la goma trabajando, fallas y cambio paso a paso, interactivo. Gratis.">
+<meta property="og:image" content="https://ac-taller.com/img/og-bujes.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/simulador.css">
+<link rel="stylesheet" href="css/ficha.css">
+<style>
+  .modnav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+  .modnav a{font-size:.78rem;font-weight:700;color:var(--suave);text-decoration:none;border:1px solid #33333a;border-radius:20px;padding:3px 11px}
+  .modnav a[aria-current="page"]{color:#000;background:var(--amarillo);border-color:var(--amarillo)}
+  .modnav a:hover{border-color:var(--amarillo)}
+  .siguiente-mod{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:var(--panel);border:1px solid var(--borde);border-left:4px solid var(--amarillo);border-radius:12px;padding:16px 18px;margin-bottom:44px}
+  .siguiente-mod b{font-family:var(--display);font-weight:400;font-size:1.3rem;text-transform:uppercase}
+  .siguiente-mod a{color:var(--amarillo);font-weight:700}
+  .ctrlC{display:flex;flex-wrap:wrap;gap:10px;align-items:center;width:100%}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./"><img src="logo.png" alt="Logo AC Motors" width="36" height="36">AC-TALLER</a><a class="volver" href="cursos.html">← Cursos</a></div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <nav class="modnav" aria-label="Módulos del curso">
+      <span class="kicker" style="margin-right:4px">Curso Tren delantero</span>
+      <a href="rotula.html">1 · Rótula</a><a href="extremo-de-direccion.html">2 · Extremo de dirección</a><a href="amortiguador.html">3 · Amortiguador</a><a href="bujes-y-parrilla.html" aria-current="page">4 · Bujes y parrilla</a><a href="alineacion.html">5 · Alineación</a>
+    </nav>
+    <h1><span>Bujes</span> y parrilla</h1>
+    <p>La parrilla es el brazo que une la rueda con el chasis. Se agarra con bujes: cilindros de goma entre dos camisas de metal que dejan subir y bajar la rueda, absorben las vibraciones y mantienen la rueda en su lugar al frenar y al acelerar.</p>
+    <div class="meta"><span>Módulo <b>4</b> de 5</span><span>Nivel: <b>intermedio</b></span><span>Duración: <b>18 min</b></span><span><b>5</b> temas · <b>14</b> pasos</span><span>Gratis</span></div>
+  </section>
+
+  <div class="aprender" aria-label="Lo que vas a aprender">
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>Las 12 piezas de la parrilla y por dentro de un buje</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>Cómo trabaja la goma y por qué no gira, se tuerce</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>El error más común: ajustar con la rueda colgando</div>
+    <div><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" fill="none" stroke="#f5e61b" stroke-width="3" stroke-linecap="round"/></svg>El cambio de la parrilla en 14 pasos</div>
+  </div>
+
+  <nav class="temario" role="tablist" aria-label="Temas">
+    <button role="tab" data-m="partes" aria-selected="true"><b>TEMA 1</b><span>Despiece</span></button>
+    <button role="tab" data-m="trabaja" aria-selected="false"><b>TEMA 2</b><span>La goma trabajando</span></button>
+    <button role="tab" data-m="fallas" aria-selected="false"><b>TEMA 3</b><span>Cuándo está mal</span></button>
+    <button role="tab" data-m="cambio" aria-selected="false"><b>TEMA 4</b><span>Cambio paso a paso</span></button>
+    <button role="tab" data-m="ficha" aria-selected="false"><b>TEMA 5</b><span>Ficha y repaso</span></button>
+  </nav>
+
+  <div class="app">
+    <section class="banco" aria-label="Lámina técnica">
+      <div class="barra"><span id="barraTxt">Lámina 1 · Parrilla vista desde abajo</span><span id="barraDer">Escala aprox. 1:5</span></div>
+      <div class="escena mesa">
+        <!-- ===================== LÁMINA A ===================== -->
+        <svg id="A" viewBox="0 0 520 470" role="img" aria-label="Parrilla vista desde abajo con bujes, bulones, rótula, barra estabilizadora y un buje en corte">
+          <defs>
+            <linearGradient id="ace" x1="0" x2="1"><stop offset="0" stop-color="#5d5d65"/><stop offset=".45" stop-color="#e6e6ec"/><stop offset="1" stop-color="#55555d"/></linearGradient>
+            <linearGradient id="aceV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6e6ec"/><stop offset=".5" stop-color="#9c9ca4"/><stop offset="1" stop-color="#5c5c64"/></linearGradient>
+            <linearGradient id="forja" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a5a62"/><stop offset="1" stop-color="#2f2f35"/></linearGradient>
+            <radialGradient id="gomaR" cx=".5" cy=".5" r=".5"><stop offset=".4" stop-color="#1a1a1d"/><stop offset="1" stop-color="#34343a"/></radialGradient>
+            <pattern id="corte" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#3c3c43"/><line x1="0" y1="0" x2="0" y2="7" stroke="#6a6a73" stroke-width="1.6"/></pattern>
+          </defs>
+          <text class="cota" x="16" y="22">AC-TALLER · MÓDULO 4 · LÁMINA 1 · PARRILLA IZQUIERDA VISTA DESDE ABAJO</text>
+          <text class="cota" x="250" y="456">FRENTE DEL AUTO ↓ · RUEDA →</text>
+          <!-- 10 Subchasis -->
+          <g class="pz" data-p="subchasis" id="g-sub" tabindex="0" role="button" aria-label="10 Subchasis">
+            <path d="M14 70 H64 V420 H14 Z" fill="url(#corte)" stroke="#8a8a92"/>
+            <path d="M64 118 H96 V128 H64 Z M64 158 H96 V168 H64 Z M64 318 H110 V328 H64 Z" fill="url(#aceV)" stroke="#55555d"/>
+            <g class="num"><line class="guia" x1="40" y1="230" x2="40" y2="230"/><circle cx="40" cy="240" r="11"/><text x="40" y="244">10</text></g>
+          </g>
+          <!-- 11 Barra estabilizadora + 12 su buje -->
+          <g class="pz" data-p="barra" id="g-barra" tabindex="0" role="button" aria-label="11 Barra estabilizadora">
+            <path d="M14 410 H250 Q300 410 316 380 L338 320" fill="none" stroke="url(#aceV)" stroke-width="10" stroke-linecap="round"/>
+            <path d="M338 320 L350 296" stroke="#9a9aa2" stroke-width="5" stroke-linecap="round"/><circle cx="350" cy="296" r="5" fill="#cfcfd5"/>
+            <text class="cota" x="250" y="432">BIELETA ↗</text>
+            <g class="num"><line class="guia" x1="250" y1="405" x2="250" y2="380"/><circle cx="250" cy="370" r="11"/><text x="250" y="374">11</text></g>
+          </g>
+          <g class="pz" data-p="bujeBarra" id="g-bujeBarra" tabindex="0" role="button" aria-label="12 Buje de la barra estabilizadora">
+            <rect x="128" y="398" width="34" height="24" rx="5" fill="#1d1d21" stroke="#55555d"/><path d="M122 398 H168 V402 H122 Z M122 418 H168 V422 H122 Z" fill="url(#aceV)"/>
+            <g class="num"><line class="guia" x1="145" y1="398" x2="145" y2="380"/><circle cx="145" cy="370" r="11"/><text x="145" y="374">12</text></g>
+          </g>
+          <!-- 1 Parrilla -->
+          <g class="pz" data-p="parrilla" id="g-parrilla" tabindex="0" role="button" aria-label="1 Cuerpo de la parrilla">
+            <path d="M92 124 L360 232 Q394 244 392 266 Q388 288 360 288 L300 292 L150 352 Q126 362 116 344 Q110 330 126 322 L246 262 L88 170 Z" fill="url(#forja)" stroke="#8a8a92" stroke-width="1.5"/>
+            <path d="M120 156 L330 244 M150 336 L290 276" stroke="#6a6a72" opacity=".5"/>
+            <g class="num"><line class="guia" x1="240" y1="230" x2="240" y2="190"/><circle cx="240" cy="178" r="11"/><text x="240" y="182">1</text></g>
+          </g>
+          <!-- 2 Buje delantero (eje horizontal) -->
+          <g class="pz" data-p="bujeDel" id="g-bujeDel" tabindex="0" role="button" aria-label="2 Buje delantero">
+            <rect x="70" y="128" width="40" height="30" rx="4" fill="url(#aceV)" stroke="#55555d"/><rect x="74" y="132" width="32" height="22" fill="#1d1d21"/><path d="M78 132 V154 M86 132 V154 M94 132 V154 M102 132 V154" stroke="#2c2c31"/>
+            <g class="num"><line class="guia" x1="110" y1="134" x2="160" y2="96"/><circle cx="170" cy="88" r="11"/><text x="170" y="92">2</text></g>
+          </g>
+          <!-- 3 Buje trasero (eje vertical) -->
+          <g class="pz" data-p="bujeTra" id="g-bujeTra" tabindex="0" role="button" aria-label="3 Buje trasero">
+            <circle cx="126" cy="336" r="26" fill="url(#aceV)" stroke="#55555d"/><circle cx="126" cy="336" r="21" fill="url(#gomaR)"/><path d="M110 336 a16 16 0 0 1 32 0" fill="none" stroke="#0d0d0f" stroke-width="5"/><circle cx="126" cy="336" r="9" fill="url(#aceV)" stroke="#55555d"/>
+            <g class="num"><line class="guia" x1="100" y1="336" x2="80" y2="300"/><circle cx="80" cy="290" r="11"/><text x="80" y="294">3</text></g>
+          </g>
+          <!-- 7 y 8 Bulones -->
+          <g class="pz" data-p="bulonDel" id="g-bulonDel" tabindex="0" role="button" aria-label="7 Bulón delantero">
+            <rect x="60" y="139" width="62" height="8" rx="2" fill="url(#ace)" stroke="#4d4d55"/><path d="M54 134 h8 v18 h-8z M118 134 h8 v18 h-8z" fill="url(#aceV)" stroke="#4d4d55"/>
+            <g class="num"><line class="guia" x1="58" y1="134" x2="96" y2="96"/><circle cx="104" cy="88" r="11"/><text x="104" y="92">7</text></g>
+          </g>
+          <g class="pz" data-p="bulonTra" id="g-bulonTra" tabindex="0" role="button" aria-label="8 Bulón trasero">
+            <path d="M118 328 l8 -5 8 5 v10 l-8 5 -8 -5z" fill="url(#aceV)" stroke="#4d4d55"/>
+            <g class="num"><line class="guia" x1="134" y1="338" x2="176" y2="330"/><circle cx="188" cy="330" r="11"/><text x="188" y="334">8</text></g>
+          </g>
+          <!-- 9 Rótula -->
+          <g class="pz" data-p="rotula" id="g-rotula" tabindex="0" role="button" aria-label="9 Rótula">
+            <circle cx="366" cy="260" r="18" fill="url(#aceV)" stroke="#55555d"/><circle cx="366" cy="260" r="8" fill="#2c2c31"/><circle cx="366" cy="260" r="4" fill="#cfcfd5"/>
+            <text class="cota" x="388" y="300">→ A LA MANGUETA</text>
+            <g class="num"><line class="guia" x1="384" y1="252" x2="420" y2="244"/><circle cx="432" cy="244" r="11"/><text x="432" y="248">9</text></g>
+          </g>
+          <!-- Corte del buje (4, 5, 6) -->
+          <g id="g-inset">
+            <circle cx="410" cy="120" r="74" fill="#0b1014" stroke="#2c3440" stroke-width="2"/>
+            <text class="cota" x="352" y="40">CORTE DEL BUJE</text>
+            <g class="pz" data-p="mangaExt" id="g-mExt" tabindex="0" role="button" aria-label="4 Camisa exterior"><circle cx="410" cy="120" r="62" fill="none" stroke="url(#ace)" stroke-width="8"/>
+              <g class="num"><line class="guia" x1="456" y1="80" x2="480" y2="64"/><circle cx="490" cy="56" r="11"/><text x="490" y="60">4</text></g></g>
+            <g class="pz" data-p="goma" id="g-goma" tabindex="0" role="button" aria-label="5 Goma">
+              <path id="gomaAnillo" d="M410 62 A58 58 0 1 1 409.9 62 Z M410 98 A22 22 0 1 0 410.1 98 Z" fill="#26262b" fill-rule="evenodd"/>
+              <path d="M374 108 A38 38 0 0 1 446 108 A30 30 0 0 0 374 108 Z M374 132 A38 38 0 0 0 446 132 A30 30 0 0 1 374 132 Z" fill="#0b1014"/>
+              <path id="grieta" d="M380 150 l10 -6 -2 8 10 -4" fill="none" stroke="#ff6a1a" stroke-width="2" opacity="0"/>
+              <g class="num"><line class="guia" x1="448" y1="150" x2="480" y2="176"/><circle cx="490" cy="184" r="11"/><text x="490" y="188">5</text></g></g>
+            <g class="pz" data-p="mangaInt" id="g-mInt" tabindex="0" role="button" aria-label="6 Camisa interior"><circle id="mInt" cx="410" cy="120" r="18" fill="none" stroke="url(#ace)" stroke-width="7"/><circle cx="410" cy="120" r="10" fill="#4d4d55"/>
+              <g class="num"><line class="guia" x1="392" y1="122" x2="352" y2="160"/><circle cx="344" cy="168" r="11"/><text x="344" y="172">6</text></g></g>
+          </g>
+          <text id="clac" x="170" y="210" font-family="Anton,Impact,sans-serif" font-size="24" fill="#ff5a3c" opacity="0">¡CLONC!</text>
+        </svg>
+
+        <!-- ===================== LÁMINA C: LA GOMA TRABAJANDO ===================== -->
+        <svg id="C" viewBox="0 0 520 470" role="img" aria-label="Buje en corte que se tuerce cuando la parrilla sube y baja" hidden>
+          <defs>
+            <linearGradient id="cAce" x1="0" x2="1"><stop offset="0" stop-color="#5d5d65"/><stop offset=".45" stop-color="#ededf2"/><stop offset="1" stop-color="#55555d"/></linearGradient>
+            <linearGradient id="cForja" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a5a62"/><stop offset="1" stop-color="#2f2f35"/></linearGradient>
+          </defs>
+          <text class="cota" x="16" y="22">LÁMINA 2 · BUJE DELANTERO EN CORTE, VISTO DE COSTADO</text>
+          <rect x="40" y="110" width="40" height="240" fill="#2c2c31" stroke="#55555d"/><text class="cota" x="34" y="104">SUBCHASIS</text>
+          <g id="brazoC"><path d="M180 214 L470 222 L470 246 L180 254 Z" fill="url(#cForja)" stroke="#8a8a92"/><text class="cota" x="300" y="210">PARRILLA</text>
+            <g><circle cx="470" cy="234" r="34" fill="#141416" stroke="#3a3a42" stroke-width="10"/><circle cx="470" cy="234" r="9" fill="#6a6a72"/></g></g>
+          <circle cx="180" cy="234" r="96" fill="none" stroke="url(#cAce)" stroke-width="12"/>
+          <circle id="gomaC" cx="180" cy="234" r="72" fill="#7ee787" opacity=".16"/>
+          <g id="fibras" fill="none" stroke-width="3" stroke-linecap="round"></g>
+          <g id="mIntC"><circle cx="180" cy="234" r="32" fill="none" stroke="url(#cAce)" stroke-width="10"/><circle cx="180" cy="234" r="18" fill="#3a3a41" stroke="#9a9aa2" stroke-width="2"/><path d="M180 216 V252" stroke="#f5e61b" stroke-width="3"/></g>
+          <text class="cota" x="96" y="352">EXTERIOR: QUIETA</text>
+          <text class="cota" x="96" y="364">INTERIOR: GIRA CON LA PARRILLA</text>
+          <!-- Medidor de esfuerzo -->
+          <rect x="300" y="300" width="200" height="110" rx="10" fill="#0b1014" stroke="#2c3440"/>
+          <text class="cota" x="314" y="322" fill="#9fdcff">ESFUERZO DE LA GOMA</text>
+          <rect x="314" y="338" width="172" height="14" rx="7" fill="#26262b"/><rect id="esfBar" x="314" y="338" width="20" height="14" rx="7" fill="#7ee787"/>
+          <text id="esfTxt" x="314" y="384" font-family="Anton,Impact,sans-serif" font-size="18" fill="#7ee787">BAJO</text>
+          <text id="ajusteTxt" x="314" y="400" class="cota"></text>
+          <text id="posC" x="270" y="72" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="#f5e61b">ALTURA DE MANEJO</text>
+        </svg>
+
+        <!-- ===================== LÁMINA B: CAMBIO ===================== -->
+        <svg id="B" viewBox="0 0 520 470" role="img" aria-label="Rueda delantera vista de frente durante el cambio de la parrilla" hidden>
+          <defs>
+            <linearGradient id="bAce" x1="0" x2="1"><stop offset="0" stop-color="#5d5d65"/><stop offset=".45" stop-color="#ededf2"/><stop offset="1" stop-color="#55555d"/></linearGradient>
+            <linearGradient id="bAceV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9d9df"/><stop offset="1" stop-color="#5c5c64"/></linearGradient>
+            <linearGradient id="bForja" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#55555d"/><stop offset="1" stop-color="#2f2f35"/></linearGradient>
+            <linearGradient id="bChapa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a52"/><stop offset="1" stop-color="#222227"/></linearGradient>
+            <linearGradient id="bOxido" x1="0" x2="1"><stop offset="0" stop-color="#5a3a20"/><stop offset=".5" stop-color="#a0683a"/><stop offset="1" stop-color="#4a2e18"/></linearGradient>
+            <pattern id="dibujo" width="70" height="14" patternUnits="userSpaceOnUse"><rect width="70" height="14" fill="#1a1a1d"/><path d="M0 7 H14 M22 2 V12 M34 7 H48 M56 2 V12" stroke="#2c2c31" stroke-width="4"/></pattern>
+            <clipPath id="clL"><circle cx="110" cy="190" r="74"/></clipPath>
+          </defs>
+          <text class="cota" x="16" y="22">LÁMINA 3 · TREN DELANTERO IZQUIERDO · VISTA FRONTAL</text>
+          <rect x="0" y="430" width="520" height="40" fill="#121418"/><path d="M0 430 H520" stroke="#3a4048" stroke-width="2"/>
+          <g id="alzar">
+            <path d="M0 40 H470 Q500 40 504 70 L512 122 H372 Q356 82 300 82 H0 Z" fill="url(#bChapa)" stroke="#5a5a62"/><text class="cota" x="16" y="62">CARROCERÍA</text>
+            <rect x="20" y="268" width="104" height="46" rx="6" fill="url(#bForja)" stroke="#6a6a72"/><text class="cota" x="28" y="306">SUBCHASIS</text>
+            <g><rect x="300" y="84" width="22" height="36" rx="4" fill="#3a3a41"/><path d="M296 120 L290 230" stroke="url(#bAce)" stroke-width="12" stroke-linecap="round"/>
+              <path d="M284 128 q22 6 34 0 M282 146 q24 6 36 0 M280 164 q24 6 36 0 M278 182 q24 6 36 0 M276 200 q24 6 36 0" fill="none" stroke="#d4b020" stroke-width="5" stroke-linecap="round"/>
+              <rect x="280" y="226" width="24" height="56" rx="5" fill="url(#bAce)" stroke="#55555d"/></g>
+            <g id="bieletaB"><path d="M190 230 L268 236" stroke="url(#bAce)" stroke-width="5" stroke-linecap="round"/><circle cx="268" cy="236" r="5" fill="#9a9aa2"/><text class="cota" x="186" y="224">BIELETA</text></g>
+            <g id="mangB"><path d="M296 222 Q290 236 304 246 L318 252 L318 312 Q314 322 304 324 L292 322 Q286 316 290 306 L300 290 Q292 266 296 246 Z" fill="url(#bForja)" stroke="#7a7a82"/><rect x="318" y="246" width="20" height="20" fill="url(#bAce)" stroke="#55555d"/></g>
+            <g id="parB"><path id="parPath" d="M96 286 L306 318 L304 346 L96 306 Z" fill="url(#bOxido)" stroke="#3a2510"/>
+              <circle cx="104" cy="296" r="15" fill="#1a1a1d" stroke="#8a8a92" stroke-width="3"/><circle cx="104" cy="296" r="5" fill="#9a9aa2"/>
+              <circle cx="294" cy="334" r="10" fill="url(#bAceV)" stroke="#55555d"/><text class="cota" x="150" y="294">PARRILLA</text></g>
+            <g id="bulDel"><rect x="84" y="292" width="40" height="8" rx="2" fill="url(#bAce)" stroke="#444"/><rect x="78" y="288" width="8" height="16" fill="url(#bAceV)" stroke="#444"/></g>
+            <text id="sinAjTxt" x="150" y="376" class="cota" fill="#f5e61b" opacity="0">BULONES PRESENTADOS · SIN AJUSTAR</text>
+            <rect x="338" y="176" width="10" height="160" rx="3" fill="url(#bAceV)" stroke="#55555d"/><path d="M326 186 h30 v40 h-30z" fill="#b3261e" stroke="#5a1410"/>
+            <g id="ruedaB"><rect x="352" y="132" width="82" height="248" rx="26" fill="url(#dibujo)" stroke="#2c2c31" stroke-width="2"/><rect x="350" y="196" width="18" height="120" rx="4" fill="url(#bAceV)" stroke="#55555d"/></g>
+          </g>
+          <g id="caballete" opacity="0"><path d="M42 430 L62 330 H94 L114 430" fill="none" stroke="#f5e61b" stroke-width="7" stroke-linejoin="round"/><path d="M52 384 H104" stroke="#f5e61b" stroke-width="5"/><rect x="56" y="318" width="44" height="14" rx="3" fill="#f5e61b"/><text class="cota" x="40" y="452" fill="#f5e61b">CABALLETE</text></g>
+          <g id="llaveB" opacity="0"><path d="M392 256 L476 200 M450 170 L502 236" stroke="#d0d0d6" stroke-width="8" stroke-linecap="round"/><text class="cota" x="430" y="160" fill="#e8e8ec">LLAVE DE RUEDAS</text></g>
+          <g id="extrB" opacity="0"><path d="M282 300 H330 V310 H322 V352 H330 V362 H282 V352 H290 V310 H282 Z" fill="#f5e61b" fill-opacity=".25" stroke="#f5e61b" stroke-width="3"/><text class="cota" x="336" y="360" fill="#f5e61b">EXTRACTOR</text></g>
+          <g id="torqB" opacity="0"><path d="M100 298 L40 210" stroke="#d0d0d6" stroke-width="7" stroke-linecap="round"/><rect x="22" y="190" width="36" height="16" rx="4" fill="#f5e61b" transform="rotate(56 40 198)"/><text class="cota" x="60" y="196" fill="#e8e8ec">TORQUÍMETRO</text></g>
+          <g id="pesoB" opacity="0"><path d="M240 96 V150 M226 136 L240 152 L254 136" stroke="#f5e61b" stroke-width="5" fill="none" stroke-linecap="round"/><text class="cota" x="200" y="88" fill="#f5e61b">PESO DEL AUTO SOBRE LA RUEDA</text></g>
+          <g id="alinB" opacity="0"><path d="M393 110 V430" stroke="#38b6ff" stroke-width="2" stroke-dasharray="6 6"/><rect x="380" y="34" width="124" height="56" rx="8" fill="#0b1a24" stroke="#38b6ff"/><text class="cota" x="392" y="58" fill="#9fdcff">ALINEACIÓN</text><text class="cota" x="392" y="74" fill="#9fdcff">CAÍDA · CONVERGENCIA</text></g>
+          <g id="flechaB" opacity="0"><path d="M470 400 V320 M454 338 L470 320 L486 338" stroke="#f5e61b" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+          <!-- Lupa: prensa -->
+          <g id="lupa" opacity="0">
+            <circle cx="110" cy="190" r="78" fill="#0d1014" stroke="#f5e61b" stroke-width="4"/>
+            <g clip-path="url(#clL)">
+              <path d="M40 160 H180 V172 H40 Z M40 210 H180 V222 H40 Z" fill="url(#bForja)" stroke="#7a7a82"/>
+              <rect x="70" y="172" width="80" height="38" fill="#0d1014"/>
+              <g id="bujL"><rect x="74" y="170" width="72" height="42" rx="4" fill="url(#bAceV)" stroke="#55555d"/><rect x="80" y="176" width="60" height="30" fill="#1d1d21"/><rect x="80" y="186" width="60" height="10" fill="url(#bAce)"/></g>
+              <g id="prensaL" stroke="#f5e61b" stroke-width="5" fill="none" stroke-linecap="round"><path d="M110 120 V168 M90 120 H130"/><path d="M110 214 V262 M90 262 H130"/></g>
+            </g>
+            <text id="lTxt" x="110" y="286" text-anchor="middle" class="cota" fill="#f5e61b">CAMBIO DE BUJES CON PRENSA</text>
+          </g>
+        </svg>
+      </div>
+      <div class="controles" id="ctrlA">
+        <button class="btn sec" id="despiece" data-fx="criquet" aria-pressed="false">Ver despiece</button>
+        <div class="ctrlC" id="ctrlC" hidden>
+          <label class="slider" for="sus" style="flex:1 1 200px">Mové la suspensión <input type="range" id="sus" min="-22" max="22" value="0"></label>
+          <div class="seg" role="group" aria-label="Cómo se ajustaron los bulones" id="segAj">
+            <button data-aj="piso" aria-pressed="true">Ajustado con el auto en el piso</button><button data-aj="aire" aria-pressed="false">Ajustado con la rueda colgando</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="card leccion" data-modo="partes">
+        <div class="cab"><span class="kicker">Tema 1 · Despiece</span><small>4 min</small></div>
+        <h2 style="margin-top:6px">Las 12 piezas</h2>
+        <p style="margin-top:8px">La parrilla tiene forma de L o de A: dos puntas van al <b>subchasis</b> con sus <b>bujes</b> y la tercera lleva la <b>rótula</b> que va a la rueda. Arriba a la derecha, un buje cortado por la mitad: dos camisas de metal con <b>goma</b> en el medio.</p>
+        <div class="partes-lista" id="lista"></div>
+        <div class="detalle" id="detalle"><b>Elegí una pieza</b><span style="color:var(--suave);font-size:.9rem">Vas a ver qué es y qué hace.</span></div>
+      </div>
+      <div class="card leccion" data-modo="trabaja" hidden>
+        <div class="cab"><span class="kicker">Tema 2 · La goma trabajando</span><small>4 min</small></div>
+        <h2 style="margin-top:6px">El buje no gira: se tuerce</h2>
+        <p style="margin-top:8px">La camisa exterior queda fija en la parrilla y la interior queda apretada por el bulón contra el subchasis. Cuando la rueda sube y baja, la goma del medio <b>se tuerce</b>, como cuando retorcés un trapo. Por eso no hace ruido ni necesita grasa.</p>
+        <div class="tip"><b>Probalo:</b> mové «Mové la suspensión». Las líneas de la goma se estiran y el medidor muestra cuánto esfuerzo hace.</div>
+        <h3 style="margin-top:14px;font-size:1.15rem">El error más común</h3>
+        <p style="margin-top:6px">El bulón aprieta la camisa interior en la posición que tenga la parrilla en ese momento. Si se ajusta con <b>la rueda colgando</b>, cuando el auto baja a su altura normal la goma queda <b>torcida todo el tiempo</b> y se raja en pocos meses.</p>
+        <div class="tip"><b>Probalo:</b> elegí «Ajustado con la rueda colgando» y dejá la suspensión en el medio: la goma queda en rojo aunque el auto esté quieto.</div>
+        <div class="aviso"><b>Regla de taller:</b> los bulones de los bujes se ajustan con el peso del auto sobre la rueda (o con la suspensión levantada hasta la altura de manejo).</div>
+      </div>
+      <div class="card leccion" data-modo="fallas" hidden>
+        <div class="cab"><span class="kicker" style="color:var(--naranja)">Tema 3 · Cuándo está mal</span><small>3 min</small></div>
+        <h2 style="margin-top:6px">Provocá cada falla</h2>
+        <div class="chips">
+          <button class="chip" data-f="rajado" aria-pressed="false">Buje rajado <span class="sw"></span></button>
+          <button class="chip" data-f="vencido" aria-pressed="false">Buje vencido (con juego) <span class="sw"></span></button>
+          <button class="chip" data-f="barra" aria-pressed="false">Buje de la barra estabilizadora gastado <span class="sw"></span></button>
+          <button class="chip" data-f="doblada" aria-pressed="false">Parrilla doblada por un golpe <span class="sw"></span></button>
+        </div>
+        <div class="diag" id="diag" aria-live="polite"></div>
+        <h3 style="margin-top:16px;font-size:1.15rem">Síntomas al manejar</h3>
+        <ul style="margin:8px 0 0 18px;color:#d4d4da;display:grid;gap:4px;font-size:.92rem">
+          <li>Golpe seco («clonc») al frenar o al arrancar</li>
+          <li>El volante tira para un lado al frenar</li>
+          <li>Ruido en lomos de burro o al doblar</li>
+          <li>Dirección imprecisa y cubiertas gastadas por el borde</li>
+        </ul>
+        <div class="tip"><b>Cómo se revisa:</b> con el auto en el piso, mirá los bujes con una linterna: no tienen que estar rajados ni corridos. Con una barreta, hacé palanca suave entre la parrilla y el subchasis: si se mueve mucho, el buje está vencido.</div>
+      </div>
+      <div class="card leccion" data-modo="cambio" hidden>
+        <div class="cab"><span class="kicker">Tema 4 · Cambio paso a paso</span><small id="pasoMin">Paso 1 de 14</small></div>
+        <ol class="pasos" id="pasos"></ol>
+        <div class="nav-pasos"><button class="btn sec" id="ant">← Anterior</button><button class="btn" id="sig">Siguiente paso →</button></div>
+      </div>
+      <div class="card leccion" data-modo="ficha" hidden>
+        <div class="cab"><span class="kicker">Tema 5 · Ficha técnica</span><small>2 min</small></div>
+        <h2 style="margin-top:6px">Cambio de parrilla o bujes</h2>
+        <table class="ficha-tabla">
+          <tr><th>Dificultad</th><td>Media (parrilla completa) · Alta (solo bujes, con prensa)</td></tr>
+          <tr><th>Tiempo aprox.</th><td>1 a 2 horas por lado, sin la alineación</td></tr>
+          <tr><th>Herramientas</th><td><ul><li>Crique y caballetes</li><li>Llave de ruedas</li><li>Llaves y tubos</li><li>Extractor de rótulas</li><li>Torquímetro</li><li>Prensa y bocallaves, si se cambian solo los bujes</li><li>Crique o soporte para subir la suspensión</li></ul></td></tr>
+          <tr><th>Repuestos</th><td><ul><li>Parrilla nueva (con bujes y rótula) o juego de bujes</li><li>Bulones y tuercas nuevos si son autofrenantes</li></ul></td></tr>
+          <tr><th>Clave del trabajo</th><td>Ajustar los bulones de los bujes con el peso del auto sobre la rueda</td></tr>
+          <tr><th>Después</th><td>Controlar la alineación</td></tr>
+        </table>
+        <h3 style="margin-top:16px;font-size:1.15rem">Errores comunes</h3>
+        <ul style="margin:8px 0 0 18px;color:#d4d4da;display:grid;gap:4px;font-size:.92rem">
+          <li>Ajustar los bujes con la rueda colgando</li>
+          <li>Golpear los bujes con martillo para sacarlos o meterlos</li>
+          <li>Lubricar los bujes de goma con aceite o grasa (los ablanda)</li>
+          <li>Cambiar los bujes de un solo lado</li>
+          <li>No alinear después del cambio</li>
+        </ul>
+      </div>
+      <div class="card leccion" data-modo="ficha" hidden>
+        <span class="kicker">Repaso</span>
+        <h3 style="margin-top:4px;font-size:1.2rem" id="exPreg"></h3>
+        <div class="examen" id="exOps"></div>
+        <p id="exFb" aria-live="polite" style="margin-top:10px;font-size:.92rem"></p>
+      </div>
+      <div class="cta"><h3>¿Preferís que lo hagamos nosotros?</h3><a href="./#contacto">Pedir turno</a></div>
+    </aside>
+  </div>
+  <p class="nota" style="padding-bottom:16px">Ficha con fines educativos. Cada auto tiene su procedimiento y sus torques: consultá siempre el manual de taller del modelo. Si no tenés experiencia ni herramientas, dejalo en manos de un mecánico.</p>
+  <div class="siguiente-mod"><span><span class="kicker">Módulo anterior</span><br><a href="amortiguador.html">← 3 · Amortiguador</a></span><span style="text-align:right"><span class="kicker">Próximo módulo</span><br><a href="alineacion.html">5 · Alineación →</a></span></div>
+</main>
+<footer><div class="wrap">© 2026 AC-Taller · Azul, Buenos Aires · <a href="./">Inicio</a> · <a href="cursos.html">Cursos</a></div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const ICON='<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3a6 6 0 0 0-5.6 8L3 17.4 6.6 21l6.4-6.4A6 6 0 0 0 21 9l-3.5 2-3-1-1-3z" fill="#f5e61b"/></svg>';
+const son=k=>window.TallerFX&&TallerFX.sonar(k);
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const PARTES=[
+  ["parrilla","Cuerpo de la parrilla","El brazo de chapa estampada o acero forjado que va del subchasis a la rueda. Sostiene la rueda en su lugar y la deja subir y bajar."],
+  ["bujeDel","Buje delantero","Va con su eje paralelo al auto. Deja que la parrilla suba y baje y absorbe las vibraciones."],
+  ["bujeTra","Buje trasero","Suele ser más grande y blando: aguanta los esfuerzos hacia atrás al frenar y al pasar pozos. En muchos autos es hidráulico."],
+  ["mangaExt","Camisa exterior","El tubo de metal de afuera del buje. Va metido a presión en el ojo de la parrilla."],
+  ["goma","Goma","Une las dos camisas. Se tuerce y se estira para dejar mover la parrilla; los huecos le dan más o menos dureza según la dirección."],
+  ["mangaInt","Camisa interior","El tubo de metal del centro. El bulón la aprieta contra el subchasis: por eso no gira, y la goma se tuerce."],
+  ["bulonDel","Bulón delantero","Atraviesa el buje delantero y lo sujeta al subchasis. Su ajuste define en qué posición queda «en reposo» la goma."],
+  ["bulonTra","Bulón trasero","Sujeta el buje trasero al subchasis o a un soporte. En algunos autos es un soporte abulonado con dos o tres bulones."],
+  ["rotula","Rótula","La articulación de la punta que va a la mangueta (la viste en el Módulo 1). En muchos autos viene integrada a la parrilla."],
+  ["subchasis","Subchasis","La estructura donde se abulonan las parrillas, la caja de dirección y a veces el motor."],
+  ["barra","Barra estabilizadora","Une las dos ruedas del eje para que el auto se incline menos en las curvas. Llega a la suspensión con la bieleta."],
+  ["bujeBarra","Buje de la barra estabilizadora","Sostiene la barra contra el subchasis. Cuando se gasta, hace ruido en lomos de burro y empedrado."]
+];
+const FALLAS={rajado:"<b>Buje rajado</b>La goma se reseca y se agrieta con los años o por haberse ajustado mal: primero se raja, después se separa de la camisa.",
+  vencido:"<b>Buje vencido</b>La goma ya no sostiene: la parrilla se corre al frenar y al arrancar, con un golpe seco («clonc»), y el auto tira para un lado.",
+  barra:"<b>Buje de la barra estabilizadora gastado</b>La barra golpea contra su soporte: ruido en lomos de burro, en empedrado y al doblar.",
+  doblada:"<b>Parrilla doblada</b>Pasa por un golpe contra un cordón o un pozo profundo: la rueda queda corrida, el auto tira y no se puede alinear bien. Se cambia, no se endereza."};
+const PASOS=[
+  {t:"Aflojar las tuercas de la rueda",d:"Con el auto en el piso, aflojá apenas las tuercas de la rueda.",h:["Llave de ruedas"],s:"Auto en lugar plano, freno de mano y ruedas traseras calzadas."},
+  {t:"Levantar el auto y poner el caballete",d:"Levantá el auto y apoyalo en un caballete firme, debajo de la carrocería, nunca debajo de la parrilla que vas a sacar.",h:["Crique","Caballete"],s:"Nunca trabajes debajo del auto sostenido solo con el crique."},
+  {t:"Sacar la rueda",d:"Retirá la rueda. Ahora se ven la parrilla, sus bujes y la rótula.",h:["Llave de ruedas"]},
+  {t:"Soltar la rótula de la mangueta",d:"Sacá la chaveta y la tuerca de la rótula (o el bulón de apriete, según el auto) y separala de la mangueta con el extractor.",h:["Extractor de rótulas","Llaves"],tip:"Es el mismo trabajo que viste en el Módulo 1."},
+  {t:"Soltar la bieleta",d:"Si la bieleta de la barra estabilizadora va agarrada a la parrilla, desconectala.",h:["Llaves","Llave Allen"]},
+  {t:"Sacar el bulón delantero",d:"Sacá el bulón que pasa por el buje delantero.",h:["Llaves y tubos"],tip:"Si está trabado por óxido, aflojalo con desoxidante antes de hacer fuerza."},
+  {t:"Sacar el bulón trasero",d:"Sacá el bulón o el soporte del buje trasero.",h:["Llaves y tubos"]},
+  {t:"Retirar la parrilla",d:"Bajá la parrilla y sacala de sus alojamientos en el subchasis.",h:["Mano","Barreta"]},
+  {t:"Cambiar los bujes (si no se cambia la parrilla entera)",d:"Con una prensa y bocallaves del tamaño justo, empujá el buje viejo hacia afuera y el nuevo hacia adentro, siempre apoyando en la camisa exterior.",h:["Prensa","Bocallaves"],s:"No los saques ni los metas a martillazos: se deforma el ojo de la parrilla."},
+  {t:"Presentar la parrilla sin ajustar",d:"Colocá la parrilla y poné sus bulones, pero dejalos flojos.",h:["Llaves"],tip:"Todavía no se ajustan: la goma tiene que quedar sin torcer a la altura de manejo."},
+  {t:"Unir la rótula y la bieleta",d:"Meté la rótula en la mangueta, poné la tuerca y la chaveta nuevas y ajustá al torque. Volvé a conectar la bieleta.",h:["Torquímetro","Pinza"]},
+  {t:"Colocar la rueda y bajar el auto",d:"Poné la rueda, sacá el caballete y bajá el auto para que su peso cargue la suspensión.",h:["Llave de ruedas"]},
+  {t:"Ajustar los bujes con el peso del auto",d:"Con el auto apoyado en sus ruedas (o con la suspensión levantada hasta la altura de manejo), ajustá los bulones de los bujes al torque indicado.",h:["Torquímetro","Llaves"],s:"Este es el paso que más se saltea y el que más bujes rompe."},
+  {t:"Controlar la alineación",d:"Al cambiar la parrilla pueden cambiar la caída y la convergencia. Llevá el auto a alinear.",h:["Alineadora"]}
+];
+const EXAMEN=[
+  {p:"¿Cómo se mueve un buje de goma?",o:["Gira sobre un rulemán","La goma se tuerce entre dos camisas","Se desliza con grasa"],c:1},
+  {p:"¿Cuándo se ajustan los bulones de los bujes?",o:["Con la rueda colgando","Con el peso del auto sobre la rueda (altura de manejo)","Da lo mismo"],c:1},
+  {p:"¿Qué síntoma da un buje vencido?",o:["Golpe al frenar y el auto tira para un lado","Luz de aceite","Ruido en el escape"],c:0},
+  {p:"¿Cómo se cambian los bujes en la parrilla?",o:["A martillazos","Con prensa y bocallaves, apoyando en la camisa exterior","Calentándolos con soplete"],c:1}
+];
+const DESP={bulonDel:[-36,0],bulonTra:[-36,30],bujeDel:[-18,-14],bujeTra:[-20,20],rotula:[34,0],barra:[0,28],bujeBarra:[0,40],subchasis:[-6,0]};
+const ID={parrilla:"g-parrilla",bujeDel:"g-bujeDel",bujeTra:"g-bujeTra",mangaExt:"g-mExt",goma:"g-goma",mangaInt:"g-mInt",bulonDel:"g-bulonDel",bulonTra:"g-bulonTra",rotula:"g-rotula",subchasis:"g-sub",barra:"g-barra",bujeBarra:"g-bujeBarra"};
+let modo="partes",falla={},paso=0,exN=0,desp=false,sus=0,aj="piso",t0=performance.now();
+$("#lista").innerHTML=PARTES.map((p,i)=>`<button data-p="${p[0]}" data-fx="pieza"><i>${i+1}</i>${p[1]}</button>`).join("");
+function elegir(k){const i=PARTES.findIndex(p=>p[0]===k),p=PARTES[i];
+  $$(".pz").forEach(g=>g.classList.toggle("sel",g.dataset.p===k));$$("#lista button").forEach(b=>b.classList.toggle("sel",b.dataset.p===k));
+  $("#detalle").innerHTML=`<b>${i+1} · ${p[1]}</b><span style="font-size:.92rem;color:#d4d4da">${p[2]}</span>`;}
+$$("#lista button").forEach(b=>b.onclick=()=>elegir(b.dataset.p));
+$$(".pz").forEach(g=>{const f=()=>{if(modo!=="partes")irA("partes");elegir(g.dataset.p)};g.addEventListener("click",e=>{e.stopPropagation();f()});g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();son("pieza");f()}})});
+$("#despiece").onclick=()=>{desp=!desp;$("#despiece").setAttribute("aria-pressed",desp);$("#despiece").textContent=desp?"Armar la parrilla":"Ver despiece";
+  for(const k in DESP){const [x,y]=DESP[k];const el=document.getElementById(ID[k]);el.style.transition=reduce?"":"transform .7s cubic-bezier(.2,.8,.2,1)";el.style.transform=desp?`translate(${x}px,${y}px)`:""}};
+$$(".temario button").forEach(b=>b.onclick=()=>irA(b.dataset.m));
+function irA(m){modo=m;$$(".temario button").forEach(b=>{const on=b.dataset.m===m;b.setAttribute("aria-selected",on);if(on)b.classList.add("visto")});
+  $$(".leccion").forEach(c=>c.hidden=c.dataset.modo!==m);
+  const B=m==="cambio",C=m==="trabaja";
+  $("#A").toggleAttribute("hidden",B||C);$("#B").toggleAttribute("hidden",!B);$("#C").toggleAttribute("hidden",!C);
+  $("#ctrlA").toggleAttribute("hidden",B);$("#ctrlC").toggleAttribute("hidden",!C);$("#despiece").toggleAttribute("hidden",m!=="partes");
+  if(m!=="partes"&&desp)$("#despiece").click();
+  $("#barraTxt").textContent=B?"Lámina 3 · Tren delantero, vista frontal":C?"Lámina 2 · Buje delantero en corte":"Lámina 1 · Parrilla vista desde abajo";
+  $("#barraDer").textContent=B?`Paso ${paso+1} de ${PASOS.length}`:C?"Giro exagerado para verlo":"Escala aprox. 1:5";
+  if(B)pasoUI();if(C)dibujarC();if(m==="ficha")examen();}
+// ---- Fallas ----
+$$(".chip").forEach(c=>c.onclick=()=>{const k=c.dataset.f;falla[k]=!falla[k];c.setAttribute("aria-pressed",!!falla[k]);
+  $("#diag").innerHTML=Object.keys(falla).filter(x=>falla[x]).map(x=>`<div>${FALLAS[x]}</div>`).join("");
+  $("#grieta").setAttribute("opacity",falla.rajado?1:0);
+  $("#g-bujeBarra rect").setAttribute("fill",falla.barra?"#4a2a18":"#1d1d21");
+  $("#g-parrilla path").setAttribute("d",falla.doblada?"M92 124 L360 214 Q394 228 392 250 Q388 272 360 272 L300 280 L150 352 Q126 362 116 344 Q110 330 126 322 L246 262 L88 170 Z":"M92 124 L360 232 Q394 244 392 266 Q388 288 360 288 L300 292 L150 352 Q126 362 116 344 Q110 330 126 322 L246 262 L88 170 Z");
+  $("#g-rotula").style.transform=falla.doblada?"translate(0px,-18px)":""});
+// ---- Lámina C ----
+function dibujarC(){const phi0=aj==="piso"?0:-18,tw=sus-phi0,abs=Math.abs(tw);
+  $("#brazoC").setAttribute("transform",`rotate(${sus} 180 234)`);$("#mIntC").setAttribute("transform",`rotate(${sus} 180 234)`);
+  let f="";for(let i=0;i<16;i++){const a=i/16*Math.PI*2,ri=38,ro=88,ai=a+tw*Math.PI/180;
+    const x1=180+ri*Math.cos(ai),y1=234+ri*Math.sin(ai),x2=180+ro*Math.cos(a),y2=234+ro*Math.sin(a),am=(a+ai)/2,xm=180+63*Math.cos(am),ym=234+63*Math.sin(am);
+    f+=`<path d="M${x1.toFixed(1)} ${y1.toFixed(1)} Q${xm.toFixed(1)} ${ym.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}"/>`}
+  const pct=Math.min(1,abs/30),col=pct<.3?"#7ee787":pct<.55?"#ffb020":"#ff5a3c";
+  $("#fibras").innerHTML=f;$("#fibras").setAttribute("stroke",col);$("#gomaC").setAttribute("fill",col);
+  $("#esfBar").setAttribute("width",Math.max(14,172*pct));$("#esfBar").setAttribute("fill",col);
+  const e=$("#esfTxt");e.textContent=pct<.3?"BAJO":pct<.55?"MEDIO":"ALTO: SE RAJA";e.setAttribute("fill",col);
+  $("#ajusteTxt").textContent=aj==="piso"?"AJUSTADO A LA ALTURA DE MANEJO":"AJUSTADO CON LA RUEDA COLGANDO";
+  $("#posC").textContent=sus>6?"RUEDA ARRIBA (POZO)":sus<-6?"RUEDA COLGANDO":"ALTURA DE MANEJO"}
+$("#sus").oninput=e=>{sus=+e.target.value;dibujarC()};
+$$("#segAj button").forEach(b=>b.onclick=()=>{aj=b.dataset.aj;$$("#segAj button").forEach(x=>x.setAttribute("aria-pressed",x===b));dibujarC()});
+// ---- Pasos ----
+function pasoUI(){
+  $("#pasos").innerHTML=PASOS.map((p,i)=>`<li class="${i<paso?"hecho":i===paso?"actual":""}"><button data-i="${i}"><i>${i<paso?"✓":i+1}</i>${p.t}</button>${i===paso?`<div class="paso-det">${p.d}<div class="herr">${p.h.map(x=>`<span>${ICON}${x}</span>`).join("")}</div>${p.s?`<div class="aviso"><b>Seguridad:</b> ${p.s}</div>`:""}${p.tip?`<div class="tip"><b>Dato de taller:</b> ${p.tip}</div>`:""}</div>`:""}</li>`).join("");
+  $$("#pasos button").forEach(b=>b.onclick=()=>{paso=+b.dataset.i;pasoUI()});
+  $("#pasoMin").textContent=`Paso ${paso+1} de ${PASOS.length}`;$("#barraDer").textContent=`Paso ${paso+1} de ${PASOS.length}`;
+  $("#ant").disabled=paso===0;$("#sig").textContent=paso===PASOS.length-1?"Ir a la ficha técnica →":"Siguiente paso →";
+  const o=(s,v)=>$(s).setAttribute("opacity",v?1:0);
+  const arriba=paso>=1&&paso<=10,sinRueda=paso>=2&&paso<=10,afuera=paso>=7&&paso<=8,nueva=paso>=9;
+  $("#alzar").setAttribute("transform",`translate(0 ${arriba?-34:0})`);o("#caballete",arriba);o("#flechaB",paso===1);
+  $("#ruedaB").setAttribute("transform",sinRueda?"translate(150 0)":"");$("#ruedaB").setAttribute("opacity",sinRueda?0:1);
+  o("#llaveB",paso===0||paso===2||paso===11);o("#extrB",paso===3);o("#torqB",paso===12);o("#pesoB",paso===12);o("#alinB",paso===13);
+  $("#mangB").setAttribute("transform",paso>=3&&paso<=9?"translate(0 -10)":"");
+  $("#bieletaB").setAttribute("transform",paso>=4&&paso<=9?"rotate(-14 190 230)":"");
+  $("#bulDel").setAttribute("transform",paso>=5&&paso<=8?"translate(-40 0)":"");$("#bulDel").setAttribute("opacity",paso>=5&&paso<=8?.35:1);
+  $("#parB").setAttribute("transform",afuera?"translate(0 60)":"");$("#parB").setAttribute("opacity",afuera?.3:1);
+  $("#parPath").setAttribute("fill",nueva?"url(#bForja)":"url(#bOxido)");$("#parPath").setAttribute("stroke",nueva?"#8a8a92":"#3a2510");
+  o("#sinAjTxt",paso>=9&&paso<=11);
+  o("#lupa",paso===8);
+}
+$("#sig").onclick=()=>{if(paso<PASOS.length-1){paso++;pasoUI()}else irA("ficha")};
+$("#ant").onclick=()=>{if(paso>0){paso--;pasoUI()}};
+// ---- Repaso ----
+function examen(){if(exN>=EXAMEN.length){$("#exPreg").textContent="¡Terminaste el módulo 4!";$("#exOps").innerHTML="";$("#exFb").innerHTML='<button class="btn sec" id="exOtra">Hacer el repaso de nuevo</button>';$("#exOtra").onclick=()=>{exN=0;examen()};return}
+  const q=EXAMEN[exN];$("#exPreg").textContent=`${exN+1} de ${EXAMEN.length} · ${q.p}`;$("#exFb").textContent="";
+  $("#exOps").innerHTML=q.o.map((o,i)=>`<button data-i="${i}" data-fx="none">${o}</button>`).join("");
+  $$("#exOps button").forEach(b=>b.onclick=()=>{const ok=+b.dataset.i===q.c;b.classList.add(ok?"bien":"mal");son(ok?"bien":"mal");
+    if(ok){$("#exFb").innerHTML='<b style="color:var(--ok)">¡Correcto!</b> <button class="btn sec" id="exSig" style="margin-left:8px">Seguir</button>';$("#exSig").onclick=()=>{exN++;examen()}}
+    else $("#exFb").textContent="No es esa. Probá con otra opción."})}
+// ---- Animación ----
+let golpe=0;
+function loop(now){const t=(now-t0)/1000;
+  // lupa de la prensa
+  if(modo==="cambio"&&paso===8){const k=reduce?.5:(t*.5)%1;$("#bujL").setAttribute("transform",`translate(0 ${(k*60-10).toFixed(1)})`);$("#prensaL").setAttribute("transform",`translate(0 ${(k*20).toFixed(1)})`)}
+  // falla: buje vencido, la parrilla se corre al frenar
+  if(modo==="fallas"&&falla.vencido&&!reduce){const k=Math.sin(t*3);const d=k>.7?8:0;$("#g-parrilla").setAttribute("transform",`translate(0 ${d})`);$("#g-rotula").setAttribute("transform",`translate(0 ${d})`);$("#clac").setAttribute("opacity",d?1:0);if(d&&!golpe){golpe=1;son("falla")}else if(!d)golpe=0}
+  else{$("#g-parrilla").removeAttribute("transform");$("#g-rotula").removeAttribute("transform");$("#clac").setAttribute("opacity",0)}
+  requestAnimationFrame(loop)}
+(function(){const h=location.hash.slice(1).split("-");if(["partes","trabaja","fallas","cambio","ficha"].includes(h[0])){if(h[0]==="cambio"&&h[1])paso=Math.min(PASOS.length-1,Math.max(0,+h[1]-1));if(h[0]==="trabaja"&&h[1]==="aire"){aj="aire";$$("#segAj button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.aj==="aire"))}irA(h[0])}else irA("partes");if(h[0]==="despiece")$("#despiece").click()})();
+requestAnimationFrame(loop);
+</script>
+<script src="js/taller-fx.js"></script>
+</body>
+</html>
